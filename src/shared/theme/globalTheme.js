@@ -1,28 +1,344 @@
-export const globalTheme = {
-  colors: {
-    primary: { main: '#8B4513', light: '#A0522D', dark: '#654321' },
-    secondary: { main: '#DAA520', light: '#F0E68C', dark: '#B8860B' },
-    accent: { main: '#4169E1', light: '#6495ED', dark: '#191970' },
-    background: { default: '#FAFAF8', paper: '#FFFFFF' },
-    text: { primary: '#2C2C2C', secondary: '#5A5A5A' }
+/**
+ * globalTheme.js - Système de design unifié Canon Law Toolkit
+ * 
+ * Thème global fusionnant :
+ * - Le thème médiéval de l'interface principale (marron/or)
+ * - Le thème moderne du ConcordanceAnalyzer (violet/bleu)
+ * 
+ * Fournit :
+ * - Palettes de couleurs multiples
+ * - Espacements standardisés
+ * - Ombres et animations
+ * - Typographie complète
+ * - Helpers réutilisables
+ * 
+ * @module globalTheme
+ */
+
+// ==========================================================================
+// 🎨 PALETTES DE COULEURS
+// ==========================================================================
+
+/**
+ * Palette MÉDIÉVALE - Pour l'interface principale (Header, Footer, Home)
+ * Inspirée des manuscrits enluminés
+ */
+const medievalPalette = {
+  primary: {
+    main: '#8B4513',      // Brun encre
+    light: '#A0522D',     // Brun clair
+    dark: '#654321'       // Brun foncé
   },
-  typography: {
-    fontFamily: {
-      primary: '"Crimson Text", Georgia, serif',
-      secondary: '"Lato", sans-serif'
-    }
+  secondary: {
+    main: '#DAA520',      // Or enluminure
+    light: '#F0E68C',     // Or clair
+    dark: '#B8860B'       // Or foncé
+  },
+  accent: {
+    main: '#4169E1',      // Lapis-lazuli
+    light: '#6495ED',     // Bleu clair
+    dark: '#191970'       // Bleu nuit
   }
 };
 
+/**
+ * Palette CONCORDANCE - Pour le module ConcordanceAnalyzer
+ * Palette moderne et académique (violet/bleu)
+ */
+const concordancePalette = {
+  primary: {
+    main: '#553C9A',      // Violet principal
+    light: '#6B46C1',     // Violet clair
+    dark: '#3730a3',      // Indigo foncé
+    blue: '#2563eb',      // Bleu vif
+    blueHover: '#1d4ed8'  // Bleu hover
+  },
+  accent: {
+    blue: '#3b82f6',      // Stats principale
+    green: '#10b981',     // Stats positive
+    orange: '#f59e0b',    // Stats importante
+    red: '#ef4444'        // Erreur / alerte
+  }
+};
+
+// ==========================================================================
+// 🎨 THÈME GLOBAL UNIFIÉ
+// ==========================================================================
+
+export const globalTheme = {
+  
+  // ------------------------------------------------------------------------
+  // Palettes disponibles
+  // ------------------------------------------------------------------------
+  palettes: {
+    medieval: medievalPalette,
+    concordance: concordancePalette
+  },
+  
+  // ------------------------------------------------------------------------
+  // Couleurs par défaut (utilise palette médiévale pour l'interface)
+  // ------------------------------------------------------------------------
+  colors: {
+    // Interface principale
+    primary: medievalPalette.primary,
+    secondary: medievalPalette.secondary,
+    accent: medievalPalette.accent,
+    
+    // Fond et surfaces
+    background: {
+      default: '#FAFAF8',   // Fond général (parchemin clair)
+      paper: '#FFFFFF',     // Fond des cartes (blanc pur)
+      page: '#f8f9fa',      // Fond général de page
+      card: '#ffffff',      // Fond des cards
+      hover: '#f1f5f9',     // Hover des options
+      active: '#eff6ff',    // Fond actif
+      panel: '#F7FAFC'      // Texte sur panels foncés
+    },
+    
+    // Texte - Contraste amélioré
+    text: {
+      primary: '#2C2C2C',     // Titres, texte important (interface)
+      secondary: '#5A5A5A',   // Labels, descriptions (interface)
+      dark: '#1e293b',        // Texte très foncé (concordance)
+      medium: '#334155',      // Texte moyen (concordance)
+      muted: '#64748b',       // Métadonnées, infos secondaires
+      light: '#F7FAFC',       // Blanc cassé (sur panels foncés)
+      link: '#1e40af',        // Liens, actifs
+      linkHover: '#1d4ed8'    // Liens au survol
+    },
+    
+    // Bordures
+    border: {
+      light: '#e2e8f0',       // Bordure standard (gris clair)
+      medium: '#cbd5e0',      // Bordure moyenne (gris)
+      strong: '#a0aec0',      // Bordure forte (gris foncé)
+      active: '#3b82f6',      // Bordure active (bleu vif)
+      panel: 'rgba(255,255,255,0.2)'  // Bordure sur panels foncés
+    }
+  },
+  
+  // ------------------------------------------------------------------------
+  // Espacements standardisés
+  // ------------------------------------------------------------------------
+  spacing: {
+    xs: '0.25rem',    // 4px  - Très petit gap
+    sm: '0.5rem',     // 8px  - Petit gap
+    md: '0.75rem',    // 12px - Gap moyen
+    lg: '1rem',       // 16px - Gap standard
+    xl: '1.5rem',     // 24px - Grand gap
+    xxl: '2rem',      // 32px - Très grand gap
+    xxxl: '3rem'      // 48px - Énorme gap
+  },
+  
+  // ------------------------------------------------------------------------
+  // Ombres élégantes
+  // ------------------------------------------------------------------------
+  shadows: {
+    card: '0 2px 8px rgba(0, 0, 0, 0.08)',           // Ombre subtile (repos)
+    cardHover: '0 4px 16px rgba(0, 0, 0, 0.12)',     // Ombre au hover
+    panel: '0 4px 12px rgba(0, 0, 0, 0.1)',          // Panel standard
+    panelHover: '0 8px 24px rgba(0, 0, 0, 0.15)',    // Panel au hover
+    elevated: '0 8px 24px rgba(0, 0, 0, 0.15)',      // Modals, dropdowns
+    strong: '0 12px 32px rgba(0, 0, 0, 0.2)'         // Très élevé
+  },
+  
+  // ------------------------------------------------------------------------
+  // Animations unifiées
+  // ------------------------------------------------------------------------
+  transitions: {
+    fast: '150ms ease',                                    // Hover rapide
+    normal: '250ms ease',                                  // Standard
+    slow: '350ms cubic-bezier(0.4, 0, 0.2, 1)',          // Smooth
+    bounce: '400ms cubic-bezier(0.68, -0.55, 0.265, 1.55)' // Bounce effect
+  },
+  
+  // ------------------------------------------------------------------------
+  // Bordures - Rayons
+  // ------------------------------------------------------------------------
+  borderRadius: {
+    sm: '4px',       // Petits éléments (badges)
+    md: '6px',       // Moyen (options)
+    lg: '8px',       // Standard (cards, charts)
+    xl: '12px',      // Grand (panels navigation)
+    full: '9999px'   // Cercle / pilule
+  },
+  
+  // ------------------------------------------------------------------------
+  // Glassmorphism (effet verre moderne)
+  // ------------------------------------------------------------------------
+  glassmorphism: {
+    background: 'rgba(255, 255, 255, 0.85)',
+    blur: 'blur(10px)',
+    border: '2px solid rgba(255, 255, 255, 0.5)',
+    shadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+  },
+  
+  // ------------------------------------------------------------------------
+  // Typographie
+  // ------------------------------------------------------------------------
+  typography: {
+    fontFamily: {
+      primary: '"Crimson Text", Georgia, serif',    // Titres (médiéval)
+      secondary: '"Lato", sans-serif',              // UI (moderne)
+      sans: '"Inter", sans-serif',                  // Alternative (concordance)
+      serif: '"Crimson Text", serif'                // Alternative (concordance)
+    },
+    size: {
+      xs: '0.75rem',     // 12px - Métadonnées
+      sm: '0.85rem',     // 13.6px - Labels
+      md: '0.875rem',    // 14px - Corps de texte
+      lg: '1rem',        // 16px - Titres secondaires
+      xl: '1.25rem',     // 20px - Titres
+      xxl: '1.5rem',     // 24px - Grands titres
+      xxxl: '2rem'       // 32px - Titres principaux
+    },
+    weight: {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700'
+    }
+  },
+  
+  // ------------------------------------------------------------------------
+  // Graphiques (pour Recharts)
+  // ------------------------------------------------------------------------
+  charts: {
+    // Palette principale (concordance)
+    colors: [
+      '#2563eb',  // Bleu vif
+      '#1d4ed8',  // Bleu moyen
+      '#1e40af',  // Bleu foncé
+      '#3730a3',  // Indigo
+      '#4338ca',  // Indigo moyen
+      '#6366f1',  // Indigo clair
+      '#8b5cf6'   // Violet
+    ],
+    
+    // Couleurs spécifiques
+    temporal: '#3b82f6',    // Ligne temporelle
+    domain: '#553C9A',      // Barres domaines
+    grid: '#e2e8f0'         // Grille
+  }
+};
+
+// ==========================================================================
+// 🛠️ HELPERS - Fonctions utilitaires
+// ==========================================================================
+
+/**
+ * Génère un style de card standard
+ * @returns {Object} Style CSS inline
+ */
+export const getCardStyle = () => ({
+  background: globalTheme.colors.background.card,
+  border: `1px solid ${globalTheme.colors.border.light}`,
+  borderRadius: globalTheme.borderRadius.lg,
+  padding: globalTheme.spacing.xxl,
+  boxShadow: globalTheme.shadows.card,
+  transition: globalTheme.transitions.normal
+});
+
+/**
+ * Génère un style de card avec effet hover
+ * @param {boolean} isHovered - État hover
+ * @returns {Object} Style CSS inline
+ */
+export const getCardHoverStyle = (isHovered) => ({
+  ...getCardStyle(),
+  boxShadow: isHovered 
+    ? globalTheme.shadows.cardHover 
+    : globalTheme.shadows.card,
+  transform: isHovered ? 'translateY(-2px)' : 'translateY(0)'
+});
+
+/**
+ * Génère un style de panel navigation avec glassmorphism
+ * @param {boolean} isActive - Panel actif
+ * @param {boolean} isHovered - État hover
+ * @returns {Object} Style CSS inline
+ */
+export const getPanelStyle = (isActive, isHovered) => ({
+  background: globalTheme.glassmorphism.background,
+  backdropFilter: globalTheme.glassmorphism.blur,
+  border: isActive 
+    ? `3px solid ${globalTheme.colors.border.active}`
+    : globalTheme.glassmorphism.border,
+  borderRadius: globalTheme.borderRadius.xl,
+  boxShadow: isHovered 
+    ? globalTheme.shadows.panelHover 
+    : globalTheme.shadows.panel,
+  transform: isHovered ? 'scale(1.02)' : 'scale(1)',
+  transition: globalTheme.transitions.slow
+});
+
+/**
+ * Crée un gradient linéaire diagonal (135deg)
+ * @param {string} color1 - Couleur de départ
+ * @param {string} color2 - Couleur d'arrivée
+ * @returns {string} Gradient CSS
+ */
+export const createGradient = (color1, color2) => 
+  `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+
+/**
+ * Génère les styles CSS globaux
+ * @returns {string} CSS string
+ */
 export const generateGlobalStyles = () => `
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
   body {
     font-family: ${globalTheme.typography.fontFamily.primary};
     color: ${globalTheme.colors.text.primary};
     background: ${globalTheme.colors.background.default};
     line-height: 1.5;
   }
-  h1, h2, h3 { font-weight: 700; }
-  a { color: ${globalTheme.colors.accent.main}; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: ${globalTheme.typography.weight.bold};
+    line-height: 1.2;
+  }
+  
+  a {
+    color: ${globalTheme.colors.text.link};
+    text-decoration: none;
+    transition: ${globalTheme.transitions.fast};
+  }
+  
+  a:hover {
+    color: ${globalTheme.colors.text.linkHover};
+    text-decoration: underline;
+  }
+  
+  button {
+    font-family: ${globalTheme.typography.fontFamily.secondary};
+    cursor: pointer;
+    transition: ${globalTheme.transitions.normal};
+  }
 `;
+
+// Export par défaut
+export default globalTheme;
+
+// Exports nommés pour compatibilité avec visualTheme
+export const visualTheme = {
+  colors: {
+    primary: concordancePalette.primary,
+    background: globalTheme.colors.background,
+    text: globalTheme.colors.text,
+    border: globalTheme.colors.border,
+    accent: concordancePalette.accent
+  },
+  spacing: globalTheme.spacing,
+  shadows: globalTheme.shadows,
+  transitions: globalTheme.transitions,
+  borderRadius: globalTheme.borderRadius,
+  glassmorphism: globalTheme.glassmorphism,
+  typography: globalTheme.typography,
+  charts: globalTheme.charts
+};
