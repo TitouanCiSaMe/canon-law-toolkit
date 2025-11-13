@@ -1,0 +1,15 @@
+{
+  "site": {
+    "title": "CALKIT",
+    "subtitle": "Canon Law Analysis Toolkit"
+  },
+  "nav": {
+    "home": "Accueil",
+    "queryGenerator": "Générateur de requêtes",
+    "concordanceAnalyzer": "Analyseur de concordances"
+  },
+  "home": {
+    "welcome": "Bienvenue sur Canon Law Toolkit",
+    "description": "Plateforme d'outils pour l'analyse du droit canon médiéval"
+  }
+}

@@ -1,0 +1,7 @@
+.toolkit-footer {
+  background: linear-gradient(135deg, #654321 0%, #4A3219 100%);
+  color: rgba(255,255,255,0.9);
+  padding: 2rem;
+  text-align: center;
+  margin-top: auto;
+}
