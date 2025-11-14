@@ -305,14 +305,9 @@ export const generateGlobalStyles = () => `
   }
   
   a {
-    color: ${globalTheme.colors.text.link};
+    color: inherit;
     text-decoration: none;
     transition: ${globalTheme.transitions.fast};
-  }
-  
-  a:hover {
-    color: ${globalTheme.colors.text.linkHover};
-    text-decoration: underline;
   }
   
   button {
