@@ -490,6 +490,21 @@ const ConcordanceAnalyzerPanels = () => {
                 onExportConcordances={() => exportConcordancesCSV(filteredData)}
                 onExportAnalytics={() => exportAnalyticsJSON(analytics)}
               />
+            ) : activeView === 'wordcloud' ? (
+              <WordCloudView
+                filteredData={filteredData}
+                analytics={analytics}
+                onExportConcordances={() => exportConcordancesCSV(filteredData)}
+                onExportAnalytics={() => exportAnalyticsJSON(analytics)}
+              />
+            ) : activeView === 'comparison' ? (
+              <ComparisonView
+              data={concordanceData}
+              filteredData={filteredData}
+              analytics={analytics}
+              onExportConcordances={() => exportConcordancesCSV(filteredData)}
+              onExportAnalytics={() => exportAnalyticsJSON(analytics)}
+              />
             ) : activeView === 'data' ? (
               <DataView
                 filteredData={filteredData}

@@ -179,7 +179,7 @@ const OverviewView = ({
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'minmax(400px, 1.3fr) minmax(200px, 0.6fr) minmax(200px, 0.6fr) minmax(200px, 0.6fr)',
-      gridTemplateRows: 'minmax(250px, auto) minmax(250px, auto) minmax(200px, auto)',
+      gridTemplateRows: 'minmax(300px, auto) minmax(250px, auto) minmax(200px, auto) minmax(200px, auto)',
       gap: '2px',
       background: academicColors.text,
       padding: '2px',
@@ -396,6 +396,114 @@ const OverviewView = ({
               </div>
             </div>
           ))}
+        </div>
+      </NavigationPanel>
+      
+      {/* Panel Nuage de mots */}
+      <NavigationPanel
+        config={panelConfig.wordcloud}
+        isActive={false}
+        onClick={() => navigateToView('wordcloud')}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            fontSize: '2.5rem', 
+            fontWeight: '300', 
+            marginBottom: '0.5rem',
+            color: '#F7FAFC'
+          }}>
+            {analytics.keyTerms.length}
+          </div>
+          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            {t('concordance.overview.uniqueKwicTerms')}
+          </div>
+          
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '0.5rem',
+            justifyContent: 'center',
+            marginTop: '1rem'
+          }}>
+            {analytics.keyTerms.slice(0, 5).map((term, index) => (
+              <div key={term.term} style={{
+                background: 'rgba(255,255,255,0.2)',
+                padding: '0.25rem 0.5rem',
+                borderRadius: '12px',
+                fontSize: '0.75rem',
+                fontWeight: '500'
+              }}>
+                {term.term}
+              </div>
+            ))}
+          </div>
+        </div>
+      </NavigationPanel>
+      
+      <NavigationPanel
+        config={panelConfig.comparison}
+        isActive={false}
+        onClick={() => navigateToView('comparison')}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            fontSize: '2.5rem', 
+            fontWeight: '300', 
+            marginBottom: '0.5rem',
+            color: '#F7FAFC'
+          }}>
+            5
+          </div>
+          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            {t('concordance.overview.comparisonCriteria')}
+          </div>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '0.5rem',
+            marginTop: '1rem',
+            fontSize: '0.75rem',
+            opacity: 0.8
+          }}>
+            <div style={{
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.4rem',
+              borderRadius: '4px'
+            }}>
+              {t('concordance.overview.volume')}
+            </div>
+            <div style={{
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.4rem',
+              borderRadius: '4px'
+            }}>
+              {t('concordance.overview.domains')}
+            </div>
+            <div style={{
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.4rem',
+              borderRadius: '4px'
+            }}>
+              {t('concordance.overview.authors')}
+            </div>
+            <div style={{
+              background: 'rgba(255,255,255,0.2)',
+              padding: '0.4rem',
+              borderRadius: '4px'
+            }}>
+              {t('concordance.overview.places')}
+            </div>
+          </div>
+          
+          <div style={{
+            marginTop: '1rem',
+            fontSize: '0.8rem',
+            fontWeight: '500',
+            opacity: 0.9
+          }}>
+            {t('concordance.overview.clickToCompare')}
+          </div>
         </div>
       </NavigationPanel>
       

@@ -19,13 +19,13 @@ import { visualTheme, createGradient } from '@shared/theme/globalTheme';
 export const panelConfig = {
   overview: {
     id: 'overview',
-    title: 'Vue d\'ensemble',
-    subtitle: 'Analyse globale',
+    title: 'concordance.panels.overview.title',
+    subtitle: 'concordance.panels.overview.subtitle',
     color: '#1A365D',
     gradient: createGradient('#1A365D', '#2C5282'),
     icon: '📊',
-    gridArea: '1 / 1 / 2 / 2',  // ✏️ MODIFIÉ : était '1 / 1 / 3 / 2'
-    size: 'medium'  // ✏️ MODIFIÉ : était 'large'
+    gridArea: '1 / 1 / 3 / 2',
+    size: 'large'
   },
   domains: {
     id: 'domains',
@@ -70,6 +70,29 @@ export const panelConfig = {
     gridArea: '2 / 3 / 3 / 4',
     size: 'medium'
   },
+  wordcloud: {
+    id: 'wordcloud',
+    title: 'concordance.panels.wordcloud.title',
+    subtitle: 'concordance.panels.wordcloud.subtitle',
+    color: visualTheme.colors.primary.blue,           // ✅ Utilise le thème
+    gradient: createGradient(
+      '#1e40af', 
+      visualTheme.colors.primary.blue
+    ),
+    icon: '☁️',
+    gridArea: '3 / 2 / 4 / 4',
+    size: 'medium'
+  },
+  comparison: {
+    id: 'comparison',
+    title: 'concordance.panels.comparison.title',
+    subtitle: 'concordance.panels.comparison.subtitle',
+    color: '#7c3aed',
+    gradient: createGradient('#7c3aed', '#8b5cf6'),
+    icon: '🔀',
+    gridArea: '3 / 4 / 4 / 5',
+    size: 'medium'
+  },
   corpusComparison: {
     id: 'corpusComparison',
     title: 'concordance.panels.corpusComparison.title',
@@ -77,8 +100,8 @@ export const panelConfig = {
     color: '#dc2626',
     gradient: createGradient('#dc2626', '#ef4444'),
     icon: '⚖️',
-    gridArea: '2 / 1 / 3 / 2',  // ✏️ MODIFIÉ : était '3 / 1 / 4 / 2'
-    size: 'medium'  // ✏️ MODIFIÉ : était 'large'
+    gridArea: '3 / 1 / 4 / 2',
+    size: 'large'
   },
   data: {
     id: 'data',
@@ -92,12 +115,12 @@ export const panelConfig = {
   },
   concordances: {
     id: 'concordances',
-    title: 'Import',
-    subtitle: 'Chargement des données',
+    title: 'concordance.panels.concordances.title',
+    subtitle: 'concordance.panels.concordances.subtitle',
     color: '#7C2D12',
     gradient: createGradient('#7C2D12', '#92400E'),
     icon: '📁',
-    gridArea: '3 / 1 / 4 / 5',  // ✏️ MODIFIÉ : était '4 / 1 / 5 / 5'
+    gridArea: '4 / 1 / 5 / 5',
     size: 'wide'
   },
   places: {
