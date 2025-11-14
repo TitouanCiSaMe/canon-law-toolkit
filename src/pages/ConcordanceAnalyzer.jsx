@@ -1,14 +1,13 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import ConcordanceAnalyzerModule from '../modules/concordance-analyzer/ConcordanceAnalyzer';
 
-const ConcordanceAnalyzer = () => {
-  const { t } = useTranslation();
-  return (
-    <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-      <h1>{t('nav.concordanceAnalyzer')}</h1>
-      <p>À migrer en Étape 1.2</p>
-    </div>
-  );
-};
-
-export default ConcordanceAnalyzer;
+/**
+ * Page ConcordanceAnalyzer
+ * 
+ * Point d'entrée de la page qui charge le module ConcordanceAnalyzer.
+ * Le module contient toute la logique et l'interface utilisateur.
+ * 
+ * @returns {JSX.Element} Page ConcordanceAnalyzer
+ */
+export default function ConcordanceAnalyzer() {
+  return <ConcordanceAnalyzerModule />;
+}
