@@ -24,7 +24,7 @@ const ComparisonTemporalChart = ({
     {
       id: aggregatedChartId,
       name: 'graphique_agrege_comparison',
-      label: t('views.corpusComparison.charts.temporal.aggregatedChart')
+      label: t('concordance.views.corpusComparison.charts.temporal.aggregatedChart')
     }
   ];
 
@@ -195,7 +195,7 @@ const ComparisonTemporalChart = ({
         color: '#64748b'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⏰</div>
-        <h3>{t('charts.noData.temporal')}</h3>
+        <h3>{t('concordance.charts.noData.temporal')}</h3>
       </div>
     );
   }
@@ -205,37 +205,37 @@ const ComparisonTemporalChart = ({
   // ============================================================================
   
   const granularityOptions = [
-    { value: 'year', label: t('views.corpusComparison.charts.temporal.granularity.years'), icon: '📅' },
-    { value: 'decade', label: t('views.corpusComparison.charts.temporal.granularity.decades'), icon: '📊' },
-    { value: 'quarter', label: t('views.corpusComparison.charts.temporal.granularity.quarters'), icon: '⏳' },
-    { value: 'half', label: t('views.corpusComparison.charts.temporal.granularity.halves'), icon: '🕰️' }
+    { value: 'year', label: t('concordance.views.corpusComparison.charts.temporal.granularity.years'), icon: '📅' },
+    { value: 'decade', label: t('concordance.views.corpusComparison.charts.temporal.granularity.decades'), icon: '📊' },
+    { value: 'quarter', label: t('concordance.views.corpusComparison.charts.temporal.granularity.quarters'), icon: '⏳' },
+    { value: 'half', label: t('concordance.views.corpusComparison.charts.temporal.granularity.halves'), icon: '🕰️' }
   ];
 
   const countModeOptions = [
     {
       value: 'works',
-      label: t('views.corpusComparison.charts.temporal.countMode.works'),
-      description: t('views.corpusComparison.charts.temporal.countMode.worksDesc'),
+      label: t('concordance.views.corpusComparison.charts.temporal.countMode.works'),
+      description: t('concordance.views.corpusComparison.charts.temporal.countMode.worksDesc'),
       icon: '📚'
     },
     {
       value: 'concordances',
-      label: t('views.corpusComparison.charts.temporal.countMode.concordances'),
-      description: t('views.corpusComparison.charts.temporal.countMode.concordancesDesc'),
+      label: t('concordance.views.corpusComparison.charts.temporal.countMode.concordances'),
+      description: t('concordance.views.corpusComparison.charts.temporal.countMode.concordancesDesc'),
       icon: '📄'
     }
   ];
 
   const granularityLabels = {
-    year: t('views.corpusComparison.charts.temporal.granularity.years'),
-    decade: t('views.corpusComparison.charts.temporal.granularity.decades'),
-    quarter: t('views.corpusComparison.charts.temporal.granularity.quarters'),
-    half: t('views.corpusComparison.charts.temporal.granularity.halves')
+    year: t('concordance.views.corpusComparison.charts.temporal.granularity.years'),
+    decade: t('concordance.views.corpusComparison.charts.temporal.granularity.decades'),
+    quarter: t('concordance.views.corpusComparison.charts.temporal.granularity.quarters'),
+    half: t('concordance.views.corpusComparison.charts.temporal.granularity.halves')
   };
 
   const countModeLabel = countMode === 'works' 
-    ? t('views.corpusComparison.charts.temporal.works')
-    : t('views.corpusComparison.charts.temporal.concordances');
+    ? t('concordance.views.corpusComparison.charts.temporal.works')
+    : t('concordance.views.corpusComparison.charts.temporal.concordances');
 
   // ============================================================================
   // TOOLTIP PERSONNALISÉ
@@ -256,7 +256,7 @@ const ComparisonTemporalChart = ({
             marginBottom: '0.5rem',
             color: '#1e293b'
           }}>
-            {t('views.corpusComparison.charts.temporal.period')} : {label}
+            {t('concordance.views.corpusComparison.charts.temporal.period')} : {label}
           </p>
           {payload.map((entry, index) => (
             <p key={index} style={{ 
@@ -290,7 +290,7 @@ const ComparisonTemporalChart = ({
           fontSize: '1.3rem',
           color: '#1e293b'
         }}>
-          ⏰ {t('views.corpusComparison.charts.temporal.title')}
+          ⏰ {t('concordance.views.corpusComparison.charts.temporal.title')}
         </h3>
 
         {/* Export buttons */}
@@ -326,7 +326,7 @@ const ComparisonTemporalChart = ({
               color: visualTheme.colors.text.primary,
               marginBottom: visualTheme.spacing.md
             }}>
-              📊 {t('views.corpusComparison.charts.temporal.scaleLabel')}
+              📊 {t('concordance.views.corpusComparison.charts.temporal.scaleLabel')}
             </h5>
             <div style={{
               display: 'grid',
@@ -373,7 +373,7 @@ const ComparisonTemporalChart = ({
               color: visualTheme.colors.text.primary,
               marginBottom: visualTheme.spacing.md
             }}>
-              📈 {t('views.corpusComparison.charts.temporal.countModeLabel')}
+              📈 {t('concordance.views.corpusComparison.charts.temporal.countModeLabel')}
             </h5>
             <div style={{
               display: 'flex',
@@ -461,7 +461,7 @@ const ComparisonTemporalChart = ({
                 textTransform: 'uppercase',
                 marginBottom: visualTheme.spacing.sm
               }}>
-                {t('views.corpusComparison.stats.total')}
+                {t('concordance.views.corpusComparison.stats.total')}
               </div>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
                 <div>
@@ -473,7 +473,7 @@ const ComparisonTemporalChart = ({
                     {stats.totalA}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                    {t('views.corpusComparison.corpusA')}
+                    {t('concordance.views.corpusComparison.corpusA')}
                   </div>
                 </div>
                 <div style={{ color: '#94a3b8' }}>vs</div>
@@ -486,7 +486,7 @@ const ComparisonTemporalChart = ({
                     {stats.totalB}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                    {t('views.corpusComparison.corpusB')}
+                    {t('concordance.views.corpusComparison.corpusB')}
                   </div>
                 </div>
               </div>
@@ -506,7 +506,7 @@ const ComparisonTemporalChart = ({
                 textTransform: 'uppercase',
                 marginBottom: visualTheme.spacing.sm
               }}>
-                {t('views.corpusComparison.stats.averagePerPeriod')}
+                {t('concordance.views.corpusComparison.stats.averagePerPeriod')}
               </div>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
                 <div>
@@ -518,7 +518,7 @@ const ComparisonTemporalChart = ({
                     {stats.avgA}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                    {t('views.corpusComparison.corpusA')}
+                    {t('concordance.views.corpusComparison.corpusA')}
                   </div>
                 </div>
                 <div style={{ color: '#94a3b8' }}>vs</div>
@@ -531,7 +531,7 @@ const ComparisonTemporalChart = ({
                     {stats.avgB}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                    {t('views.corpusComparison.corpusB')}
+                    {t('concordance.views.corpusComparison.corpusB')}
                   </div>
                 </div>
               </div>
@@ -551,7 +551,7 @@ const ComparisonTemporalChart = ({
                 textTransform: 'uppercase',
                 marginBottom: visualTheme.spacing.sm
               }}>
-                {t('views.corpusComparison.stats.richestPeriod')}
+                {t('concordance.views.corpusComparison.stats.richestPeriod')}
               </div>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'baseline' }}>
                 <div>
@@ -603,7 +603,7 @@ const ComparisonTemporalChart = ({
             color: '#1e293b',
             marginBottom: '1rem'
           }}>
-            📊 {t('views.corpusComparison.charts.temporal.distributionBy', { 
+            📊 {t('concordance.views.corpusComparison.charts.temporal.distributionBy', { 
               granularity: granularityLabels[granularity].toLowerCase() 
             })}
           </h5>
@@ -616,7 +616,7 @@ const ComparisonTemporalChart = ({
                 dataKey="period"
                 style={{ fontSize: '0.85rem' }}
                 label={{
-                  value: t('views.corpusComparison.charts.temporal.period'),
+                  value: t('concordance.views.corpusComparison.charts.temporal.period'),
                   position: 'insideBottom',
                   offset: -5,
                   style: { fontSize: '0.9rem', fill: '#64748b' }
@@ -627,8 +627,8 @@ const ComparisonTemporalChart = ({
                 style={{ fontSize: '0.85rem' }}
                 label={{
                   value: countMode === 'works' 
-                    ? t('views.corpusComparison.charts.temporal.numberOfWorks')
-                    : t('views.corpusComparison.charts.temporal.numberOfConcordances'),
+                    ? t('concordance.views.corpusComparison.charts.temporal.numberOfWorks')
+                    : t('concordance.views.corpusComparison.charts.temporal.numberOfConcordances'),
                   angle: -90,
                   position: 'insideLeft',
                   style: { fontSize: '0.9rem', fill: '#64748b' }
@@ -648,7 +648,7 @@ const ComparisonTemporalChart = ({
               <Line
                 type="monotone"
                 dataKey="countA"
-                name={t('views.corpusComparison.charts.legend.corpusA')}
+                name={t('concordance.views.corpusComparison.charts.legend.corpusA')}
                 stroke="#3b82f6"
                 strokeWidth={3}
                 dot={{ fill: '#3b82f6', r: 5 }}
@@ -658,7 +658,7 @@ const ComparisonTemporalChart = ({
               <Line
                 type="monotone"
                 dataKey="countB"
-                name={t('views.corpusComparison.charts.legend.corpusB')}
+                name={t('concordance.views.corpusComparison.charts.legend.corpusB')}
                 stroke="#ef4444"
                 strokeWidth={3}
                 dot={{ fill: '#ef4444', r: 5 }}

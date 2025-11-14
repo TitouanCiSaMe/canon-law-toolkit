@@ -250,7 +250,7 @@ const ConcordanceAnalyzerPanels = () => {
               color: academicColors.primary,
               marginBottom: '0.25rem'
             }}>
-              {t('app.title')}
+              {t('concordance.app.title')}
             </h1>
             <nav style={{ 
               fontSize: '0.9rem', 
@@ -276,17 +276,17 @@ const ConcordanceAnalyzerPanels = () => {
                     onMouseOver={(e) => e.target.style.background = '#F0F4F8'}
                     onMouseOut={(e) => e.target.style.background = 'none'}
                   >
-                    {t('panels.overview.title')}
+                    {t('concordance.panels.overview.title')}
                   </button>
                   <span style={{ color: '#CBD5E1' }}>›</span>
-                  <span style={{ fontWeight: '500', color: '#2D3748' }}>
-                    {t(`panels.${activeView}.title`)}
-                  </span>
+		  <span style={{ fontWeight: '500', color: '#2D3748' }}>
+		    {t(`concordance.panels.${activeView}.title`)}
+		  </span>
                 </>
               )}
               {activeView === 'overview' && (
                 <span style={{ fontWeight: '500', color: '#2D3748' }}>
-                  {t('panels.overview.title')}
+                  {t('concordance.panels.overview.title')}
                 </span>
               )}
             </nav>
@@ -326,7 +326,7 @@ const ConcordanceAnalyzerPanels = () => {
                   }
                 }}
               >
-                🔍 {t('buttons.filters')}
+               🔍 {t('concordance.buttons.filters')}
                 {activeFilterCount > 0 && (
                   <span style={{
                     position: 'absolute',
@@ -372,7 +372,7 @@ const ConcordanceAnalyzerPanels = () => {
               textTransform: 'uppercase',
               letterSpacing: '0.05em'
             }}>
-              {t('stats.concordances')}
+              {t('concordance.stats.concordances')}
             </div>
             {parseStats.lookupRate && (
               <div style={{ 
@@ -380,7 +380,7 @@ const ConcordanceAnalyzerPanels = () => {
                 opacity: 0.8,
                 marginTop: '0.25rem'
               }}>
-                {parseStats.lookupRate}% {t('stats.enriched')}
+                {parseStats.lookupRate}% {t('concordance.stats.enriched')}
               </div>
             )}
           </div>
@@ -433,14 +433,14 @@ const ConcordanceAnalyzerPanels = () => {
                   color: '#1A202C',
                   marginBottom: '0.5rem'
                 }}>
-                  {t(`panels.${activeView}.title`)}
+                  {t(`concordance.panels.${activeView}.title`)}
                 </h2>
                 <p style={{
                   fontSize: '1.1rem',
                   color: '#4A5568',
                   fontStyle: 'italic'
                 }}>
-                  {t(`panels.${activeView}.subtitle`)}
+                  {t(`concordance.panels.${activeView}.subtitle`)}
                 </p>
               </div>
             </div>

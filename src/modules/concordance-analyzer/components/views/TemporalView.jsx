@@ -81,12 +81,12 @@ const TemporalView = ({
     {
       id: temporalChartId,
       name: 'graphique_agrege',
-      label: t('charts.temporal.aggregatedChart')
+      label: t('concordance.charts.temporal.aggregatedChart')
     },
     {
       id: timelineGanttId,
       name: 'timeline',
-      label: t('charts.temporal.timeline')
+      label: t('concordance.charts.temporal.timeline')
     }
   ];
 
@@ -245,18 +245,18 @@ const TemporalView = ({
    * Labels des granularités (traduits)
    */
   const granularityLabels = {
-    year: t('charts.temporal.years'),
-    decade: t('charts.temporal.decades'),
-    quarter: t('charts.temporal.quarters'),
-    half: t('charts.temporal.halves')
+    year: t('concordance.charts.temporal.years'),
+    decade: t('concordance.charts.temporal.decades'),
+    quarter: t('concordance.charts.temporal.quarters'),
+    half: t('concordance.charts.temporal.halves')
   };
 
   /**
    * Label du mode de comptage actuel (traduit)
    */
   const countModeLabel = countMode === 'works' 
-    ? t('charts.temporal.works')
-    : t('charts.temporal.concordances');
+    ? t('concordance.charts.temporal.works')
+    : t('concordance.charts.temporal.concordances');
 
   /**
    * Options de granularité pour le sélecteur
@@ -264,23 +264,23 @@ const TemporalView = ({
   const granularityOptions = [
     {
       value: 'year',
-      label: t('charts.temporal.years'),
-      description: t('charts.temporal.yearlyDetail')
+      label: t('concordance.charts.temporal.years'),
+      description: t('concordance.charts.temporal.yearlyDetail')
     },
     {
       value: 'decade',
-      label: t('charts.temporal.decades'),
-      description: t('charts.temporal.decadeOverview')
+      label: t('concordance.charts.temporal.decades'),
+      description: t('concordance.charts.temporal.decadeOverview')
     },
     {
       value: 'quarter',
-      label: t('charts.temporal.quarters'),
-      description: t('charts.temporal.quarterMovements')
+      label: t('concordance.charts.temporal.quarters'),
+      description: t('concordance.charts.temporal.quarterMovements')
     },
     {
       value: 'half',
-      label: t('charts.temporal.halves'),
-      description: t('charts.temporal.halfTrends')
+      label: t('concordance.charts.temporal.halves'),
+      description: t('concordance.charts.temporal.halfTrends')
     }
   ];
 
@@ -290,13 +290,13 @@ const TemporalView = ({
   const countModeOptions = [
     {
       value: 'works',
-      label: t('charts.temporal.numWorksMode'),
-      description: t('charts.temporal.numWorksDesc')
+      label: t('concordance.charts.temporal.numWorksMode'),
+      description: t('concordance.charts.temporal.numWorksDesc')
     },
     {
       value: 'concordances',
-      label: t('charts.temporal.numConcordancesMode'),
-      description: t('charts.temporal.numConcordancesDesc')
+      label: t('concordance.charts.temporal.numConcordancesMode'),
+      description: t('concordance.charts.temporal.numConcordancesDesc')
     }
   ];
 
@@ -362,7 +362,7 @@ const TemporalView = ({
                 color: visualTheme.colors.text.primary,
                 margin: 0
               }}>
-                {t('charts.temporal.granularity')}
+                {t('concordance.charts.temporal.granularity')}
               </h5>
             </div>
             
@@ -458,7 +458,7 @@ const TemporalView = ({
                 color: visualTheme.colors.text.primary,
                 margin: 0
               }}>
-                {t('charts.temporal.countMode')}
+                {t('concordance.charts.temporal.countMode')}
               </h5>
             </div>
             
@@ -661,7 +661,7 @@ const TemporalView = ({
             color: visualTheme.colors.text.primary,
             marginBottom: visualTheme.spacing.xl
           }}>
-            📊 {t('views.temporal.aggregatedDistribution')} {granularityLabels[granularity].toLowerCase()}
+            📊 {t('concordance.views.temporal.aggregatedDistribution')} {granularityLabels[granularity].toLowerCase()}
           </h5>
           <TemporalChart 
             data={temporalData} 

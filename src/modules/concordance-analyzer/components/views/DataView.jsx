@@ -159,7 +159,7 @@ const DataView = ({
                 color: '#1e293b',
                 margin: 0
               }}>
-                {t('dataView.title')}
+                {t('concordance.dataView.title')}
               </h4>
               
               {/* Sélecteur d'affichage du contexte (ligne/complet) */}
@@ -173,7 +173,7 @@ const DataView = ({
                   color: '#64748b',
                   fontWeight: '500'
                 }}>
-                  {t('dataView.contextDisplay')}
+                  {t('concordance.dataView.contextDisplay')}
                 </span>
                 <div style={{
                   display: 'flex',
@@ -197,7 +197,7 @@ const DataView = ({
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    📝 {t('dataView.oneLine')}
+                    📝 {t('concordance.dataView.oneLine')}
                   </button>
                   {/* Bouton "Texte complet" */}
                   <button
@@ -214,7 +214,7 @@ const DataView = ({
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    📄 {t('dataView.fullText')}
+                    📄 {t('concordance.dataView.fullText')}
                   </button>
                 </div>
               </div>
@@ -263,13 +263,13 @@ const DataView = ({
                       gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
                       gap: '0.5rem' 
                     }}>
-                      <div><strong>{t('dataView.metadata.author')}</strong> {item.author}</div>
-                      <div><strong>{t('dataView.metadata.title')}</strong> {item.title}</div>
-                      <div><strong>{t('dataView.metadata.period')}</strong> {item.period}</div>
-                      <div><strong>{t('dataView.metadata.place')}</strong> {item.place}</div>
-                      <div><strong>{t('dataView.metadata.domain')}</strong> {item.domain}</div>
+                      <div><strong>{t('concordance.dataView.metadata.author')}</strong> {item.author}</div>
+                      <div><strong>{t('concordance.dataView.metadata.title')}</strong> {item.title}</div>
+                      <div><strong>{t('concordance.dataView.metadata.period')}</strong> {item.period}</div>
+                      <div><strong>{t('concordance.dataView.metadata.place')}</strong> {item.place}</div>
+                      <div><strong>{t('concordance.dataView.metadata.domain')}</strong> {item.domain}</div>
                       {/* Page optionnelle (si disponible) */}
-                      {item.page && <div><strong>{t('dataView.metadata.page')}</strong> {item.page}</div>}
+                      {item.page && <div><strong>{t('concordance.dataView.metadata.page')}</strong> {item.page}</div>}
                     </div>
                     
                     {/* Badge de source et identifiants */}
@@ -288,11 +288,11 @@ const DataView = ({
                         fontSize: '0.75rem',
                         fontWeight: '600'
                       }}>
-                        {item.fromLookup ? `✅ ${t('dataView.badges.enriched')}` : `⚠️ ${t('dataView.badges.parsed')}`}
+                        {item.fromLookup ? `✅ ${t('concordance.dataView.badges.enriched')}` : `⚠️ ${t('concordance.dataView.badges.parsed')}`}
                       </span>
                       {/* Identifiants techniques (debug/traçabilité) */}
                       <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
-                        {t('dataView.metadata.id')} {item.id} • {t('dataView.metadata.ref')} {item.reference?.substring(0, 50)}...
+                        {t('concordance.dataView.metadata.id')} {item.id} • {t('concordance.dataView.metadata.ref')} {item.reference?.substring(0, 50)}...
                       </span>
                     </div>
                   </div>
@@ -354,8 +354,8 @@ const DataView = ({
     	  {/* ========== CAS VIDE : Aucune donnée ========== */}
     	  <div style={{ textAlign: 'center', padding: '4rem', color: '#64748b' }}>
       	   <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📋</div>
-      	   <h3>{t('dataView.noData')}</h3>
-      	   <p>{t('dataView.importFirst')}</p>
+      	   <h3>{t('concordance.dataView.noData')}</h3>
+      	   <p>{t('concordance.dataView.importFirst')}</p>
     	  </div>
   	</>
       )}

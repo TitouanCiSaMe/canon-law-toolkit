@@ -133,7 +133,7 @@ const DomainsView = ({
           marginBottom: '2rem',        // Espacement avant graphique
           color: '#1e293b'             // Gris très foncé (presque noir)
         }}>
-          {t('views.domains.sectionTitle')}
+          {t('concordance.views.domains.sectionTitle')}
         </h4>
         
         {/* ==================================================================

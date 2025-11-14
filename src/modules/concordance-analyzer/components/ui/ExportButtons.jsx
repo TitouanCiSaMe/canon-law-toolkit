@@ -160,7 +160,7 @@ const ExportButtons = ({
       <ExportButton
         onClick={onExportConcordances}
         disabled={!hasData}
-        label={`📋 ${t('export.concordancesCSV')}`}
+        label={`📋 ${t('concordance.export.concordancesCSV')}`}
         color="#1A365D"
         hoverColor="#2C5282"
       />
@@ -171,7 +171,7 @@ const ExportButtons = ({
       <ExportButton
         onClick={onExportAnalytics}
         disabled={!hasData}
-        label={`📈 ${t('export.analyticsJSON')}`}
+        label={`📈 ${t('concordance.export.analyticsJSON')}`}
         color="#553C9A"
         hoverColor="#6B46C1"
       />
@@ -189,7 +189,7 @@ const ExportButtons = ({
           <ExportButton
             onClick={handleExportChart}
             disabled={!hasData}
-            label={`📷 ${t('export.chartPNG')}`}
+            label={`📷 ${t('concordance.export.chartPNG')}`}
             color="#744210"
             hoverColor="#92400E"
           />
@@ -249,7 +249,7 @@ const ExportButtons = ({
         <ExportButton
           onClick={() => onExportViewCSV(viewType)}
           disabled={!hasData}
-          label={`📊 ${t('export.viewCSV', { view: viewType })}`}
+          label={`📊 ${t('concordance.export.viewCSV', { view: viewType })}`}
           color="#065F46"
           hoverColor="#047857"
         />

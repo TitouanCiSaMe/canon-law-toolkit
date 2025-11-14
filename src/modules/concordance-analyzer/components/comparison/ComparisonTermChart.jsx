@@ -40,7 +40,7 @@ const ComparisonTermChart = ({
         color: '#64748b'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📖</div>
-        <h3>{t('messages.noData')}</h3>
+        <h3>{t('concordance.messages.noData')}</h3>
       </div>
     );
   }
@@ -77,7 +77,7 @@ const ComparisonTermChart = ({
         color: '#1e293b',
         textAlign: 'center'
       }}>
-        📖 {t('views.corpusComparison.charts.terminology.title')}
+        📖 {t('concordance.views.corpusComparison.charts.terminology.title')}
       </h3>
 
       {/* Conteneur des 2 graphiques */}
@@ -104,7 +104,7 @@ const ComparisonTermChart = ({
             textAlign: 'center',
             fontWeight: '600'
           }}>
-            {t('views.corpusComparison.charts.terminology.corpusALabel', { count: totalA })}
+            {t('concordance.views.corpusComparison.charts.terminology.corpusALabel', { count: totalA })}
           </h4>
 
           <ResponsiveContainer width="100%" height={height}>
@@ -121,7 +121,7 @@ const ComparisonTermChart = ({
               
               <YAxis style={{ fontSize: '0.85rem' }} />
               
-              <Tooltip content={<CustomTooltipChart allData={chartDataA} valueLabel={t('views.corpusComparison.charts.terminology.occurrences')} />} />
+              <Tooltip content={<CustomTooltipChart allData={chartDataA} valueLabel={t('concordance.views.corpusComparison.charts.terminology.occurrences')} />} />
               
               <Bar
                 dataKey="value"
@@ -148,7 +148,7 @@ const ComparisonTermChart = ({
             textAlign: 'center',
             fontWeight: '600'
           }}>
-            {t('views.corpusComparison.charts.terminology.corpusBLabel', { count: totalB })}
+            {t('concordance.views.corpusComparison.charts.terminology.corpusBLabel', { count: totalB })}
           </h4>
 
           <ResponsiveContainer width="100%" height={height}>
@@ -165,7 +165,7 @@ const ComparisonTermChart = ({
               
               <YAxis style={{ fontSize: '0.85rem' }} />
               
-              <Tooltip content={<CustomTooltipChart allData={chartDataB} valueLabel={t('views.corpusComparison.charts.terminology.occurrences')} />} />
+              <Tooltip content={<CustomTooltipChart allData={chartDataB} valueLabel={t('concordance.views.corpusComparison.charts.terminology.occurrences')} />} />
               
               <Bar
                 dataKey="value"
@@ -192,7 +192,7 @@ const ComparisonTermChart = ({
             background: '#3b82f6',
             borderRadius: '4px'
           }} />
-          <span>{t('views.corpusComparison.charts.legend.corpusA')}</span>
+          <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <div style={{
@@ -201,7 +201,7 @@ const ComparisonTermChart = ({
             background: '#ef4444',
             borderRadius: '4px'
           }} />
-          <span>{t('views.corpusComparison.charts.legend.corpusB')}</span>
+          <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>
         </div>
       </div>
     </div>

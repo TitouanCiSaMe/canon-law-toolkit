@@ -208,7 +208,7 @@ const OverviewView = ({
             opacity: 0.9,
             marginBottom: '2rem'
           }}>
-            {t('overview.concordancesAnalyzed')}
+            {t('concordance.overview.concordancesAnalyzed')}
           </div>
           
           <div style={{
@@ -233,7 +233,7 @@ const OverviewView = ({
             fontSize: '0.85rem',
             opacity: 0.8
           }}>
-            <span>{t('overview.matchRate')}</span>
+            <span>{t('concordance.overview.matchRate')}</span>
             <span>{parseStats.lookupRate || 0}%</span>
           </div>
         </div>
@@ -255,7 +255,7 @@ const OverviewView = ({
             {analytics.domains.length}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('overview.legalDomains')}
+            {t('concordance.overview.legalDomains')}
           </div>
           
           {analytics.domains.slice(0, 3).map((domain, index) => (
@@ -292,7 +292,7 @@ const OverviewView = ({
                         Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('overview.centuriesCovered')}
+            {t('concordance.overview.centuriesCovered')}
           </div>
           
           <div style={{
@@ -338,7 +338,7 @@ const OverviewView = ({
             {analytics.authors.length}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
-            {t('overview.referencedAuthors')}
+            {t('concordance.overview.referencedAuthors')}
           </div>
           
           {analytics.authors.slice(0, 3).map((author, index) => (
@@ -374,7 +374,7 @@ const OverviewView = ({
             {analytics.keyTerms.length}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
-            {t('overview.keyTermsIdentified')}
+            {t('concordance.overview.keyTermsIdentified')}
           </div>
           
           {analytics.keyTerms.slice(0, 4).map((term, index) => (
@@ -415,7 +415,7 @@ const OverviewView = ({
             {analytics.keyTerms.length}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('overview.uniqueKwicTerms')}
+            {t('concordance.overview.uniqueKwicTerms')}
           </div>
           
           <div style={{
@@ -455,7 +455,7 @@ const OverviewView = ({
             5
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('overview.comparisonCriteria')}
+            {t('concordance.overview.comparisonCriteria')}
           </div>
           
           <div style={{
@@ -471,28 +471,28 @@ const OverviewView = ({
               padding: '0.4rem',
               borderRadius: '4px'
             }}>
-              {t('overview.volume')}
+              {t('concordance.overview.volume')}
             </div>
             <div style={{
               background: 'rgba(255,255,255,0.2)',
               padding: '0.4rem',
               borderRadius: '4px'
             }}>
-              {t('overview.domains')}
+              {t('concordance.overview.domains')}
             </div>
             <div style={{
               background: 'rgba(255,255,255,0.2)',
               padding: '0.4rem',
               borderRadius: '4px'
             }}>
-              {t('overview.authors')}
+              {t('concordance.overview.authors')}
             </div>
             <div style={{
               background: 'rgba(255,255,255,0.2)',
               padding: '0.4rem',
               borderRadius: '4px'
             }}>
-              {t('overview.places')}
+              {t('concordance.overview.places')}
             </div>
           </div>
           
@@ -502,7 +502,7 @@ const OverviewView = ({
             fontWeight: '500',
             opacity: 0.9
           }}>
-            {t('overview.clickToCompare')}
+            {t('concordance.overview.clickToCompare')}
           </div>
         </div>
       </NavigationPanel>
@@ -531,7 +531,7 @@ const OverviewView = ({
 	      // Mode ACTIF : 2 corpus chargés
 	      <>
 		<div style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
-		  {t('overview.corpusComparison')}
+		  {t('concordance.overview.corpusComparison')}
 		</div>
 		
 		{/* Stats des 2 corpus */}
@@ -576,7 +576,7 @@ const OverviewView = ({
 		  fontSize: '0.75rem',
 		  opacity: 0.8
 		}}>
-		  {t('overview.clickToAnalyze')}
+		  {t('concordance.overview.clickToAnalyze')}
 		</div>
 	      </>
 	    ) : (
@@ -642,11 +642,11 @@ const OverviewView = ({
             {filteredData.length}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('overview.loadedConcordances')}
+            {t('concordance.overview.loadedConcordances')}
           </div>
           
           <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
-            {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('overview.enriched')}` : t('overview.readyToAnalyze')}
+            {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
           </div>
         </div>
       </NavigationPanel>
@@ -675,7 +675,7 @@ const OverviewView = ({
             {analytics.places?.length || 0}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('overview.identifiedPlaces')}
+            {t('concordance.overview.identifiedPlaces')}
           </div>
           
           {analytics.places?.slice(0, 3).map((place, index) => (

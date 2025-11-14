@@ -117,7 +117,7 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
           marginBottom: '0.5rem',
           fontFamily: '"Inter", sans-serif'
         }}>
-          {t(`panels.${config.id}.subtitle`)}
+          {t(`concordance.panels.${config.id}.subtitle`)}
         </div>
         
         <h3 style={{
@@ -126,7 +126,7 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
           marginBottom: '1rem',
           fontFamily: '"Crimson Text", serif'
         }}>
-          {t(`panels.${config.id}.title`)}
+          {t(`concordance.panels.${config.id}.title`)}
         </h3>
 
         {children}

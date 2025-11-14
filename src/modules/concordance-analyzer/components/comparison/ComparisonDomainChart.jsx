@@ -40,7 +40,7 @@ const ComparisonDomainChart = ({
         color: '#64748b'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📚</div>
-        <h3>{t('charts.noData.domains')}</h3>
+        <h3>{t('concordance.charts.noData.domains')}</h3>
       </div>
     );
   }
@@ -66,7 +66,7 @@ const ComparisonDomainChart = ({
         color: '#1e293b',
         textAlign: 'center'
       }}>
-        📚 {t('views.corpusComparison.charts.domains.title')}
+        📚 {t('concordance.views.corpusComparison.charts.domains.title')}
       </h3>
 
       {/* Conteneur des 2 graphiques */}
@@ -93,7 +93,7 @@ const ComparisonDomainChart = ({
             textAlign: 'center',
             fontWeight: '600'
           }}>
-            {t('views.corpusComparison.charts.domains.corpusALabel', { count: totalA })}
+            {t('concordance.views.corpusComparison.charts.domains.corpusALabel', { count: totalA })}
           </h4>
 
           <ResponsiveContainer width="100%" height={height}>
@@ -110,7 +110,7 @@ const ComparisonDomainChart = ({
               
               <YAxis style={{ fontSize: '0.85rem' }} />
               
-              <Tooltip content={<CustomTooltipChart allData={dataA} valueLabel={t('charts.labels.concordances')} />} />
+              <Tooltip content={<CustomTooltipChart allData={dataA} valueLabel={t('concordance.charts.labels.concordances')} />} />
               
               <Bar
                 dataKey="value"
@@ -137,7 +137,7 @@ const ComparisonDomainChart = ({
             textAlign: 'center',
             fontWeight: '600'
           }}>
-            {t('views.corpusComparison.charts.domains.corpusBLabel', { count: totalB })}
+            {t('concordance.views.corpusComparison.charts.domains.corpusBLabel', { count: totalB })}
           </h4>
 
           <ResponsiveContainer width="100%" height={height}>
@@ -154,7 +154,7 @@ const ComparisonDomainChart = ({
               
               <YAxis style={{ fontSize: '0.85rem' }} />
               
-              <Tooltip content={<CustomTooltipChart allData={dataB} valueLabel={t('charts.labels.concordances')} />} />
+              <Tooltip content={<CustomTooltipChart allData={dataB} valueLabel={t('concordance.charts.labels.concordances')} />} />
               
               <Bar
                 dataKey="value"
@@ -181,7 +181,7 @@ const ComparisonDomainChart = ({
             background: '#3b82f6',
             borderRadius: '4px'
           }} />
-          <span>{t('views.corpusComparison.charts.legend.corpusA')}</span>
+          <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <div style={{
@@ -190,7 +190,7 @@ const ComparisonDomainChart = ({
             background: '#ef4444',
             borderRadius: '4px'
           }} />
-          <span>{t('views.corpusComparison.charts.legend.corpusB')}</span>
+          <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>
         </div>
       </div>
     </div>

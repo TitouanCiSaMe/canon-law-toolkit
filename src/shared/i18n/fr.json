@@ -11,5 +11,295 @@
   "home": {
     "welcome": "Bienvenue sur Canon Law Toolkit",
     "description": "Plateforme d'outils pour l'analyse du droit canon médiéval"
+  },
+  "concordance": {
+    "app": {
+      "title": "Analyseur de Concordances",
+      "subtitle": "Analyse lexicométrique du droit canon médiéval"
+    },
+    "panels": {
+      "overview": {
+        "title": "Vue d'ensemble",
+        "subtitle": "Analyse globale"
+      },
+      "domains": {
+        "title": "Domaines",
+        "subtitle": "Répartition disciplinaire"
+      },
+      "temporal": {
+        "title": "Chronologie",
+        "subtitle": "Évolution temporelle"
+      },
+      "authors": {
+        "title": "Auteurs",
+        "subtitle": "Autorités principales"
+      },
+      "linguistic": {
+        "title": "Terminologie",
+        "subtitle": "Lexique spécialisé"
+      },
+      "wordcloud": {
+        "title": "Nuage de mots",
+        "subtitle": "Termes KWIC fréquents"
+      },
+      "comparison": {
+        "title": "Comparaison",
+        "subtitle": "Analyse multi-critères"
+      },
+      "corpusComparison": {
+        "title": "Comparaison de Corpus",
+        "subtitle": "Analyse comparative de 2 corpus distincts"
+      },
+      "data": {
+        "title": "Données",
+        "subtitle": "Concordances détaillées"
+      },
+      "concordances": {
+        "title": "Import",
+        "subtitle": "Chargement des données"
+      },
+      "places": {
+        "title": "Lieux",
+        "subtitle": "Répartition géographique"
+      }
+    },
+    "buttons": {
+      "export_csv": "Export CSV",
+      "export_json": "Export JSON",
+      "export_png": "Export PNG",
+      "export_concordances": "Export concordances CSV",
+      "export_analytics": "Export analytics JSON",
+      "export_chart": "Export graphique PNG",
+      "filters": "Filtres"
+    },
+    "stats": {
+      "total": "Total",
+      "average": "Moyenne",
+      "richestPeriod": "Période la plus riche",
+      "averagePerPeriod": "Moyenne par période",
+      "concordances": "Concordances",
+      "enriched": "enrichies"
+    },
+    "overview": {
+      "concordancesAnalyzed": "Concordances analysées",
+      "matchRate": "Taux de correspondance",
+      "legalDomains": "domaines juridiques",
+      "centuriesCovered": "siècles couverts",
+      "referencedAuthors": "auteurs référencés",
+      "keyTermsIdentified": "termes-clés identifiés",
+      "uniqueKwicTerms": "termes KWIC uniques",
+      "comparisonCriteria": "critères de comparaison",
+      "loadedConcordances": "concordances chargées",
+      "enriched": "enrichies",
+      "identifiedPlaces": "lieux identifiés",
+      "readyToAnalyze": "Prêt à analyser",
+      "corpusComparison": "Comparaison de 2 corpus",
+      "clickToAnalyze": "Cliquez pour analyser",
+      "volume": "Volume",
+      "domains": "Domaines",
+      "authors": "Auteurs",
+      "places": "Lieux"
+    },
+    "charts": {
+      "domains": {
+        "title": "Répartition par domaines juridiques"
+      },
+      "authors": {
+        "title": "Distribution par auteurs"
+      },
+      "places": {
+        "title": "Distribution géographique"
+      },
+      "temporal": {
+        "title": "Évolution chronologique",
+        "aggregatedChart": "Graphique agrégé",
+        "granularity": "Granularité temporelle",
+        "countMode": "Mode de comptage",
+        "years": "Années",
+        "yearlyDetail": "Annuel - Détail année par année",
+        "decades": "Décennies",
+        "decadeOverview": "Par 10 ans - Vue d'ensemble historique",
+        "quarters": "Quarts de siècle (25 ans)",
+        "quarterMovements": "Par 25 ans - Mouvements de fond",
+        "halves": "Demi-siècles (50 ans)",
+        "halfTrends": "Par 50 ans - Grandes tendances",
+        "numWorksMode": "Nombre d'œuvres",
+        "numWorksDesc": "Compte chaque œuvre une seule fois (dédupliqué)",
+        "numConcordancesMode": "Nombre de concordances",
+        "numConcordancesDesc": "Compte toutes les occurrences (total)",
+        "works": "œuvres",
+        "concordances": "concordances",
+        "period": "Période",
+        "numberOfWorks": "Nombre d'œuvres"
+      },
+      "labels": {
+        "period": "Période",
+        "numberOfWorks": "Nombre d'œuvres",
+        "concordances": "Concordances"
+      },
+      "noData": {
+        "domains": "Aucune donnée de domaine disponible",
+        "temporal": "Aucune donnée temporelle disponible",
+        "places": "Aucune donnée de lieu disponible"
+      }
+    },
+    "filters": {
+      "title": "Filtres",
+      "resetAll": "Réinitialiser tous les filtres",
+      "textSearch": "Recherche textuelle",
+      "searchPlaceholder": "Rechercher...",
+      "authors": "Auteurs",
+      "domains": "Domaines",
+      "periods": "Périodes",
+      "places": "Lieux"
+    },
+    "upload": {
+      "metadata": {
+        "title": "Métadonnées",
+        "description": "CSV complet des métadonnées",
+        "subtitle": "Avec identifiants Edi-XX",
+        "entriesLoaded": "entrées chargées"
+      },
+      "concordances": {
+        "title": "Export NoSketch",
+        "description": "Export CSV NoSketch Engine",
+        "subtitle": "Avec métadonnées sélectionnées",
+        "statsLoaded": "concordances, {{rate}}% matchées"
+      }
+    },
+    "export": {
+      "concordancesCSV": "Export concordances CSV",
+      "analyticsJSON": "Export analytics JSON",
+      "chartPNG": "Export graphique PNG"
+    },
+    "data": {
+      "reference": "Référence",
+      "author": "Auteur",
+      "title": "Titre",
+      "period": "Période",
+      "domain": "Domaine",
+      "place": "Lieu",
+      "left": "Gauche",
+      "kwic": "KWIC",
+      "right": "Droite",
+      "showing": "Affichage {{start}}-{{end}} sur {{total}}",
+      "itemsPerPage": "Éléments par page"
+    },
+    "dataView": {
+      "title": "Données de concordance détaillées",
+      "contextDisplay": "Affichage du contexte :",
+      "oneLine": "Une ligne",
+      "fullText": "Texte complet",
+      "noData": "Aucune donnée disponible",
+      "importFirst": "Veuillez d'abord importer vos fichiers pour voir les concordances détaillées.",
+      "metadata": {
+        "author": "Auteur :",
+        "title": "Titre :",
+        "period": "Période :",
+        "place": "Lieu :",
+        "domain": "Domaine :",
+        "page": "Page :"
+      },
+      "badges": {
+        "enriched": "Enrichi",
+        "parsed": "Parsé"
+      }
+    },
+    "timeline": {
+      "title": "Timeline des œuvres",
+      "noData": "Aucune donnée temporelle valide",
+      "dateFormat": "Les œuvres doivent avoir des dates au format \"1191 to 1198\" ou \"1164\"",
+      "legend": {
+        "timeRange": "Plage temporelle",
+        "preciseDate": "Date précise"
+      }
+    },
+    "navigation": {
+      "domains": "Domaines",
+      "authors": "Auteurs",
+      "temporal": "Chronologie"
+    },
+    "views": {
+      "domains": {
+        "sectionTitle": "Répartition par domaines"
+      },
+      "authors": {
+        "sectionTitle": "Distribution par auteurs"
+      },
+      "temporal": {
+        "sectionTitle": "Évolution temporelle",
+        "aggregatedDistribution": "Distribution agrégée par"
+      },
+      "places": {
+        "sectionTitle": "Répartition géographique"
+      },
+      "linguistic": {
+        "sectionTitle": "Analyse terminologique",
+        "noData": "Aucune donnée terminologique disponible",
+        "importFirst": "Importez d'abord vos fichiers pour voir l'analyse lexicale."
+      },
+      "corpusComparison": {
+        "sectionTitle": "Comparaison de 2 Corpus",
+        "noData": "Veuillez charger 2 fichiers de concordances pour activer la comparaison",
+        "corpusA": "Corpus A",
+        "corpusB": "Corpus B",
+        "common": "Commun",
+        "onlyA": "Seulement A",
+        "onlyB": "Seulement B",
+        "ratio": "Ratio",
+        "largerA": "Corpus A plus grand",
+        "largerB": "Corpus B plus grand",
+        "equal": "Égalité",
+        "concordances": "concordances",
+        "overlap": "Chevauchement",
+        "years": "années",
+        "stats": {
+          "total": "Total",
+          "averagePerPeriod": "Moyenne par période",
+          "richestPeriod": "Période la plus riche"
+        },
+        "charts": {
+          "domains": {
+            "title": "Comparaison par domaines",
+            "corpusALabel": "Corpus A",
+            "corpusBLabel": "Corpus B"
+          },
+          "authors": {
+            "title": "Comparaison par auteurs",
+            "corpusALabel": "Corpus A",
+            "corpusBLabel": "Corpus B"
+          },
+          "temporal": {
+            "title": "Comparaison temporelle",
+            "scaleLabel": "Échelle",
+            "countModeLabel": "Mode de comptage",
+            "distributionBy": "Distribution par",
+            "period": "Période",
+            "numberOfWorks": "Nombre d'œuvres",
+            "granularity": {
+              "years": "Années",
+              "decades": "Décennies",
+              "quarters": "Quarts de siècle (25 ans)",
+              "halves": "Demi-siècles (50 ans)"
+            },
+            "countMode": {
+              "works": "Nombre d'œuvres",
+              "worksDesc": "Compte chaque œuvre une seule fois",
+              "concordances": "Nombre de concordances",
+              "concordancesDesc": "Compte toutes les occurrences"
+            }
+          },
+          "terminology": {
+            "title": "Comparaison terminologique",
+            "corpusALabel": "Termes Corpus A",
+            "corpusBLabel": "Termes Corpus B"
+          },
+          "legend": {
+            "corpusA": "Corpus A",
+            "corpusB": "Corpus B"
+          }
+        }
+      }
+    }
   }
 }

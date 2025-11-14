@@ -44,10 +44,10 @@ const CorpusComparisonView = ({ corpusComparison }) => {
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#1e293b' }}>
-          {t('views.corpusComparison.noData')}
+          {t('concordance.views.corpusComparison.noData')}
         </h2>
         <p style={{ color: '#64748b', marginBottom: '2rem' }}>
-          {t('views.corpusComparison.uploadInstructions')}
+          {t('concordance.views.corpusComparison.uploadInstructions')}
         </p>
         <button
           onClick={() => window.history.back()}
@@ -61,7 +61,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
             fontSize: '0.95rem'
           }}
         >
-          ← {t('buttons.back')}
+          ← {t('concordance.buttons.back')}
         </button>
       </div>
     );
@@ -76,10 +76,10 @@ const CorpusComparisonView = ({ corpusComparison }) => {
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⏳</div>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#1e293b' }}>
-          {t('messages.loading')}
+          {t('concordance.messages.loading')}
         </h2>
         <p style={{ color: '#64748b' }}>
-          {comparisonStats?.totalA || 0} vs {comparisonStats?.totalB || 0} {t('views.corpusComparison.concordances')}
+          {comparisonStats?.totalA || 0} vs {comparisonStats?.totalB || 0} {t('concordance.views.corpusComparison.concordances')}
         </p>
       </div>
     );
@@ -96,7 +96,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
         marginBottom: '2rem'
       }}>
         <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem', fontWeight: '500' }}>
-          ⚖️ {t('views.corpusComparison.sectionTitle')}
+          ⚖️ {t('concordance.views.corpusComparison.sectionTitle')}
         </h2>
         
         <div style={{
@@ -111,7 +111,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
             borderRadius: '6px'
           }}>
             <div style={{ fontSize: '0.85rem', opacity: 0.9, marginBottom: '0.5rem' }}>
-              {t('views.corpusComparison.corpusA')}
+              {t('concordance.views.corpusComparison.corpusA')}
             </div>
             <div style={{ fontSize: '2rem', fontWeight: '300' }}>
               {comparisonStats.totalA.toLocaleString()}
@@ -128,15 +128,15 @@ const CorpusComparisonView = ({ corpusComparison }) => {
             textAlign: 'center'
           }}>
             <div style={{ fontSize: '0.85rem', opacity: 0.9, marginBottom: '0.5rem' }}>
-              {t('views.corpusComparison.ratio')}
+              {t('concordance.views.corpusComparison.ratio')}
             </div>
             <div style={{ fontSize: '2rem', fontWeight: '300' }}>
               {comparisonStats.ratio}
             </div>
             <div style={{ fontSize: '0.85rem', opacity: 0.8 }}>
-              {comparisonStats.largerCorpus === 'A' ? t('views.corpusComparison.largerA') : 
-               comparisonStats.largerCorpus === 'B' ? t('views.corpusComparison.largerB') : 
-               t('views.corpusComparison.equal')}
+              {comparisonStats.largerCorpus === 'A' ? t('concordance.views.corpusComparison.largerA') : 
+               comparisonStats.largerCorpus === 'B' ? t('concordance.views.corpusComparison.largerB') : 
+               t('concordance.views.corpusComparison.equal')}
             </div>
           </div>
 
@@ -147,7 +147,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
             textAlign: 'right'
           }}>
             <div style={{ fontSize: '0.85rem', opacity: 0.9, marginBottom: '0.5rem' }}>
-              {t('views.corpusComparison.corpusB')}
+              {t('concordance.views.corpusComparison.corpusB')}
             </div>
             <div style={{ fontSize: '2rem', fontWeight: '300' }}>
               {comparisonStats.totalB.toLocaleString()}
@@ -174,16 +174,16 @@ const CorpusComparisonView = ({ corpusComparison }) => {
           border: '1px solid #e2e8f0'
         }}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#553C9A' }}>
-            📚 {t('navigation.domains')}
+            📚 {t('concordance.navigation.domains')}
           </h3>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            {t('views.corpusComparison.common')} : <strong>{differences.domains.totalCommon}</strong>
+            {t('concordance.views.corpusComparison.common')} : <strong>{differences.domains.totalCommon}</strong>
           </div>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            {t('views.corpusComparison.onlyA')} : <strong>{differences.domains.totalOnlyA}</strong>
+            {t('concordance.views.corpusComparison.onlyA')} : <strong>{differences.domains.totalOnlyA}</strong>
           </div>
           <div style={{ fontSize: '0.85rem', color: '#64748b' }}>
-            {t('views.corpusComparison.onlyB')} : <strong>{differences.domains.totalOnlyB}</strong>
+            {t('concordance.views.corpusComparison.onlyB')} : <strong>{differences.domains.totalOnlyB}</strong>
           </div>
         </div>
 
@@ -195,16 +195,16 @@ const CorpusComparisonView = ({ corpusComparison }) => {
           border: '1px solid #e2e8f0'
         }}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#4A5568' }}>
-            ✍️ {t('navigation.authors')}
+            ✍️ {t('concordance.navigation.authors')}
           </h3>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            {t('views.corpusComparison.common')} : <strong>{differences.authors.totalCommon}</strong>
+            {t('concordance.views.corpusComparison.common')} : <strong>{differences.authors.totalCommon}</strong>
           </div>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            {t('views.corpusComparison.onlyA')} : <strong>{differences.authors.totalOnlyA}</strong>
+            {t('concordance.views.corpusComparison.onlyA')} : <strong>{differences.authors.totalOnlyA}</strong>
           </div>
           <div style={{ fontSize: '0.85rem', color: '#64748b' }}>
-            {t('views.corpusComparison.onlyB')} : <strong>{differences.authors.totalOnlyB}</strong>
+            {t('concordance.views.corpusComparison.onlyB')} : <strong>{differences.authors.totalOnlyB}</strong>
           </div>
         </div>
 
@@ -216,16 +216,16 @@ const CorpusComparisonView = ({ corpusComparison }) => {
           border: '1px solid #e2e8f0'
         }}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#744210' }}>
-            ⏰ {t('navigation.temporal')}
+            ⏰ {t('concordance.navigation.temporal')}
           </h3>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            {t('views.corpusComparison.corpusA')} : <strong>{differences.temporal.rangeA.min}-{differences.temporal.rangeA.max}</strong>
+            {t('concordance.views.corpusComparison.corpusA')} : <strong>{differences.temporal.rangeA.min}-{differences.temporal.rangeA.max}</strong>
           </div>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            {t('views.corpusComparison.corpusB')} : <strong>{differences.temporal.rangeB.min}-{differences.temporal.rangeB.max}</strong>
+            {t('concordance.views.corpusComparison.corpusB')} : <strong>{differences.temporal.rangeB.min}-{differences.temporal.rangeB.max}</strong>
           </div>
           <div style={{ fontSize: '0.85rem', color: '#64748b' }}>
-            {t('views.corpusComparison.overlap')} : <strong>{differences.temporal.overlapEnd - differences.temporal.overlapStart} {t('views.corpusComparison.years')}</strong>
+            {t('concordance.views.corpusComparison.overlap')} : <strong>{differences.temporal.overlapEnd - differences.temporal.overlapStart} {t('concordance.views.corpusComparison.years')}</strong>
           </div>
         </div>
       </div>

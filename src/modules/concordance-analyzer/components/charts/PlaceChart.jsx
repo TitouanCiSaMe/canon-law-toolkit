@@ -105,7 +105,7 @@ const PlaceChart = ({
         </div>
         
         {/* Message explicite */}
-        <h3>{t('charts.noData.places')}</h3>
+        <h3>{t('concordance.charts.noData.places')}</h3>
       </div>
     );
   }
@@ -175,7 +175,7 @@ const PlaceChart = ({
             />
             
             {/* TOOLTIP AU SURVOL */}
-            <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('charts.labels.concordances')} />} />
+            <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('concordance.charts.labels.concordances')} />} />
             {/* BARRES */}
             <Bar 
               dataKey="value"           // Clé des données pour les hauteurs
@@ -246,7 +246,7 @@ const PlaceChart = ({
             </Pie>
             
             {/* TOOLTIP AU SURVOL */}
-            <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('charts.labels.concordances')} />} />
+            <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('concordance.charts.labels.concordances')} />} />
           </PieChart>
         </ResponsiveContainer>
       </div>

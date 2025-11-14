@@ -104,7 +104,7 @@ const TemporalChart = ({
         </div>
         
         {/* Message explicite */}
-        <h3>{t('charts.noData.temporal')}</h3>
+        <h3>{t('concordance.charts.noData.temporal')}</h3>
       </div>
     );
   }
@@ -145,7 +145,7 @@ const TemporalChart = ({
               fontSize: '0.85rem'     // Taille de police
             }}
             label={{ 
-              value: t('charts.labels.period'),  // Label de l'axe traduit
+              value: t('concordance.charts.labels.period'),  // Label de l'axe traduit
               position: 'insideBottom', 
               offset: -5,
               style: { 
@@ -161,7 +161,7 @@ const TemporalChart = ({
               fontSize: '0.85rem' 
             }}
             label={{ 
-              value: t('charts.labels.numberOfWorks'),  // Label de l'axe traduit
+              value: t('concordance.charts.labels.numberOfWorks'),  // Label de l'axe traduit
               angle: -90,                 // Rotation verticale
               position: 'insideLeft',
               style: { 
@@ -172,7 +172,7 @@ const TemporalChart = ({
           />
           
           {/* TOOLTIP AU SURVOL */}
-          <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('charts.labels.occurrences')} showRank={false} />} />          
+          <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('concordance.charts.labels.occurrences')} showRank={false} />} />          
           {/* LIGNE PRINCIPALE */}
           <Line 
             type="monotone"           // Interpolation monotone (courbe douce)

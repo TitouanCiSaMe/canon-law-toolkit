@@ -105,7 +105,7 @@ const LinguisticView = ({
               marginBottom: '2rem',
               color: '#1e293b'
             }}>
-              {t('views.linguistic.sectionTitle')}
+              {t('concordance.views.linguistic.sectionTitle')}
             </h4>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart data={analytics.keyTerms}>
@@ -134,8 +134,8 @@ const LinguisticView = ({
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem', color: '#64748b' }}>
           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📤</div>
-          <h3>{t('views.linguistic.noData')}</h3>
-          <p>{t('views.linguistic.importFirst')}</p>
+          <h3>{t('concordance.views.linguistic.noData')}</h3>
+          <p>{t('concordance.views.linguistic.importFirst')}</p>
         </div>
       )}
     </div>

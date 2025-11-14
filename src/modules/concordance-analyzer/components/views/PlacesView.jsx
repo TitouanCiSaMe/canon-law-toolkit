@@ -134,7 +134,7 @@ const PlacesView = ({
           marginBottom: '2rem',        // Espacement avant graphique
           color: '#1e293b'             // Gris très foncé (presque noir)
         }}>
-          {t('views.places.sectionTitle')}
+          {t('concordance.views.places.sectionTitle')}
         </h4>
         
         {/* ==================================================================

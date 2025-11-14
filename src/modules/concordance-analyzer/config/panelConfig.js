@@ -19,8 +19,8 @@ import { visualTheme, createGradient } from '@shared/theme/globalTheme';
 export const panelConfig = {
   overview: {
     id: 'overview',
-    title: 'Vue d\'ensemble',
-    subtitle: 'Analyse globale',
+    title: 'concordance.panels.overview.title',
+    subtitle: 'concordance.panels.overview.subtitle',
     color: '#1A365D',
     gradient: createGradient('#1A365D', '#2C5282'),
     icon: '📊',
@@ -29,8 +29,8 @@ export const panelConfig = {
   },
   domains: {
     id: 'domains',
-    title: 'Domaines',
-    subtitle: 'Répartition disciplinaire',
+    title: 'concordance.panels.domains.title',
+    subtitle: 'concordance.panels.domains.subtitle',
     color: visualTheme.colors.primary.main,           // ✅ Utilise le thème
     gradient: createGradient(
       visualTheme.colors.primary.main, 
@@ -42,8 +42,8 @@ export const panelConfig = {
   },
   temporal: {
     id: 'temporal',
-    title: 'Chronologie',
-    subtitle: 'Évolution temporelle',
+    title: 'concordance.panels.temporal.title',
+    subtitle: 'concordance.panels.temporal.subtitle',
     color: visualTheme.colors.accent.orange,          // ✅ Utilise le thème
     gradient: createGradient('#744210', '#92400E'),
     icon: '⏰',
@@ -52,8 +52,8 @@ export const panelConfig = {
   },
   authors: {
     id: 'authors',
-    title: 'Auteurs',
-    subtitle: 'Autorités principales',
+    title: 'concordance.panels.authors.title',
+    subtitle: 'concordance.panels.authors.subtitle',
     color: '#4A5568',
     gradient: createGradient('#4A5568', '#2D3748'),
     icon: '✍️',
@@ -62,8 +62,8 @@ export const panelConfig = {
   },
   linguistic: {
     id: 'linguistic',
-    title: 'Terminologie',
-    subtitle: 'Lexique spécialisé',
+    title: 'concordance.panels.linguistic.title',
+    subtitle: 'concordance.panels.linguistic.subtitle',
     color: '#065F46',
     gradient: createGradient('#065F46', '#047857'),
     icon: '🔤',
@@ -72,8 +72,8 @@ export const panelConfig = {
   },
   wordcloud: {
     id: 'wordcloud',
-    title: 'Nuage de mots',
-    subtitle: 'Termes KWIC fréquents',
+    title: 'concordance.panels.wordcloud.title',
+    subtitle: 'concordance.panels.wordcloud.subtitle',
     color: visualTheme.colors.primary.blue,           // ✅ Utilise le thème
     gradient: createGradient(
       '#1e40af', 
@@ -85,8 +85,8 @@ export const panelConfig = {
   },
   comparison: {
     id: 'comparison',
-    title: 'Comparaison',
-    subtitle: 'Analyse multi-critères',
+    title: 'concordance.panels.comparison.title',
+    subtitle: 'concordance.panels.comparison.subtitle',
     color: '#7c3aed',
     gradient: createGradient('#7c3aed', '#8b5cf6'),
     icon: '🔀',
@@ -95,8 +95,8 @@ export const panelConfig = {
   },
   corpusComparison: {
     id: 'corpusComparison',
-    title: 'panels.corpusComparison.title',           // ✨ Clé i18n
-    subtitle: 'panels.corpusComparison.subtitle',     // ✨ Clé i18n
+    title: 'concordance.panels.corpusComparison.title',
+    subtitle: 'concordance.panels.corpusComparison.subtitle',
     color: '#dc2626',
     gradient: createGradient('#dc2626', '#ef4444'),
     icon: '⚖️',
@@ -105,8 +105,8 @@ export const panelConfig = {
   },
   data: {
     id: 'data',
-    title: 'Données',
-    subtitle: 'Concordances détaillées',
+    title: 'concordance.panels.data.title',
+    subtitle: 'concordance.panels.data.subtitle',
     color: '#7C2D12',
     gradient: createGradient('#7C2D12', '#92400E'),
     icon: '📋',
@@ -115,8 +115,8 @@ export const panelConfig = {
   },
   concordances: {
     id: 'concordances',
-    title: 'Import',
-    subtitle: 'Chargement des données',
+    title: 'concordance.panels.concordances.title',
+    subtitle: 'concordance.panels.concordances.subtitle',
     color: '#7C2D12',
     gradient: createGradient('#7C2D12', '#92400E'),
     icon: '📁',
@@ -125,8 +125,8 @@ export const panelConfig = {
   },
   places: {
     id: 'places',
-    title: 'Lieux',
-    subtitle: 'Répartition géographique',
+    title: 'concordance.panels.places.title',
+    subtitle: 'concordance.panels.places.subtitle',
     color: visualTheme.colors.accent.green,           // ✅ Utilise le thème
     gradient: createGradient(
       '#059669', 

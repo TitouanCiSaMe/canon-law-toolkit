@@ -40,7 +40,7 @@ const ComparisonAuthorChart = ({
         color: '#64748b'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✍️</div>
-        <h3>{t('charts.noData.authors')}</h3>
+        <h3>{t('concordance.charts.noData.authors')}</h3>
       </div>
     );
   }
@@ -66,7 +66,7 @@ const ComparisonAuthorChart = ({
         color: '#1e293b',
         textAlign: 'center'
       }}>
-        ✍️ {t('views.corpusComparison.charts.authors.title')}
+        ✍️ {t('concordance.views.corpusComparison.charts.authors.title')}
       </h3>
 
       {/* Conteneur des 2 graphiques */}
@@ -93,7 +93,7 @@ const ComparisonAuthorChart = ({
             textAlign: 'center',
             fontWeight: '600'
           }}>
-            {t('views.corpusComparison.charts.authors.corpusALabel', { count: totalA })}
+            {t('concordance.views.corpusComparison.charts.authors.corpusALabel', { count: totalA })}
           </h4>
 
           <ResponsiveContainer width="100%" height={height}>
@@ -110,7 +110,7 @@ const ComparisonAuthorChart = ({
               
               <YAxis style={{ fontSize: '0.85rem' }} />
               
-              <Tooltip content={<CustomTooltipChart allData={dataA} valueLabel={t('charts.labels.concordances')} />} />
+              <Tooltip content={<CustomTooltipChart allData={dataA} valueLabel={t('concordance.charts.labels.concordances')} />} />
               
               <Bar
                 dataKey="value"
@@ -137,7 +137,7 @@ const ComparisonAuthorChart = ({
             textAlign: 'center',
             fontWeight: '600'
           }}>
-            {t('views.corpusComparison.charts.authors.corpusBLabel', { count: totalB })}
+            {t('concordance.views.corpusComparison.charts.authors.corpusBLabel', { count: totalB })}
           </h4>
 
           <ResponsiveContainer width="100%" height={height}>
@@ -154,7 +154,7 @@ const ComparisonAuthorChart = ({
               
               <YAxis style={{ fontSize: '0.85rem' }} />
               
-              <Tooltip content={<CustomTooltipChart allData={dataB} valueLabel={t('charts.labels.concordances')} />} />
+              <Tooltip content={<CustomTooltipChart allData={dataB} valueLabel={t('concordance.charts.labels.concordances')} />} />
               
               <Bar
                 dataKey="value"
@@ -181,7 +181,7 @@ const ComparisonAuthorChart = ({
             background: '#3b82f6',
             borderRadius: '4px'
           }} />
-          <span>{t('views.corpusComparison.charts.legend.corpusA')}</span>
+          <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <div style={{
@@ -190,7 +190,7 @@ const ComparisonAuthorChart = ({
             background: '#ef4444',
             borderRadius: '4px'
           }} />
-          <span>{t('views.corpusComparison.charts.legend.corpusB')}</span>
+          <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>
         </div>
       </div>
     </div>

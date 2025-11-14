@@ -86,7 +86,7 @@ const FilterMenu = ({
           fontWeight: '500',
           margin: 0
         }}>
-          {t('filters.title')} {activeFilterCount > 0 && `(${activeFilterCount})`}
+          {t('concordance.filters.title')} {activeFilterCount > 0 && `(${activeFilterCount})`}
         </h2>
         <button
           onClick={onClose}
@@ -121,7 +121,7 @@ const FilterMenu = ({
             fontWeight: '500'
           }}
         >
-          🗑️ {t('filters.resetAll')}
+          🗑️ {t('concordance.filters.resetAll')}
         </button>
       )}
 
@@ -134,13 +134,13 @@ const FilterMenu = ({
           fontWeight: '500',
           opacity: 0.9
         }}>
-          🔍 {t('filters.textSearch')}
+          🔍 {t('concordance.filters.textSearch')}
         </label>
         <input
           type="text"
           value={activeFilters.searchTerm}
           onChange={(e) => setActiveFilters(prev => ({...prev, searchTerm: e.target.value}))}
-          placeholder={t('filters.searchPlaceholder')}
+          placeholder={t('concordance.filters.searchPlaceholder')}
           style={{
             width: '100%',
             padding: '0.75rem',
@@ -155,7 +155,7 @@ const FilterMenu = ({
 
       {/* Section Auteurs */}
       <FilterSection
-        title={`👤 ${t('filters.authors')}`}
+        title={`👤 ${t('concordance.filters.authors')}`}
         items={availableAuthors}
         activeItems={activeFilters.authors}
         onToggle={(value) => toggleFilter('authors', value)}
@@ -163,7 +163,7 @@ const FilterMenu = ({
 
       {/* Section Domaines */}
       <FilterSection
-        title={`📚 ${t('filters.domains')}`}
+        title={`📚 ${t('concordance.filters.domains')}`}
         items={availableDomains}
         activeItems={activeFilters.domains}
         onToggle={(value) => toggleFilter('domains', value)}
@@ -171,7 +171,7 @@ const FilterMenu = ({
 
       {/* Section Périodes */}
       <FilterSection
-        title={`📅 ${t('filters.periods')}`}
+        title={`📅 ${t('concordance.filters.periods')}`}
         items={availablePeriods}
         activeItems={activeFilters.periods}
         onToggle={(value) => toggleFilter('periods', value)}
@@ -179,7 +179,7 @@ const FilterMenu = ({
 
       {/* Section Lieux */}
       <FilterSection
-        title={`🌍 ${t('filters.places')}`}
+        title={`🌍 ${t('concordance.filters.places')}`}
         items={availablePlaces}
         activeItems={activeFilters.places}
         onToggle={(value) => toggleFilter('places', value)}

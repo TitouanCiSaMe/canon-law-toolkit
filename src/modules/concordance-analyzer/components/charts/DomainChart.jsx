@@ -102,7 +102,7 @@ const DomainChart = ({
         </div>
         
         {/* Message explicite */}
-        <h3>{t('charts.noData.domains')}</h3>
+        <h3>{t('concordance.charts.noData.domains')}</h3>
         
         {/* Message optionnel : pourrait ajouter des instructions */}
       </div>
@@ -162,7 +162,7 @@ const DomainChart = ({
             />
             
             {/* TOOLTIP AU SURVOL */}
-            <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('charts.labels.concordances')} />} />
+            <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('concordance.charts.labels.concordances')} />} />
             {/* BARRES */}
             <Bar 
               dataKey="value"           // Clé des données pour les hauteurs
@@ -232,7 +232,7 @@ const DomainChart = ({
             </Pie>
             
             {/* TOOLTIP AU SURVOL */}
-           <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('charts.labels.concordances')} />} />
+           <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('concordance.charts.labels.concordances')} />} />
           </PieChart>
         </ResponsiveContainer>
       </div>

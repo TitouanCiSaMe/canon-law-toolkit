@@ -133,7 +133,7 @@ const AuthorsView = ({
           marginBottom: '2rem',        // Espacement avant graphique
           color: '#1e293b'             // Gris très foncé (presque noir)
         }}>
-          {t('views.authors.sectionTitle')}
+          {t('concordance.views.authors.sectionTitle')}
         </h4>
         
         {/* ==================================================================
