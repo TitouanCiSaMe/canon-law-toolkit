@@ -17,8 +17,8 @@
 
 import { useState } from 'react';
 import Papa from 'papaparse';
-import { parseMetadataFile } from '../parsers/metadataParser';
-import { parseNoSketchCSV, validateNoSketchFormat } from '../parsers/concordanceParser';
+import { parseMetadataFile } from '../utils/parsers/metadataParser';
+import { parseNoSketchCSV, validateNoSketchFormat } from '../utils/parsers/concordanceParser';
 
 /**
  * Hook pour gérer l'upload et le parsing de fichiers CSV
