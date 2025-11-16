@@ -5,6 +5,64 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.1.0] - 2025-11-16
+
+### 🎨 Refonte majeure de l'interface utilisateur
+
+Refonte complète du layout avec sidebar verticale pour améliorer l'expérience utilisateur et l'utilisation de l'espace vertical.
+
+### ✨ Ajouté
+
+**Nouvelle architecture UI**
+- **Sidebar verticale fixe** (280px à gauche)
+  - Logo CALKIT cliquable pour retour à l'accueil
+  - Navigation entre modules (Query Generator, Concordance Analyzer)
+  - Liste complète des 9 vues avec icônes visuelles
+  - Vue active marquée visuellement (fond jaune)
+  - Bouton filtres avec badge de compteur en temps réel
+  - Compteur de concordances toujours visible
+  - Switch de langue FR/EN intégré
+  - Footer © CISAME en bas de sidebar
+
+**Optimisations layout**
+- Layout full-height (100vh) : utilise toute la hauteur d'écran
+- Zone de contenu principale responsive
+- Header de page simplifié (titre + icône + bouton retour)
+- Meilleur contraste et hiérarchie visuelle
+
+**Nouveaux composants**
+- `Sidebar.jsx` : Composant de navigation verticale
+- `GlobalLayout.jsx` : Wrapper avec sidebar (remplace ancien layout)
+
+### 🔧 Modifié
+
+**Architecture**
+- ConcordanceAnalyzer.jsx : Refactorisé pour utiliser GlobalLayout + Sidebar
+- OverviewView.jsx : Grille adaptée pour full-height (gridTemplateRows avec 1fr)
+- Suppression du header horizontal (remplacé par sidebar)
+
+**Améliorations UX**
+- Navigation toujours accessible (sidebar fixe)
+- +180px d'espace vertical gagné (suppression header horizontal)
+- Tous les contrôles à portée de main
+- Look plus professionnel "application desktop"
+
+### ❌ Retiré
+
+- Header horizontal avec 4 modules
+- Bouton filtres en haut à droite (déplacé dans sidebar)
+- LanguageSwitcher autonome (intégré dans sidebar)
+- Compteur de concordances en haut (déplacé dans sidebar)
+- Footer en bas de page (déplacé dans sidebar)
+
+### ⚡ Performance
+
+- Réduction du nombre de re-renders (sidebar séparée du contenu)
+- Optimisation du layout avec flexbox
+- Meilleure gestion du scroll (sidebar fixe, contenu scrollable)
+
+---
+
 ## [1.0.0] - 2025-11-14
 
 ### 🎉 Release initiale - Production ready

@@ -28,13 +28,13 @@ npm run dev
 # https://votre-domaine.fr/concordance-analyzer
 ```
 
-Cliquez sur **"Concordance Analyzer"** dans le menu de navigation.
+Cliquez sur **"📊 Analyseur de concordances"** dans la sidebar à gauche.
 
 ---
 
 ### Étape 2 : Charger les métadonnées
 
-1. Localisez le panel **"Import"** (en bas de la grille)
+1. Dans la **sidebar à gauche**, cliquez sur **"📁 Import"** en bas de la liste des vues
 2. Dans la section **"Métadonnées"** :
    - Cliquez sur la zone de drop ou utilisez le sélecteur de fichier
    - Sélectionnez votre fichier CSV de métadonnées
@@ -46,13 +46,13 @@ Cliquez sur **"Concordance Analyzer"** dans le menu de navigation.
 
 ### Étape 3 : Charger les concordances
 
-1. Dans le même panel **"Import"**
+1. Dans la même vue **"Import"**
 2. Section **"Export NoSketch"** :
    - Uploadez votre fichier d'export NoSketch
    - Le parsing démarre automatiquement
    - Attendez le message : `"50 concordances, 95% matchées"` (exemple)
 
-✅ **Indicateur de succès** : Le compteur en haut à droite affiche le nombre de concordances
+✅ **Indicateur de succès** : Le compteur dans la **sidebar (milieu gauche)** affiche le nombre de concordances
 
 ⚠️ **Ordre important** : Toujours charger les métadonnées AVANT les concordances pour un enrichissement optimal.
 
@@ -60,12 +60,13 @@ Cliquez sur **"Concordance Analyzer"** dans le menu de navigation.
 
 ### Étape 4 : Explorer les données
 
-Cliquez sur n'importe quel panel de la grille pour voir l'analyse détaillée :
+Cliquez sur n'importe quelle vue dans la **sidebar à gauche** pour voir l'analyse détaillée :
 
-**📊 Vue d'ensemble**
+**📊 Vue d'ensemble** (🏠 Overview)
 - Statistiques globales
 - Taux de correspondance
 - Nombre total de concordances
+- Grille de panels cliquables
 
 **📚 Domaines**
 - Bar chart des domaines juridiques
@@ -93,12 +94,14 @@ Cliquez sur n'importe quel panel de la grille pour voir l'analyse détaillée :
 - Contexte Left/KWIC/Right
 - Métadonnées enrichies
 
+💡 **Astuce** : La vue active est marquée en jaune dans la sidebar
+
 ---
 
 ### Étape 5 : Utiliser les filtres
 
-1. Cliquez sur le bouton **"Filtres"** en haut
-2. Le panneau de filtres s'ouvre :
+1. Cliquez sur le bouton **"🔍 Filtres"** dans la **sidebar à gauche** (au milieu)
+2. Le panneau de filtres s'ouvre sur le côté droit :
 
 **🔍 Recherche textuelle**
 - Tapez du texte pour filtrer dans Left/KWIC/Right/Author/Title
@@ -112,10 +115,12 @@ Cliquez sur n'importe quel panel de la grille pour voir l'analyse détaillée :
 
 **Combinaison**
 - Tous les filtres s'appliquent en mode AND
-- Le badge affiche le nombre de filtres actifs
+- Le badge sur le bouton "Filtres" affiche le nombre de filtres actifs
 - Bouton **"Réinitialiser"** pour tout effacer
 
 ✅ **Effet immédiat** : Toutes les vues se mettent à jour automatiquement
+
+💡 **Astuce** : Le nombre de filtres actifs apparaît dans un badge jaune à côté du bouton Filtres
 
 ---
 
@@ -178,10 +183,10 @@ Chaque vue propose des boutons d'export :
 
 ## 🌐 Changer de langue
 
-Cliquez sur le sélecteur de langue en haut à droite :
+Cliquez sur le bouton de langue dans la **sidebar** (en bas, au-dessus du footer) :
 
-- 🇫🇷 **FR** : Interface en français
-- 🇬🇧 **EN** : Interface en anglais
+- 🇫🇷 **Français** : Interface en français
+- 🇬🇧 **English** : Interface en anglais
 
 Le changement est instantané, sans rechargement.
 
