@@ -54,16 +54,17 @@ const GlobalLayout = ({
       )}
 
       {/* Zone principale */}
-      <main style={{
-        marginLeft: showSidebar ? '280px' : '0',
-        flex: '1',
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        width: showSidebar ? 'calc(100% - 280px)' : '100%'
-      }}>
-        {children}
-      </main>
+        <main style={{
+	  marginLeft: showSidebar ? '280px' : '0',
+	  flex: '1',  // ✅ Déjà présent
+	  display: 'flex',  // ✅ Déjà présent
+	  flexDirection: 'column',  // ✅ Déjà présent
+	  minHeight: '100vh',  // ✅ Déjà présent
+	  width: showSidebar ? 'calc(100% - 280px)' : '100%',
+	  overflow: 'hidden'  // ✏️ AJOUTÉ : Empêche le scroll sur main
+	}}>
+	  {children}
+	</main>
     </div>
   );
 };
