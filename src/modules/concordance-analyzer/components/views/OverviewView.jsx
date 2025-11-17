@@ -149,6 +149,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useResponsiveValue } from '../../../../shared/hooks';
 import NavigationPanel from '../ui/NavigationPanel';
 
 /**
@@ -170,19 +171,56 @@ const OverviewView = ({
   filteredData,
   navigateToView,
   academicColors,
-  corpusComparison 
+  corpusComparison
 }) => {
 
   const { t } = useTranslation();
-  
+
+  // Grille responsive selon la taille d'écran
+  const gridTemplateColumns = useResponsiveValue({
+    xs: '1fr',                    // Mobile: 1 colonne
+    sm: '1fr',                    // Phone landscape: 1 colonne
+    md: 'repeat(2, 1fr)',         // Tablet: 2 colonnes
+    lg: 'minmax(400px, 1.3fr) repeat(3, minmax(200px, 0.6fr))'  // Desktop: 4 colonnes (layout original)
+  });
+
+  // Gap responsive
+  const gridGap = useResponsiveValue({
+    xs: '2px',
+    md: '2px',
+    lg: '2px'
+  });
+
+  // Padding responsive
+  const containerPadding = useResponsiveValue({
+    xs: '2px',
+    md: '2px',
+    lg: '2px'
+  });
+
+  // Tailles de police responsives pour les statistiques
+  const statFontSize = useResponsiveValue({
+    xs: '2rem',      // Mobile
+    sm: '2.2rem',    // Phone landscape
+    md: '2.3rem',    // Tablet
+    lg: '2.5rem'     // Desktop
+  });
+
+  const mainStatFontSize = useResponsiveValue({
+    xs: '3rem',      // Mobile
+    sm: '3.5rem',    // Phone landscape
+    md: '4rem',      // Tablet
+    lg: '5rem'       // Desktop (original: clamp)
+  });
+
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'minmax(400px, 1.3fr) minmax(200px, 0.6fr) minmax(200px, 0.6fr) minmax(200px, 0.6fr)',
-      gridTemplateRows: 'minmax(250px, auto) minmax(250px, auto) minmax(200px, auto)',
-      gap: '2px',
+      gridTemplateColumns,
+      gridTemplateRows: 'auto',  // Auto-adjust sur toutes les tailles
+      gap: gridGap,
       background: academicColors.text,
-      padding: '2px',
+      padding: containerPadding,
       borderRadius: '8px'
     }}>
       
@@ -194,7 +232,7 @@ const OverviewView = ({
       >
         <div style={{ textAlign: 'center', margin: '2rem 0' }}>
           <div style={{
-            fontSize: 'clamp(3rem, 5vw, 5rem)',
+            fontSize: mainStatFontSize,
             fontWeight: '300',
             lineHeight: '1',
             marginBottom: '1rem'
@@ -246,9 +284,9 @@ const OverviewView = ({
         onClick={() => navigateToView('domains')}
       >
         <div style={{ textAlign: 'center' }}>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '300', 
+          <div style={{
+            fontSize: statFontSize,
+            fontWeight: '300',
             marginBottom: '0.5rem',
             color: '#F7FAFC'
           }}>
@@ -281,14 +319,14 @@ const OverviewView = ({
         onClick={() => navigateToView('temporal')}
       >
         <div style={{ textAlign: 'center' }}>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '300', 
+          <div style={{
+            fontSize: statFontSize,
+            fontWeight: '300',
             marginBottom: '0.5rem',
             color: '#F7FAFC'
           }}>
-            {analytics.periods.length > 0 ? 
-              Math.ceil((Math.max(...analytics.periods.map(p => p.period)) - 
+            {analytics.periods.length > 0 ?
+              Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
                         Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
           </div>
           <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
@@ -328,9 +366,9 @@ const OverviewView = ({
         onClick={() => navigateToView('authors')}
       >
         <div>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '300', 
+          <div style={{
+            fontSize: statFontSize,
+            fontWeight: '300',
             marginBottom: '0.5rem',
             textAlign: 'center',
             color: '#F7FAFC'
@@ -364,9 +402,9 @@ const OverviewView = ({
         onClick={() => navigateToView('linguistic')}
       >
         <div>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '300', 
+          <div style={{
+            fontSize: statFontSize,
+            fontWeight: '300',
             marginBottom: '0.5rem',
             textAlign: 'center',
             color: '#F7FAFC'
@@ -525,9 +563,9 @@ const OverviewView = ({
         onClick={() => navigateToView('data')}
       >
         <div style={{ textAlign: 'center' }}>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '300', 
+          <div style={{
+            fontSize: statFontSize,
+            fontWeight: '300',
             marginBottom: '0.5rem',
             color: '#F7FAFC'
           }}>
@@ -558,9 +596,9 @@ const OverviewView = ({
         onClick={() => navigateToView('places')}
       >
         <div style={{ textAlign: 'center' }}>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '300', 
+          <div style={{
+            fontSize: statFontSize,
+            fontWeight: '300',
             marginBottom: '0.5rem',
             color: '#F7FAFC'
           }}>
