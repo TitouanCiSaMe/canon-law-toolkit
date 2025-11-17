@@ -213,6 +213,11 @@
         "subtitle": "Corpus B (comparison)",
         "loaded": "Corpus B loaded"
       },
+      "comparison": {
+        "title": "📤 Upload 2 corpora for comparison",
+        "description": "Upload 2 NoSketch XML files to compare their characteristics",
+        "uploadBothToActivate": "Upload both files to activate comparison"
+      },
       "errors": {
         "noFileSelected": "No file selected",
         "loadMetadataFirst": "Please load the metadata file first",
@@ -325,7 +330,9 @@
         "richest": "Richest corpus",
         "mostDiverse": "Most diverse",
         "highestDiversity": "Highest diversity average",
-        "datasetsCompared": "Datasets compared"
+        "datasetsCompared": "Datasets compared",
+        "fullCorpus": "Full corpus",
+        "filteredCorpus": "Filtered corpus"
       },
       "corpusComparison": {
         "sectionTitle": "Comparison of 2 Corpora",

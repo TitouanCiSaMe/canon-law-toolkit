@@ -121,22 +121,22 @@ const ComparisonView = ({
   const corpusDatasets = useMemo(() => {
     if (filteredData.length === data.length) {
       return [{
-        name: 'Corpus complet',
+        name: t('concordance.views.comparison.fullCorpus'),
         stats: analyticsToRadarStats(fullCorpusAnalytics)
       }];
     }
 
     return [
       {
-        name: 'Corpus complet',
+        name: t('concordance.views.comparison.fullCorpus'),
         stats: analyticsToRadarStats(fullCorpusAnalytics)
       },
       {
-        name: 'Corpus filtré',
+        name: t('concordance.views.comparison.filteredCorpus'),
         stats: analyticsToRadarStats(analytics)
       }
     ];
-  }, [data.length, filteredData.length, fullCorpusAnalytics, analytics]);
+  }, [data.length, filteredData.length, fullCorpusAnalytics, analytics, t]);
 
   // Datasets pour le mode Auteurs
   const authorsDatasets = useMemo(() => {

@@ -475,15 +475,15 @@ const OverviewView = ({
 	      // Mode EN ATTENTE : Invitation à uploader
 	      <>
 		<div style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
-		  Comparaison de 2 corpus
+		  {t('concordance.overview.corpusComparison')}
 		</div>
-		<div style={{ 
-		  fontSize: '0.8rem', 
-		  opacity: 0.7, 
+		<div style={{
+		  fontSize: '0.8rem',
+		  opacity: 0.7,
 		  lineHeight: '1.5',
 		  marginBottom: '1rem'
 		}}>
-		  Uploadez 2 fichiers concordances pour activer
+		  {t('concordance.views.corpusComparison.noData')}
 		</div>
 		
 		{/* Indicateur visuel d'état */}
