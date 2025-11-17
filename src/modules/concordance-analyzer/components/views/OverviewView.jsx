@@ -218,7 +218,7 @@ const OverviewView = ({
   const renderCompactPanel = (icon, title, stat) => (
     <div style={{ textAlign: 'center', padding: '1rem' }}>
       <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{icon}</div>
-      <div style={{ fontSize: '0.85rem', fontWeight: '600', marginBottom: '0.25rem' }}>{title}</div>
+      <div style={{ fontSize: '0.85rem', fontWeight: '600', marginBottom: '0.25rem' }}>{t(title)}</div>
       <div style={{ fontSize: '1.5rem', fontWeight: '300' }}>{stat}</div>
     </div>
   );
