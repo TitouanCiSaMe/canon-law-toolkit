@@ -10,6 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer
 } from 'recharts';
+import { useResponsiveValue } from '../../../../shared/hooks';
 
 /**
  * Composant RadarChart pour visualiser des comparaisons multi-critères
@@ -78,6 +79,33 @@ import {
  * @returns {JSX.Element} Graphique radar avec légende et tooltips
  */
 const RadarChart = ({ datasets, height = 400 }) => {
+
+  // ============================================================================
+  // HOOKS RESPONSIVES
+  // ============================================================================
+
+  // Hauteur responsive du graphique
+  const responsiveHeight = useResponsiveValue({
+    xs: height * 0.6,   // Mobile: 60% de la hauteur par défaut
+    sm: height * 0.7,   // Phone landscape: 70%
+    md: height * 0.85,  // Tablet: 85%
+    lg: height          // Desktop: 100% (hauteur complète)
+  });
+
+  // Taille de police pour les labels des critères
+  const criteriaFontSize = useResponsiveValue({
+    xs: 10,     // Mobile: très petit
+    md: 11,     // Tablet: petit
+    lg: 12      // Desktop: taille normale
+  });
+
+  // Taille de police pour les ticks radiaux
+  const tickFontSize = useResponsiveValue({
+    xs: 8,      // Mobile: très petit
+    md: 9,      // Tablet: petit
+    lg: 10      // Desktop: taille normale
+  });
+
   /**
    * Palette de couleurs académiques pour les séries
    * Alignée avec la charte graphique du projet
@@ -252,31 +280,31 @@ const RadarChart = ({ datasets, height = 400 }) => {
 
   return (
     <div style={{ width: '100%' }}>
-      <ResponsiveContainer width="100%" height={height}>
+      <ResponsiveContainer width="100%" height={responsiveHeight}>
         <RechartsRadar data={radarData}>
           {/* Grille polaire avec style subtil */}
-          <PolarGrid 
-            stroke="#e2e8f0" 
+          <PolarGrid
+            stroke="#e2e8f0"
             strokeWidth={1}
           />
-          
+
           {/* Axes angulaires (critères) */}
           <PolarAngleAxis
             dataKey="critere"
             tick={{
               fill: '#4a5568',
-              fontSize: 12,
+              fontSize: criteriaFontSize,
               fontWeight: 500
             }}
           />
-          
+
           {/* Axe radial (échelle 0-100) */}
           <PolarRadiusAxis
             angle={90}
             domain={[0, 100]}
             tick={{
               fill: '#718096',
-              fontSize: 10
+              fontSize: tickFontSize
             }}
             tickCount={6}
           />

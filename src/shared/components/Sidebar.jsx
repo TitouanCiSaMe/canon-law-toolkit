@@ -16,10 +16,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useBreakpoint } from '../hooks';
 
 /**
  * Sidebar component
- * 
+ *
  * @param {Object} props
  * @param {string} props.activeView - Vue active dans concordance analyzer
  * @param {Function} props.onViewChange - Callback changement de vue
@@ -27,17 +28,22 @@ import { useTranslation } from 'react-i18next';
  * @param {number} props.activeFiltersCount - Nombre de filtres actifs
  * @param {Function} props.onFiltersClick - Callback ouverture filtres
  * @param {boolean} props.isInConcordanceAnalyzer - Si on est dans le module concordance
+ * @param {boolean} props.isOpen - Si le menu mobile est ouvert
+ * @param {Function} props.onClose - Callback fermeture menu mobile
  */
-const Sidebar = ({ 
+const Sidebar = ({
   activeView = 'overview',
   onViewChange,
   concordanceCount = 0,
   activeFiltersCount = 0,
   onFiltersClick,
-  isInConcordanceAnalyzer = false
+  isInConcordanceAnalyzer = false,
+  isOpen = true,
+  onClose
 }) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const { isDesktop } = useBreakpoint();
 
   // Navigation des vues du concordance analyzer
   const views = [
@@ -56,30 +62,109 @@ const Sidebar = ({
     i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr');
   };
 
+  // Handler pour fermer le menu sur mobile après clic sur un lien
+  const handleLinkClick = () => {
+    if (!isDesktop && onClose) {
+      onClose();
+    }
+  };
+
+  // Handler pour changement de vue avec fermeture sur mobile
+  const handleViewChange = (viewId) => {
+    onViewChange(viewId);
+    handleLinkClick();
+  };
+
+  // Si pas desktop et menu fermé, ne rien afficher
+  if (!isDesktop && !isOpen) {
+    return null;
+  }
+
   return (
-    <aside style={{
-      width: '280px',
-      height: '100vh',
-      position: 'fixed',
-      left: 0,
-      top: 0,
-      background: 'linear-gradient(180deg, #78350F 0%, #92400E 100%)',
-      color: '#F7FAFC',
-      display: 'flex',
-      flexDirection: 'column',
-      boxShadow: '4px 0 16px rgba(0, 0, 0, 0.15)',
-      zIndex: 1000,
-      overflowY: 'auto'
-    }}>
-      
-      {/* Header - Logo CALKIT */}
-      <Link to="/" style={{
-        padding: '2rem 1.5rem',
-        textDecoration: 'none',
+    <>
+      {/* Backdrop (seulement mobile) */}
+      {!isDesktop && isOpen && (
+        <div
+          onClick={onClose}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 999,
+            animation: 'fadeIn 0.3s ease'
+          }}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside style={{
+        width: '280px',
+        height: '100vh',
+        position: 'fixed',
+        left: isDesktop ? 0 : (isOpen ? 0 : '-280px'),
+        top: 0,
+        background: 'linear-gradient(180deg, #78350F 0%, #92400E 100%)',
         color: '#F7FAFC',
-        borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
-        transition: 'background 0.2s'
+        display: 'flex',
+        flexDirection: 'column',
+        boxShadow: '4px 0 16px rgba(0, 0, 0, 0.15)',
+        zIndex: 1000,
+        overflowY: 'auto',
+        transition: 'left 0.3s ease',
+        ...(!isDesktop && {
+          animation: isOpen ? 'slideInLeft 0.3s ease' : 'slideOutLeft 0.3s ease'
+        })
       }}>
+
+      {/* Bouton fermer (mobile uniquement) */}
+      {!isDesktop && (
+        <button
+          onClick={onClose}
+          aria-label="Fermer le menu"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            width: '36px',
+            height: '36px',
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '6px',
+            color: '#F7FAFC',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.5rem',
+            transition: 'all 0.2s',
+            zIndex: 10
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+          }}
+        >
+          ×
+        </button>
+      )}
+
+      {/* Header - Logo CALKIT */}
+      <Link
+        to="/"
+        onClick={handleLinkClick}
+        style={{
+          padding: '2rem 1.5rem',
+          textDecoration: 'none',
+          color: '#F7FAFC',
+          borderBottom: '2px solid rgba(255, 255, 255, 0.2)',
+          transition: 'background 0.2s'
+        }}
+      >
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -121,8 +206,9 @@ const Sidebar = ({
           {t('sidebar.nav.modules')}
         </div>
         
-        <Link 
+        <Link
           to="/query-generator"
+          onClick={handleLinkClick}
           style={{
             display: 'block',
             padding: '0.75rem 1.5rem',
@@ -138,8 +224,9 @@ const Sidebar = ({
           🔍 {t('nav.queryGenerator')}
         </Link>
 
-        <Link 
+        <Link
           to="/concordance-analyzer"
+          onClick={handleLinkClick}
           style={{
             display: 'block',
             padding: '0.75rem 1.5rem',
@@ -182,7 +269,7 @@ const Sidebar = ({
             {views.map(view => (
               <button
                 key={view.id}
-                onClick={() => onViewChange(view.id)}
+                onClick={() => handleViewChange(view.id)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -334,6 +421,7 @@ const Sidebar = ({
       dangerouslySetInnerHTML={{ __html: t('footer.copyright') }}
       />
     </aside>
+    </>
   );
 };
 

@@ -24,8 +24,8 @@ export const panelConfig = {
     color: '#1A365D',
     gradient: createGradient('#1A365D', '#2C5282'),
     icon: '📊',
-    gridArea: '1 / 1 / 2 / 2',  // ✏️ MODIFIÉ : était '1 / 1 / 3 / 2'
-    size: 'medium'  // ✏️ MODIFIÉ : était 'large'
+    gridArea: '1 / 1 / 2 / 2',
+    size: 'medium'
   },
   domains: {
     id: 'domains',
@@ -33,7 +33,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.domains.subtitle',
     color: visualTheme.colors.primary.main,           // ✅ Utilise le thème
     gradient: createGradient(
-      visualTheme.colors.primary.main, 
+      visualTheme.colors.primary.main,
       visualTheme.colors.primary.light
     ),
     icon: '📚',
@@ -50,6 +50,19 @@ export const panelConfig = {
     gridArea: '1 / 3 / 2 / 4',
     size: 'medium'
   },
+  places: {
+    id: 'places',
+    title: 'concordance.panels.places.title',
+    subtitle: 'concordance.panels.places.subtitle',
+    color: visualTheme.colors.accent.green,           // ✅ Utilise le thème
+    gradient: createGradient(
+      '#059669',
+      visualTheme.colors.accent.green
+    ),
+    icon: '🌍',
+    gridArea: '1 / 4 / 2 / 5',
+    size: 'medium'
+  },
   authors: {
     id: 'authors',
     title: 'concordance.panels.authors.title',
@@ -57,7 +70,7 @@ export const panelConfig = {
     color: '#4A5568',
     gradient: createGradient('#4A5568', '#2D3748'),
     icon: '✍️',
-    gridArea: '2 / 2 / 3 / 3',
+    gridArea: '2 / 1 / 3 / 2',
     size: 'medium'
   },
   linguistic: {
@@ -67,7 +80,17 @@ export const panelConfig = {
     color: '#065F46',
     gradient: createGradient('#065F46', '#047857'),
     icon: '🔤',
-    gridArea: '2 / 3 / 3 / 4',
+    gridArea: '2 / 2 / 3 / 3',
+    size: 'medium'
+  },
+  data: {
+    id: 'data',
+    title: 'concordance.panels.data.title',
+    subtitle: 'concordance.panels.data.subtitle',
+    color: '#7C2D12',
+    gradient: createGradient('#7C2D12', '#92400E'),
+    icon: '📋',
+    gridArea: '2 / 3 / 3 / 5',  // S'étend sur 2 colonnes
     size: 'medium'
   },
   corpusComparison: {
@@ -77,18 +100,8 @@ export const panelConfig = {
     color: '#dc2626',
     gradient: createGradient('#dc2626', '#ef4444'),
     icon: '⚖️',
-    gridArea: '2 / 1 / 3 / 2',  // ✏️ MODIFIÉ : était '3 / 1 / 4 / 2'
-    size: 'medium'  // ✏️ MODIFIÉ : était 'large'
-  },
-  data: {
-    id: 'data',
-    title: 'concordance.panels.data.title',
-    subtitle: 'concordance.panels.data.subtitle',
-    color: '#7C2D12',
-    gradient: createGradient('#7C2D12', '#92400E'),
-    icon: '📋',
-    gridArea: '2 / 4 / 3 / 5',
-    size: 'medium'
+    gridArea: '3 / 1 / 4 / 5',  // Full width, ligne 3
+    size: 'wide'
   },
   concordances: {
     id: 'concordances',
@@ -97,21 +110,8 @@ export const panelConfig = {
     color: '#7C2D12',
     gradient: createGradient('#7C2D12', '#92400E'),
     icon: '📁',
-    gridArea: '3 / 1 / 4 / 5',  // ✏️ MODIFIÉ : était '4 / 1 / 5 / 5'
+    gridArea: '4 / 1 / 5 / 5',  // Full width, ligne 4
     size: 'wide'
-  },
-  places: {
-    id: 'places',
-    title: 'concordance.panels.places.title',
-    subtitle: 'concordance.panels.places.subtitle',
-    color: visualTheme.colors.accent.green,           // ✅ Utilise le thème
-    gradient: createGradient(
-      '#059669', 
-      visualTheme.colors.accent.green
-    ),
-    icon: '🌍',
-    gridArea: '1 / 4 / 2 / 5',
-    size: 'medium'
   }
 };
 
