@@ -209,8 +209,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
   // ============================================================================
   // DIMENSIONS DU SVG
   // ============================================================================
-  
-  const chartWidth = 1200;
+
   const rowHeight = 30;
   const rowSpacing = 5;
   const chartHeight = parsedWorks.length * (rowHeight + rowSpacing);
