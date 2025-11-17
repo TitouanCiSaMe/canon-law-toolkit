@@ -3,9 +3,16 @@
  * Ce fichier est exécuté avant tous les tests
  */
 
-import { expect, afterEach } from 'vitest';
+import { expect, afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import * as matchers from '@testing-library/jest-dom/matchers';
+import i18n from '../shared/i18n';
+
+// Configure i18n to use French in tests
+i18n.changeLanguage('fr');
+
+// Expose vi as jest for compatibility with tests using jest.fn(), jest.spyOn(), etc.
+global.jest = vi;
 
 // Étendre les matchers de Vitest avec ceux de @testing-library/jest-dom
 expect.extend(matchers);
