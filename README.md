@@ -5,7 +5,7 @@
 [![React](https://img.shields.io/badge/react-19.0.0-61dafb.svg)](https://react.dev/)
 [![i18n](https://img.shields.io/badge/i18n-FR%20%7C%20EN-orange.svg)](src/shared/i18n)
 
-Plateforme d'outils numériques pour l'analyse du droit canon médiéval, développée par le CISAME (Centre Interdisciplinaire de Recherche sur la Science, l'Art et la Musique au Moyen Âge et à la Renaissance).
+Plateforme d'outils numériques pour l'analyse du droit canon médiéval, développée par CiSaMe (Circulation des Savoirs médiévaux).
 
 ## 🎯 Présentation
 
@@ -175,11 +175,11 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## 👥 Équipe
 
-**CISAME** - Centre Interdisciplinaire de Recherche  
+**CiSaMe** - Circulation des Savoirs médiévaux
 Université de Strasbourg
 
-**Développeur principal** : Titouan  
-**Contact** : [CISAME GitLab](https://gitlab.com/cisame)
+**Développeur principal** : Titouan
+**Contact** : [CiSaMe GitLab](https://gitlab.com/cisame)
 
 ## 🙏 Remerciements
 
@@ -202,7 +202,7 @@ Université de Strasbourg
 
 ## 🔗 Liens utiles
 
-- [GitLab CISAME](https://gitlab.com/cisame)
+- [GitLab CiSaMe](https://gitlab.com/cisame)
 - [NoSketch Engine](https://www.sketchengine.eu/)
 - [Documentation React](https://react.dev/)
 - [Documentation Recharts](https://recharts.org/)

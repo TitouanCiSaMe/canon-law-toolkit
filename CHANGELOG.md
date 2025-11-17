@@ -5,6 +5,87 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.2.0] - 2025-11-17
+
+### 🌍 Internationalisation complète
+
+Migration exhaustive de toutes les chaînes de texte hardcodées vers le système i18n (react-i18next).
+
+### ✨ Ajouté
+
+**Nouvelles traductions FR/EN**
+- 60+ nouvelles clés i18n ajoutées dans `fr.json` et `en.json`
+- Traductions complètes pour tous les composants de l'analyseur de concordances
+- Tooltips des graphiques entièrement internationalisés avec formatage intelligent des ordinaux (1er/1st, 2ème/2nd, etc.)
+- Labels de graphiques avec interpolation de compteurs (ex: "Corpus A (1,234 concordances)")
+
+**Composants migrés vers i18n**
+- `Sidebar.jsx` - Navigation et footer
+- `Pagination.jsx` - Contrôles de pagination (11 clés)
+- `UploadInterface.jsx` - Interface d'upload
+- `ComparisonView.jsx` - Vue de comparaison avec datasets radar
+- `OverviewView.jsx` - Messages de comparaison de corpus
+- `CorpusComparisonView.jsx` - Vue complète de comparaison
+- `ComparisonDomainChart.jsx` - Graphiques de domaines
+- `ComparisonAuthorChart.jsx` - Graphiques d'auteurs
+- `ComparisonTemporalChart.jsx` - Graphiques temporels (granularité, modes de comptage)
+- `ComparisonTermChart.jsx` - Graphiques terminologiques
+- `TimelineGantt.jsx` - Timeline avec clés corrigées
+- `WordCloud.jsx` - Messages d'état vide
+- `AuthorChart.jsx` - Messages "no data"
+- `CustomTooltipChart.jsx` - Tooltips enrichis ("Part du total", "Classement")
+- `ExportUtils.js` - Messages d'alerte pour exports
+- `QueryGenerator.jsx` & `ConcordanceAnalyzer.jsx` - Messages de développement
+
+### 🔧 Modifié
+
+**Corrections de clés**
+- Correction des chemins de clés dans TimelineGantt (ajout préfixe `concordance.`)
+- Ajout d'interpolation {{count}} aux labels de graphiques
+- Correction du chemin de clé `noData` dans ComparisonTermChart
+
+**Améliorations**
+- Formatage intelligent des ordinaux selon la langue (FR: 1er, 2ème / EN: 1st, 2nd, 3rd, 11th, 12th, 13th)
+- Tooltips adaptatifs avec statistiques localisées
+- Support complet de la langue dans tous les exports
+
+### 📦 Structure i18n
+
+**Nouvelles sections dans les fichiers de traduction**
+```json
+{
+  "sidebar": { "nav": {...}, "footer": {...} },
+  "pagination": { "all", "display", "first", "previous", "next", "last" },
+  "concordance": {
+    "charts": {
+      "tooltip": { "shareOfTotal", "ranking", "rankOf" },
+      "noData": { "domains", "authors", "temporal", "terminology" }
+    },
+    "views": {
+      "corpusComparison": {
+        "charts": {
+          "domains": {...},
+          "authors": {...},
+          "temporal": { "granularity", "countMode", ... },
+          "terminology": {...}
+        }
+      }
+    }
+  }
+}
+```
+
+### 📊 Statistiques
+
+- **Clés ajoutées** : 65+ paires FR/EN
+- **Composants migrés** : 15 fichiers
+- **Commits** : 6 commits ciblés
+- **Couverture** : 100% des textes visibles par l'utilisateur
+
+**Mainteneur** : Titouan (CiSaMe)
+
+---
+
 ## [1.1.0] - 2025-11-16
 
 ### 🎨 Refonte majeure de l'interface utilisateur
