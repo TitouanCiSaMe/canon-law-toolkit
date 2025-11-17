@@ -183,6 +183,11 @@
         "places": "No place data available",
         "authors": "No author data available",
         "terminology": "No terminological data available"
+      },
+      "tooltip": {
+        "shareOfTotal": "Share of total",
+        "ranking": "Ranking",
+        "rankOf": "{{rank}} of {{total}}"
       }
     },
     "filters": {
@@ -358,13 +363,13 @@
         "charts": {
           "domains": {
             "title": "Comparison by domains",
-            "corpusALabel": "Corpus A",
-            "corpusBLabel": "Corpus B"
+            "corpusALabel": "Corpus A ({{count}} concordances)",
+            "corpusBLabel": "Corpus B ({{count}} concordances)"
           },
           "authors": {
             "title": "Comparison by authors",
-            "corpusALabel": "Corpus A",
-            "corpusBLabel": "Corpus B"
+            "corpusALabel": "Corpus A ({{count}} concordances)",
+            "corpusBLabel": "Corpus B ({{count}} concordances)"
           },
           "temporal": {
             "title": "Temporal comparison",
@@ -392,8 +397,8 @@
           },
           "terminology": {
             "title": "Terminological comparison",
-            "corpusALabel": "Corpus A terms",
-            "corpusBLabel": "Corpus B terms",
+            "corpusALabel": "Corpus A terms ({{count}} occurrences)",
+            "corpusBLabel": "Corpus B terms ({{count}} occurrences)",
             "occurrences": "occurrences"
           },
           "legend": {
