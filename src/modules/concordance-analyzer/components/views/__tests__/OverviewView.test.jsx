@@ -88,6 +88,16 @@ const mockPanelConfig = {
     icon: '🌍',
     gridArea: '1 / 4 / 2 / 5',
     size: 'medium'
+  },
+  corpusComparison: {
+    id: 'corpusComparison',
+    title: 'Comparaison',
+    subtitle: 'Analyse comparative',
+    color: '#7C2D12',
+    gradient: 'linear-gradient(135deg, #7C2D12 0%, #92400E 100%)',
+    icon: '⚖️',
+    gridArea: '3 / 1 / 4 / 3',
+    size: 'wide'
   }
 };
 

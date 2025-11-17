@@ -223,28 +223,31 @@ describe('useAnalytics', () => {
     test('devrait compter les lieux uniques', () => {
       const data = [
         { place: 'France' },
-        { place: 'Italie' },
+        { place: 'Irlande' },
         { place: 'France' }
       ];
-      
+
       const { result } = renderHook(() => useAnalytics(data));
-      
+
       expect(result.current.places).toHaveLength(2);
       expect(result.current.places[0]).toEqual({ name: 'France', value: 2 });
+      expect(result.current.places[1]).toEqual({ name: 'Irlande', value: 1 });
     });
     
     test('devrait trier par ordre décroissant', () => {
       const data = [
-        { place: 'A' },
-        { place: 'B' },
-        { place: 'B' },
-        { place: 'B' }
+        { place: 'Irlande' },
+        { place: 'France' },
+        { place: 'France' },
+        { place: 'France' }
       ];
-      
+
       const { result } = renderHook(() => useAnalytics(data));
-      
-      expect(result.current.places[0].name).toBe('B');
+
+      expect(result.current.places[0].name).toBe('France');
       expect(result.current.places[0].value).toBe(3);
+      expect(result.current.places[1].name).toBe('Irlande');
+      expect(result.current.places[1].value).toBe(1);
     });
     
   });
