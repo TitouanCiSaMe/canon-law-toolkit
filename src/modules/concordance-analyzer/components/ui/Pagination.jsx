@@ -1,6 +1,7 @@
 // src/components/ui/Pagination.jsx
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Composant de pagination avec contrôles de navigation et sélecteur d'éléments par page
@@ -40,6 +41,8 @@ const Pagination = ({
   onItemsPerPageChange,
   itemsPerPageOptions = [25, 50, 100, -1],
 }) => {
+  const { t } = useTranslation();
+
   // Ne rien afficher si pas de données
   if (totalItems === 0) {
     return null;
@@ -189,7 +192,7 @@ const Pagination = ({
     <div style={styles.container}>
       {/* Sélecteur d'éléments par page */}
       <div style={styles.itemsSelector}>
-        <span style={styles.label}>Affichage :</span>
+        <span style={styles.label}>{t('pagination.display')}</span>
         {itemsPerPageOptions.map((option) => (
           <button
             key={option}
@@ -210,9 +213,9 @@ const Pagination = ({
                 e.target.style.borderColor = '#ced4da';
               }
             }}
-            aria-label={option === -1 ? 'Afficher tout' : `Afficher ${option} éléments par page`}
+            aria-label={option === -1 ? t('pagination.showAll') : `${t('pagination.display')} ${option}`}
           >
-            {option === -1 ? 'Tout' : option}
+            {option === -1 ? t('pagination.all') : option}
           </button>
         ))}
       </div>
@@ -245,10 +248,10 @@ const Pagination = ({
                 e.target.style.borderColor = '#ced4da';
               }
             }}
-            aria-label="Première page"
-            title="Première page"
+            aria-label={t('pagination.firstPage')}
+            title={t('pagination.firstPage')}
           >
-            ⏮ Première
+            {t('pagination.first')}
           </button>
 
           {/* Bouton Page précédente */}
@@ -271,10 +274,10 @@ const Pagination = ({
                 e.target.style.borderColor = '#ced4da';
               }
             }}
-            aria-label="Page précédente"
-            title="Page précédente"
+            aria-label={t('pagination.previousPage')}
+            title={t('pagination.previousPage')}
           >
-            ← Préc
+            {t('pagination.previous')}
           </button>
 
           {/* Numéros de pages */}
@@ -337,10 +340,10 @@ const Pagination = ({
                 e.target.style.borderColor = '#ced4da';
               }
             }}
-            aria-label="Page suivante"
-            title="Page suivante"
+            aria-label={t('pagination.nextPage')}
+            title={t('pagination.nextPage')}
           >
-            Suiv →
+            {t('pagination.next')}
           </button>
 
           {/* Bouton Dernière page */}
@@ -363,10 +366,10 @@ const Pagination = ({
                 e.target.style.borderColor = '#ced4da';
               }
             }}
-            aria-label="Dernière page"
-            title="Dernière page"
+            aria-label={t('pagination.lastPage')}
+            title={t('pagination.lastPage')}
           >
-            Dernière ⏭
+            {t('pagination.last')}
           </button>
         </div>
       )}

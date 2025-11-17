@@ -8,9 +8,49 @@
     "queryGenerator": "Générateur de requêtes",
     "concordanceAnalyzer": "Analyseur de concordances"
   },
+  "sidebar": {
+    "nav": {
+      "modules": "Modules",
+      "views": "Vues"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 CISAME<br/>Canon Law Toolkit"
+  },
   "home": {
     "welcome": "Bienvenue sur Canon Law Toolkit",
     "description": "Plateforme d'outils pour l'analyse du droit canon médiéval"
+  },
+  "common": {
+    "messages": {
+      "notImplemented": "Cette vue est en cours d'implémentation.",
+      "phase2Development": "À développer en Phase 2"
+    },
+    "error": "Erreur :",
+    "anonymous": "Anonyme"
+  },
+  "metadata": {
+    "unknownDomain": "Domaine inconnu",
+    "unknownPlace": "Lieu inconnu"
+  },
+  "periods": {
+    "century11": "XIe siècle",
+    "century12": "XIIe siècle",
+    "century13": "XIIIe siècle",
+    "unknown": "Période inconnue"
+  },
+  "pagination": {
+    "all": "Tout",
+    "display": "Affichage :",
+    "showAll": "Afficher tout",
+    "firstPage": "Première page",
+    "first": "⏮ Première",
+    "previousPage": "Page précédente",
+    "previous": "← Préc",
+    "nextPage": "Page suivante",
+    "next": "Suiv →",
+    "lastPage": "Dernière page",
+    "last": "Dernière ⏭"
   },
   "concordance": {
     "app": {
@@ -140,7 +180,8 @@
       "noData": {
         "domains": "Aucune donnée de domaine disponible",
         "temporal": "Aucune donnée temporelle disponible",
-        "places": "Aucune donnée de lieu disponible"
+        "places": "Aucune donnée de lieu disponible",
+        "authors": "Aucune donnée d'auteur disponible"
       }
     },
     "filters": {
@@ -166,6 +207,12 @@
         "subtitle": "Avec métadonnées sélectionnées",
         "statsLoaded": "concordances, {{rate}}% correspondantes"
       },
+      "corpusMain": "Corpus principal ou Corpus A",
+      "corpusB": {
+        "title": "📄 3. Export NoSketch B",
+        "subtitle": "Corpus B (comparaison)",
+        "loaded": "Corpus B chargé"
+      },
       "errors": {
         "noFileSelected": "Aucun fichier sélectionné",
         "loadMetadataFirst": "Veuillez d'abord charger le fichier de métadonnées",
@@ -186,7 +233,20 @@
     "export": {
       "concordancesCSV": "Export concordances CSV",
       "analyticsJSON": "Export analytics JSON",
-      "chartPNG": "Export graphique PNG"
+      "chartPNG": "Export graphique PNG",
+      "noDataToExport": "Aucune donnée à exporter",
+      "noAnalyticsToExport": "Aucune statistique à exporter",
+      "scrollableError": "Erreur lors de l'export PNG scrollable",
+      "chartError": "Erreur lors de l'export du graphique"
+    },
+    "messages": {
+      "selectToCompare": "Sélectionnez des éléments à comparer",
+      "selectAuthorsForComparison": "Choisissez au moins 2 auteurs dans la liste ci-dessus.",
+      "periodsArePredefined": "Les périodes sont prédéfinies.",
+      "applyFiltersToCompare": "Appliquez des filtres pour comparer avec le corpus complet.",
+      "importFilesForComparison": "Importez d'abord vos fichiers pour utiliser la comparaison multi-critères.",
+      "noWordsToDisplay": "Aucun mot à afficher",
+      "importForWordCloud": "Importez d'abord vos fichiers de concordances. Les termes KWIC apparaîtront ici."
     },
     "data": {
       "reference": "Référence",
@@ -253,6 +313,19 @@
         "sectionTitle": "Analyse terminologique",
         "noData": "Aucune donnée terminologique disponible",
         "importFirst": "Importez d'abord vos fichiers pour voir l'analyse lexicale."
+      },
+      "comparison": {
+        "modeLabel": "Mode de comparaison :",
+        "corpusMode": "📚 Corpus complet vs Filtré",
+        "authorsMode": "✍️ Par auteurs",
+        "periodsMode": "📅 Par périodes",
+        "selectAuthors": "Sélectionnez 2-3 auteurs à comparer :",
+        "authorsSelected": "✓ {{count}} auteur(s) sélectionné(s)",
+        "summary": "📈 Résumé de la comparaison",
+        "richest": "Corpus le plus riche",
+        "mostDiverse": "Plus diversifié",
+        "highestDiversity": "Moyenne de diversité la plus élevée",
+        "datasetsCompared": "Datasets comparés"
       },
       "corpusComparison": {
         "sectionTitle": "Comparaison de 2 Corpus",

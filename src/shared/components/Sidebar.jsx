@@ -118,7 +118,7 @@ const Sidebar = ({
           padding: '0.5rem 1.5rem',
           fontWeight: '600'
         }}>
-          Modules
+          {t('sidebar.nav.modules')}
         </div>
         
         <Link 
@@ -135,7 +135,7 @@ const Sidebar = ({
             fontWeight: location.pathname === '/query-generator' ? '600' : '400'
           }}
         >
-          🔍 Générateur de requêtes
+          🔍 {t('nav.queryGenerator')}
         </Link>
 
         <Link 
@@ -152,7 +152,7 @@ const Sidebar = ({
             fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400'
           }}
         >
-          📊 Analyseur de concordances
+          📊 {t('nav.concordanceAnalyzer')}
         </Link>
       </nav>
 
@@ -176,7 +176,7 @@ const Sidebar = ({
               fontWeight: '600',
               marginBottom: '0.5rem'
             }}>
-              Vues
+              {t('sidebar.nav.views')}
             </div>
             
             {views.map(view => (
@@ -250,7 +250,7 @@ const Sidebar = ({
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            <span>🔍 Filtres</span>
+            <span>🔍 {t('concordance.buttons.filters')}</span>
             {activeFiltersCount > 0 && (
               <span style={{
                 background: '#FCD34D',
@@ -330,10 +330,9 @@ const Sidebar = ({
         textAlign: 'center',
         opacity: 0.7,
         borderTop: '2px solid rgba(255, 255, 255, 0.2)'
-      }}>
-        © 2025 CISAME<br />
-        Canon Law Toolkit
-      </div>
+      }}
+      dangerouslySetInnerHTML={{ __html: t('footer.copyright') }}
+      />
     </aside>
   );
 };

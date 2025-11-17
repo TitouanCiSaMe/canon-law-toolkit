@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import RadarChart from '../charts/RadarChart';
 import ExportButtons from '../ui/ExportButtons';
 import { useAnalytics } from '../../hooks/useAnalytics';
@@ -24,10 +25,12 @@ const ComparisonView = ({
   onExportConcordances,
   onExportAnalytics
 }) => {
+  const { t } = useTranslation();
+
   // ============================================================================
   // ÉTATS LOCAUX
   // ============================================================================
-  
+
   const [comparisonMode, setComparisonMode] = useState('corpus');
   const [selectedAuthors, setSelectedAuthors] = useState([]);
 
@@ -60,8 +63,8 @@ const ComparisonView = ({
     if (!analytics.authors) return [];
     return analytics.authors
       .map(a => a.name)
-      .filter(name => name && name !== 'Anonyme');
-  }, [analytics.authors]);
+      .filter(name => name && name !== t('common.anonymous'));
+  }, [analytics.authors, t]);
 
   // ============================================================================
   // FILTRAGE DES DONNÉES (sans appel à useAnalytics)
@@ -289,7 +292,7 @@ const ComparisonView = ({
                 color: '#475569',
                 marginBottom: '0.75rem'
               }}>
-                Mode de comparaison :
+                {t('concordance.views.comparison.modeLabel')}
               </label>
 
               <div style={{
@@ -311,7 +314,7 @@ const ComparisonView = ({
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  📚 Corpus complet vs Filtré
+                  {t('concordance.views.comparison.corpusMode')}
                 </button>
 
                 <button
@@ -328,7 +331,7 @@ const ComparisonView = ({
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  ✍️ Par auteurs
+                  {t('concordance.views.comparison.authorsMode')}
                 </button>
 
                 <button
@@ -345,7 +348,7 @@ const ComparisonView = ({
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  📅 Par périodes
+                  {t('concordance.views.comparison.periodsMode')}
                 </button>
               </div>
 
@@ -357,7 +360,7 @@ const ComparisonView = ({
                     color: '#64748b',
                     marginBottom: '0.75rem'
                   }}>
-                    Sélectionnez 2-3 auteurs à comparer :
+                    {t('concordance.views.comparison.selectAuthors')}
                   </p>
                   <div style={{
                     display: 'flex',
@@ -402,7 +405,7 @@ const ComparisonView = ({
                       color: '#10b981',
                       marginTop: '0.5rem'
                     }}>
-                      ✓ {selectedAuthors.length} auteur(s) sélectionné(s)
+                      {t('concordance.views.comparison.authorsSelected', { count: selectedAuthors.length })}
                     </p>
                   )}
                 </div>
@@ -444,7 +447,7 @@ const ComparisonView = ({
                       color: '#1e293b',
                       marginBottom: '1rem'
                     }}>
-                      📈 Résumé de la comparaison
+                      {t('concordance.views.comparison.summary')}
                     </h5>
 
                     <div style={{
@@ -464,7 +467,7 @@ const ComparisonView = ({
                           textTransform: 'uppercase',
                           marginBottom: '0.25rem'
                         }}>
-                          Corpus le plus riche
+                          {t('concordance.views.comparison.richest')}
                         </div>
                         <div style={{
                           fontSize: '1.1rem',
@@ -493,7 +496,7 @@ const ComparisonView = ({
                           textTransform: 'uppercase',
                           marginBottom: '0.25rem'
                         }}>
-                          Plus diversifié
+                          {t('concordance.views.comparison.mostDiverse')}
                         </div>
                         <div style={{
                           fontSize: '1.1rem',
@@ -506,7 +509,7 @@ const ComparisonView = ({
                           fontSize: '0.875rem',
                           color: '#64748b'
                         }}>
-                          Moyenne de diversité la plus élevée
+                          {t('concordance.views.comparison.highestDiversity')}
                         </div>
                       </div>
 
@@ -522,7 +525,7 @@ const ComparisonView = ({
                           textTransform: 'uppercase',
                           marginBottom: '0.25rem'
                         }}>
-                          Datasets comparés
+                          {t('concordance.views.comparison.datasetsCompared')}
                         </div>
                         <div style={{
                           fontSize: '1.1rem',
@@ -553,11 +556,11 @@ const ComparisonView = ({
                 borderRadius: '8px'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
-                <h3 style={{ marginBottom: '0.5rem' }}>Sélectionnez des éléments à comparer</h3>
+                <h3 style={{ marginBottom: '0.5rem' }}>{t('concordance.messages.selectToCompare')}</h3>
                 <p style={{ fontSize: '0.9rem' }}>
-                  {comparisonMode === 'authors' && 'Choisissez au moins 2 auteurs dans la liste ci-dessus.'}
-                  {comparisonMode === 'periods' && 'Les périodes sont prédéfinies.'}
-                  {comparisonMode === 'corpus' && 'Appliquez des filtres pour comparer avec le corpus complet.'}
+                  {comparisonMode === 'authors' && t('concordance.messages.selectAuthorsForComparison')}
+                  {comparisonMode === 'periods' && t('concordance.messages.periodsArePredefined')}
+                  {comparisonMode === 'corpus' && t('concordance.messages.applyFiltersToCompare')}
                 </p>
               </div>
             )}
@@ -566,8 +569,8 @@ const ComparisonView = ({
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem', color: '#64748b' }}>
           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
-          <h3>Aucune donnée disponible</h3>
-          <p>Importez d'abord vos fichiers pour utiliser la comparaison multi-critères.</p>
+          <h3>{t('concordance.dataView.noData')}</h3>
+          <p>{t('concordance.messages.importFilesForComparison')}</p>
         </div>
       )}
     </div>

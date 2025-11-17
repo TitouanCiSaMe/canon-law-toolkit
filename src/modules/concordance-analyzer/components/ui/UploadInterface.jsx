@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Composant UploadInterface - Interface d'upload de fichiers
@@ -39,6 +40,8 @@ const UploadInterface = ({
   processingStep,
   error
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div style={{
       display: 'flex',
@@ -56,26 +59,26 @@ const UploadInterface = ({
       }}>
         {/* Upload métadonnées */}
         <FileUploadSection
-          title="📊 1. Métadonnées"
-          description="CSV complet des métadonnées"
-          subtitle="Avec identifiants Edi-XX"
+          title={t('concordance.upload.metadata.title')}
+          description={t('concordance.upload.metadata.description')}
+          subtitle={t('concordance.upload.metadata.subtitle')}
           onUpload={onMetadataUpload}
           onDrop={(e) => onDrop(e, 'metadata')}
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
           dragOver={dragOver}
           selectedFile={selectedMetadataFile}
-          fileInfo={Object.keys(metadataLookup).length > 0 
-            ? `${Object.keys(metadataLookup).length} entrées chargées` 
+          fileInfo={Object.keys(metadataLookup).length > 0
+            ? `${Object.keys(metadataLookup).length} ${t('concordance.upload.metadata.entriesLoaded')}`
             : null
           }
         />
 
         {/* Upload concordances A */}
         <FileUploadSection
-          title="📄 2. Export NoSketch A"
-          description="Export CSV NoSketch Engine"
-          subtitle="Corpus principal ou Corpus A"
+          title={t('concordance.upload.concordances.title')}
+          description={t('concordance.upload.concordances.description')}
+          subtitle={t('concordance.upload.corpusMain')}
           onUpload={onConcordanceUpload}
           onDrop={(e) => onDrop(e, 'concordance')}
           onDragOver={onDragOver}
@@ -83,7 +86,7 @@ const UploadInterface = ({
           dragOver={dragOver}
           selectedFile={selectedConcordanceFile}
           fileInfo={selectedConcordanceFile && parseStats.totalReferences
-            ? `${parseStats.totalReferences} concordances, ${parseStats.lookupRate}% matchées`
+            ? `${parseStats.totalReferences} ${t('concordance.upload.concordances.statsLoaded', { rate: parseStats.lookupRate })}`
             : null
           }
           disabled={Object.keys(metadataLookup).length === 0}
@@ -92,9 +95,9 @@ const UploadInterface = ({
         {/* ✨ NOUVEAU : Upload concordances B (mode comparison) */}
         {selectedConcordanceFile && (
           <FileUploadSection
-            title="📄 3. Export NoSketch B"
-            description="Export CSV NoSketch Engine"
-            subtitle="Corpus B (comparaison)"
+            title={t('concordance.upload.corpusB.title')}
+            description={t('concordance.upload.concordances.description')}
+            subtitle={t('concordance.upload.corpusB.subtitle')}
             onUpload={onConcordanceBUpload}
             onDrop={(e) => onDrop(e, 'concordanceB')}
             onDragOver={onDragOver}
@@ -102,7 +105,7 @@ const UploadInterface = ({
             dragOver={dragOver}
             selectedFile={selectedConcordanceBFile}
             fileInfo={selectedConcordanceBFile
-              ? `Corpus B chargé`
+              ? t('concordance.upload.corpusB.loaded')
               : null
             }
             disabled={Object.keys(metadataLookup).length === 0 || !selectedConcordanceFile}
@@ -137,7 +140,7 @@ const UploadInterface = ({
           color: '#FECACA',
           width: '100%'
         }}>
-          ⚠️ <strong>Erreur :</strong> {error}
+          ⚠️ <strong>{t('common.error')}</strong> {error}
         </div>
       )}
     </div>

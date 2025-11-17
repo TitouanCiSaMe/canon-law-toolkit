@@ -6,7 +6,7 @@ const QueryGenerator = () => {
   return (
     <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
       <h1>{t('nav.queryGenerator')}</h1>
-      <p>À développer en Phase 2</p>
+      <p>{t('common.messages.phase2Development')}</p>
     </div>
   );
 };
