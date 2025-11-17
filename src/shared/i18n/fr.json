@@ -153,6 +153,7 @@
       "temporal": {
         "title": "Évolution chronologique",
         "aggregatedChart": "Graphique agrégé",
+        "timeline": "Timeline des œuvres",
         "granularity": "Granularité temporelle",
         "countMode": "Mode de comptage",
         "years": "Années",
@@ -175,7 +176,8 @@
       "labels": {
         "period": "Période",
         "numberOfWorks": "Nombre d'œuvres",
-        "concordances": "Concordances"
+        "concordances": "Concordances",
+        "occurrences": "Occurrences"
       },
       "noData": {
         "domains": "Aucune donnée de domaine disponible",
@@ -285,7 +287,9 @@
         "period": "Période :",
         "place": "Lieu :",
         "domain": "Domaine :",
-        "page": "Page :"
+        "page": "Page :",
+        "id": "ID :",
+        "ref": "Réf :"
       },
       "badges": {
         "enriched": "Enrichi",
