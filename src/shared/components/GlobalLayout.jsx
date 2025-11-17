@@ -1,18 +1,18 @@
 /**
  * GlobalLayout - Layout principal avec sidebar verticale
- * 
+ *
  * Structure :
  * - Sidebar fixe à gauche (280px)
  * - Zone principale à droite (flex)
  * - Header minimal en haut (optionnel)
- * 
+ *
  * @component
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import Sidebar from './Sidebar';
-import HamburgerButton from './HamburgerButton';
 import { useBreakpoint } from '../hooks';
+import { useMobileMenu } from '../contexts/MobileMenuContext';
 
 /**
  * GlobalLayout component
@@ -38,15 +38,7 @@ const GlobalLayout = ({
   isInConcordanceAnalyzer = false
 }) => {
   const { isDesktop } = useBreakpoint();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const { isMobileMenuOpen, closeMobileMenu } = useMobileMenu();
 
   return (
     <div style={{
@@ -54,15 +46,6 @@ const GlobalLayout = ({
       minHeight: '100vh',
       background: '#EDF2F7'
     }}>
-      {/* Bouton hamburger (mobile uniquement) */}
-      {!isDesktop && showSidebar && (
-        <HamburgerButton
-          isOpen={isMobileMenuOpen}
-          onClick={toggleMobileMenu}
-          ariaLabel={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-        />
-      )}
-
       {/* Sidebar */}
       {showSidebar && (
         <Sidebar

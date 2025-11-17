@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useFilteredData } from './hooks/useFilteredData';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useFileUpload } from './hooks/useFileUpload';
+import { useBreakpoint } from '../../shared/hooks';
+import { useMobileMenu } from '../../shared/contexts/MobileMenuContext';
 import FilterMenu from './components/ui/FilterMenu';
 import UploadInterface from './components/ui/UploadInterface';
 import { exportConcordancesCSV, exportAnalyticsJSON } from './utils/ExportUtils';
@@ -17,10 +19,18 @@ import DataView from './components/views/DataView';
 import WordCloudView from './components/views/WordCloudView';
 import ComparisonView from './components/views/ComparisonView';
 import CorpusComparisonView from './components/views/CorpusComparisonView';
+import HamburgerButton from '../../shared/components/HamburgerButton';
 
 const ConcordanceAnalyzerPanels = () => {
   // Hook de traduction
   const { t } = useTranslation();
+
+  // Hook responsive
+  const { isDesktop } = useBreakpoint();
+
+  // Hook menu mobile
+  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
+
   // ============================================================================
   // MODE DETECTION : Single corpus vs Comparison
   // ============================================================================
@@ -243,53 +253,64 @@ const ConcordanceAnalyzerPanels = () => {
           gap: '1.5rem'
         }}>
           {/* MODULE 1 : Titre et breadcrumb */}
-          <div>
-            <h1 style={{
-              fontSize: '1.75rem',
-              fontWeight: '400',
-              color: academicColors.primary,
-              marginBottom: '0.25rem'
-            }}>
-              {t('concordance.app.title')}
-            </h1>
-            <nav style={{ 
-              fontSize: '0.9rem', 
-              color: '#718096',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}>
-              {activeView !== 'overview' && (
-                <>
-                  <button 
-                    onClick={() => navigateToView('overview')}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: academicColors.primary,
-                      cursor: 'pointer',
-                      padding: '0.25rem 0.5rem',
-                      borderRadius: '4px',
-                      transition: 'all 0.2s',
-                      fontSize: '0.9rem'
-                    }}
-                    onMouseOver={(e) => e.target.style.background = '#F0F4F8'}
-                    onMouseOut={(e) => e.target.style.background = 'none'}
-                  >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Bouton hamburger (mobile uniquement) */}
+            {!isDesktop && (
+              <HamburgerButton
+                isOpen={isMobileMenuOpen}
+                onClick={toggleMobileMenu}
+                ariaLabel={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              />
+            )}
+
+            <div>
+              <h1 style={{
+                fontSize: '1.75rem',
+                fontWeight: '400',
+                color: academicColors.primary,
+                marginBottom: '0.25rem'
+              }}>
+                {t('concordance.app.title')}
+              </h1>
+              <nav style={{
+                fontSize: '0.9rem',
+                color: '#718096',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                {activeView !== 'overview' && (
+                  <>
+                    <button
+                      onClick={() => navigateToView('overview')}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: academicColors.primary,
+                        cursor: 'pointer',
+                        padding: '0.25rem 0.5rem',
+                        borderRadius: '4px',
+                        transition: 'all 0.2s',
+                        fontSize: '0.9rem'
+                      }}
+                      onMouseOver={(e) => e.target.style.background = '#F0F4F8'}
+                      onMouseOut={(e) => e.target.style.background = 'none'}
+                    >
+                      {t('concordance.panels.overview.title')}
+                    </button>
+                    <span style={{ color: '#CBD5E1' }}>›</span>
+		    <span style={{ fontWeight: '500', color: '#2D3748' }}>
+		      {t(`concordance.panels.${activeView}.title`)}
+		    </span>
+                  </>
+                )}
+                {activeView === 'overview' && (
+                  <span style={{ fontWeight: '500', color: '#2D3748' }}>
                     {t('concordance.panels.overview.title')}
-                  </button>
-                  <span style={{ color: '#CBD5E1' }}>›</span>
-		  <span style={{ fontWeight: '500', color: '#2D3748' }}>
-		    {t(`concordance.panels.${activeView}.title`)}
-		  </span>
-                </>
-              )}
-              {activeView === 'overview' && (
-                <span style={{ fontWeight: '500', color: '#2D3748' }}>
-                  {t('concordance.panels.overview.title')}
-                </span>
-              )}
-            </nav>
+                  </span>
+                )}
+              </nav>
+            </div>
           </div>
 
           {/* MODULE 2 : Actions (filtres + langue) */}
