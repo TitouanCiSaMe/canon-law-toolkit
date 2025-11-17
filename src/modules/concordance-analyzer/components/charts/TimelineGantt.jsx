@@ -153,10 +153,10 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
       
       if (!uniqueWorks.has(workKey)) {
         uniqueWorks.set(workKey, {
-          title: item.title || t('timeline.defaults.unknownTitle'),
-          author: item.author || t('timeline.defaults.anonymous'),
-          place: item.place || t('timeline.defaults.unknownPlace'),
-          domain: item.domain || t('timeline.defaults.unspecified'),
+          title: item.title || t('concordance.timeline.defaults.unknownTitle'),
+          author: item.author || t('concordance.timeline.defaults.anonymous'),
+          place: item.place || t('concordance.timeline.defaults.unknownPlace'),
+          domain: item.domain || t('concordance.timeline.defaults.unspecified'),
           period: item.period,
           concordanceCount: 1
         });
@@ -338,7 +338,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
           color: '#1e293b',
           margin: 0
         }}>
-          {t('timeline.title')} ({parsedWorks.length})
+          {t('concordance.timeline.title')} ({parsedWorks.length})
         </h5>
 
         {/* Légende */}
@@ -355,7 +355,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
               background: '#3b82f6',
               borderRadius: '2px'
             }} />
-            <span>{t('timeline.legend.timeRange')}</span>
+            <span>{t('concordance.timeline.legend.timeRange')}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <div style={{
@@ -364,7 +364,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
               background: '#3b82f6',
               transform: 'rotate(45deg)'
             }} />
-            <span>{t('timeline.legend.preciseDate')}</span>
+            <span>{t('concordance.timeline.legend.preciseDate')}</span>
           </div>
         </div>
       </div>
@@ -517,11 +517,11 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
             {hoveredWork.title}
           </div>
           <div style={{ opacity: 0.9, lineHeight: '1.4' }}>
-            <div><strong>{t('timeline.tooltip.author')}</strong> {hoveredWork.author}</div>
-            <div><strong>{t('timeline.tooltip.period')}</strong> {hoveredWork.displayText}</div>
-            <div><strong>{t('timeline.tooltip.place')}</strong> {hoveredWork.place}</div>
-            <div><strong>{t('timeline.tooltip.type')}</strong> {hoveredWork.domain}</div>
-            <div><strong>{t('timeline.tooltip.concordances')}</strong> {hoveredWork.concordanceCount}</div>
+            <div><strong>{t('concordance.timeline.tooltip.author')}</strong> {hoveredWork.author}</div>
+            <div><strong>{t('concordance.timeline.tooltip.period')}</strong> {hoveredWork.displayText}</div>
+            <div><strong>{t('concordance.timeline.tooltip.place')}</strong> {hoveredWork.place}</div>
+            <div><strong>{t('concordance.timeline.tooltip.type')}</strong> {hoveredWork.domain}</div>
+            <div><strong>{t('concordance.timeline.tooltip.concordances')}</strong> {hoveredWork.concordanceCount}</div>
           </div>
         </div>
       )}
