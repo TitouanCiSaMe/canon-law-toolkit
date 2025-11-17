@@ -213,6 +213,11 @@
         "subtitle": "Corpus B (comparaison)",
         "loaded": "Corpus B chargé"
       },
+      "comparison": {
+        "title": "📤 Upload de 2 corpus pour comparaison",
+        "description": "Uploadez 2 fichiers XML NoSketch pour comparer leurs caractéristiques",
+        "uploadBothToActivate": "Uploadez les 2 fichiers pour activer la comparaison"
+      },
       "errors": {
         "noFileSelected": "Aucun fichier sélectionné",
         "loadMetadataFirst": "Veuillez d'abord charger le fichier de métadonnées",
@@ -325,7 +330,9 @@
         "richest": "Corpus le plus riche",
         "mostDiverse": "Plus diversifié",
         "highestDiversity": "Moyenne de diversité la plus élevée",
-        "datasetsCompared": "Datasets comparés"
+        "datasetsCompared": "Datasets comparés",
+        "fullCorpus": "Corpus complet",
+        "filteredCorpus": "Corpus filtré"
       },
       "corpusComparison": {
         "sectionTitle": "Comparaison de 2 Corpus",

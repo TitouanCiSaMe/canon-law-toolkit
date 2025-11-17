@@ -257,9 +257,9 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
         borderRadius: '8px'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📅</div>
-        <h3>{t('timeline.noData')}</h3>
+        <h3>{t('concordance.timeline.noData')}</h3>
         <p style={{ fontSize: '0.9rem' }}>
-          {t('timeline.dateFormat')}
+          {t('concordance.timeline.dateFormat')}
         </p>
       </div>
     );

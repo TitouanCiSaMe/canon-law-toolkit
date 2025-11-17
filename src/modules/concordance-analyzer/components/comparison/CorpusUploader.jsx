@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 /**
  * CorpusUploader - Interface d'upload pour 2 corpus distincts
@@ -11,6 +12,7 @@ import PropTypes from 'prop-types';
  * - Bouton "Comparer" actif quand 2 fichiers chargés
  */
 const CorpusUploader = ({ onCompare }) => {
+  const { t } = useTranslation();
   const [corpusA, setCorpusA] = useState(null);
   const [corpusB, setCorpusB] = useState(null);
   const [dragOverA, setDragOverA] = useState(false);
@@ -18,7 +20,7 @@ const CorpusUploader = ({ onCompare }) => {
 
   // Validation basique du format XML
   const validateFile = (file) => {
-    if (!file) return { valid: false, error: 'Aucun fichier' };
+    if (!file) return { valid: false, error: t('concordance.upload.errors.noFileSelected') };
     
     // Vérifier extension
     const extension = file.name.split('.').pop().toLowerCase();
@@ -148,13 +150,13 @@ const CorpusUploader = ({ onCompare }) => {
           color: '#1e293b',
           marginBottom: '0.5rem'
         }}>
-          📤 Upload de 2 corpus pour comparaison
+          {t('concordance.upload.comparison.title')}
         </h2>
         <p style={{
           fontSize: '0.95rem',
           color: '#64748b'
         }}>
-          Uploadez 2 fichiers XML NoSketch pour comparer leurs caractéristiques
+          {t('concordance.upload.comparison.description')}
         </p>
       </div>
 
@@ -346,7 +348,7 @@ const CorpusUploader = ({ onCompare }) => {
             fontSize: '0.85rem',
             color: '#94a3b8'
           }}>
-            Uploadez les 2 fichiers pour activer la comparaison
+            {t('concordance.upload.comparison.uploadBothToActivate')}
           </div>
         )}
       </div>

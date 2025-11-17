@@ -1,13 +1,15 @@
 /**
  * @fileoverview Utilitaires d'export de données
  * @module utils/ExportUtils
- * 
+ *
  * @description
  * Fournit les fonctions pour exporter les données de concordances :
  * - Export CSV des concordances complètes
  * - Export JSON des analytics
  * - Téléchargement côté client via Blob API
  */
+
+import i18n from '../../../shared/i18n';
 
 /**
  * Déclenche le téléchargement d'un fichier côté client
@@ -98,7 +100,7 @@ export const downloadFile = (content, filename, mimeType) => {
  */
 export const exportConcordancesCSV = (filteredData) => {
   if (!filteredData || filteredData.length === 0) {
-    alert('Aucune donnée à exporter');
+    alert(i18n.t('concordance.export.noDataToExport'));
     return;
   }
 
@@ -202,7 +204,7 @@ export const exportConcordancesCSV = (filteredData) => {
  */
 export const exportAnalyticsJSON = (analytics) => {
   if (!analytics || !analytics.total) {
-    alert('Aucune statistique à exporter');
+    alert(i18n.t('concordance.export.noAnalyticsToExport'));
     return;
   }
 
