@@ -181,7 +181,8 @@
         "domains": "Aucune donnée de domaine disponible",
         "temporal": "Aucune donnée temporelle disponible",
         "places": "Aucune donnée de lieu disponible",
-        "authors": "Aucune donnée d'auteur disponible"
+        "authors": "Aucune donnée d'auteur disponible",
+        "terminology": "Aucune donnée terminologique disponible"
       }
     },
     "filters": {
@@ -372,6 +373,10 @@
             "distributionBy": "Distribution par",
             "period": "Période",
             "numberOfWorks": "Nombre d'œuvres",
+            "numberOfConcordances": "Nombre de concordances",
+            "works": "œuvres",
+            "concordances": "concordances",
+            "aggregatedChart": "Graphique agrégé",
             "granularity": {
               "years": "Années",
               "decades": "Décennies",
@@ -388,7 +393,8 @@
           "terminology": {
             "title": "Comparaison terminologique",
             "corpusALabel": "Termes Corpus A",
-            "corpusBLabel": "Termes Corpus B"
+            "corpusBLabel": "Termes Corpus B",
+            "occurrences": "occurrences"
           },
           "legend": {
             "corpusA": "Corpus A",

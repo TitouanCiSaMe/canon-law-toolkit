@@ -181,7 +181,8 @@
         "domains": "No domain data available",
         "temporal": "No temporal data available",
         "places": "No place data available",
-        "authors": "No author data available"
+        "authors": "No author data available",
+        "terminology": "No terminological data available"
       }
     },
     "filters": {
@@ -372,6 +373,10 @@
             "distributionBy": "Distribution by",
             "period": "Period",
             "numberOfWorks": "Number of works",
+            "numberOfConcordances": "Number of concordances",
+            "works": "works",
+            "concordances": "concordances",
+            "aggregatedChart": "Aggregated chart",
             "granularity": {
               "years": "Years",
               "decades": "Decades",
@@ -388,7 +393,8 @@
           "terminology": {
             "title": "Terminological comparison",
             "corpusALabel": "Corpus A terms",
-            "corpusBLabel": "Corpus B terms"
+            "corpusBLabel": "Corpus B terms",
+            "occurrences": "occurrences"
           },
           "legend": {
             "corpusA": "Corpus A",
