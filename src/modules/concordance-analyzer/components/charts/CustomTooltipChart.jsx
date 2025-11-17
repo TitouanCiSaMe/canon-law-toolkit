@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Composant CustomTooltip - Tooltip enrichi pour graphiques Recharts
@@ -59,15 +60,17 @@ import React from 'react';
  *   />
  * </LineChart>
  */
-const CustomTooltip = ({ 
-  active, 
-  payload, 
+const CustomTooltip = ({
+  active,
+  payload,
   label,
   allData = [],
   valueLabel = 'Valeur',
   showPercentage = true,
   showRank = true
 }) => {
+  const { t, i18n } = useTranslation();
+
   // ============================================================================
   // VALIDATION : Tooltip actif et données présentes
   // ============================================================================
@@ -146,16 +149,35 @@ const CustomTooltip = ({
   const totalItems = allData.length;
 
   // ============================================================================
-  // FORMATAGE DU RANG EN FRANÇAIS
+  // FORMATAGE DU RANG AVEC I18N
   // ============================================================================
-  
+
   /**
-   * Convertit un nombre en forme ordinale française
-   * 1 → "1er", 2 → "2ème", 3 → "3ème", etc.
+   * Convertit un nombre en forme ordinale localisée
+   * FR: 1 → "1er", 2 → "2ème", 3 → "3ème", etc.
+   * EN: 1 → "1st", 2 → "2nd", 3 → "3rd", etc.
    */
   const formatRank = (rankNumber) => {
     if (rankNumber === null) return '';
-    return rankNumber === 1 ? `${rankNumber}er` : `${rankNumber}ème`;
+
+    if (i18n.language === 'fr') {
+      return rankNumber === 1 ? `${rankNumber}er` : `${rankNumber}ème`;
+    } else {
+      // English ordinals
+      const lastDigit = rankNumber % 10;
+      const lastTwoDigits = rankNumber % 100;
+
+      // Special cases: 11th, 12th, 13th
+      if (lastTwoDigits >= 11 && lastTwoDigits <= 13) {
+        return `${rankNumber}th`;
+      }
+
+      // Regular cases
+      if (lastDigit === 1) return `${rankNumber}st`;
+      if (lastDigit === 2) return `${rankNumber}nd`;
+      if (lastDigit === 3) return `${rankNumber}rd`;
+      return `${rankNumber}th`;
+    }
   };
 
   // ============================================================================
@@ -229,7 +251,7 @@ const CustomTooltip = ({
             color: '#64748b',
             fontWeight: '500'
           }}>
-            Share of total :
+            {t('concordance.charts.tooltip.shareOfTotal')} :
           </span>
           <span style={{
             fontSize: '0.9rem',
@@ -259,7 +281,7 @@ const CustomTooltip = ({
             color: '#64748b',
             fontStyle: 'italic'
           }}>
-            Ranking :
+            {t('concordance.charts.tooltip.ranking')} :
           </span>
           <span style={{
             fontSize: '0.85rem',
@@ -267,7 +289,7 @@ const CustomTooltip = ({
             color: '#553C9A',                        // Violet académique
             marginLeft: '0.5rem'
           }}>
-            {formatRank(rank)} sur {totalItems}
+            {t('concordance.charts.tooltip.rankOf', { rank: formatRank(rank), total: totalItems })}
           </span>
         </div>
       )}

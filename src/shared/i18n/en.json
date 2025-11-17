@@ -183,6 +183,11 @@
         "places": "No place data available",
         "authors": "No author data available",
         "terminology": "No terminological data available"
+      },
+      "tooltip": {
+        "shareOfTotal": "Share of total",
+        "ranking": "Ranking",
+        "rankOf": "{{rank}} of {{total}}"
       }
     },
     "filters": {

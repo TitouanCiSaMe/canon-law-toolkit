@@ -183,6 +183,11 @@
         "places": "Aucune donnée de lieu disponible",
         "authors": "Aucune donnée d'auteur disponible",
         "terminology": "Aucune donnée terminologique disponible"
+      },
+      "tooltip": {
+        "shareOfTotal": "Part du total",
+        "ranking": "Classement",
+        "rankOf": "{{rank}} sur {{total}}"
       }
     },
     "filters": {
