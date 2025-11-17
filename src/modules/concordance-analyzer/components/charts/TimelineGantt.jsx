@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { CHART_COLORS } from '../../config/panelConfig';
 
 // Constante globale pour les marges (ne change jamais)
 const MARGINS = { top: 40, right: 40, bottom: 60, left: 250 };
@@ -230,18 +231,33 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
   }, [timeScale, chartWidth]);
 
   // ============================================================================
-  // COULEURS PAR DOMAINE
+  // COULEURS PAR DOMAINE (DYNAMIQUES)
   // ============================================================================
-  
-  const domainColors = {
-    'Droit canonique': '#3b82f6',
-    'Droit civil': '#8b5cf6',
-    'Théologie': '#10b981',
-    'Droit pénal': '#f59e0b',
-    'Non spécifié': '#64748b'
-  };
 
-  const getColor = (domain) => domainColors[domain] || domainColors['Non spécifié'];
+  /**
+   * Génère dynamiquement les couleurs pour tous les domaines présents dans les données
+   * Utilise CHART_COLORS du thème pour cohérence visuelle
+   */
+  const domainColors = useMemo(() => {
+    // Extraire tous les domaines uniques des données parsées
+    const uniqueDomains = [...new Set(parsedWorks.map(work => work.domain || 'Non spécifié'))];
+
+    // Créer un objet couleur pour chaque domaine
+    const colors = {};
+    uniqueDomains.forEach((domain, index) => {
+      // Utiliser la palette de couleurs en rotation si plus de domaines que de couleurs
+      colors[domain] = CHART_COLORS[index % CHART_COLORS.length];
+    });
+
+    // S'assurer qu'il y a toujours une couleur par défaut pour 'Non spécifié'
+    if (!colors['Non spécifié']) {
+      colors['Non spécifié'] = '#64748b';
+    }
+
+    return colors;
+  }, [parsedWorks]);
+
+  const getColor = (domain) => domainColors[domain] || domainColors['Non spécifié'] || '#64748b';
 
   // ============================================================================
   // RENDER
