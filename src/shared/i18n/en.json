@@ -8,9 +8,49 @@
     "queryGenerator": "Query Generator",
     "concordanceAnalyzer": "Concordance Analyzer"
   },
+  "sidebar": {
+    "nav": {
+      "modules": "Modules",
+      "views": "Views"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 CISAME<br/>Canon Law Toolkit"
+  },
   "home": {
     "welcome": "Welcome to Canon Law Toolkit",
     "description": "Platform of tools for medieval canon law analysis"
+  },
+  "common": {
+    "messages": {
+      "notImplemented": "This view is currently being implemented.",
+      "phase2Development": "To be developed in Phase 2"
+    },
+    "error": "Error:",
+    "anonymous": "Anonymous"
+  },
+  "metadata": {
+    "unknownDomain": "Unknown domain",
+    "unknownPlace": "Unknown place"
+  },
+  "periods": {
+    "century11": "11th century",
+    "century12": "12th century",
+    "century13": "13th century",
+    "unknown": "Unknown period"
+  },
+  "pagination": {
+    "all": "All",
+    "display": "Display:",
+    "showAll": "Show all",
+    "firstPage": "First page",
+    "first": "⏮ First",
+    "previousPage": "Previous page",
+    "previous": "← Prev",
+    "nextPage": "Next page",
+    "next": "Next →",
+    "lastPage": "Last page",
+    "last": "Last ⏭"
   },
   "concordance": {
     "app": {
@@ -166,6 +206,12 @@
         "subtitle": "With selected metadata",
         "statsLoaded": "concordances, {{rate}}% matched"
       },
+      "corpusMain": "Main corpus or Corpus A",
+      "corpusB": {
+        "title": "📄 3. NoSketch Export B",
+        "subtitle": "Corpus B (comparison)",
+        "loaded": "Corpus B loaded"
+      },
       "errors": {
         "noFileSelected": "No file selected",
         "loadMetadataFirst": "Please load the metadata file first",
@@ -186,7 +232,20 @@
     "export": {
       "concordancesCSV": "Export concordances CSV",
       "analyticsJSON": "Export analytics JSON",
-      "chartPNG": "Export chart PNG"
+      "chartPNG": "Export chart PNG",
+      "noDataToExport": "No data to export",
+      "noAnalyticsToExport": "No analytics to export",
+      "scrollableError": "Error during scrollable PNG export",
+      "chartError": "Error during chart export"
+    },
+    "messages": {
+      "selectToCompare": "Select items to compare",
+      "selectAuthorsForComparison": "Choose at least 2 authors from the list above.",
+      "periodsArePredefined": "Periods are predefined.",
+      "applyFiltersToCompare": "Apply filters to compare with the full corpus.",
+      "importFilesForComparison": "Import your files first to use multi-criteria comparison.",
+      "noWordsToDisplay": "No words to display",
+      "importForWordCloud": "Import your concordance files first. KWIC terms will appear here."
     },
     "data": {
       "reference": "Reference",
@@ -253,6 +312,19 @@
         "sectionTitle": "Terminological analysis",
         "noData": "No terminological data available",
         "importFirst": "Please import your files first to see lexical analysis."
+      },
+      "comparison": {
+        "modeLabel": "Comparison mode:",
+        "corpusMode": "📚 Full Corpus vs Filtered",
+        "authorsMode": "✍️ By authors",
+        "periodsMode": "📅 By periods",
+        "selectAuthors": "Select 2-3 authors to compare:",
+        "authorsSelected": "✓ {{count}} author(s) selected",
+        "summary": "📈 Comparison summary",
+        "richest": "Richest corpus",
+        "mostDiverse": "Most diverse",
+        "highestDiversity": "Highest diversity average",
+        "datasetsCompared": "Datasets compared"
       },
       "corpusComparison": {
         "sectionTitle": "Comparison of 2 Corpora",
