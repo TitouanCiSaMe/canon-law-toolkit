@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { useResponsiveValue, useIsMobile } from '../../../../shared/hooks';
 import CustomTooltipChart from './CustomTooltipChart';
 
 /**
@@ -73,11 +74,55 @@ const DomainChart = ({
 }) => {
   
   // ============================================================================
-  // HOOK DE TRADUCTION
+  // HOOKS
   // ============================================================================
-  
+
   const { t } = useTranslation();
-  
+  const isMobile = useIsMobile();
+
+  // Hauteur responsive du graphique
+  const responsiveHeight = useResponsiveValue({
+    xs: height * 0.6,   // Mobile: 60% de la hauteur par défaut
+    sm: height * 0.7,   // Phone landscape: 70%
+    md: height * 0.85,  // Tablet: 85%
+    lg: height          // Desktop: 100% (hauteur complète)
+  });
+
+  // Taille de police responsive
+  const axisFontSize = useResponsiveValue({
+    xs: '0.7rem',    // Mobile
+    md: '0.8rem',    // Tablet
+    lg: '0.85rem'    // Desktop
+  });
+
+  const labelFontSize = useResponsiveValue({
+    xs: '0.75rem',   // Mobile
+    md: '0.85rem',   // Tablet
+    lg: '0.9rem'     // Desktop
+  });
+
+  // Angle de rotation des labels X (pour éviter le chevauchement sur mobile)
+  const xAxisAngle = useResponsiveValue({
+    xs: -45,    // Mobile: labels inclinés
+    md: -30,    // Tablet: moins inclinés
+    lg: -45     // Desktop: labels inclinés
+  });
+
+  // Rayon du PieChart responsive
+  const pieOuterRadius = useResponsiveValue({
+    xs: 80,     // Mobile: rayon plus petit
+    sm: 100,    // Phone landscape
+    md: 110,    // Tablet
+    lg: 120     // Desktop: rayon complet
+  });
+
+  // Taille de police pour les labels du PieChart
+  const pieLabelFontSize = useResponsiveValue({
+    xs: '0.65rem',  // Mobile: très petit
+    md: '0.75rem',  // Tablet
+    lg: '0.85rem'   // Desktop
+  });
+
   // ============================================================================
   // VALIDATION DES DONNÉES
   // ============================================================================
@@ -130,35 +175,35 @@ const DomainChart = ({
         {/* ====================================================================
             ResponsiveContainer : Adapte le graphique à son conteneur
             ==================================================================== */}
-        <ResponsiveContainer width="100%" height={height}>
-          
+        <ResponsiveContainer width="100%" height={responsiveHeight}>
+
           {/* ==================================================================
               BarChart : Graphique en barres Recharts
               ================================================================== */}
           <BarChart data={data}>
-            
+
             {/* GRILLE DE FOND */}
-            <CartesianGrid 
+            <CartesianGrid
               strokeDasharray="3 3"    // Lignes pointillées
               stroke="#e2e8f0"          // Gris clair
             />
-            
+
             {/* AXE HORIZONTAL (catégories) */}
-            <XAxis 
+            <XAxis
               dataKey="name"            // Clé des données pour les labels
-              angle={-45}               // Rotation pour éviter chevauchement
+              angle={xAxisAngle}        // Rotation responsive
               textAnchor="end"          // Ancrage du texte
               height={100}              // Hauteur réservée (pour labels longs)
-              style={{ 
-                fontSize: '0.85rem'     // Taille de police réduite
+              style={{
+                fontSize: axisFontSize  // Taille responsive
               }}
             />
-            
+
             {/* AXE VERTICAL (valeurs) */}
-            <YAxis 
-              style={{ 
-                fontSize: '0.85rem'     // Cohérence avec axe X
-              }} 
+            <YAxis
+              style={{
+                fontSize: axisFontSize  // Taille responsive
+              }}
             />
             
             {/* TOOLTIP AU SURVOL */}
@@ -196,7 +241,7 @@ const DomainChart = ({
         {/* ====================================================================
             ResponsiveContainer : Adapte le graphique à son conteneur
             ==================================================================== */}
-        <ResponsiveContainer width="100%" height={height}>
+        <ResponsiveContainer width="100%" height={responsiveHeight}>
           
           {/* ==================================================================
               PieChart : Graphique en camembert Recharts
@@ -212,12 +257,15 @@ const DomainChart = ({
               nameKey="name"            // Clé pour les noms (labels)
               cx="50%"                  // Centre X (milieu horizontal)
               cy="50%"                  // Centre Y (milieu vertical)
-              outerRadius={120}         // Rayon externe du camembert
-              
-              // Labels personnalisés : affiche "Nom: XX%"
-              label={({ name, percent }) => 
+              outerRadius={pieOuterRadius}  // Rayon externe responsive du camembert
+
+              // Labels personnalisés responsive : affiche "Nom: XX%"
+              label={({ name, percent }) =>
                 `${name}: ${(percent * 100).toFixed(0)}%`  // Format : "Droit pénal: 45%"
               }
+              style={{
+                fontSize: pieLabelFontSize  // Taille de police responsive
+              }}
             >
               {/* ============================================================
                   Génération des cellules colorées
