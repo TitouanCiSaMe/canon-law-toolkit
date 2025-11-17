@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import CustomTooltipChart from './CustomTooltipChart';
 
@@ -57,7 +58,7 @@ import CustomTooltipChart from './CustomTooltipChart';
  * <AuthorChart data={[]} />
  * // Affiche : Message "Aucune donnée d'auteur disponible"
  */
-const AuthorChart = ({ 
+const AuthorChart = ({
   data,                    // Données à afficher
   type = 'bar',           // Type par défaut : barres
   height = 400,           // Hauteur par défaut : 400px
@@ -73,7 +74,8 @@ const AuthorChart = ({
     '#8b5cf6'   // Violet
   ]
 }) => {
-  
+  const { t } = useTranslation();
+
   // ============================================================================
   // VALIDATION DES DONNÉES
   // ============================================================================
@@ -96,9 +98,9 @@ const AuthorChart = ({
         }}>
           👤
         </div>
-        
+
         {/* Message explicite */}
-        <h3>Aucune donnée d'auteur disponible</h3>
+        <h3>{t('concordance.charts.noData.authors')}</h3>
       </div>
     );
   }

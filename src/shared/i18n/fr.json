@@ -180,7 +180,8 @@
       "noData": {
         "domains": "Aucune donnée de domaine disponible",
         "temporal": "Aucune donnée temporelle disponible",
-        "places": "Aucune donnée de lieu disponible"
+        "places": "Aucune donnée de lieu disponible",
+        "authors": "Aucune donnée d'auteur disponible"
       }
     },
     "filters": {

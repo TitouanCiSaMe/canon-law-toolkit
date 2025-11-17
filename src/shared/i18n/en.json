@@ -180,7 +180,8 @@
       "noData": {
         "domains": "No domain data available",
         "temporal": "No temporal data available",
-        "places": "No place data available"
+        "places": "No place data available",
+        "authors": "No author data available"
       }
     },
     "filters": {

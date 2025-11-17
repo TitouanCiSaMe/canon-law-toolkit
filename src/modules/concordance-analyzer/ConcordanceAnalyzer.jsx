@@ -515,7 +515,7 @@ const ConcordanceAnalyzerPanels = () => {
                 <h3 style={{ marginBottom: '1rem', fontSize: '1.5rem' }}>
                   Vue : {panelConfig[activeView]?.title}
                 </h3>
-                <p>Cette vue est en cours d'implémentation.</p>
+                <p>{t('common.messages.notImplemented')}</p>
               </div>
             )}
           </div>

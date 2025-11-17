@@ -1,6 +1,7 @@
 // src/components/charts/WordCloud.jsx
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Composant WordCloud - Nuage de mots simple et efficace
@@ -26,6 +27,8 @@ const WordCloud = ({
   onWordClick,
   height = '400px',
 }) => {
+  const { t } = useTranslation();
+
   // Ne pas rendre si pas de données
   if (!words || words.length === 0) {
     return (
@@ -54,14 +57,13 @@ const WordCloud = ({
           color: '#475569',
           marginBottom: '0.5rem',
         }}>
-          Aucun mot à afficher
+          {t('concordance.messages.noWordsToDisplay')}
         </h3>
         <p style={{
           color: '#64748b',
           fontSize: '0.9rem',
         }}>
-          Importez d'abord vos fichiers de concordances.<br/>
-          Les termes KWIC apparaîtront ici.
+          {t('concordance.messages.importForWordCloud')}
         </p>
       </div>
     );
