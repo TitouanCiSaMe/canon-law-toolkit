@@ -110,7 +110,8 @@
       "export_concordances": "Exporter les concordances en CSV",
       "export_analytics": "Exporter l'analyse en JSON",
       "export_chart": "Exporter le graphique en PNG",
-      "filters": "Filtres"
+      "filters": "Filtres",
+      "back": "Retour"
     },
     "stats": {
       "total": "Total",
@@ -247,6 +248,7 @@
       "concordancesCSV": "Export concordances CSV",
       "analyticsJSON": "Export analytics JSON",
       "chartPNG": "Export graphique PNG",
+      "viewCSV": "Export vue {{view}} CSV",
       "noDataToExport": "Aucune donnée à exporter",
       "noAnalyticsToExport": "Aucune statistique à exporter",
       "scrollableError": "Erreur lors de l'export PNG scrollable",
@@ -259,7 +261,8 @@
       "applyFiltersToCompare": "Appliquez des filtres pour comparer avec le corpus complet.",
       "importFilesForComparison": "Importez d'abord vos fichiers pour utiliser la comparaison multi-critères.",
       "noWordsToDisplay": "Aucun mot à afficher",
-      "importForWordCloud": "Importez d'abord vos fichiers de concordances. Les termes KWIC apparaîtront ici."
+      "importForWordCloud": "Importez d'abord vos fichiers de concordances. Les termes KWIC apparaîtront ici.",
+      "loading": "Chargement en cours..."
     },
     "data": {
       "reference": "Référence",
@@ -360,6 +363,7 @@
       "corpusComparison": {
         "sectionTitle": "Comparaison de 2 Corpus",
         "noData": "Veuillez charger 2 fichiers de concordances pour activer la comparaison",
+        "uploadInstructions": "Retournez à la page d'import pour charger vos deux corpus",
         "corpusA": "Corpus A",
         "corpusB": "Corpus B",
         "common": "Commun",
