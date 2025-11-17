@@ -64,12 +64,12 @@
       }
     },
     "buttons": {
-      "export_csv": "Export CSV",
-      "export_json": "Export JSON",
-      "export_png": "Export PNG",
-      "export_concordances": "Export concordances CSV",
-      "export_analytics": "Export analytics JSON",
-      "export_chart": "Export chart PNG",
+      "export_csv": "Export as CSV",
+      "export_json": "Export as JSON",
+      "export_png": "Export as PNG",
+      "export_concordances": "Export concordances as CSV",
+      "export_analytics": "Export analytics as JSON",
+      "export_chart": "Export chart as PNG",
       "filters": "Filters"
     },
     "stats": {
@@ -165,6 +165,22 @@
         "description": "NoSketch Engine CSV export",
         "subtitle": "With selected metadata",
         "statsLoaded": "concordances, {{rate}}% matched"
+      },
+      "errors": {
+        "noFileSelected": "No file selected",
+        "loadMetadataFirst": "Please load the metadata file first",
+        "parsingMetadata": "Metadata parsing error: {{message}}",
+        "parsingConcordancesA": "Concordances A parsing error: {{message}}",
+        "parsingConcordancesB": "Concordances B parsing error: {{message}}",
+        "fileRead": "File read error: {{message}}"
+      },
+      "processing": {
+        "loadingMetadata": "Loading metadata...",
+        "metadataLoaded": "{{count}} metadata entries loaded",
+        "analyzingConcordancesA": "Analyzing concordances (Corpus A)...",
+        "concordancesAnalyzedA": "{{count}} concordances analyzed (Corpus A)",
+        "analyzingConcordancesB": "Analyzing concordances (Corpus B)...",
+        "concordancesAnalyzedB": "{{count}} concordances analyzed (Corpus B)"
       }
     },
     "export": {

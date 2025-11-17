@@ -19,8 +19,8 @@ import { visualTheme, createGradient } from '@shared/theme/globalTheme';
 export const panelConfig = {
   overview: {
     id: 'overview',
-    title: 'Vue d\'ensemble',
-    subtitle: 'Analyse globale',
+    title: 'concordance.panels.overview.title',
+    subtitle: 'concordance.panels.overview.subtitle',
     color: '#1A365D',
     gradient: createGradient('#1A365D', '#2C5282'),
     icon: '📊',
@@ -92,8 +92,8 @@ export const panelConfig = {
   },
   concordances: {
     id: 'concordances',
-    title: 'Import',
-    subtitle: 'Chargement des données',
+    title: 'concordance.panels.concordances.title',
+    subtitle: 'concordance.panels.concordances.subtitle',
     color: '#7C2D12',
     gradient: createGradient('#7C2D12', '#92400E'),
     icon: '📁',
