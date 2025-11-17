@@ -40,7 +40,7 @@ const ComparisonTermChart = ({
         color: '#64748b'
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📖</div>
-        <h3>{t('concordance.messages.noData')}</h3>
+        <h3>{t('concordance.charts.noData.terminology')}</h3>
       </div>
     );
   }
