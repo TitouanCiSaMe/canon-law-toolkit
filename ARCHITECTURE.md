@@ -1,574 +1,435 @@
-# Architecture technique - CALKIT Concordance Analyzer
+# Architecture - Canon Law Toolkit
 
-## 📐 Vue d'ensemble
+**Version** : 1.2.0
+**Date** : Novembre 2025
+**Mainteneur** : Titouan (CiSaMe - Circulation des Savoirs médiévaux)
 
-Le module Concordance Analyzer est une application React moderne construite selon une architecture modulaire et componentisée. L'application traite des fichiers CSV de concordances et de métadonnées pour produire des analyses lexicométriques enrichies.
+---
 
-## 🏗️ Architecture globale
+## 📐 Vue d'Ensemble
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                  Application Layout                      │
-│  ┌──────────┐  ┌──────────────────────────────────────┐│
-│  │          │  │         Page Content                  ││
-│  │ Sidebar  │  │  ┌────────────────────────────────┐  ││
-│  │          │  │  │  Header (titre + breadcrumb)   │  ││
-│  │ - Logo   │  │  └────────────────────────────────┘  ││
-│  │ - Nav    │  │  ┌────────────────────────────────┐  ││
-│  │ - Vues   │  │  │                                │  ││
-│  │ - Filtres│  │  │      Vue Content               │  ││
-│  │ - Counter│  │  │   (Overview grid ou            │  ││
-│  │ - i18n   │  │  │    detailed views)             │  ││
-│  │          │  │  │                                │  ││
-│  │ (fixed)  │  │  │                                │  ││
-│  └──────────┘  │  └────────────────────────────────┘  ││
-│                │  (scrollable)                         ││
-│                └──────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                    State Management                      │
-│  ┌────────────┐  ┌────────────┐  ┌──────────────────┐ │
-│  │ File State │  │ Data State │  │ Filter State     │ │
-│  └────────────┘  └────────────┘  └──────────────────┘ │
-└─────────────────────────────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                    Custom Hooks                          │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
-│  │useFileUpload │  │ useAnalytics │  │useFilters... │ │
-│  └──────────────┘  └──────────────┘  └──────────────┘ │
-└─────────────────────────────────────────────────────────┘
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                   Utils & Parsers                        │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
-│  │concordParser │  │metadataParser│  │ exportUtils  │ │
-│  └──────────────┘  └──────────────┘  └──────────────┘ │
-└─────────────────────────────────────────────────────────┘
-```
+CALKIT est une application React modulaire pour l'analyse de concordances de textes canoniques médiévaux. Architecture basée sur des modules autonomes avec système i18n complet.
 
-## 📂 Structure des dossiers
+## 🏗️ Stack Technique
+
+| Technologie | Version | Usage |
+|------------|---------|-------|
+| **React** | 19.0.0 | Framework UI |
+| **Vite** | 6.x | Build tool & dev server |
+| **React Router** | 7.x | Routing SPA |
+| **Recharts** | 2.x | Visualisations (bar, line, pie) |
+| **D3.js** | 7.x | Timeline Gantt |
+| **react-i18next** | 15.x | Internationalisation FR/EN |
+
+## 📁 Structure des Dossiers
 
 ```
-src/modules/concordance-analyzer/
-│
-├── ConcordanceAnalyzer.jsx          # Composant racine
-│
-├── components/
-│   ├── charts/                      # Visualisations
-│   │   ├── AuthorChart.jsx         # Bar chart auteurs
-│   │   ├── DomainChart.jsx         # Bar chart domaines
-│   │   ├── PlaceChart.jsx          # Bar chart lieux
-│   │   ├── TemporalChart.jsx       # Évolution temporelle
-│   │   ├── TimelineGantt.jsx       # Timeline interactive
-│   │   ├── WordCloud.jsx           # Nuage de mots
-│   │   ├── RadarChart.jsx          # Chart radar (unused)
-│   │   └── CustomTooltipChart.jsx  # Tooltips personnalisés
+canon-law-toolkit/
+├── src/
+│   ├── modules/
+│   │   └── concordance-analyzer/           # Module principal
+│   │       ├── components/
+│   │       │   ├── charts/                 # Graphiques réutilisables
+│   │       │   ├── comparison/             # Comparaison de corpus
+│   │       │   ├── ui/                     # Composants UI (pagination, upload)
+│   │       │   └── views/                  # Vues principales (9 vues)
+│   │       ├── hooks/
+│   │       │   ├── useConcordanceAnalytics.js    # Analytics des concordances
+│   │       │   ├── useConcordanceData.js         # Gestion données + filtres
+│   │       │   └── useCorpusComparison.js        # Comparaison de 2 corpus
+│   │       ├── utils/
+│   │       │   ├── parseMetadata.js        # Parser CSV métadonnées
+│   │       │   ├── parseNoSketchCSV.js     # Parser export NoSketch
+│   │       │   ├── enrichConcordances.js   # Enrichissement métadonnées
+│   │       │   └── ExportUtils.js          # Exports CSV/JSON/PNG
+│   │       └── config/
+│   │           └── constants.js            # Constantes (domaines, périodes)
 │   │
-│   ├── comparison/                  # Comparaison de corpus
-│   │   ├── CorpusUploader.jsx      # Upload 2e corpus
-│   │   ├── ComparisonAuthorChart.jsx
-│   │   ├── ComparisonDomainChart.jsx
-│   │   ├── ComparisonTemporalChart.jsx
-│   │   └── ComparisonTermChart.jsx
+│   ├── shared/
+│   │   ├── components/
+│   │   │   ├── Sidebar.jsx                 # Navigation verticale
+│   │   │   ├── GlobalLayout.jsx            # Layout avec sidebar
+│   │   │   └── Footer.jsx                  # Footer avec copyright
+│   │   ├── i18n/
+│   │   │   ├── fr.json                     # Traductions françaises
+│   │   │   ├── en.json                     # Traductions anglaises
+│   │   │   └── index.js                    # Configuration i18next
+│   │   └── theme/
+│   │       └── globalTheme.js              # Couleurs et styles
 │   │
-│   ├── ui/                          # Composants UI réutilisables
-│   │   ├── NavigationPanel.jsx     # Panels cliquables
-│   │   ├── FilterMenu.jsx          # Menu de filtres
-│   │   ├── ExportButtons.jsx       # Boutons d'export
-│   │   ├── UploadInterface.jsx     # Zone de drop files
-│   │   ├── Pagination.jsx          # Pagination tables
-│   │   ├── PanelHeader.jsx         # Headers de sections
-│   │   └── LanguageSwitcher.jsx    # Switch FR/EN
+│   ├── pages/
+│   │   ├── Home.jsx                        # Page d'accueil
+│   │   ├── QueryGenerator.jsx              # Générateur de requêtes CQL
+│   │   └── App.jsx                         # Point d'entrée React Router
 │   │
-│   └── views/                       # Vues principales
-│       ├── OverviewView.jsx        # Vue d'ensemble (grille)
-│       ├── DomainsView.jsx         # Analyse domaines
-│       ├── AuthorsView.jsx         # Analyse auteurs
-│       ├── TemporalView.jsx        # Analyse temporelle
-│       ├── PlacesView.jsx          # Analyse géographique
-│       ├── LinguisticView.jsx      # Analyse terminologique
-│       ├── DataView.jsx            # Table de concordances
-│       └── CorpusComparisonView.jsx # Comparaison 2 corpus
+│   └── main.jsx                            # Point d'entrée Vite
 │
-├── hooks/                           # Custom hooks
-│   ├── useFileUpload.js            # Gestion upload fichiers
-│   ├── useAnalytics.js             # Calculs statistiques
-│   ├── useFilteredData.js          # Application filtres
-│   ├── usePagination.js            # Gestion pagination
-│   ├── useWordFrequency.js         # Analyse fréquences
-│   └── useCorpusComparison.js      # Logique comparaison
-│
-├── utils/                           # Utilitaires
-│   ├── concordanceParser.js        # Parse CSV NoSketch
-│   ├── metadataParser.js           # Parse CSV métadonnées
-│   ├── referenceParser.js          # Parse références canon
-│   ├── ExportUtils.js              # Exports CSV/JSON
-│   └── ChartExportUtils.js         # Exports PNG charts
-│
-└── config/
-    └── panelConfig.js              # Config des panels
+├── public/                                 # Assets statiques
+└── docs/                                   # Documentation
 ```
 
-## 🔄 Flux de données
+## 🎯 Modules
 
-### 1. Upload et parsing
+### Concordance Analyzer
 
+Module principal pour l'analyse de concordances enrichies avec métadonnées.
+
+**Flux de données** :
 ```
-User uploads files
-        ↓
-┌──────────────────┐
-│  File readers    │ FileReader API
-└──────────────────┘
-        ↓
-┌──────────────────┐
-│  CSV parsers     │ PapaParse
-└──────────────────┘
-        ↓
-┌──────────────────┐
-│ Data enrichment  │ Matching Edi-XX
-└──────────────────┘
-        ↓
-┌──────────────────┐
-│   State update   │ React setState
-└──────────────────┘
+1. Upload CSV → 2. Parsing → 3. Enrichissement → 4. Analytics → 5. Visualisation
 ```
 
-**Parsing des concordances** (`concordanceParser.js`) :
-- Détection automatique des colonnes (Left, KWIC, Right, Doc.title, etc.)
-- Pattern matching pour extraire `[Edi-XX]` des références
-- Gestion des références multiples (pipe-separated)
-- Fallback sur parsing manuel si pas de match
+**9 Vues disponibles** :
+- 📊 Vue d'ensemble (Overview)
+- 📚 Analyse par domaines juridiques
+- ✍️ Analyse par auteurs
+- ⏰ Analyse temporelle (Timeline Gantt)
+- 🗺️ Analyse géographique
+- 📖 Analyse terminologique (Word Cloud)
+- 🔄 Comparaison de corpus
+- 🔍 Exploration de concordances (table)
+- 📋 Métadonnées complètes
 
-**Parsing des métadonnées** (`metadataParser.js`) :
-- Lecture du CSV complet (117 lignes)
-- Indexation par identifiant Edi-XX
-- Support des champs multi-valeurs (domaines, lieux)
-- Normalisation des dates (ranges et dates précises)
+## 🔧 Composants Clés
 
-### 2. Enrichissement des données
+### Hooks Personnalisés
+
+#### `useConcordanceData`
+Gestion centralisée des données et filtres.
 
 ```javascript
-// Algorithme de matching
-for each concordance:
-  1. Extract Edi-XX from reference
-  2. Lookup in metadata index
-  3. If found:
-       - Merge metadata fields
-       - Mark as enriched
-  4. If not found:
-       - Keep original data
-       - Mark as fallback
-       - Try manual parsing
-```
-
-**Taux de correspondance** : `successfulMatches / totalReferences * 100`
-
-### 3. Calcul des analytics
-
-Les analytics sont recalculées à chaque changement de filtre via `useAnalytics` :
-
-```javascript
-// useAnalytics.js - Calculs principaux
-{
-  total: filteredData.length,
-  domains: aggregateByField('domain'),
-  authors: aggregateByField('author'),
-  periods: aggregateByTemporal('period'),
-  places: aggregateByField('place'),
-  keyTerms: extractKWICTerms(filteredData)
-}
-```
-
-### 4. Application des filtres
-
-```
-User interactions
-        ↓
-┌──────────────────┐
-│  Filter state    │ useState
-└──────────────────┘
-        ↓
-┌──────────────────┐
-│useFilteredData   │ Custom hook
-└──────────────────┘
-        ↓
-┌──────────────────┐
-│  Filtered array  │ Array.filter()
-└──────────────────┘
-        ↓
-┌──────────────────┐
-│  Re-render views │ React reconciliation
-└──────────────────┘
+const {
+  data,                    // Données filtrées
+  fullData,               // Données complètes
+  filters,                // État des filtres
+  updateFilters,          // Mettre à jour filtres
+  loadConcordances,       // Charger données
+  loadMetadata           // Charger métadonnées
+} = useConcordanceData();
 ```
 
 **Filtres supportés** :
-- **Text search** : recherche dans Left, KWIC, Right, Author, Title
-- **Multi-select** : authors, domains, periods, places
-- **Combinaison AND** : tous les filtres actifs sont appliqués
+- Recherche textuelle (KWIC, left, right)
+- Auteurs multiples
+- Domaines juridiques multiples
+- Périodes multiples
+- Lieux multiples
 
-## 🎨 Système de panels
-
-### Configuration des panels
-
-```javascript
-// panelConfig.js
-{
-  overview: {
-    id: 'overview',
-    gridArea: '1 / 1 / 2 / 2',  // CSS Grid position
-    size: 'medium',
-    color: '#1A365D',
-    gradient: 'linear-gradient(...)'
-  },
-  // ... autres panels
-}
-```
-
-### Grille CSS Grid
-
-```css
-display: grid;
-grid-template-columns: 1.3fr 0.6fr 0.6fr 0.6fr;
-grid-template-rows: 250px 250px 200px;
-gap: 2px;
-```
-
-**Layout actuel** :
-```
-┌─────────────┬─────────┬─────────┬─────────┐
-│             │ Domaines│Chronol. │ Lieux   │
-│  Overview   ├─────────┼─────────┼─────────┤
-│  (stats)    │ Auteurs │ Termino.│ Données │
-├─────────────┼─────────┴─────────┴─────────┤
-│  Corpus     │                             │
-│  Comparison │       Import                │
-└─────────────┴─────────────────────────────┘
-```
-
-## 📊 Visualisations
-
-### Charts Recharts
-
-Tous les charts utilisent Recharts avec configuration cohérente :
+#### `useConcordanceAnalytics`
+Calculs statistiques sur les données filtrées.
 
 ```javascript
-// Configuration standard
-<BarChart 
-  data={data}
-  margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
->
-  <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="name" angle={-45} />
-  <YAxis />
-  <Tooltip content={<CustomTooltip />} />
-  <Bar dataKey="value" fill={visualTheme.colors.primary} />
-</BarChart>
+const analytics = useConcordanceAnalytics(data);
+// Returns: { domains, authors, periods, places, keyTerms, timeline }
 ```
 
-**Charts disponibles** :
-- **BarChart** : Domaines, Auteurs, Lieux
-- **LineChart** : Évolution temporelle
-- **ComposedChart** : Comparaisons corpus
+**Métriques calculées** :
+- Distribution par domaine (top N)
+- Distribution par auteur (top N)
+- Distribution par période
+- Distribution par lieu
+- Termes KWIC les plus fréquents
+- Timeline des œuvres
 
-### Timeline Gantt (D3.js)
-
-Timeline personnalisée construite avec D3.js pour visualiser les plages temporelles :
+#### `useCorpusComparison`
+Comparaison de 2 corpus de concordances.
 
 ```javascript
-// Échelle temporelle
-const xScale = d3.scaleTime()
-  .domain([minYear, maxYear])
-  .range([0, width]);
-
-// Barres par œuvre
-works.forEach(work => {
-  svg.append('rect')
-    .attr('x', xScale(work.startDate))
-    .attr('width', xScale(work.endDate) - xScale(work.startDate))
-    .attr('height', barHeight);
-});
+const {
+  corpusComparison,      // { A: {...}, B: {...} }
+  loadCorpus,            // Charger corpus A ou B
+  resetCorpus,           // Réinitialiser
+  comparisonStats,       // Stats comparatives
+  differences            // Différences détaillées
+} = useCorpusComparison();
 ```
 
-## 🌐 Internationalisation (i18n)
+### Graphiques
 
-### Structure des traductions
+Tous les graphiques utilisent **Recharts** avec tooltips personnalisés i18n.
+
+| Composant | Type | Usage |
+|-----------|------|-------|
+| `DomainChart` | BarChart | Top domaines juridiques |
+| `AuthorChart` | BarChart | Top auteurs |
+| `TemporalChart` | LineChart | Évolution temporelle |
+| `PlaceChart` | BarChart | Distribution géographique |
+| `WordCloud` | Custom D3 | Termes KWIC fréquents |
+| `TimelineGantt` | Custom D3 | Timeline des œuvres |
+| `ComparisonDomainChart` | 2x BarChart | Comparaison domaines |
+| `ComparisonAuthorChart` | 2x BarChart | Comparaison auteurs |
+| `ComparisonTemporalChart` | LineChart overlay | Comparaison temporelle |
+| `ComparisonTermChart` | 2x BarChart | Comparaison terminologie |
+
+**Tooltip enrichi** :
+- Nom de l'élément
+- Valeur avec formatage
+- Pourcentage du total
+- Classement (1er/1st, 2ème/2nd...)
+
+### Parsers
+
+#### `parseMetadata.js`
+Parse le CSV complet des métadonnées (117 entrées Edi-XX).
+
+**Colonnes attendues** :
+- `identifiant` (Edi-XX)
+- `auteur`, `titre`
+- `domaine`, `période`, `lieu`
+
+#### `parseNoSketchCSV.js`
+Parse l'export CSV de NoSketch Engine.
+
+**Colonnes attendues** :
+- `Left context`, `KWIC`, `Right context`
+- `Ref` (références aux œuvres)
+
+**Particularités** :
+- Gestion pipe-separated values (œuvres multiples)
+- Détection colonnes flexibles
+- Fallback robuste
+
+#### `enrichConcordances.js`
+Enrichit les concordances avec les métadonnées.
+
+**Stratégie de matching** :
+1. Match exact sur identifiant Edi-XX
+2. Match partiel sur titre + auteur
+3. Fallback : conservation données brutes
+
+## 🌍 Internationalisation
+
+### Configuration
+
+**Fichiers** : `src/shared/i18n/fr.json` et `en.json`
+
+```javascript
+// src/shared/i18n/index.js
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources: {
+      fr: { translation: fr },
+      en: { translation: en }
+    },
+    fallbackLng: 'fr',
+    interpolation: { escapeValue: false }
+  });
+```
+
+### Structure des Clés
 
 ```json
-// fr.json
 {
+  "sidebar": { "nav": {...}, "footer": {...} },
+  "pagination": {...},
   "concordance": {
-    "panels": { ... },
-    "charts": { ... },
-    "views": { ... },
-    "filters": { ... },
-    "data": { ... }
+    "charts": {
+      "tooltip": {...},
+      "labels": {...},
+      "noData": {...}
+    },
+    "views": {
+      "overview": {...},
+      "corpusComparison": {
+        "charts": {
+          "domains": {...},
+          "authors": {...},
+          "temporal": {...},
+          "terminology": {...}
+        }
+      }
+    }
   }
 }
 ```
 
 ### Utilisation
 
-```javascript
+```jsx
 import { useTranslation } from 'react-i18next';
 
 const MyComponent = () => {
   const { t } = useTranslation();
-  return <h1>{t('concordance.panels.overview.title')}</h1>;
+
+  return (
+    <div>
+      <h1>{t('concordance.views.overview.title')}</h1>
+      <p>{t('pagination.display', { count: 10 })}</p>
+    </div>
+  );
 };
 ```
 
-**Langues supportées** : 🇫🇷 Français (défaut), 🇬🇧 English
+## 🎨 UI/UX
 
-## ⚡ Optimisations performance
+### Layout Global
 
-### Memoization
+**Sidebar verticale fixe (280px)** :
+- Logo cliquable
+- Navigation modules
+- Liste des 9 vues
+- Bouton filtres avec badge
+- Compteur de concordances
+- Switch langue FR/EN
+- Footer © CiSaMe
 
-```javascript
-// Évite les recalculs inutiles
-const analytics = useMemo(() => 
-  calculateAnalytics(filteredData), 
-  [filteredData]
-);
+**Zone de contenu** :
+- Full height (100vh - header)
+- Scrollable indépendamment
+- Header de page avec icône + titre + bouton retour
 
-const sortedData = useMemo(() =>
-  [...data].sort(sortFunction),
-  [data, sortFunction]
-);
+### Thème Visuel
+
+**Palette de couleurs** :
+- **Primaire** : `#553C9A` (violet académique)
+- **Secondaire** : `#2C5282` (bleu)
+- **Accent** : `#D69E2E` (jaune or)
+- **Neutre** : `#64748b` (gris)
+
+**Dégradés** :
+- Header : `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
+- Cartes : `linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)`
+
+## ⚡ Performance
+
+### Optimisations
+
+**React** :
+- `useMemo` pour calculs coûteux (analytics, tri)
+- `useCallback` pour fonctions passées en props
+- Lazy loading des vues (React Router)
+
+**Data** :
+- Pagination côté client (10/25/50/100/Tout)
+- Filtres en temps réel avec debounce
+- Calculs incrémentaux quand possible
+
+**Exports** :
+- CSV : génération côté client
+- PNG : html2canvas pour graphiques
+- JSON : stringify optimisé
+
+### Gestion Mémoire
+
+**Grandes listes** :
+- Pagination obligatoire
+- Slice des données pour l'affichage
+- Virtualisation non nécessaire (<10k items)
+
+## 🧪 Tests
+
+### Test Manuel
+
+```bash
+npm run dev
+# Ouvrir http://localhost:3000
+# Tester :
+# - Upload CSV métadonnées + concordances
+# - Navigation entre vues
+# - Filtres (texte, auteurs, domaines)
+# - Switch FR ↔ EN
+# - Exports CSV/JSON/PNG
+# - Comparaison de 2 corpus
 ```
 
-### Pagination
+### Points de Test Clés
 
-```javascript
-// usePagination.js - Découpe par pages
-const paginatedData = useMemo(() => {
-  const start = (currentPage - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return data.slice(start, end);
-}, [data, currentPage, itemsPerPage]);
-```
-
-### Debouncing
-
-```javascript
-// Filtre textuel avec debounce
-const debouncedSearch = useMemo(
-  () => debounce((value) => setSearch(value), 300),
-  []
-);
-```
-
-## 🔐 Gestion d'état
-
-### État local (useState)
-
-```javascript
-// ConcordanceAnalyzer.jsx - État principal
-const [metadataData, setMetadataData] = useState(null);
-const [concordanceData, setConcordanceData] = useState([]);
-const [activeFilters, setActiveFilters] = useState({
-  authors: [], domains: [], periods: [], places: []
-});
-const [activeView, setActiveView] = useState('overview');
-```
-
-### Hooks personnalisés
-
-Les hooks encapsulent la logique métier :
-
-```javascript
-// useFileUpload.js
-const { handleMetadataUpload, handleConcordanceUpload } = useFileUpload({
-  onMetadataLoad: setMetadataData,
-  onConcordanceLoad: setConcordanceData,
-  onStatsUpdate: setParseStats
-});
-
-// useFilteredData.js
-const filteredData = useFilteredData(concordanceData, activeFilters);
-
-// useAnalytics.js
-const analytics = useAnalytics(filteredData);
-```
-
-## 📤 Système d'export
-
-### Exports disponibles
-
-**CSV (concordances)** :
-```javascript
-// ExportUtils.js
-const csv = [
-  headers.join(','),
-  ...data.map(row => values.map(quote).join(','))
-].join('\n');
-
-const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-download(blob, 'concordances.csv');
-```
-
-**JSON (analytics)** :
-```javascript
-const json = JSON.stringify(analytics, null, 2);
-const blob = new Blob([json], { type: 'application/json' });
-download(blob, 'analytics.json');
-```
-
-**PNG (charts)** :
-```javascript
-// ChartExportUtils.js via html2canvas
-html2canvas(chartElement).then(canvas => {
-  canvas.toBlob(blob => {
-    download(blob, 'chart.png');
-  });
-});
-```
-
-## 🎨 Système de thème
-
-### visualTheme.js
-
-```javascript
-export const visualTheme = {
-  colors: {
-    primary: {
-      main: '#553C9A',    // Violet académique
-      blue: '#2563eb',
-      dark: '#3730a3',
-      light: '#6B46C1'
-    },
-    accent: {
-      orange: '#f59e0b',
-      green: '#10b981',
-      red: '#dc2626'
-    },
-    text: {
-      dark: '#1e293b',
-      light: '#F7FAFC'
-    }
-  },
-  shadows: {
-    panel: '0 4px 12px rgba(0, 0, 0, 0.08)',
-    panelHover: '0 8px 24px rgba(0, 0, 0, 0.12)'
-  },
-  borderRadius: {
-    md: '8px',
-    lg: '12px',
-    xl: '16px'
-  }
-};
-```
-
-### Gradients
-
-```javascript
-export const createGradient = (from, to, deg = 135) =>
-  `linear-gradient(${deg}deg, ${from} 0%, ${to} 100%)`;
-```
-
-## 🧪 Tests (à venir)
-
-### Structure de tests prévue
-
-```
-tests/
-├── unit/
-│   ├── parsers/
-│   ├── hooks/
-│   └── utils/
-├── integration/
-│   └── components/
-└── e2e/
-    └── user-flows/
-```
-
-### Stratégie de tests
-
-- **Unit** : Parsers, utilitaires, hooks (Jest)
-- **Integration** : Composants (React Testing Library)
-- **E2E** : Flux utilisateur complets (Playwright)
+- [ ] Upload et parsing CSV
+- [ ] Enrichissement métadonnées
+- [ ] Filtres multiples combinés
+- [ ] Calculs analytics corrects
+- [ ] Tous les graphiques s'affichent
+- [ ] Tooltips localisés
+- [ ] Exports fonctionnels
+- [ ] Comparaison de corpus
+- [ ] Responsive (desktop uniquement)
 
 ## 🚀 Déploiement
 
-### Build de production
+### Build Production
 
 ```bash
 npm run build
-# → dist/ (optimisé pour production)
+# → dist/ folder
 ```
 
-### Optimisations Vite
+**Optimisations Vite** :
+- Tree-shaking automatique
+- Minification (terser)
+- Code splitting par route
+- Assets hashés pour cache
 
-- **Code splitting** : Découpage automatique par routes
-- **Tree shaking** : Élimination du code mort
-- **Minification** : Terser pour JS, cssnano pour CSS
-- **Compression** : Gzip des assets
+### Variables d'Environnement
 
-## 📈 Métriques de performance
+Aucune variable requise pour l'instant.
 
-### Bundle size (estimé)
+## 📝 Conventions de Code
 
-- **Chunk principal** : ~200 KB (gzipped)
-- **Vendors** : ~150 KB (React, Recharts, D3)
-- **Total** : ~350 KB (gzipped)
+### Nommage
 
-### Performance runtime
+- **Composants** : PascalCase (`MyComponent.jsx`)
+- **Hooks** : camelCase avec `use` (`useMyHook.js`)
+- **Utilitaires** : camelCase (`parseData.js`)
+- **Constantes** : UPPER_SNAKE_CASE
 
-- **First Contentful Paint** : < 1s
-- **Time to Interactive** : < 2s
-- **Large data handling** : 1000+ concordances fluides
+### Structure Fichiers
 
-## 🔗 Dépendances clés
+```javascript
+// Imports
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-### Production
+// Types/Constants
 
-```json
-{
-  "react": "^19.0.0",
-  "react-router-dom": "^7.1.1",
-  "recharts": "^2.15.0",
-  "d3": "^7.9.0",
-  "react-i18next": "^15.1.3",
-  "papaparse": "^5.4.1",
-  "html2canvas": "^1.4.1"
-}
+// Main Component
+const MyComponent = () => {
+  // Hooks
+  const { t } = useTranslation();
+
+  // State
+
+  // Effects
+
+  // Handlers
+
+  // Render
+  return <div>...</div>;
+};
+
+// Export
+export default MyComponent;
 ```
 
-### Development
+### Git Commits
 
-```json
-{
-  "vite": "^6.0.5",
-  "@vitejs/plugin-react": "^4.3.4",
-  "eslint": "^9.17.0"
-}
+Format : `<type>(<scope>): <message>`
+
+**Types** :
+- `feat` : Nouvelle fonctionnalité
+- `fix` : Correction de bug
+- `refactor` : Refactoring
+- `docs` : Documentation
+- `style` : Formatage
+- `perf` : Performance
+- `test` : Tests
+
+**Exemples** :
+```
+feat(i18n): Add German translation
+fix(charts): Correct temporal chart data calculation
+docs(readme): Update installation instructions
 ```
 
-## 🗺️ Roadmap technique
+## 🔗 Ressources
 
-### Court terme (v1.1)
-
-- [ ] Tests Jest/RTL pour parsers et hooks
-- [ ] Documentation JSDoc complète
-- [ ] Optimisation bundle size (lazy loading)
-- [ ] Amélioration accessibilité (ARIA labels)
-
-### Moyen terme (v1.5)
-
-- [ ] Mode hors-ligne (Service Worker)
-- [ ] Export PDF des rapports
-- [ ] API backend pour persistence
-- [ ] Partage de configurations de filtres
-
-### Long terme (v2.0)
-
-- [ ] Analyse syntaxique (TreeTagger integration)
-- [ ] Machine Learning pour classification auto
-- [ ] Collaboration temps réel
-- [ ] Plugin architecture
+- [Documentation React 19](https://react.dev/)
+- [Vite Documentation](https://vitejs.dev/)
+- [Recharts Examples](https://recharts.org/)
+- [react-i18next Guide](https://react.i18next.com/)
 
 ---
 
-**Dernière mise à jour** : Novembre 2025  
-**Mainteneur** : Titouan (CISAME)
+**Dernière mise à jour** : Novembre 2025
+**Contributeurs** : Titouan (CiSaMe)
