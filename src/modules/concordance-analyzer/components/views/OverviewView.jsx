@@ -149,7 +149,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useResponsiveValue } from '../../../../shared/hooks';
+import { useResponsiveValue, useBreakpoint } from '../../../../shared/hooks';
 import NavigationPanel from '../ui/NavigationPanel';
 
 /**
@@ -175,6 +175,7 @@ const OverviewView = ({
 }) => {
 
   const { t } = useTranslation();
+  const { isMobile, isTablet } = useBreakpoint();
 
   // Grille responsive selon la taille d'écran
   const gridTemplateColumns = useResponsiveValue({
@@ -213,6 +214,24 @@ const OverviewView = ({
     lg: '5rem'       // Desktop (original: clamp)
   });
 
+  // Helper: Rendu compact pour mobile (icône + titre seulement)
+  const renderCompactPanel = (icon, title, stat) => (
+    <div style={{ textAlign: 'center', padding: '1rem' }}>
+      <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{icon}</div>
+      <div style={{ fontSize: '0.85rem', fontWeight: '600', marginBottom: '0.25rem' }}>{title}</div>
+      <div style={{ fontSize: '1.5rem', fontWeight: '300' }}>{stat}</div>
+    </div>
+  );
+
+  // Helper: Rendu semi-compact pour tablet (icône + titre + stat principale)
+  const renderSemiCompactPanel = (icon, title, stat, subtitle) => (
+    <div style={{ textAlign: 'center', padding: '1.5rem' }}>
+      <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
+      <div style={{ fontSize: statFontSize, fontWeight: '300', color: '#F7FAFC', marginBottom: '0.5rem' }}>{stat}</div>
+      <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{subtitle}</div>
+    </div>
+  );
+
   return (
     <div style={{
       display: 'grid',
@@ -230,51 +249,75 @@ const OverviewView = ({
         isActive={false}
         onClick={() => {}}
       >
-        <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-          <div style={{
-            fontSize: mainStatFontSize,
-            fontWeight: '300',
-            lineHeight: '1',
-            marginBottom: '1rem'
-          }}>
-            {analytics.total.toLocaleString()}
+        {isMobile ? (
+          // Mobile: Version très compacte
+          renderCompactPanel(
+            panelConfig.overview.icon,
+            panelConfig.overview.title,
+            analytics.total.toLocaleString()
+          )
+        ) : isTablet ? (
+          // Tablet: Version semi-compacte
+          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{panelConfig.overview.icon}</div>
+            <div style={{ fontSize: mainStatFontSize, fontWeight: '300', color: '#F7FAFC', marginBottom: '0.5rem' }}>
+              {analytics.total.toLocaleString()}
+            </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+              {t('concordance.overview.concordancesAnalyzed')}
+            </div>
+            <div style={{ fontSize: '0.85rem', opacity: 0.7 }}>
+              {parseStats.lookupRate || 0}% {t('concordance.overview.matchRate').toLowerCase()}
+            </div>
           </div>
-          <div style={{
-            fontSize: '1.1rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            opacity: 0.9,
-            marginBottom: '2rem'
-          }}>
-            {t('concordance.overview.concordancesAnalyzed')}
-          </div>
-          
-          <div style={{
-            background: 'rgba(255,255,255,0.15)',
-            height: '6px',
-            borderRadius: '3px',
-            overflow: 'hidden',
-            marginBottom: '1rem'
-          }}>
+        ) : (
+          // Desktop: Version complète
+          <div style={{ textAlign: 'center', margin: '2rem 0' }}>
             <div style={{
-              background: '#F7FAFC',
-              height: '100%',
-              width: `${parseStats.lookupRate || 0}%`,
+              fontSize: mainStatFontSize,
+              fontWeight: '300',
+              lineHeight: '1',
+              marginBottom: '1rem'
+            }}>
+              {analytics.total.toLocaleString()}
+            </div>
+            <div style={{
+              fontSize: '1.1rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              opacity: 0.9,
+              marginBottom: '2rem'
+            }}>
+              {t('concordance.overview.concordancesAnalyzed')}
+            </div>
+
+            <div style={{
+              background: 'rgba(255,255,255,0.15)',
+              height: '6px',
               borderRadius: '3px',
-              transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
-            }} />
+              overflow: 'hidden',
+              marginBottom: '1rem'
+            }}>
+              <div style={{
+                background: '#F7FAFC',
+                height: '100%',
+                width: `${parseStats.lookupRate || 0}%`,
+                borderRadius: '3px',
+                transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+              }} />
+            </div>
+
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '0.85rem',
+              opacity: 0.8
+            }}>
+              <span>{t('concordance.overview.matchRate')}</span>
+              <span>{parseStats.lookupRate || 0}%</span>
+            </div>
           </div>
-          
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            fontSize: '0.85rem',
-            opacity: 0.8
-          }}>
-            <span>{t('concordance.overview.matchRate')}</span>
-            <span>{parseStats.lookupRate || 0}%</span>
-          </div>
-        </div>
+        )}
       </NavigationPanel>
 
       {/* Panel Domaines */}
@@ -283,33 +326,39 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('domains')}
       >
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            fontSize: statFontSize,
-            fontWeight: '300',
-            marginBottom: '0.5rem',
-            color: '#F7FAFC'
-          }}>
-            {analytics.domains.length}
-          </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('concordance.overview.legalDomains')}
-          </div>
-          
-          {analytics.domains.slice(0, 3).map((domain, index) => (
-            <div key={domain.name} style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontSize: '0.8rem',
+        {isMobile ? (
+          renderCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length)
+        ) : isTablet ? (
+          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, t('concordance.overview.legalDomains'))
+        ) : (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
               marginBottom: '0.5rem',
-              padding: '0.25rem 0',
-              borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
+              color: '#F7FAFC'
             }}>
-              <span>{domain.name.length > 15 ? domain.name.substring(0, 15) + '...' : domain.name}</span>
-              <span style={{ fontWeight: '500' }}>{domain.value}</span>
+              {analytics.domains.length}
             </div>
-          ))}
-        </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+              {t('concordance.overview.legalDomains')}
+            </div>
+
+            {analytics.domains.slice(0, 3).map((domain, index) => (
+              <div key={domain.name} style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontSize: '0.8rem',
+                marginBottom: '0.5rem',
+                padding: '0.25rem 0',
+                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
+              }}>
+                <span>{domain.name.length > 15 ? domain.name.substring(0, 15) + '...' : domain.name}</span>
+                <span style={{ fontWeight: '500' }}>{domain.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </NavigationPanel>
 
       {/* Panel Chronologie */}
@@ -318,45 +367,64 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('temporal')}
       >
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            fontSize: statFontSize,
-            fontWeight: '300',
-            marginBottom: '0.5rem',
-            color: '#F7FAFC'
-          }}>
-            {analytics.periods.length > 0 ?
+        {isMobile ? (
+          renderCompactPanel(
+            panelConfig.temporal.icon,
+            panelConfig.temporal.title,
+            analytics.periods.length > 0 ?
               Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
-                        Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
+                        Math.min(...analytics.periods.map(p => p.period))) / 100) : 0
+          )
+        ) : isTablet ? (
+          renderSemiCompactPanel(
+            panelConfig.temporal.icon,
+            panelConfig.temporal.title,
+            analytics.periods.length > 0 ?
+              Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
+                        Math.min(...analytics.periods.map(p => p.period))) / 100) : 0,
+            t('concordance.overview.centuriesCovered')
+          )
+        ) : (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
+              marginBottom: '0.5rem',
+              color: '#F7FAFC'
+            }}>
+              {analytics.periods.length > 0 ?
+                Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
+                          Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
+            </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+              {t('concordance.overview.centuriesCovered')}
+            </div>
+
+            <div style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              gap: '2px',
+              justifyContent: 'center',
+              height: '60px',
+              marginTop: '1rem'
+            }}>
+              {analytics.periods.slice(0, 10).map((period, index) => {
+                const maxCount = Math.max(...analytics.periods.slice(0, 10).map(p => p.count));
+                const height = (period.count / maxCount) * 100;
+                return (
+                  <div key={period.period} style={{
+                    flex: 1,
+                    background: 'rgba(255,255,255,0.3)',
+                    height: `${height}%`,
+                    minHeight: '10%',
+                    borderRadius: '2px',
+                    transition: 'all 0.3s'
+                  }} />
+                );
+              })}
+            </div>
           </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('concordance.overview.centuriesCovered')}
-          </div>
-          
-          <div style={{
-            display: 'flex',
-            alignItems: 'flex-end',
-            gap: '2px',
-            justifyContent: 'center',
-            height: '60px',
-            marginTop: '1rem'
-          }}>
-            {analytics.periods.slice(0, 10).map((period, index) => {
-              const maxCount = Math.max(...analytics.periods.slice(0, 10).map(p => p.count));
-              const height = (period.count / maxCount) * 100;
-              return (
-                <div key={period.period} style={{
-                  flex: 1,
-                  background: 'rgba(255,255,255,0.3)',
-                  height: `${height}%`,
-                  minHeight: '10%',
-                  borderRadius: '2px',
-                  transition: 'all 0.3s'
-                }} />
-              );
-            })}
-          </div>
-        </div>
+        )}
       </NavigationPanel>
 
       {/* Panel Auteurs */}
@@ -365,34 +433,40 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('authors')}
       >
-        <div>
-          <div style={{
-            fontSize: statFontSize,
-            fontWeight: '300',
-            marginBottom: '0.5rem',
-            textAlign: 'center',
-            color: '#F7FAFC'
-          }}>
-            {analytics.authors.length}
-          </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
-            {t('concordance.overview.referencedAuthors')}
-          </div>
-          
-          {analytics.authors.slice(0, 3).map((author, index) => (
-            <div key={author.name} style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontSize: '0.8rem',
+        {isMobile ? (
+          renderCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length)
+        ) : isTablet ? (
+          renderSemiCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length, t('concordance.overview.referencedAuthors'))
+        ) : (
+          <div>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
               marginBottom: '0.5rem',
-              padding: '0.25rem 0',
-              borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
+              textAlign: 'center',
+              color: '#F7FAFC'
             }}>
-              <span>{author.name.length > 15 ? author.name.substring(0, 15) + '...' : author.name}</span>
-              <span style={{ fontWeight: '500' }}>{author.value}</span>
+              {analytics.authors.length}
             </div>
-          ))}
-        </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
+              {t('concordance.overview.referencedAuthors')}
+            </div>
+
+            {analytics.authors.slice(0, 3).map((author, index) => (
+              <div key={author.name} style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontSize: '0.8rem',
+                marginBottom: '0.5rem',
+                padding: '0.25rem 0',
+                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
+              }}>
+                <span>{author.name.length > 15 ? author.name.substring(0, 15) + '...' : author.name}</span>
+                <span style={{ fontWeight: '500' }}>{author.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </NavigationPanel>
 
       {/* Panel Terminologie */}
@@ -401,40 +475,46 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('linguistic')}
       >
-        <div>
-          <div style={{
-            fontSize: statFontSize,
-            fontWeight: '300',
-            marginBottom: '0.5rem',
-            textAlign: 'center',
-            color: '#F7FAFC'
-          }}>
-            {analytics.keyTerms.length}
-          </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
-            {t('concordance.overview.keyTermsIdentified')}
-          </div>
-          
-          {analytics.keyTerms.slice(0, 4).map((term, index) => (
-            <div key={term.term} style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontSize: '0.8rem',
-              marginBottom: '0.5rem'
+        {isMobile ? (
+          renderCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length)
+        ) : isTablet ? (
+          renderSemiCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length, t('concordance.overview.keyTermsIdentified'))
+        ) : (
+          <div>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
+              marginBottom: '0.5rem',
+              textAlign: 'center',
+              color: '#F7FAFC'
             }}>
-              <span style={{ fontStyle: 'italic' }}>{term.term}</span>
-              <div style={{
-                background: 'rgba(255,255,255,0.3)',
-                padding: '0.1rem 0.5rem',
-                borderRadius: '8px',
-                fontSize: '0.7rem',
-                fontWeight: '500'
-              }}>
-                {term.count}
-              </div>
+              {analytics.keyTerms.length}
             </div>
-          ))}
-        </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
+              {t('concordance.overview.keyTermsIdentified')}
+            </div>
+
+            {analytics.keyTerms.slice(0, 4).map((term, index) => (
+              <div key={term.term} style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontSize: '0.8rem',
+                marginBottom: '0.5rem'
+              }}>
+                <span style={{ fontStyle: 'italic' }}>{term.term}</span>
+                <div style={{
+                  background: 'rgba(255,255,255,0.3)',
+                  padding: '0.1rem 0.5rem',
+                  borderRadius: '8px',
+                  fontSize: '0.7rem',
+                  fontWeight: '500'
+                }}>
+                  {term.count}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </NavigationPanel>
       
 	{/* Panel Comparaison Corpus (toujours visible, contenu adaptatif) */}
@@ -447,16 +527,30 @@ const OverviewView = ({
 	    opacity: corpusComparison?.B?.concordanceData ? 1 : 0.7
 	  }}
 	>
+	  {isMobile ? (
+	    renderCompactPanel(
+	      panelConfig.corpusComparison.icon,
+	      panelConfig.corpusComparison.title,
+	      corpusComparison?.B?.concordanceData ? '✓' : '—'
+	    )
+	  ) : isTablet ? (
+	    renderSemiCompactPanel(
+	      panelConfig.corpusComparison.icon,
+	      panelConfig.corpusComparison.title,
+	      corpusComparison?.B?.concordanceData ? '2' : '0',
+	      t('concordance.overview.corpusComparison')
+	    )
+	  ) : (
 	  <div style={{ textAlign: 'center' }}>
-	    <div style={{ 
-	      fontSize: '3rem', 
-	      fontWeight: '300', 
+	    <div style={{
+	      fontSize: '3rem',
+	      fontWeight: '300',
 	      marginBottom: '1rem',
 	      color: '#F7FAFC'
 	    }}>
 	      ⚖️
 	    </div>
-	    
+
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 corpus chargés
 	      <>
@@ -554,6 +648,7 @@ const OverviewView = ({
 	      </>
 	    )}
 	  </div>
+	  )}
 	</NavigationPanel>
       
       {/* Panel Données */}
@@ -562,23 +657,29 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('data')}
       >
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            fontSize: statFontSize,
-            fontWeight: '300',
-            marginBottom: '0.5rem',
-            color: '#F7FAFC'
-          }}>
-            {filteredData.length}
+        {isMobile ? (
+          renderCompactPanel(panelConfig.data.icon, panelConfig.data.title, filteredData.length)
+        ) : isTablet ? (
+          renderSemiCompactPanel(panelConfig.data.icon, panelConfig.data.title, filteredData.length, t('concordance.overview.loadedConcordances'))
+        ) : (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
+              marginBottom: '0.5rem',
+              color: '#F7FAFC'
+            }}>
+              {filteredData.length}
+            </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+              {t('concordance.overview.loadedConcordances')}
+            </div>
+
+            <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
+              {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
+            </div>
           </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('concordance.overview.loadedConcordances')}
-          </div>
-          
-          <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
-            {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
-          </div>
-        </div>
+        )}
       </NavigationPanel>
 
       {/* Panel Import de données */}
@@ -587,6 +688,14 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('concordances')}
       >
+        {isMobile || isTablet ? (
+          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
+            <div style={{ fontSize: '2.5rem' }}>{panelConfig.concordances.icon}</div>
+            <div style={{ fontSize: '0.85rem', fontWeight: '600', marginTop: '0.5rem' }}>
+              {panelConfig.concordances.title}
+            </div>
+          </div>
+        ) : null}
       </NavigationPanel>
       
       {/* Panel Lieux */}
@@ -595,32 +704,38 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('places')}
       >
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            fontSize: statFontSize,
-            fontWeight: '300',
-            marginBottom: '0.5rem',
-            color: '#F7FAFC'
-          }}>
-            {analytics.places?.length || 0}
-          </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-            {t('concordance.overview.identifiedPlaces')}
-          </div>
-          
-          {analytics.places?.slice(0, 3).map((place, index) => (
-            <div key={place.name} style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontSize: '0.8rem',
-              marginBottom: '0.25rem',
-              opacity: 0.7
+        {isMobile ? (
+          renderCompactPanel(panelConfig.places.icon, panelConfig.places.title, analytics.places?.length || 0)
+        ) : isTablet ? (
+          renderSemiCompactPanel(panelConfig.places.icon, panelConfig.places.title, analytics.places?.length || 0, t('concordance.overview.identifiedPlaces'))
+        ) : (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
+              marginBottom: '0.5rem',
+              color: '#F7FAFC'
             }}>
-              <span>{place.name.substring(0, 12)}...</span>
-              <span>{place.value}</span>
+              {analytics.places?.length || 0}
             </div>
-          ))}
-        </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+              {t('concordance.overview.identifiedPlaces')}
+            </div>
+
+            {analytics.places?.slice(0, 3).map((place, index) => (
+              <div key={place.name} style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                fontSize: '0.8rem',
+                marginBottom: '0.25rem',
+                opacity: 0.7
+              }}>
+                <span>{place.name.substring(0, 12)}...</span>
+                <span>{place.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </NavigationPanel>
       
     </div>
