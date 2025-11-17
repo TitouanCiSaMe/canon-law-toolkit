@@ -164,6 +164,35 @@ export const globalTheme = {
   },
   
   // ------------------------------------------------------------------------
+  // Breakpoints Responsive - Mobile First
+  // ------------------------------------------------------------------------
+  breakpoints: {
+    // Valeurs en pixels
+    values: {
+      xs: 0,        // Extra small devices (phones portrait)
+      sm: 480,      // Small devices (phones landscape)
+      md: 768,      // Medium devices (tablets)
+      lg: 1024,     // Large devices (desktops)
+      xl: 1280,     // Extra large devices (large desktops)
+      xxl: 1536     // XXL devices (wide screens)
+    },
+
+    // Media queries prêtes à l'emploi
+    up: (breakpoint) => `@media (min-width: ${globalTheme.breakpoints.values[breakpoint]}px)`,
+    down: (breakpoint) => `@media (max-width: ${globalTheme.breakpoints.values[breakpoint] - 1}px)`,
+    between: (min, max) => `@media (min-width: ${globalTheme.breakpoints.values[min]}px) and (max-width: ${globalTheme.breakpoints.values[max] - 1}px)`,
+    only: (breakpoint) => {
+      const keys = Object.keys(globalTheme.breakpoints.values);
+      const index = keys.indexOf(breakpoint);
+      if (index === keys.length - 1) {
+        return `@media (min-width: ${globalTheme.breakpoints.values[breakpoint]}px)`;
+      }
+      const nextKey = keys[index + 1];
+      return `@media (min-width: ${globalTheme.breakpoints.values[breakpoint]}px) and (max-width: ${globalTheme.breakpoints.values[nextKey] - 1}px)`;
+    }
+  },
+
+  // ------------------------------------------------------------------------
   // Glassmorphism (effet verre moderne)
   // ------------------------------------------------------------------------
   glassmorphism: {
