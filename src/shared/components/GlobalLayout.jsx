@@ -9,12 +9,14 @@
  * @component
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './Sidebar';
+import HamburgerButton from './HamburgerButton';
+import { useBreakpoint } from '../hooks';
 
 /**
  * GlobalLayout component
- * 
+ *
  * @param {Object} props
  * @param {React.ReactNode} props.children - Contenu à afficher
  * @param {string} props.activeView - Vue active (pour sidebar)
@@ -25,7 +27,7 @@ import Sidebar from './Sidebar';
  * @param {boolean} props.showSidebar - Afficher la sidebar (défaut: true)
  * @param {boolean} props.isInConcordanceAnalyzer - Si on est dans concordance analyzer
  */
-const GlobalLayout = ({ 
+const GlobalLayout = ({
   children,
   activeView,
   onViewChange,
@@ -35,13 +37,33 @@ const GlobalLayout = ({
   showSidebar = true,
   isInConcordanceAnalyzer = false
 }) => {
+  const { isDesktop } = useBreakpoint();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div style={{
       display: 'flex',
       minHeight: '100vh',
       background: '#EDF2F7'
     }}>
-      {/* Sidebar fixe à gauche */}
+      {/* Bouton hamburger (mobile uniquement) */}
+      {!isDesktop && showSidebar && (
+        <HamburgerButton
+          isOpen={isMobileMenuOpen}
+          onClick={toggleMobileMenu}
+          ariaLabel={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+        />
+      )}
+
+      {/* Sidebar */}
       {showSidebar && (
         <Sidebar
           activeView={activeView}
@@ -50,21 +72,23 @@ const GlobalLayout = ({
           activeFiltersCount={activeFiltersCount}
           onFiltersClick={onFiltersClick}
           isInConcordanceAnalyzer={isInConcordanceAnalyzer}
+          isOpen={isDesktop || isMobileMenuOpen}
+          onClose={closeMobileMenu}
         />
       )}
 
       {/* Zone principale */}
-        <main style={{
-	  marginLeft: showSidebar ? '280px' : '0',
-	  flex: '1',  // ✅ Déjà présent
-	  display: 'flex',  // ✅ Déjà présent
-	  flexDirection: 'column',  // ✅ Déjà présent
-	  minHeight: '100vh',  // ✅ Déjà présent
-	  width: showSidebar ? 'calc(100% - 280px)' : '100%',
-	  overflow: 'hidden'  // ✏️ AJOUTÉ : Empêche le scroll sur main
-	}}>
-	  {children}
-	</main>
+      <main style={{
+        marginLeft: showSidebar && isDesktop ? '280px' : '0',
+        flex: '1',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        width: showSidebar && isDesktop ? 'calc(100% - 280px)' : '100%',
+        overflow: 'hidden'
+      }}>
+        {children}
+      </main>
     </div>
   );
 };

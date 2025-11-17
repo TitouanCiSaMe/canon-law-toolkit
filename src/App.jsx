@@ -4,6 +4,7 @@ import GlobalLayout from './shared/components/GlobalLayout';
 import Home from './pages/Home';
 import QueryGenerator from './pages/QueryGenerator';
 import ConcordanceAnalyzer from './pages/ConcordanceAnalyzer';
+import './shared/components/animations.css';
 
 function App() {
   return (
