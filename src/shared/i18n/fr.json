@@ -64,12 +64,12 @@
       }
     },
     "buttons": {
-      "export_csv": "Export CSV",
-      "export_json": "Export JSON",
-      "export_png": "Export PNG",
-      "export_concordances": "Export concordances CSV",
-      "export_analytics": "Export analytics JSON",
-      "export_chart": "Export graphique PNG",
+      "export_csv": "Exporter en CSV",
+      "export_json": "Exporter en JSON",
+      "export_png": "Exporter en PNG",
+      "export_concordances": "Exporter les concordances en CSV",
+      "export_analytics": "Exporter l'analyse en JSON",
+      "export_chart": "Exporter le graphique en PNG",
       "filters": "Filtres"
     },
     "stats": {
@@ -164,7 +164,23 @@
         "title": "Export NoSketch",
         "description": "Export CSV NoSketch Engine",
         "subtitle": "Avec métadonnées sélectionnées",
-        "statsLoaded": "concordances, {{rate}}% matchées"
+        "statsLoaded": "concordances, {{rate}}% correspondantes"
+      },
+      "errors": {
+        "noFileSelected": "Aucun fichier sélectionné",
+        "loadMetadataFirst": "Veuillez d'abord charger le fichier de métadonnées",
+        "parsingMetadata": "Erreur de parsing des métadonnées : {{message}}",
+        "parsingConcordancesA": "Erreur de parsing des concordances A : {{message}}",
+        "parsingConcordancesB": "Erreur de parsing des concordances B : {{message}}",
+        "fileRead": "Erreur de lecture du fichier : {{message}}"
+      },
+      "processing": {
+        "loadingMetadata": "Chargement des métadonnées...",
+        "metadataLoaded": "{{count}} métadonnées chargées",
+        "analyzingConcordancesA": "Analyse des concordances (Corpus A)...",
+        "concordancesAnalyzedA": "{{count}} concordances analysées (Corpus A)",
+        "analyzingConcordancesB": "Analyse des concordances (Corpus B)...",
+        "concordancesAnalyzedB": "{{count}} concordances analysées (Corpus B)"
       }
     },
     "export": {

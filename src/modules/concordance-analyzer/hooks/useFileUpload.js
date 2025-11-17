@@ -16,6 +16,7 @@
  */
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Papa from 'papaparse';
 import { parseMetadataFile } from '../utils/parsers/metadataParser';
 import { parseNoSketchCSV, validateNoSketchFormat } from '../utils/parsers/concordanceParser';
@@ -88,6 +89,7 @@ import { parseNoSketchCSV, validateNoSketchFormat } from '../utils/parsers/conco
  * />
  */
 export const useFileUpload = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [processingStep, setProcessingStep] = useState('');
@@ -123,13 +125,13 @@ export const useFileUpload = () => {
    */
   const handleMetadataFileUpload = (file, setMetadataLookup) => {
     if (!file) {
-      setError('Aucun fichier sélectionné');
+      setError(t('concordance.upload.errors.noFileSelected'));
       return;
     }
 
     setLoading(true);
     setError(null);
-    setProcessingStep('Chargement des métadonnées...');
+    setProcessingStep(t('concordance.upload.processing.loadingMetadata'));
 
     Papa.parse(file, {
       header: false,
@@ -145,20 +147,20 @@ export const useFileUpload = () => {
 
           setMetadataLookup(lookup);
           setSelectedMetadataFile(file);
-          setProcessingStep(`✅ ${count} métadonnées chargées`);
+          setProcessingStep(`✅ ${t('concordance.upload.processing.metadataLoaded', { count })}`);
           setLoading(false);
 
           setTimeout(() => setProcessingStep(''), 3000);
         } catch (err) {
           console.error('❌ Erreur parsing métadonnées:', err);
-          setError(`Erreur parsing métadonnées: ${err.message}`);
+          setError(t('concordance.upload.errors.parsingMetadata', { message: err.message }));
           setLoading(false);
           setProcessingStep('');
         }
       },
       error: (err) => {
         console.error('❌ Erreur lecture fichier:', err);
-        setError(`Erreur lecture fichier: ${err.message}`);
+        setError(t('concordance.upload.errors.fileRead', { message: err.message }));
         setLoading(false);
         setProcessingStep('');
       }
@@ -197,17 +199,17 @@ export const useFileUpload = () => {
    */
   const handleConcordanceFileUpload = (file, metadataLookup, setConcordanceData) => {
     if (!file) {
-      setError('Aucun fichier sélectionné');
+      setError(t('concordance.upload.errors.noFileSelected'));
       return;
     }
 
     if (Object.keys(metadataLookup).length === 0) {
-      setError('Veuillez d\'abord charger le fichier de métadonnées');
+      setError(t('concordance.upload.errors.loadMetadataFirst'));
       return;
     }
 
     setLoading(true);
-    setProcessingStep('Analyse des concordances (Corpus A)...');
+    setProcessingStep(t('concordance.upload.processing.analyzingConcordancesA'));
 
     Papa.parse(file, {
       header: false,
@@ -233,7 +235,7 @@ export const useFileUpload = () => {
           setConcordanceData(result.concordances);
           setParseStats(result.stats);
           setSelectedConcordanceFile(file);
-          setProcessingStep(`✅ ${result.concordances.length} concordances analysées (Corpus A)`);
+          setProcessingStep(`✅ ${t('concordance.upload.processing.concordancesAnalyzedA', { count: result.concordances.length })}`);
 
           // Afficher les statistiques
           console.log('\n' + '='.repeat(70));
@@ -259,14 +261,14 @@ export const useFileUpload = () => {
           setTimeout(() => setProcessingStep(''), 5000);
         } catch (err) {
           console.error('❌ Erreur parsing concordances A:', err);
-          setError(`Erreur parsing concordances A: ${err.message}`);
+          setError(t('concordance.upload.errors.parsingConcordancesA', { message: err.message }));
           setLoading(false);
           setProcessingStep('');
         }
       },
       error: (err) => {
         console.error('❌ Erreur lecture fichier:', err);
-        setError(`Erreur lecture fichier: ${err.message}`);
+        setError(t('concordance.upload.errors.fileRead', { message: err.message }));
         setLoading(false);
         setProcessingStep('');
       }
@@ -308,17 +310,17 @@ export const useFileUpload = () => {
    */
   const handleConcordanceFileUploadB = (file, metadataLookup, setConcordanceDataB) => {
     if (!file) {
-      setError('Aucun fichier sélectionné');
+      setError(t('concordance.upload.errors.noFileSelected'));
       return;
     }
 
     if (Object.keys(metadataLookup).length === 0) {
-      setError('Veuillez d\'abord charger le fichier de métadonnées');
+      setError(t('concordance.upload.errors.loadMetadataFirst'));
       return;
     }
 
     setLoading(true);
-    setProcessingStep('Analyse des concordances (Corpus B)...');
+    setProcessingStep(t('concordance.upload.processing.analyzingConcordancesB'));
 
     Papa.parse(file, {
       header: false,
@@ -343,7 +345,7 @@ export const useFileUpload = () => {
           // Mettre à jour les états via le setter fourni
           setConcordanceDataB(result.concordances);
           setSelectedConcordanceBFile(file);
-          setProcessingStep(`✅ ${result.concordances.length} concordances analysées (Corpus B)`);
+          setProcessingStep(`✅ ${t('concordance.upload.processing.concordancesAnalyzedB', { count: result.concordances.length })}`);
 
           // Afficher les statistiques
           console.log('\n' + '='.repeat(70));
@@ -369,14 +371,14 @@ export const useFileUpload = () => {
           setTimeout(() => setProcessingStep(''), 5000);
         } catch (err) {
           console.error('❌ Erreur parsing concordances B:', err);
-          setError(`Erreur parsing concordances B: ${err.message}`);
+          setError(t('concordance.upload.errors.parsingConcordancesB', { message: err.message }));
           setLoading(false);
           setProcessingStep('');
         }
       },
       error: (err) => {
         console.error('❌ Erreur lecture fichier:', err);
-        setError(`Erreur lecture fichier: ${err.message}`);
+        setError(t('concordance.upload.errors.fileRead', { message: err.message }));
         setLoading(false);
         setProcessingStep('');
       }
