@@ -303,6 +303,19 @@
       "legend": {
         "timeRange": "Plage temporelle",
         "preciseDate": "Date précise"
+      },
+      "tooltip": {
+        "author": "Auteur :",
+        "period": "Période :",
+        "place": "Lieu :",
+        "type": "Type :",
+        "concordances": "Concordances :"
+      },
+      "defaults": {
+        "unknownTitle": "Titre inconnu",
+        "anonymous": "Anonyme",
+        "unknownPlace": "Lieu inconnu",
+        "unspecified": "Non spécifié"
       }
     },
     "navigation": {

@@ -559,7 +559,7 @@ const TemporalView = ({
                 textTransform: 'uppercase',
                 marginBottom: visualTheme.spacing.sm
               }}>
-                {t('stats.total')}
+                {t('concordance.stats.total')}
               </div>
               <div style={{
                 fontSize: visualTheme.typography.size.xxl,
@@ -590,7 +590,7 @@ const TemporalView = ({
                 textTransform: 'uppercase',
                 marginBottom: visualTheme.spacing.sm
               }}>
-                {t('stats.averagePerPeriod')}
+                {t('concordance.stats.averagePerPeriod')}
               </div>
               <div style={{
                 fontSize: visualTheme.typography.size.xxl,
@@ -621,7 +621,7 @@ const TemporalView = ({
                 textTransform: 'uppercase',
                 marginBottom: visualTheme.spacing.sm
               }}>
-                {t('stats.richestPeriod')}
+                {t('concordance.stats.richestPeriod')}
               </div>
               <div style={{
                 fontSize: visualTheme.typography.size.xxl,
