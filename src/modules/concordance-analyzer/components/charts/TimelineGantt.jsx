@@ -1,9 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-
-// Constante globale pour les marges (ne change jamais)
-const MARGINS = { top: 40, right: 40, bottom: 60, left: 250 };
+import { useResponsiveValue } from '../../../../shared/hooks';
 
 /**
  * Composant TimelineGantt - Timeline horizontale avec barres de plages temporelles
@@ -25,9 +23,54 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
   // ============================================================================
   // HOOK DE TRADUCTION
   // ============================================================================
-  
+
   const { t } = useTranslation();
-  
+
+  // ============================================================================
+  // DIMENSIONS RESPONSIVES
+  // ============================================================================
+
+  // Marges responsives (la marge gauche doit s'adapter pour les noms d'œuvres)
+  const leftMargin = useResponsiveValue({
+    xs: 120,    // Mobile: marge réduite
+    md: 180,    // Tablet: marge moyenne
+    lg: 250     // Desktop: marge complète
+  });
+
+  const MARGINS = {
+    top: 40,
+    right: 40,
+    bottom: 60,
+    left: leftMargin
+  };
+
+  // Largeur du graphique responsive
+  const chartWidth = useResponsiveValue({
+    xs: 600,    // Mobile: largeur réduite
+    md: 900,    // Tablet: largeur moyenne
+    lg: 1200    // Desktop: largeur complète
+  });
+
+  // Hauteur responsive du conteneur
+  const responsiveHeight = useResponsiveValue({
+    xs: height * 0.6,   // Mobile: 60%
+    md: height * 0.8,   // Tablet: 80%
+    lg: height          // Desktop: 100%
+  });
+
+  // Tailles de police responsives
+  const tickFontSize = useResponsiveValue({
+    xs: 9,      // Mobile: très petit
+    md: 10,     // Tablet: petit
+    lg: 11      // Desktop: taille normale
+  });
+
+  const labelFontSize = useResponsiveValue({
+    xs: 8,      // Mobile: très petit
+    md: 9,      // Tablet: petit
+    lg: 10      // Desktop: taille normale
+  });
+
   // ============================================================================
   // ÉTATS LOCAUX
   // ============================================================================
@@ -313,9 +356,9 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
 
       {/* Conteneur scrollable */}
       <div
-        id={chartId} 
+        id={chartId}
         style={{
-          height: `${height}px`,
+          height: `${responsiveHeight}px`,
           overflowY: 'auto',
           overflowX: 'hidden',
           border: '1px solid #e2e8f0',
@@ -367,7 +410,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
                   x={tick.x}
                   y={MARGINS.top - 10}
                   textAnchor="middle"
-                  fontSize="11"
+                  fontSize={tickFontSize}
                   fill="#64748b"
                 >
                   {tick.year}
@@ -390,7 +433,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
                   x={MARGINS.left - 10}
                   y={y + rowHeight / 2}
                   textAnchor="end"
-                  fontSize="10"
+                  fontSize={labelFontSize}
                   fill="#475569"
                   dominantBaseline="middle"
                 >

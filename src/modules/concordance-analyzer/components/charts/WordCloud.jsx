@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useResponsiveValue } from '../../../../shared/hooks';
 
 /**
  * Composant WordCloud - Nuage de mots simple et efficace
@@ -29,6 +30,26 @@ const WordCloud = ({
 }) => {
   const { t } = useTranslation();
 
+  // Tailles de police responsives pour le nuage de mots
+  const responsiveMinSize = useResponsiveValue({
+    xs: minSize * 0.7,   // Mobile: 70% de la taille min
+    md: minSize * 0.85,  // Tablet: 85%
+    lg: minSize          // Desktop: 100% (taille complète)
+  });
+
+  const responsiveMaxSize = useResponsiveValue({
+    xs: maxSize * 0.5,   // Mobile: 50% de la taille max
+    md: maxSize * 0.7,   // Tablet: 70%
+    lg: maxSize          // Desktop: 100% (taille complète)
+  });
+
+  // Hauteur responsive
+  const responsiveHeight = useResponsiveValue({
+    xs: '300px',   // Mobile: hauteur réduite
+    md: '350px',   // Tablet: hauteur moyenne
+    lg: height     // Desktop: hauteur complète
+  });
+
   // Ne pas rendre si pas de données
   if (!words || words.length === 0) {
     return (
@@ -37,7 +58,7 @@ const WordCloud = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: height,
+        height: responsiveHeight,
         background: '#f8fafc',
         borderRadius: '8px',
         border: '2px dashed #cbd5e1',
@@ -87,13 +108,14 @@ const WordCloud = ({
   /**
    * Calcule la taille de police en fonction de la fréquence
    * Utilise une échelle logarithmique pour meilleure distribution
+   * Applique les valeurs responsives pour s'adapter à la taille d'écran
    */
   const getFontSize = (value) => {
-    if (maxValue === minValue) return (maxSize + minSize) / 2;
-    
+    if (maxValue === minValue) return (responsiveMaxSize + responsiveMinSize) / 2;
+
     // Normalisation logarithmique pour meilleure distribution visuelle
     const normalized = Math.log(value) / Math.log(maxValue);
-    return minSize + (normalized * (maxSize - minSize));
+    return responsiveMinSize + (normalized * (responsiveMaxSize - responsiveMinSize));
   };
 
   /**
@@ -118,7 +140,7 @@ const WordCloud = ({
   return (
     <div style={{
       width: '100%',
-      minHeight: height,
+      minHeight: responsiveHeight,
       background: 'white',
       borderRadius: '8px',
       border: '1px solid #e2e8f0',

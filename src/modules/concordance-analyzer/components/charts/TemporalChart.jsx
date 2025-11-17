@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Brush } from 'recharts';
+import { useResponsiveValue } from '../../../../shared/hooks';
 import CustomTooltipChart from './CustomTooltipChart';
 
 /**
@@ -75,11 +76,32 @@ const TemporalChart = ({
 }) => {
   
   // ============================================================================
-  // HOOK DE TRADUCTION
+  // HOOKS
   // ============================================================================
-  
+
   const { t } = useTranslation();
-  
+
+  // Hauteur responsive du graphique
+  const responsiveHeight = useResponsiveValue({
+    xs: height * 0.6,   // Mobile: 60% de la hauteur par défaut
+    sm: height * 0.7,   // Phone landscape: 70%
+    md: height * 0.85,  // Tablet: 85%
+    lg: height          // Desktop: 100% (hauteur complète)
+  });
+
+  // Taille de police responsive
+  const axisFontSize = useResponsiveValue({
+    xs: '0.7rem',    // Mobile
+    md: '0.8rem',    // Tablet
+    lg: '0.85rem'    // Desktop
+  });
+
+  const labelFontSize = useResponsiveValue({
+    xs: '0.75rem',   // Mobile
+    md: '0.85rem',   // Tablet
+    lg: '0.9rem'     // Desktop
+  });
+
   // ============================================================================
   // VALIDATION DES DONNÉES
   // ============================================================================
@@ -125,7 +147,7 @@ const TemporalChart = ({
       {/* ======================================================================
           ResponsiveContainer : Adapte le graphique à son conteneur
           ====================================================================== */}
-      <ResponsiveContainer width="100%" height={height}>
+      <ResponsiveContainer width="100%" height={responsiveHeight}>
         
         {/* ====================================================================
             LineChart : Graphique linéaire Recharts
@@ -139,34 +161,34 @@ const TemporalChart = ({
           />
           
           {/* AXE HORIZONTAL (périodes) */}
-          <XAxis 
+          <XAxis
             dataKey="period"          // Clé des données pour les labels
-            style={{ 
-              fontSize: '0.85rem'     // Taille de police
+            style={{
+              fontSize: axisFontSize  // Taille de police responsive
             }}
-            label={{ 
+            label={{
               value: t('concordance.charts.labels.period'),  // Label de l'axe traduit
-              position: 'insideBottom', 
+              position: 'insideBottom',
               offset: -5,
-              style: { 
-                fontSize: '0.9rem', 
-                fill: '#64748b'       // Gris pour le label
+              style: {
+                fontSize: labelFontSize,  // Taille responsive
+                fill: '#64748b'           // Gris pour le label
               }
             }}
           />
-          
+
           {/* AXE VERTICAL (compteurs) */}
-          <YAxis 
-            style={{ 
-              fontSize: '0.85rem' 
+          <YAxis
+            style={{
+              fontSize: axisFontSize  // Taille de police responsive
             }}
-            label={{ 
+            label={{
               value: t('concordance.charts.labels.numberOfWorks'),  // Label de l'axe traduit
               angle: -90,                 // Rotation verticale
               position: 'insideLeft',
-              style: { 
-                fontSize: '0.9rem', 
-                fill: '#64748b' 
+              style: {
+                fontSize: labelFontSize,  // Taille responsive
+                fill: '#64748b'
               }
             }}
           />
