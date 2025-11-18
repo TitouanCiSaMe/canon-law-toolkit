@@ -29,6 +29,102 @@
     "error": "Error:",
     "anonymous": "Anonymous"
   },
+  "queryGenerator": {
+    "app": {
+      "title": "Linguistic Query Generator",
+      "subtitle": "Advanced tools for searching ancient text corpora"
+    },
+    "tabs": {
+      "proximity": "Proximity",
+      "variation": "Variations",
+      "proximityVariation": "Proximity + Variations",
+      "semantic": "Semantic Context"
+    },
+    "ui": {
+      "searchNoSketch": "Search on NoSketch",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "generate": "Generate Query",
+      "patterns": "Patterns for",
+      "queryGenerated": "Generated CQL Query"
+    },
+    "proximity": {
+      "title": "Proximity Search",
+      "description": "Find two lemmas that appear at a given distance from each other in the text. Perfect for studying collocations and conceptual associations.",
+      "formTitle": "Search Parameters",
+      "lemma1": "First lemma",
+      "lemma2": "Second lemma",
+      "distance": "Maximum distance",
+      "attribute": "Attribute",
+      "bidirectional": "Bidirectional search",
+      "placeholders": {
+        "lemma1": "e.g.: intentio",
+        "lemma2": "e.g.: Augustinus"
+      }
+    },
+    "variation": {
+      "title": "Orthographic Variations",
+      "description": "Generate queries to find orthographic variants with medieval Latin support.",
+      "formTitle": "Variation Search",
+      "word": "Word to search",
+      "desinenceType": "Ending type",
+      "withSuffix": "With endings",
+      "exactForm": "Exact form",
+      "simpleQuery": "Simple Query",
+      "mediumQuery": "Medium Query",
+      "complexQuery": "Complex Query",
+      "medievalQuery": "Medieval Query",
+      "medievalHelp": "Includes substitutions ae/e, v/u, j/i, ti/ci, etc.",
+      "placeholders": {
+        "word": "e.g.: intentio"
+      }
+    },
+    "proximityVariation": {
+      "title": "Proximity with Variations",
+      "description": "Combine proximity and orthographic variations for exhaustive search.",
+      "formTitle": "Advanced Search",
+      "variationType": "Variation type",
+      "simple": "Simple",
+      "medium": "Medium",
+      "complex": "Complex",
+      "medieval": "Medieval",
+      "all": "All"
+    },
+    "semantic": {
+      "title": "Semantic Context",
+      "description": "Find a central lemma with specific context terms to analyze semantic relationships.",
+      "formTitle": "Semantic Search",
+      "centralLemma": "Central lemma",
+      "contextLemmas": "Context lemmas (comma-separated)",
+      "contextHelp": "Enter multiple lemmas that form the desired semantic context",
+      "contextMode": "Context mode",
+      "modeAny": "At least one (OR) - more flexible",
+      "modePhrase": "Optimized phrase - avoids duplicates",
+      "modeAll": "All (AND) - more restrictive",
+      "modeHelp": {
+        "any": "Finds central lemma + at least one context",
+        "phrase": "Combines smart proximity, avoids repetitions",
+        "all": "Finds central lemma + all contexts (may generate duplicates)"
+      },
+      "placeholders": {
+        "centralLemma": "e.g.: intentio",
+        "contextLemmas": "e.g.: voluntas, ratio, intellectus"
+      },
+      "results": {
+        "central": "Central",
+        "contexts": "Contexts"
+      }
+    },
+    "attributes": {
+      "lemma": "Lemma",
+      "word": "Word"
+    },
+    "errors": {
+      "lemmaRequired": "Both lemmas must be provided",
+      "wordRequired": "The word must be provided",
+      "centralLemmaRequired": "The central lemma and at least one context must be provided"
+    }
+  },
   "metadata": {
     "unknownDomain": "Unknown domain",
     "unknownPlace": "Unknown place"
@@ -273,7 +369,7 @@
       "itemsPerPage": "Items per page"
     },
     "dataView": {
-      "title": "Detailed concordance data",
+      "title": "",
       "contextDisplay": "Context display:",
       "oneLine": "One line",
       "fullText": "Full text",
@@ -321,7 +417,7 @@
         "sectionTitle": "Geographic distribution"
       },
       "linguistic": {
-        "sectionTitle": "Terminological analysis",
+        "sectionTitle": "",
         "noData": "No terminological data available",
         "importFirst": "Please import your files first to see lexical analysis."
       },

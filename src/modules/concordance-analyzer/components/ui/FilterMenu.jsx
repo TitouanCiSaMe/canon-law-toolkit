@@ -214,10 +214,11 @@ const FilterSection = ({ title, items, activeItems, onToggle }) => {
           borderRadius: '4px'
         }}
       >
-        <h3 style={{ 
-          fontSize: '1rem', 
+        <h3 style={{
+          fontSize: '1rem',
           fontWeight: '500',
-          margin: 0
+          margin: 0,
+          color: '#F7FAFC'
         }}>
           {title} {activeItems.length > 0 && `(${activeItems.length})`}
         </h3>
