@@ -10,18 +10,19 @@
  * - L'affichage des résultats
  */
 
+import { vi } from 'vitest';
+
 // ============================================================================
 // MOCKS - MUST BE BEFORE IMPORTS
 // ============================================================================
 
 // Mock du module queryGenerators
-const mockGenerateSemanticContextQuery = jest.fn();
-jest.mock('../../../utils/queryGenerators', () => ({
-  generateSemanticContextQuery: mockGenerateSemanticContextQuery
+vi.mock('../../../utils/queryGenerators', () => ({
+  generateSemanticContextQuery: vi.fn()
 }));
 
 // Mock de react-i18next
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key) => {
       const translations = {
@@ -56,6 +57,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SemanticView from '../SemanticView';
+import { generateSemanticContextQuery } from '../../../utils/queryGenerators';
 
 // ============================================================================
 // TESTS DE RENDU INITIAL
@@ -64,7 +66,7 @@ import SemanticView from '../SemanticView';
 describe('SemanticView - Rendu initial', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait rendre le composant sans erreur', () => {
@@ -125,7 +127,7 @@ describe('SemanticView - Rendu initial', () => {
 describe('SemanticView - Interactions formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre de changer le lemme central', () => {
@@ -193,11 +195,11 @@ describe('SemanticView - Interactions formulaire', () => {
 describe('SemanticView - Soumission du formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
-  it('devrait appeler mockGenerateSemanticContextQuery à la soumission', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+  it('devrait appeler generateSemanticContextQuery à la soumission', () => {
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,20} ([lemma="voluntas"]|[lemma="ratio"]|[lemma="intellectus"])',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas', 'ratio', 'intellectus'],
@@ -210,7 +212,7 @@ describe('SemanticView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalledWith(
+    expect(generateSemanticContextQuery).toHaveBeenCalledWith(
       'intentio',
       'voluntas, ratio, intellectus',
       20,
@@ -219,7 +221,7 @@ describe('SemanticView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher le résultat après soumission réussie', async () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,20} ([lemma="voluntas"]|[lemma="ratio"])',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas', 'ratio'],
@@ -239,7 +241,7 @@ describe('SemanticView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher une erreur si la génération échoue', async () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       error: 'Le lemme central et au moins un contexte doivent être renseignés'
     });
 
@@ -258,7 +260,7 @@ describe('SemanticView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec le mode "phrase"', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,20} [lemma="voluntas"] | [lemma="voluntas"] []{0,20} [lemma="intentio"]',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas'],
@@ -274,7 +276,7 @@ describe('SemanticView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalledWith(
+    expect(generateSemanticContextQuery).toHaveBeenCalledWith(
       'intentio',
       'voluntas, ratio, intellectus',
       20,
@@ -283,7 +285,7 @@ describe('SemanticView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec le mode "all"', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: 'complex query with all contexts',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas', 'ratio'],
@@ -299,7 +301,7 @@ describe('SemanticView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalledWith(
+    expect(generateSemanticContextQuery).toHaveBeenCalledWith(
       'intentio',
       'voluntas, ratio, intellectus',
       20,
@@ -308,7 +310,7 @@ describe('SemanticView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec les bonnes valeurs modifiées', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="ratio"] []{0,30} ([lemma="amor"]|[lemma="caritas"])',
       centralLemma: 'ratio',
       contextLemmas: ['amor', 'caritas'],
@@ -331,7 +333,7 @@ describe('SemanticView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalledWith(
+    expect(generateSemanticContextQuery).toHaveBeenCalledWith(
       'ratio',
       'amor, caritas',
       30,
@@ -347,11 +349,11 @@ describe('SemanticView - Soumission du formulaire', () => {
 describe('SemanticView - Affichage des résultats', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait afficher les métadonnées dans ResultCard', async () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,20} ([lemma="voluntas"])',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas', 'ratio'],
@@ -378,7 +380,7 @@ describe('SemanticView - Affichage des résultats', () => {
 
   it('devrait cacher le résultat en cas d\'erreur', async () => {
     // D'abord un succès
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="test"]',
       centralLemma: 'test',
       contextLemmas: ['test2'],
@@ -396,7 +398,7 @@ describe('SemanticView - Affichage des résultats', () => {
     });
 
     // Ensuite une erreur
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       error: 'Erreur de test'
     });
 
@@ -421,11 +423,11 @@ describe('SemanticView - Affichage des résultats', () => {
 describe('SemanticView - Cas limites', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait gérer les valeurs de distance aux limites', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="test"]',
       centralLemma: 'test',
       contextLemmas: ['test2'],
@@ -441,7 +443,7 @@ describe('SemanticView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalledWith(
+    expect(generateSemanticContextQuery).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       100,
@@ -450,7 +452,7 @@ describe('SemanticView - Cas limites', () => {
   });
 
   it('devrait gérer les espaces dans les lemmes', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="test"]',
       centralLemma: 'test',
       contextLemmas: ['test2', 'test3'],
@@ -469,11 +471,11 @@ describe('SemanticView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalled();
+    expect(generateSemanticContextQuery).toHaveBeenCalled();
   });
 
   it('devrait gérer un seul lemme de contexte', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,20} [lemma="voluntas"]',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas'],
@@ -489,7 +491,7 @@ describe('SemanticView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalledWith(
+    expect(generateSemanticContextQuery).toHaveBeenCalledWith(
       'intentio',
       'voluntas',
       20,
@@ -498,7 +500,7 @@ describe('SemanticView - Cas limites', () => {
   });
 
   it('devrait gérer plusieurs lemmes de contexte', () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"]',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas', 'ratio', 'intellectus', 'amor', 'caritas'],
@@ -514,11 +516,11 @@ describe('SemanticView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateSemanticContextQuery).toHaveBeenCalled();
+    expect(generateSemanticContextQuery).toHaveBeenCalled();
   });
 
   it('devrait gérer plusieurs soumissions successives', async () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="test1"]',
       centralLemma: 'test1',
       contextLemmas: ['test2'],
@@ -537,7 +539,7 @@ describe('SemanticView - Cas limites', () => {
     });
 
     // Deuxième soumission
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="test2"]',
       centralLemma: 'test2',
       contextLemmas: ['test3'],
@@ -559,11 +561,11 @@ describe('SemanticView - Cas limites', () => {
 describe('SemanticView - Intégration', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre un workflow complet', async () => {
-    mockGenerateSemanticContextQuery.mockReturnValue({
+    generateSemanticContextQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,25} [lemma="voluntas"] | [lemma="voluntas"] []{0,25} [lemma="intentio"]',
       centralLemma: 'intentio',
       contextLemmas: ['voluntas', 'amor'],

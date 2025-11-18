@@ -9,23 +9,19 @@
  * - L'affichage des résultats multiples
  */
 
-// Mock du module variationGenerators AVANT tout import
-const mockGenerateAllVariationQueries = jest.fn();
-jest.mock('../../../utils/variationGenerators', () => ({
-  mockGenerateAllVariationQueries: mockGenerateAllVariationQueries
+import { vi } from 'vitest';
+
+// ============================================================================
+// MOCKS - MUST BE BEFORE IMPORTS
+// ============================================================================
+
+// Mock du module variationGenerators
+vi.mock('../../../utils/variationGenerators', () => ({
+  generateAllVariationQueries: vi.fn()
 }));
 
-import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import VariationView from '../VariationView';
-
-// ============================================================================
-// MOCKS
-// ============================================================================
-
 // Mock de react-i18next
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key) => {
       const translations = {
@@ -50,6 +46,12 @@ jest.mock('react-i18next', () => ({
   })
 }));
 
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import VariationView from '../VariationView';
+import { generateAllVariationQueries } from '../../../utils/variationGenerators';
+
 // ============================================================================
 // TESTS DE RENDU INITIAL
 // ============================================================================
@@ -57,7 +59,7 @@ jest.mock('react-i18next', () => ({
 describe('VariationView - Rendu initial', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait rendre le composant sans erreur', () => {
@@ -118,7 +120,7 @@ describe('VariationView - Rendu initial', () => {
 describe('VariationView - Interactions formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre de changer le mot', () => {
@@ -169,11 +171,11 @@ describe('VariationView - Interactions formulaire', () => {
 describe('VariationView - Soumission du formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
-  it('devrait appeler mockGenerateAllVariationQueries à la soumission', () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+  it('devrait appeler generateAllVariationQueries à la soumission', () => {
+    generateAllVariationQueries.mockReturnValue({
       mot: 'intentio',
       requete1: '[word="intentio|int[A-z]?ntio"]',
       requete2: '[word="intentio|[A-z]*ntio"]',
@@ -192,14 +194,14 @@ describe('VariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
+    expect(generateAllVariationQueries).toHaveBeenCalledWith(
       'intentio',
       true
     );
   });
 
   it('devrait afficher les 4 types de requêtes après soumission réussie', async () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'intentio',
       requete1: '[word="simple"]',
       requete2: '[word="medium"]',
@@ -227,7 +229,7 @@ describe('VariationView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher une erreur si la génération échoue', async () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       error: 'Le mot doit être renseigné'
     });
 
@@ -246,7 +248,7 @@ describe('VariationView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec withSuffix=false pour forme exacte', () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'ratio',
       requete1: '[word="ratio"]',
       requete2: '[word="ratio"]',
@@ -264,14 +266,14 @@ describe('VariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
+    expect(generateAllVariationQueries).toHaveBeenCalledWith(
       'intentio',
       false
     );
   });
 
   it('devrait appeler avec le mot modifié', () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'ratio',
       requete1: '[word="ratio"]',
       requete2: '[word="ratio"]',
@@ -288,7 +290,7 @@ describe('VariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
+    expect(generateAllVariationQueries).toHaveBeenCalledWith(
       'ratio',
       true
     );
@@ -302,11 +304,11 @@ describe('VariationView - Soumission du formulaire', () => {
 describe('VariationView - Affichage des résultats', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait afficher les 4 ResultCard avec les bonnes requêtes', async () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="query1"]',
       requete2: '[word="query2"]',
@@ -339,7 +341,7 @@ describe('VariationView - Affichage des résultats', () => {
 
   it('devrait cacher les résultats en cas d\'erreur', async () => {
     // D'abord un succès
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="test1"]',
       requete2: '[word="test2"]',
@@ -358,7 +360,7 @@ describe('VariationView - Affichage des résultats', () => {
     });
 
     // Ensuite une erreur
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       error: 'Erreur de test'
     });
 
@@ -383,11 +385,11 @@ describe('VariationView - Affichage des résultats', () => {
 describe('VariationView - Cas limites', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait gérer un mot vide', () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       error: 'Le mot doit être renseigné'
     });
 
@@ -399,14 +401,14 @@ describe('VariationView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
+    expect(generateAllVariationQueries).toHaveBeenCalledWith(
       '',
       true
     );
   });
 
   it('devrait gérer les espaces dans le mot', () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="test"]',
       requete2: '[word="test"]',
@@ -423,11 +425,11 @@ describe('VariationView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateAllVariationQueries).toHaveBeenCalled();
+    expect(generateAllVariationQueries).toHaveBeenCalled();
   });
 
   it('devrait gérer plusieurs soumissions successives', async () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'test1',
       requete1: '[word="test1"]',
       requete2: '[word="test1"]',
@@ -447,7 +449,7 @@ describe('VariationView - Cas limites', () => {
     });
 
     // Deuxième soumission
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'test2',
       requete1: '[word="test2"]',
       requete2: '[word="test2"]',
@@ -473,11 +475,11 @@ describe('VariationView - Cas limites', () => {
 describe('VariationView - Intégration', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre un workflow complet', async () => {
-    mockGenerateAllVariationQueries.mockReturnValue({
+    generateAllVariationQueries.mockReturnValue({
       mot: 'philosophia',
       requete1: '[word="philosophia|phil[A-z]?sophia"]',
       requete2: '[word="philosophia|[A-z]*sophia"]',

@@ -9,18 +9,19 @@
  * - L'affichage des résultats avec patterns
  */
 
+import { vi } from 'vitest';
+
 // ============================================================================
 // MOCKS - MUST BE BEFORE IMPORTS
 // ============================================================================
 
 // Mock du module queryGenerators
-const mockGenerateProximityWithVariations = jest.fn();
-jest.mock('../../../utils/queryGenerators', () => ({
-  generateProximityWithVariations: mockGenerateProximityWithVariations
+vi.mock('../../../utils/queryGenerators', () => ({
+  generateProximityWithVariations: vi.fn()
 }));
 
 // Mock de react-i18next
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key) => {
       const translations = {
@@ -51,6 +52,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProximityVariationView from '../ProximityVariationView';
+import { generateProximityWithVariations } from '../../../utils/queryGenerators';
 
 // ============================================================================
 // TESTS DE RENDU INITIAL
@@ -59,7 +61,7 @@ import ProximityVariationView from '../ProximityVariationView';
 describe('ProximityVariationView - Rendu initial', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait rendre le composant sans erreur', () => {
@@ -117,7 +119,7 @@ describe('ProximityVariationView - Rendu initial', () => {
 describe('ProximityVariationView - Interactions formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre de changer lemma1', () => {
@@ -188,11 +190,11 @@ describe('ProximityVariationView - Interactions formulaire', () => {
 describe('ProximityVariationView - Soumission du formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
-  it('devrait appeler mockGenerateProximityWithVariations à la soumission', () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+  it('devrait appeler generateProximityWithVariations à la soumission', () => {
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="intentio|intencio"] []{0,10} [word="Augustinus|Augustus"]',
       lemma1: 'intentio',
       lemma2: 'Augustinus',
@@ -209,7 +211,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityWithVariations).toHaveBeenCalledWith(
+    expect(generateProximityWithVariations).toHaveBeenCalledWith(
       'intentio',
       'Augustinus',
       10,
@@ -220,7 +222,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher le résultat après soumission réussie', async () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="intentio|intencio"] []{0,10} [word="Augustinus"]',
       lemma1: 'intentio',
       lemma2: 'Augustinus',
@@ -244,7 +246,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher une erreur si la génération échoue', async () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       error: 'Les deux lemmes doivent être renseignés'
     });
 
@@ -263,7 +265,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec le type de variation sélectionné', () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -284,7 +286,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityWithVariations).toHaveBeenCalledWith(
+    expect(generateProximityWithVariations).toHaveBeenCalledWith(
       'intentio',
       'Augustinus',
       10,
@@ -295,7 +297,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec les bonnes valeurs modifiées', () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[lemma="ratio"] []{0,15} [lemma="intellectus"]',
       lemma1: 'ratio',
       lemma2: 'intellectus',
@@ -329,7 +331,7 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityWithVariations).toHaveBeenCalledWith(
+    expect(generateProximityWithVariations).toHaveBeenCalledWith(
       'ratio',
       'intellectus',
       15,
@@ -347,11 +349,11 @@ describe('ProximityVariationView - Soumission du formulaire', () => {
 describe('ProximityVariationView - Affichage des résultats', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait afficher les patterns dans ResultCard', async () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -384,7 +386,7 @@ describe('ProximityVariationView - Affichage des résultats', () => {
 
   it('devrait cacher le résultat en cas d\'erreur', async () => {
     // D'abord un succès
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -406,7 +408,7 @@ describe('ProximityVariationView - Affichage des résultats', () => {
     });
 
     // Ensuite une erreur
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       error: 'Erreur de test'
     });
 
@@ -431,11 +433,11 @@ describe('ProximityVariationView - Affichage des résultats', () => {
 describe('ProximityVariationView - Cas limites', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait gérer les valeurs de distance aux limites', () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -455,7 +457,7 @@ describe('ProximityVariationView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityWithVariations).toHaveBeenCalledWith(
+    expect(generateProximityWithVariations).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       100,
@@ -466,7 +468,7 @@ describe('ProximityVariationView - Cas limites', () => {
   });
 
   it('devrait gérer plusieurs soumissions successives', async () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="test1"]',
       lemma1: 'test1',
       lemma2: 'test2',
@@ -489,7 +491,7 @@ describe('ProximityVariationView - Cas limites', () => {
     });
 
     // Deuxième soumission
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="test2"]',
       lemma1: 'test2',
       lemma2: 'test3',
@@ -515,11 +517,11 @@ describe('ProximityVariationView - Cas limites', () => {
 describe('ProximityVariationView - Intégration', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre un workflow complet', async () => {
-    mockGenerateProximityWithVariations.mockReturnValue({
+    generateProximityWithVariations.mockReturnValue({
       query: '[word="intentio|intencio|intentyo"] []{0,10} [word="ratio|raatio|racio"]',
       lemma1: 'intentio',
       lemma2: 'ratio',

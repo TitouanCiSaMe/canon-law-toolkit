@@ -9,17 +9,19 @@
  * - L'affichage des résultats
  */
 
+import { vi } from 'vitest';
+
 // ============================================================================
 // MOCKS - MUST BE BEFORE IMPORTS
 // ============================================================================
 
 // Mock du module queryGenerators
-jest.mock('../../../utils/queryGenerators', () => ({
-  generateProximityQuery: jest.fn()
+vi.mock('../../../utils/queryGenerators', () => ({
+  generateProximityQuery: vi.fn()
 }));
 
 // Mock de react-i18next
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key) => {
       const translations = {
@@ -57,7 +59,7 @@ import { generateProximityQuery } from '../../../utils/queryGenerators';
 describe('ProximityView - Rendu initial', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait rendre le composant sans erreur', () => {
@@ -111,7 +113,7 @@ describe('ProximityView - Rendu initial', () => {
 describe('ProximityView - Interactions formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre de changer lemma1', () => {
@@ -171,7 +173,7 @@ describe('ProximityView - Interactions formulaire', () => {
 describe('ProximityView - Soumission du formulaire', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait appeler generateProximityQuery à la soumission', () => {
@@ -286,7 +288,7 @@ describe('ProximityView - Soumission du formulaire', () => {
 describe('ProximityView - Affichage des résultats', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait afficher les métadonnées dans ResultCard', async () => {
@@ -363,7 +365,7 @@ describe('ProximityView - Affichage des résultats', () => {
 describe('ProximityView - Cas limites', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait gérer les valeurs de distance aux limites', () => {
@@ -458,7 +460,7 @@ describe('ProximityView - Cas limites', () => {
 describe('ProximityView - Intégration', () => {
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('devrait permettre un workflow complet', async () => {
