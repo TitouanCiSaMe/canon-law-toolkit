@@ -29,6 +29,102 @@
     "error": "Erreur :",
     "anonymous": "Anonyme"
   },
+  "queryGenerator": {
+    "app": {
+      "title": "Générateur de requêtes linguistiques",
+      "subtitle": "Outils avancés pour la recherche dans les corpus de textes anciens"
+    },
+    "tabs": {
+      "proximity": "Proximité",
+      "variation": "Variations",
+      "proximityVariation": "Proximité + Variations",
+      "semantic": "Contexte sémantique"
+    },
+    "ui": {
+      "searchNoSketch": "Chercher sur NoSketch",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "generate": "Générer la requête",
+      "patterns": "Patterns pour",
+      "queryGenerated": "Requête CQL générée"
+    },
+    "proximity": {
+      "title": "Recherche de proximité",
+      "description": "Trouvez deux lemmes qui apparaissent à une distance donnée l'un de l'autre dans le texte. Parfait pour étudier les collocations et associations conceptuelles.",
+      "formTitle": "Paramètres de recherche",
+      "lemma1": "Premier lemme",
+      "lemma2": "Second lemme",
+      "distance": "Distance maximale",
+      "attribute": "Attribut",
+      "bidirectional": "Recherche bidirectionnelle",
+      "placeholders": {
+        "lemma1": "ex: intentio",
+        "lemma2": "ex: Augustinus"
+      }
+    },
+    "variation": {
+      "title": "Variations orthographiques",
+      "description": "Générez des requêtes pour trouver des variantes orthographiques avec support pour le latin médiéval.",
+      "formTitle": "Recherche de variations",
+      "word": "Mot à rechercher",
+      "desinenceType": "Type de désinence",
+      "withSuffix": "Avec désinences",
+      "exactForm": "Forme exacte",
+      "simpleQuery": "Requête simple",
+      "mediumQuery": "Requête moyenne",
+      "complexQuery": "Requête complexe",
+      "medievalQuery": "Requête médiévale",
+      "medievalHelp": "Inclut substitutions ae/e, v/u, j/i, ti/ci, etc.",
+      "placeholders": {
+        "word": "ex: intentio"
+      }
+    },
+    "proximityVariation": {
+      "title": "Proximité avec variations",
+      "description": "Combinez proximité et variations orthographiques pour une recherche exhaustive.",
+      "formTitle": "Recherche avancée",
+      "variationType": "Type de variations",
+      "simple": "Simple",
+      "medium": "Moyen",
+      "complex": "Complexe",
+      "medieval": "Médiéval",
+      "all": "Toutes"
+    },
+    "semantic": {
+      "title": "Contexte sémantique",
+      "description": "Trouvez un lemme central avec des termes de contexte spécifiques pour analyser les relations sémantiques.",
+      "formTitle": "Recherche sémantique",
+      "centralLemma": "Lemme central",
+      "contextLemmas": "Lemmes de contexte (séparés par virgules)",
+      "contextHelp": "Entrez plusieurs lemmes qui forment le contexte sémantique recherché",
+      "contextMode": "Mode de contexte",
+      "modeAny": "Au moins un (OU) - plus souple",
+      "modePhrase": "Phrase optimisée - évite les doublons",
+      "modeAll": "Tous (ET) - plus restrictif",
+      "modeHelp": {
+        "any": "Trouve le lemme central + au moins un des contextes",
+        "phrase": "Combine proximité intelligente, évite les répétitions",
+        "all": "Trouve le lemme central + tous les contextes (peut générer des doublons)"
+      },
+      "placeholders": {
+        "centralLemma": "ex: intentio",
+        "contextLemmas": "ex: voluntas, ratio, intellectus"
+      },
+      "results": {
+        "central": "Central",
+        "contexts": "Contextes"
+      }
+    },
+    "attributes": {
+      "lemma": "Lemme",
+      "word": "Mot"
+    },
+    "errors": {
+      "lemmaRequired": "Les deux lemmes doivent être renseignés",
+      "wordRequired": "Le mot doit être renseigné",
+      "centralLemmaRequired": "Le lemme central et au moins un contexte doivent être renseignés"
+    }
+  },
   "metadata": {
     "unknownDomain": "Domaine inconnu",
     "unknownPlace": "Lieu inconnu"
