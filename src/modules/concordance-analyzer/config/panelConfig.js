@@ -23,7 +23,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.overview.subtitle',
     color: visualTheme.colors.primary.main,           // Brun encre principal
     gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.light),
-    icon: '📊',
+    icon: '◈',  // Symbole académique/ornement
     gridArea: '1 / 1 / 2 / 2',
     size: 'medium'
   },
@@ -33,7 +33,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.domains.subtitle',
     color: visualTheme.colors.primary.light,          // Brun encre moyen
     gradient: createGradient(visualTheme.colors.primary.light, '#8B4513'),
-    icon: '📚',
+    icon: '⚜',  // Fleur de lys (académique)
     gridArea: '1 / 2 / 2 / 3',
     size: 'medium'
   },
@@ -43,7 +43,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.temporal.subtitle',
     color: visualTheme.colors.accent.gold,            // Or antique
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
-    icon: '⏰',
+    icon: '⧗',  // Symbole temporel
     gridArea: '1 / 3 / 2 / 4',
     size: 'medium'
   },
@@ -53,7 +53,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.places.subtitle',
     color: visualTheme.colors.accent.green,           // Vert malachite
     gradient: createGradient(visualTheme.colors.accent.green, '#3D6622'),
-    icon: '🌍',
+    icon: '✦',  // Étoile ornementale (cartographie médiévale)
     gridArea: '1 / 4 / 2 / 5',
     size: 'medium'
   },
@@ -63,7 +63,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.authors.subtitle',
     color: '#704214',                                 // Brun encre moyen
     gradient: createGradient('#704214', '#8B4513'),
-    icon: '✍️',
+    icon: '✒',  // Plume calligraphique
     gridArea: '2 / 1 / 3 / 2',
     size: 'medium'
   },
@@ -73,7 +73,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.linguistic.subtitle',
     color: visualTheme.colors.primary.blue,           // Bleu lapis-lazuli
     gradient: createGradient(visualTheme.colors.primary.blue, visualTheme.colors.primary.blueHover),
-    icon: '🔤',
+    icon: '❦',  // Hedera (symbole textuel médiéval)
     gridArea: '2 / 2 / 3 / 3',
     size: 'medium'
   },
@@ -83,7 +83,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.data.subtitle',
     color: visualTheme.colors.primary.dark,           // Brun très foncé (sépia)
     gradient: createGradient(visualTheme.colors.primary.dark, visualTheme.colors.primary.main),
-    icon: '📋',
+    icon: '⟐',  // Symbole manuscrit/tablette
     gridArea: '2 / 3 / 3 / 5',  // S'étend sur 2 colonnes
     size: 'medium'
   },
@@ -93,7 +93,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.corpusComparison.subtitle',
     color: visualTheme.colors.accent.gold,            // Or antique (enluminure)
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
-    icon: '⚖️',
+    icon: '⚖',  // Balance (symbole juridique)
     gridArea: '3 / 1 / 4 / 5',  // Full width, ligne 3
     size: 'wide'
   },
@@ -103,7 +103,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.concordances.subtitle',
     color: '#5C3317',                                 // Brun encre principal
     gradient: createGradient('#5C3317', '#704214'),
-    icon: '📁',
+    icon: '⊞',  // Symbole catalogue/archive
     gridArea: '4 / 1 / 5 / 5',  // Full width, ligne 4
     size: 'wide'
   }

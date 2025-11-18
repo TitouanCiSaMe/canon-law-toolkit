@@ -204,29 +204,91 @@ export const globalTheme = {
   },
   
   // ------------------------------------------------------------------------
-  // Typographie
+  // Typographie (Hiérarchie médiévale académique)
   // ------------------------------------------------------------------------
   typography: {
     fontFamily: {
-      primary: '"Crimson Text", Georgia, serif',    // Titres (médiéval)
-      secondary: '"Lato", sans-serif',              // UI (moderne)
-      sans: '"Inter", sans-serif',                  // Alternative (concordance)
-      serif: '"Crimson Text", serif'                // Alternative (concordance)
+      primary: '"Crimson Text", Georgia, serif',    // Titres principaux (médiéval)
+      secondary: '"Lato", "Helvetica Neue", sans-serif',    // UI/Corps de texte
+      heading: '"EB Garamond", "Crimson Text", Georgia, serif',  // Grands titres (style livre ancien)
+      display: '"Cormorant Garamond", "EB Garamond", serif',     // Titres display (enluminure)
+      body: '"Lato", "Helvetica Neue", sans-serif', // Corps de texte principal
+      mono: '"Courier New", Courier, monospace'     // Code/données
     },
     size: {
       xs: '0.75rem',     // 12px - Métadonnées
       sm: '0.85rem',     // 13.6px - Labels
       md: '0.875rem',    // 14px - Corps de texte
-      lg: '1rem',        // 16px - Titres secondaires
-      xl: '1.25rem',     // 20px - Titres
-      xxl: '1.5rem',     // 24px - Grands titres
-      xxxl: '2rem'       // 32px - Titres principaux
+      lg: '1rem',        // 16px - Texte standard
+      xl: '1.25rem',     // 20px - Petits titres
+      xxl: '1.5rem',     // 24px - Titres moyens
+      xxxl: '2rem',      // 32px - Grands titres
+      display: '2.5rem'  // 40px - Titres display
     },
     weight: {
+      light: '300',
       normal: '400',
       medium: '500',
       semibold: '600',
-      bold: '700'
+      bold: '700',
+      black: '900'
+    },
+    // Styles de titres hiérarchiques
+    heading: {
+      h1: {
+        fontFamily: '"EB Garamond", "Crimson Text", Georgia, serif',
+        fontSize: '2.5rem',     // 40px
+        fontWeight: '700',
+        lineHeight: '1.2',
+        letterSpacing: '-0.02em',
+        color: '#5C3317',       // Brun encre principal
+        textTransform: 'none'
+      },
+      h2: {
+        fontFamily: '"Crimson Text", Georgia, serif',
+        fontSize: '2rem',       // 32px
+        fontWeight: '600',
+        lineHeight: '1.3',
+        letterSpacing: '-0.01em',
+        color: '#5C3317',       // Brun encre principal
+        textTransform: 'none'
+      },
+      h3: {
+        fontFamily: '"Crimson Text", Georgia, serif',
+        fontSize: '1.5rem',     // 24px
+        fontWeight: '600',
+        lineHeight: '1.4',
+        letterSpacing: '0',
+        color: '#704214',       // Brun encre moyen
+        textTransform: 'none'
+      },
+      h4: {
+        fontFamily: '"Lato", sans-serif',
+        fontSize: '1.25rem',    // 20px
+        fontWeight: '600',
+        lineHeight: '1.4',
+        letterSpacing: '0',
+        color: '#704214',       // Brun encre moyen
+        textTransform: 'none'
+      },
+      h5: {
+        fontFamily: '"Lato", sans-serif',
+        fontSize: '1rem',       // 16px
+        fontWeight: '600',
+        lineHeight: '1.5',
+        letterSpacing: '0.01em',
+        color: '#8B4513',       // Brun sépia
+        textTransform: 'uppercase'
+      },
+      h6: {
+        fontFamily: '"Lato", sans-serif',
+        fontSize: '0.875rem',   // 14px
+        fontWeight: '700',
+        lineHeight: '1.5',
+        letterSpacing: '0.05em',
+        color: '#8B4513',       // Brun sépia
+        textTransform: 'uppercase'
+      }
     }
   },
   
@@ -312,34 +374,98 @@ export const createGradient = (color1, color2) =>
   `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
 
 /**
- * Génère les styles CSS globaux
+ * Génère les styles CSS globaux avec hiérarchie typographique
  * @returns {string} CSS string
  */
 export const generateGlobalStyles = () => `
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   body {
-    font-family: ${globalTheme.typography.fontFamily.primary};
+    font-family: ${globalTheme.typography.fontFamily.body};
     color: ${globalTheme.colors.text.primary};
     background: ${globalTheme.colors.background.default};
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: ${globalTheme.typography.size.md};
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: ${globalTheme.typography.weight.bold};
-    line-height: 1.2;
+
+  h1 {
+    font-family: ${globalTheme.typography.heading.h1.fontFamily};
+    font-size: ${globalTheme.typography.heading.h1.fontSize};
+    font-weight: ${globalTheme.typography.heading.h1.fontWeight};
+    line-height: ${globalTheme.typography.heading.h1.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h1.letterSpacing};
+    color: ${globalTheme.typography.heading.h1.color};
+    margin-bottom: 1.5rem;
   }
-  
+
+  h2 {
+    font-family: ${globalTheme.typography.heading.h2.fontFamily};
+    font-size: ${globalTheme.typography.heading.h2.fontSize};
+    font-weight: ${globalTheme.typography.heading.h2.fontWeight};
+    line-height: ${globalTheme.typography.heading.h2.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h2.letterSpacing};
+    color: ${globalTheme.typography.heading.h2.color};
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    font-family: ${globalTheme.typography.heading.h3.fontFamily};
+    font-size: ${globalTheme.typography.heading.h3.fontSize};
+    font-weight: ${globalTheme.typography.heading.h3.fontWeight};
+    line-height: ${globalTheme.typography.heading.h3.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h3.letterSpacing};
+    color: ${globalTheme.typography.heading.h3.color};
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-family: ${globalTheme.typography.heading.h4.fontFamily};
+    font-size: ${globalTheme.typography.heading.h4.fontSize};
+    font-weight: ${globalTheme.typography.heading.h4.fontWeight};
+    line-height: ${globalTheme.typography.heading.h4.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h4.letterSpacing};
+    color: ${globalTheme.typography.heading.h4.color};
+    margin-bottom: 0.875rem;
+  }
+
+  h5 {
+    font-family: ${globalTheme.typography.heading.h5.fontFamily};
+    font-size: ${globalTheme.typography.heading.h5.fontSize};
+    font-weight: ${globalTheme.typography.heading.h5.fontWeight};
+    line-height: ${globalTheme.typography.heading.h5.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h5.letterSpacing};
+    color: ${globalTheme.typography.heading.h5.color};
+    text-transform: ${globalTheme.typography.heading.h5.textTransform};
+    margin-bottom: 0.75rem;
+  }
+
+  h6 {
+    font-family: ${globalTheme.typography.heading.h6.fontFamily};
+    font-size: ${globalTheme.typography.heading.h6.fontSize};
+    font-weight: ${globalTheme.typography.heading.h6.fontWeight};
+    line-height: ${globalTheme.typography.heading.h6.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h6.letterSpacing};
+    color: ${globalTheme.typography.heading.h6.color};
+    text-transform: ${globalTheme.typography.heading.h6.textTransform};
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
     transition: ${globalTheme.transitions.fast};
   }
-  
+
   button {
     font-family: ${globalTheme.typography.fontFamily.secondary};
     cursor: pointer;
