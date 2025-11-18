@@ -120,7 +120,7 @@ const WordCloudView = ({
                 color: '#1e293b',
                 margin: 0,
               }}>
-                ☁️ Nuage de mots des termes KWIC
+                ❦ Nuage de mots des termes KWIC
               </h4>
               
               {/* Sélecteur du nombre de mots à afficher */}
@@ -328,7 +328,7 @@ const WordCloudView = ({
                 color: '#64748b',
                 lineHeight: '1.6',
               }}>
-                💡 <strong>Astuce :</strong> Cliquez sur un mot pour voir toutes les concordances
+                <strong>Astuce :</strong> Cliquez sur un mot pour voir toutes les concordances
                 contenant ce terme. La taille du mot est proportionnelle à sa fréquence d'apparition.
                 Les termes de moins de 2 caractères sont exclus de l'analyse.
               </p>
@@ -342,7 +342,7 @@ const WordCloudView = ({
           padding: '4rem',
           color: '#64748b',
         }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>☁️</div>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>❦</div>
           <h3>Aucune donnée disponible</h3>
           <p>Importez d'abord vos fichiers pour voir le nuage de mots des termes KWIC.</p>
         </div>

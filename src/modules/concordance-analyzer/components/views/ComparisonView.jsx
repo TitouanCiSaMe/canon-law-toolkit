@@ -274,7 +274,7 @@ const ComparisonView = ({
               color: '#1e293b',
               marginBottom: '1.5rem'
             }}>
-              📊 Comparaison multi-critères
+              ◈ Comparaison multi-critères
             </h4>
 
             {/* Sélecteur de mode */}
@@ -555,7 +555,7 @@ const ComparisonView = ({
                 background: '#f8fafc',
                 borderRadius: '8px'
               }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>◈</div>
                 <h3 style={{ marginBottom: '0.5rem' }}>{t('concordance.messages.selectToCompare')}</h3>
                 <p style={{ fontSize: '0.9rem' }}>
                   {comparisonMode === 'authors' && t('concordance.messages.selectAuthorsForComparison')}
@@ -568,7 +568,7 @@ const ComparisonView = ({
         </>
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem', color: '#64748b' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>◈</div>
           <h3>{t('concordance.dataView.noData')}</h3>
           <p>{t('concordance.messages.importFilesForComparison')}</p>
         </div>

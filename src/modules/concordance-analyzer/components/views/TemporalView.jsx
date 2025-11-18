@@ -354,7 +354,7 @@ const TemporalView = ({
               <span style={{
                 fontSize: '1.5rem'
               }}>
-                📅
+                ⧗
               </span>
               <h5 style={{
                 fontSize: visualTheme.typography.size.lg,
@@ -661,7 +661,7 @@ const TemporalView = ({
             color: visualTheme.colors.text.primary,
             marginBottom: visualTheme.spacing.xl
           }}>
-            📊 {t('concordance.views.temporal.aggregatedDistribution')} {granularityLabels[granularity].toLowerCase()}
+            ◈ {t('concordance.views.temporal.aggregatedDistribution')} {granularityLabels[granularity].toLowerCase()}
           </h5>
           <TemporalChart 
             data={temporalData} 

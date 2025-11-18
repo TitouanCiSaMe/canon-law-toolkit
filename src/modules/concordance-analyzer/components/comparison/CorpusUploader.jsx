@@ -366,7 +366,7 @@ const CorpusUploader = ({ onCompare }) => {
           color: '#475569',
           lineHeight: '1.6'
         }}>
-          <strong>💡 Note :</strong> Les fichiers doivent être au format XML NoSketch ou CSV exporté depuis NoSketch Engine.
+          <strong>Note :</strong> Les fichiers doivent être au format XML NoSketch ou CSV exporté depuis NoSketch Engine.
           Taille maximum : 50MB par fichier.
         </div>
       </div>

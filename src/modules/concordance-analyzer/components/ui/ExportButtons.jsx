@@ -171,7 +171,7 @@ const ExportButtons = ({
       <ExportButton
         onClick={onExportAnalytics}
         disabled={!hasData}
-        label={`📈 ${t('concordance.export.analyticsJSON')}`}
+        label={`◈ ${t('concordance.export.analyticsJSON')}`}
         color="#553C9A"
         hoverColor="#6B46C1"
       />
@@ -249,7 +249,7 @@ const ExportButtons = ({
         <ExportButton
           onClick={() => onExportViewCSV(viewType)}
           disabled={!hasData}
-          label={`📊 ${t('concordance.export.viewCSV', { view: viewType })}`}
+          label={`◈ ${t('concordance.export.viewCSV', { view: viewType })}`}
           color="#065F46"
           hoverColor="#047857"
         />

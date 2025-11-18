@@ -39,7 +39,7 @@ const ComparisonDomainChart = ({
         padding: '4rem',
         color: '#64748b'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📚</div>
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚜</div>
         <h3>{t('concordance.charts.noData.domains')}</h3>
       </div>
     );
@@ -66,7 +66,7 @@ const ComparisonDomainChart = ({
         color: '#1e293b',
         textAlign: 'center'
       }}>
-        📚 {t('concordance.views.corpusComparison.charts.domains.title')}
+        ⚜ {t('concordance.views.corpusComparison.charts.domains.title')}
       </h3>
 
       {/* Conteneur des 2 graphiques */}

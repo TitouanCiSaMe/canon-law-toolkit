@@ -548,7 +548,7 @@ const OverviewView = ({
 	      marginBottom: '1rem',
 	      color: '#F7FAFC'
 	    }}>
-	      ⚖️
+	      ⚖
 	    </div>
 
 	    {corpusComparison?.B?.concordanceData ? (

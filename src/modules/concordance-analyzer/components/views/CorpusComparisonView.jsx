@@ -42,7 +42,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
         textAlign: 'center',
         padding: '4rem'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠</div>
         <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#1e293b' }}>
           {t('concordance.views.corpusComparison.noData')}
         </h2>
@@ -96,7 +96,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
         marginBottom: '2rem'
       }}>
         <h2 style={{ fontSize: '1.8rem', marginBottom: '1rem', fontWeight: '500' }}>
-          ⚖️ {t('concordance.views.corpusComparison.sectionTitle')}
+          ⚖ {t('concordance.views.corpusComparison.sectionTitle')}
         </h2>
         
         <div style={{
@@ -174,7 +174,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
           border: '1px solid #e2e8f0'
         }}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#553C9A' }}>
-            📚 {t('concordance.navigation.domains')}
+            ⚜ {t('concordance.navigation.domains')}
           </h3>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
             {t('concordance.views.corpusComparison.common')} : <strong>{differences.domains.totalCommon}</strong>
@@ -195,7 +195,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
           border: '1px solid #e2e8f0'
         }}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#4A5568' }}>
-            ✍️ {t('concordance.navigation.authors')}
+            ✒ {t('concordance.navigation.authors')}
           </h3>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
             {t('concordance.views.corpusComparison.common')} : <strong>{differences.authors.totalCommon}</strong>
@@ -216,7 +216,7 @@ const CorpusComparisonView = ({ corpusComparison }) => {
           border: '1px solid #e2e8f0'
         }}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#744210' }}>
-            ⏰ {t('concordance.navigation.temporal')}
+            ⧗ {t('concordance.navigation.temporal')}
           </h3>
           <div style={{ fontSize: '0.85rem', color: '#64748b', marginBottom: '0.5rem' }}>
             {t('concordance.views.corpusComparison.corpusA')} : <strong>{differences.temporal.rangeA.min}-{differences.temporal.rangeA.max}</strong>
@@ -248,8 +248,8 @@ const CorpusComparisonView = ({ corpusComparison }) => {
 	    maxItems={10}
 	  />
 	</div>
-	
-	{/* ✨ NOUVEAU : Graphique de comparaison chronologique */}
+
+	{/* NOUVEAU : Graphique de comparaison chronologique */}
 	<div style={{ marginBottom: '2rem' }}>
 	  <ComparisonTemporalChart
 	    corpusA={corpusComparison.A.concordanceData}
@@ -257,8 +257,8 @@ const CorpusComparisonView = ({ corpusComparison }) => {
 	    height={400}
 	  />
 	</div>
-	
-	{/* ✨ NOUVEAU : Graphique de comparaison de terminologie */}
+
+	{/* NOUVEAU : Graphique de comparaison de terminologie */}
 	<div style={{ marginBottom: '2rem' }}>
 	  <ComparisonTermChart
 	    dataA={analyticsA.keyTerms}

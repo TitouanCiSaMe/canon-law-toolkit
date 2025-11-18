@@ -222,7 +222,7 @@ const ComparisonTemporalChart = ({
       value: 'concordances',
       label: t('concordance.views.corpusComparison.charts.temporal.countMode.concordances'),
       description: t('concordance.views.corpusComparison.charts.temporal.countMode.concordancesDesc'),
-      icon: '📄'
+      icon: '⟐'
     }
   ];
 
@@ -373,7 +373,7 @@ const ComparisonTemporalChart = ({
               color: visualTheme.colors.text.primary,
               marginBottom: visualTheme.spacing.md
             }}>
-              📈 {t('concordance.views.corpusComparison.charts.temporal.countModeLabel')}
+              ◈ {t('concordance.views.corpusComparison.charts.temporal.countModeLabel')}
             </h5>
             <div style={{
               display: 'flex',
@@ -603,7 +603,7 @@ const ComparisonTemporalChart = ({
             color: '#1e293b',
             marginBottom: '1rem'
           }}>
-            📊 {t('concordance.views.corpusComparison.charts.temporal.distributionBy', { 
+            ◈ {t('concordance.views.corpusComparison.charts.temporal.distributionBy', { 
               granularity: granularityLabels[granularity].toLowerCase() 
             })}
           </h5>
