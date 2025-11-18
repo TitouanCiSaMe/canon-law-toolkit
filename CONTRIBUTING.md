@@ -265,10 +265,26 @@ Chaque nouveau module/feature doit inclure :
 
 ## 🧪 Tests
 
+### Framework de test
+
+Le projet utilise **Vitest** comme test runner (pas Jest).
+
+```bash
+# Lancer les tests
+npm test
+
+# Tests avec UI interactive
+npm run test:ui
+
+# Tests avec couverture
+npm run test:coverage
+```
+
 ### Structure des tests
 
 ```javascript
 // MyComponent.test.jsx
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import MyComponent from './MyComponent';
 
@@ -280,13 +296,34 @@ describe('MyComponent', () => {
   });
 
   it('should call onUpdate when clicked', () => {
-    const handleUpdate = jest.fn();
+    const handleUpdate = vi.fn();
     render(<MyComponent data={[]} onUpdate={handleUpdate} />);
-    
+
     fireEvent.click(screen.getByRole('button'));
     expect(handleUpdate).toHaveBeenCalledTimes(1);
   });
 });
+```
+
+### Mocking avec Vitest
+
+```javascript
+import { vi } from 'vitest';
+
+// Mock d'un module
+vi.mock('../utils/myUtil', () => ({
+  myFunction: vi.fn(() => 'mocked value')
+}));
+
+// Mock d'une fonction
+const mockCallback = vi.fn();
+
+// Vérifier les appels
+expect(mockCallback).toHaveBeenCalledWith('arg');
+expect(mockCallback).toHaveBeenCalledTimes(2);
+
+// Reset mocks
+vi.clearAllMocks();
 ```
 
 ### Coverage attendu
