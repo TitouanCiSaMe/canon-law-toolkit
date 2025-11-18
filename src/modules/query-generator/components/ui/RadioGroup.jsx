@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { globalTheme } from '@shared/theme/globalTheme';
+import styles from './RadioGroup.module.css';
 
 /**
  * RadioGroup - Groupe de boutons radio stylisés
@@ -18,30 +18,24 @@ import { globalTheme } from '@shared/theme/globalTheme';
  */
 const RadioGroup = ({ label, value, onChange, options, name, inline = false }) => {
   return (
-    <div style={styles.container}>
-      {label && <div style={styles.label}>{label}</div>}
+    <div className={styles.container}>
+      {label && <div className={styles.label}>{label}</div>}
 
-      <div style={{
-        ...styles.optionsContainer,
-        ...(inline && styles.optionsContainerInline)
-      }}>
+      <div className={`${styles.optionsContainer} ${inline ? styles.optionsContainerInline : ''}`}>
         {options.map((option) => (
-          <label key={option.value} style={{
-            ...styles.option,
-            ...(inline && styles.optionInline)
-          }}>
+          <label key={option.value} className={`${styles.option} ${inline ? styles.optionInline : ''}`}>
             <input
               type="radio"
               name={name}
               value={option.value}
               checked={value === option.value}
               onChange={(e) => onChange(e.target.value)}
-              style={styles.radio}
+              className={styles.radio}
             />
-            <span style={styles.optionLabel}>
+            <span className={styles.optionLabel}>
               {option.label}
               {option.description && (
-                <span style={styles.description}> - {option.description}</span>
+                <span className={styles.description}> - {option.description}</span>
               )}
             </span>
           </label>
@@ -56,114 +50,16 @@ const RadioGroup = ({ label, value, onChange, options, name, inline = false }) =
  */
 export const Checkbox = ({ label, checked, onChange }) => {
   return (
-    <label style={styles.checkboxContainer}>
+    <label className={styles.checkboxContainer}>
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        style={styles.checkbox}
+        className={styles.checkbox}
       />
-      <span style={styles.checkboxLabel}>{label}</span>
+      <span className={styles.checkboxLabel}>{label}</span>
     </label>
   );
-};
-
-const styles = {
-  container: {
-    marginBottom: globalTheme.spacing.lg
-  },
-
-  label: {
-    display: 'block',
-    marginBottom: globalTheme.spacing.md,
-    fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.md,
-    fontWeight: globalTheme.typography.weight.semibold,
-    color: globalTheme.palettes.concordance.primary.light,
-    letterSpacing: '0.01em'
-  },
-
-  optionsContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: globalTheme.spacing.md
-  },
-
-  optionsContainerInline: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: globalTheme.spacing.lg
-  },
-
-  option: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    gap: globalTheme.spacing.sm,
-    cursor: 'pointer',
-    padding: globalTheme.spacing.md,
-    borderRadius: globalTheme.borderRadius.md,
-    transition: globalTheme.transitions.fast,
-    background: 'transparent',
-
-    ':hover': {
-      background: globalTheme.colors.background.hover
-    }
-  },
-
-  optionInline: {
-    padding: `${globalTheme.spacing.sm} ${globalTheme.spacing.md}`,
-    alignItems: 'center'
-  },
-
-  radio: {
-    width: '18px',
-    height: '18px',
-    marginTop: '2px',
-    accentColor: globalTheme.palettes.concordance.primary.blue,
-    cursor: 'pointer'
-  },
-
-  optionLabel: {
-    fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.md,
-    color: globalTheme.colors.text.dark,
-    lineHeight: '1.5'
-  },
-
-  description: {
-    color: globalTheme.colors.text.muted,
-    fontSize: globalTheme.typography.size.sm,
-    fontStyle: 'italic'
-  },
-
-  checkboxContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: globalTheme.spacing.sm,
-    cursor: 'pointer',
-    padding: globalTheme.spacing.md,
-    borderRadius: globalTheme.borderRadius.md,
-    transition: globalTheme.transitions.fast,
-    marginBottom: globalTheme.spacing.md,
-
-    ':hover': {
-      background: globalTheme.colors.background.hover
-    }
-  },
-
-  checkbox: {
-    width: '18px',
-    height: '18px',
-    accentColor: globalTheme.palettes.concordance.primary.blue,
-    cursor: 'pointer'
-  },
-
-  checkboxLabel: {
-    fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.md,
-    color: globalTheme.colors.text.dark,
-    fontWeight: globalTheme.typography.weight.normal
-  }
 };
 
 export default RadioGroup;

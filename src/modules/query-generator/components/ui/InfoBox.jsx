@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Info, AlertCircle, CheckCircle, AlertTriangle } from 'lucide-react';
-import { globalTheme } from '@shared/theme/globalTheme';
+import styles from './InfoBox.module.css';
 
 /**
  * InfoBox - Affiche un message d'information stylisé
@@ -31,99 +31,42 @@ const InfoBox = ({ type = 'info', title, children, icon }) => {
     }
   };
 
-  const getColor = () => {
-    switch (type) {
-      case 'success':
-        return {
-          background: 'linear-gradient(135deg, #DFF0D8 0%, #D4EDDA 100%)',
-          border: '#C3E6CB',
-          color: '#155724',
-          iconColor: '#28A745'
-        };
-      case 'warning':
-        return {
-          background: 'linear-gradient(135deg, #FFF3CD 0%, #FCF8E3 100%)',
-          border: '#FFEEBA',
-          color: '#856404',
-          iconColor: '#FFC107'
-        };
-      case 'error':
-        return {
-          background: 'linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%)',
-          border: '#F5C6CB',
-          color: '#721C24',
-          iconColor: '#DC3545'
-        };
-      default:
-        return {
-          background: 'linear-gradient(135deg, #DDD6B8 0%, #E6D7B8 100%)',
-          border: globalTheme.colors.border.light,
-          color: globalTheme.colors.text.dark,
-          iconColor: globalTheme.palettes.concordance.primary.blue
-        };
-    }
+  const getTypeClasses = () => {
+    const typeMap = {
+      success: 'Success',
+      warning: 'Warning',
+      error: 'Error',
+      info: 'Info'
+    };
+    const suffix = typeMap[type] || 'Info';
+    return {
+      box: styles[`box${suffix}`],
+      icon: styles[`icon${suffix}`],
+      title: styles[`title${suffix}`],
+      content: styles[`content${suffix}`]
+    };
   };
 
-  const colors = getColor();
+  const typeClasses = getTypeClasses();
 
   return (
-    <div style={{
-      ...styles.box,
-      background: colors.background,
-      border: `2px solid ${colors.border}`,
-      borderLeft: `5px solid ${colors.iconColor}`
-    }}>
-      <div style={styles.header}>
-        <div style={{ ...styles.icon, color: colors.iconColor }}>
+    <div className={`${styles.box} ${typeClasses.box}`}>
+      <div className={styles.header}>
+        <div className={`${styles.icon} ${typeClasses.icon}`}>
           {getIcon()}
         </div>
         {title && (
-          <h4 style={{ ...styles.title, color: colors.color }}>
+          <h4 className={`${styles.title} ${typeClasses.title}`}>
             {title}
           </h4>
         )}
       </div>
 
-      <div style={{ ...styles.content, color: colors.color }}>
+      <div className={`${styles.content} ${typeClasses.content}`}>
         {children}
       </div>
     </div>
   );
-};
-
-const styles = {
-  box: {
-    padding: globalTheme.spacing.lg,
-    borderRadius: globalTheme.borderRadius.md,
-    marginBottom: globalTheme.spacing.lg
-  },
-
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: globalTheme.spacing.sm,
-    marginBottom: globalTheme.spacing.sm
-  },
-
-  icon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0
-  },
-
-  title: {
-    fontSize: globalTheme.typography.size.md,
-    fontWeight: globalTheme.typography.weight.semibold,
-    marginBottom: 0
-  },
-
-  content: {
-    fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.md,
-    lineHeight: '1.6',
-    paddingLeft: `calc(20px + ${globalTheme.spacing.sm})`
-  }
 };
 
 export default InfoBox;
