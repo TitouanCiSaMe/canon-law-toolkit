@@ -42,22 +42,22 @@ const medievalPalette = {
 };
 
 /**
- * Palette CONCORDANCE - Pour le module ConcordanceAnalyzer
- * Palette moderne et académique (violet/bleu)
+ * Palette ACADÉMIQUE - Pour le module ConcordanceAnalyzer
+ * Palette sobre et institutionnelle (bleu marine/gris)
  */
 const concordancePalette = {
   primary: {
-    main: '#553C9A',      // Violet principal
-    light: '#6B46C1',     // Violet clair
-    dark: '#3730a3',      // Indigo foncé
-    blue: '#2563eb',      // Bleu vif
-    blueHover: '#1d4ed8'  // Bleu hover
+    main: '#1e3a5f',      // Bleu marine profond (académique)
+    light: '#2c5282',     // Bleu marine moyen
+    dark: '#1a2f4a',      // Bleu marine très foncé
+    blue: '#1e40af',      // Bleu classique
+    blueHover: '#1e3a8a'  // Bleu hover plus foncé
   },
   accent: {
-    blue: '#3b82f6',      // Stats principale
-    green: '#10b981',     // Stats positive
-    orange: '#f59e0b',    // Stats importante
-    red: '#ef4444'        // Erreur / alerte
+    blue: '#334155',      // Gris ardoise (neutre)
+    green: '#059669',     // Vert discret (success)
+    orange: '#b8860b',    // Or antique (important) - lien avec médiéval
+    red: '#dc2626'        // Rouge sobre (erreur)
   }
 };
 
@@ -86,13 +86,13 @@ export const globalTheme = {
     
     // Fond et surfaces
     background: {
-      default: '#FAFAF8',   // Fond général (parchemin clair)
+      default: '#FFFFFF',   // Fond général (blanc pur - épuré)
       paper: '#FFFFFF',     // Fond des cartes (blanc pur)
-      page: '#f8f9fa',      // Fond général de page
-      card: '#ffffff',      // Fond des cards
-      hover: '#f1f5f9',     // Hover des options
-      active: '#eff6ff',    // Fond actif
-      panel: '#F7FAFC'      // Texte sur panels foncés
+      page: '#FAFAFA',      // Fond général de page (gris très clair)
+      card: '#FFFFFF',      // Fond des cards (blanc)
+      hover: '#f8fafc',     // Hover des options (blanc bleuté très subtil)
+      active: '#f1f5f9',    // Fond actif (gris bleuté clair)
+      panel: '#FAFAFA'      // Fond panels (gris très clair)
     },
     
     // Texte - Contraste amélioré
@@ -118,28 +118,28 @@ export const globalTheme = {
   },
   
   // ------------------------------------------------------------------------
-  // Espacements standardisés
+  // Espacements standardisés (augmentés pour plus de respiration)
   // ------------------------------------------------------------------------
   spacing: {
-    xs: '0.25rem',    // 4px  - Très petit gap
-    sm: '0.5rem',     // 8px  - Petit gap
-    md: '0.75rem',    // 12px - Gap moyen
-    lg: '1rem',       // 16px - Gap standard
-    xl: '1.5rem',     // 24px - Grand gap
-    xxl: '2rem',      // 32px - Très grand gap
-    xxxl: '3rem'      // 48px - Énorme gap
+    xs: '0.5rem',     // 8px  - Très petit gap
+    sm: '0.75rem',    // 12px - Petit gap
+    md: '1rem',       // 16px - Gap moyen
+    lg: '1.5rem',     // 24px - Gap standard
+    xl: '2rem',       // 32px - Grand gap
+    xxl: '3rem',      // 48px - Très grand gap
+    xxxl: '4rem'      // 64px - Énorme gap
   },
   
   // ------------------------------------------------------------------------
-  // Ombres élégantes
+  // Ombres sobres (réduites pour aspect plus plat et académique)
   // ------------------------------------------------------------------------
   shadows: {
-    card: '0 2px 8px rgba(0, 0, 0, 0.08)',           // Ombre subtile (repos)
-    cardHover: '0 4px 16px rgba(0, 0, 0, 0.12)',     // Ombre au hover
-    panel: '0 4px 12px rgba(0, 0, 0, 0.1)',          // Panel standard
-    panelHover: '0 8px 24px rgba(0, 0, 0, 0.15)',    // Panel au hover
-    elevated: '0 8px 24px rgba(0, 0, 0, 0.15)',      // Modals, dropdowns
-    strong: '0 12px 32px rgba(0, 0, 0, 0.2)'         // Très élevé
+    card: '0 1px 3px rgba(0, 0, 0, 0.06)',           // Ombre très subtile (repos)
+    cardHover: '0 2px 8px rgba(0, 0, 0, 0.08)',      // Ombre légère au hover
+    panel: '0 1px 4px rgba(0, 0, 0, 0.05)',          // Panel très discret
+    panelHover: '0 2px 8px rgba(0, 0, 0, 0.08)',     // Panel au hover
+    elevated: '0 4px 12px rgba(0, 0, 0, 0.1)',       // Modals, dropdowns
+    strong: '0 8px 16px rgba(0, 0, 0, 0.12)'         // Élevé mais sobre
   },
   
   // ------------------------------------------------------------------------
@@ -193,13 +193,13 @@ export const globalTheme = {
   },
 
   // ------------------------------------------------------------------------
-  // Glassmorphism (effet verre moderne)
+  // Glassmorphism (simplifié pour aspect plus sobre)
   // ------------------------------------------------------------------------
   glassmorphism: {
-    background: 'rgba(255, 255, 255, 0.85)',
-    blur: 'blur(10px)',
-    border: '2px solid rgba(255, 255, 255, 0.5)',
-    shadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+    background: 'rgba(255, 255, 255, 0.95)',
+    blur: 'blur(4px)',
+    border: '1px solid rgba(0, 0, 0, 0.08)',
+    shadow: '0 2px 8px rgba(0, 0, 0, 0.06)'
   },
   
   // ------------------------------------------------------------------------
@@ -230,24 +230,24 @@ export const globalTheme = {
   },
   
   // ------------------------------------------------------------------------
-  // Graphiques (pour Recharts)
+  // Graphiques (palette académique sobre)
   // ------------------------------------------------------------------------
   charts: {
-    // Palette principale (concordance)
+    // Palette principale (bleus/gris sobres)
     colors: [
-      '#2563eb',  // Bleu vif
-      '#1d4ed8',  // Bleu moyen
-      '#1e40af',  // Bleu foncé
-      '#3730a3',  // Indigo
-      '#4338ca',  // Indigo moyen
-      '#6366f1',  // Indigo clair
-      '#8b5cf6'   // Violet
+      '#1e3a5f',  // Bleu marine principal
+      '#2c5282',  // Bleu marine moyen
+      '#1e40af',  // Bleu classique
+      '#334155',  // Gris ardoise
+      '#475569',  // Gris ardoise moyen
+      '#64748b',  // Gris bleuté
+      '#b8860b'   // Or antique (accent)
     ],
-    
+
     // Couleurs spécifiques
-    temporal: '#3b82f6',    // Ligne temporelle
-    domain: '#553C9A',      // Barres domaines
-    grid: '#e2e8f0'         // Grille
+    temporal: '#1e40af',    // Ligne temporelle (bleu classique)
+    domain: '#1e3a5f',      // Barres domaines (bleu marine)
+    grid: '#e5e7eb'         // Grille (gris très clair)
   }
 };
 

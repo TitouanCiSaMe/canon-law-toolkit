@@ -21,8 +21,8 @@ export const panelConfig = {
     id: 'overview',
     title: 'concordance.panels.overview.title',
     subtitle: 'concordance.panels.overview.subtitle',
-    color: '#1A365D',
-    gradient: createGradient('#1A365D', '#2C5282'),
+    color: visualTheme.colors.primary.main,           // Bleu marine principal
+    gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.light),
     icon: '📊',
     gridArea: '1 / 1 / 2 / 2',
     size: 'medium'
@@ -31,11 +31,8 @@ export const panelConfig = {
     id: 'domains',
     title: 'concordance.panels.domains.title',
     subtitle: 'concordance.panels.domains.subtitle',
-    color: visualTheme.colors.primary.main,           // ✅ Utilise le thème
-    gradient: createGradient(
-      visualTheme.colors.primary.main,
-      visualTheme.colors.primary.light
-    ),
+    color: visualTheme.colors.primary.light,          // Bleu marine moyen
+    gradient: createGradient(visualTheme.colors.primary.light, visualTheme.colors.primary.blue),
     icon: '📚',
     gridArea: '1 / 2 / 2 / 3',
     size: 'medium'
@@ -44,8 +41,8 @@ export const panelConfig = {
     id: 'temporal',
     title: 'concordance.panels.temporal.title',
     subtitle: 'concordance.panels.temporal.subtitle',
-    color: visualTheme.colors.accent.orange,          // ✅ Utilise le thème
-    gradient: createGradient('#744210', '#92400E'),
+    color: visualTheme.colors.accent.blue,            // Gris ardoise
+    gradient: createGradient(visualTheme.colors.accent.blue, '#475569'),
     icon: '⏰',
     gridArea: '1 / 3 / 2 / 4',
     size: 'medium'
@@ -54,11 +51,8 @@ export const panelConfig = {
     id: 'places',
     title: 'concordance.panels.places.title',
     subtitle: 'concordance.panels.places.subtitle',
-    color: visualTheme.colors.accent.green,           // ✅ Utilise le thème
-    gradient: createGradient(
-      '#059669',
-      visualTheme.colors.accent.green
-    ),
+    color: visualTheme.colors.accent.green,           // Vert discret
+    gradient: createGradient(visualTheme.colors.accent.green, '#047857'),
     icon: '🌍',
     gridArea: '1 / 4 / 2 / 5',
     size: 'medium'
@@ -67,8 +61,8 @@ export const panelConfig = {
     id: 'authors',
     title: 'concordance.panels.authors.title',
     subtitle: 'concordance.panels.authors.subtitle',
-    color: '#4A5568',
-    gradient: createGradient('#4A5568', '#2D3748'),
+    color: '#475569',                                 // Gris ardoise moyen
+    gradient: createGradient('#475569', '#64748b'),
     icon: '✍️',
     gridArea: '2 / 1 / 3 / 2',
     size: 'medium'
@@ -77,8 +71,8 @@ export const panelConfig = {
     id: 'linguistic',
     title: 'concordance.panels.linguistic.title',
     subtitle: 'concordance.panels.linguistic.subtitle',
-    color: '#065F46',
-    gradient: createGradient('#065F46', '#047857'),
+    color: visualTheme.colors.primary.blue,           // Bleu classique
+    gradient: createGradient(visualTheme.colors.primary.blue, '#1e3a8a'),
     icon: '🔤',
     gridArea: '2 / 2 / 3 / 3',
     size: 'medium'
@@ -87,8 +81,8 @@ export const panelConfig = {
     id: 'data',
     title: 'concordance.panels.data.title',
     subtitle: 'concordance.panels.data.subtitle',
-    color: '#7C2D12',
-    gradient: createGradient('#7C2D12', '#92400E'),
+    color: visualTheme.colors.primary.dark,           // Bleu marine très foncé
+    gradient: createGradient(visualTheme.colors.primary.dark, visualTheme.colors.primary.main),
     icon: '📋',
     gridArea: '2 / 3 / 3 / 5',  // S'étend sur 2 colonnes
     size: 'medium'
@@ -97,8 +91,8 @@ export const panelConfig = {
     id: 'corpusComparison',
     title: 'concordance.panels.corpusComparison.title',
     subtitle: 'concordance.panels.corpusComparison.subtitle',
-    color: '#dc2626',
-    gradient: createGradient('#dc2626', '#ef4444'),
+    color: visualTheme.colors.accent.orange,          // Or antique (accent important)
+    gradient: createGradient(visualTheme.colors.accent.orange, '#d4af37'),
     icon: '⚖️',
     gridArea: '3 / 1 / 4 / 5',  // Full width, ligne 3
     size: 'wide'
@@ -107,8 +101,8 @@ export const panelConfig = {
     id: 'concordances',
     title: 'concordance.panels.concordances.title',
     subtitle: 'concordance.panels.concordances.subtitle',
-    color: '#7C2D12',
-    gradient: createGradient('#7C2D12', '#92400E'),
+    color: '#334155',                                 // Gris ardoise principal
+    gradient: createGradient('#334155', '#475569'),
     icon: '📁',
     gridArea: '4 / 1 / 5 / 5',  // Full width, ligne 4
     size: 'wide'
@@ -124,16 +118,16 @@ export const panelConfig = {
  * Conservé pour compatibilité rétroactive
  */
 export const academicColors = {
-  primary: visualTheme.colors.primary.main,           // #553C9A
-  secondary: '#2C5282',
-  accent: visualTheme.colors.primary.main,            // #553C9A
-  warm: visualTheme.colors.accent.orange,             // #f59e0b
-  neutral: '#4A5568',
+  primary: visualTheme.colors.primary.main,           // #1e3a5f (bleu marine)
+  secondary: visualTheme.colors.primary.light,        // #2c5282 (bleu marine moyen)
+  accent: visualTheme.colors.accent.orange,           // #b8860b (or antique)
+  warm: visualTheme.colors.accent.orange,             // #b8860b (or antique)
+  neutral: visualTheme.colors.accent.blue,            // #334155 (gris ardoise)
   text: visualTheme.colors.text.dark,                 // #1e293b
-  light: '#EDF2F7',
-  paper: '#FAFAFA',
-  success: visualTheme.colors.accent.green,           // #10b981
-  warning: '#7C2D12'
+  light: '#FAFAFA',
+  paper: '#FFFFFF',
+  success: visualTheme.colors.accent.green,           // #059669 (vert discret)
+  warning: visualTheme.colors.accent.red              // #dc2626 (rouge sobre)
 };
 
 // ============================================================================
@@ -146,16 +140,8 @@ export const academicColors = {
  */
 export const COLORS = visualTheme.charts.colors;
 
-// Export alternatif pour compatibilité
-export const CHART_COLORS = [
-  visualTheme.colors.primary.blue,      // #2563eb
-  '#1d4ed8', 
-  '#1e40af', 
-  visualTheme.colors.primary.dark,      // #3730a3
-  '#4338ca', 
-  '#6366f1', 
-  '#8b5cf6'
-];
+// Export alternatif pour compatibilité (palette académique sobre)
+export const CHART_COLORS = visualTheme.charts.colors;
 
 // ============================================================================
 // EXPORTS PAR DÉFAUT

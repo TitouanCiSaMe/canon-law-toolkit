@@ -91,14 +91,14 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
 	  color: '#F7FAFC',
 	  padding: config.size === 'large' ? '3rem' : config.size === 'wide' ? '2rem' : '2rem',
 	  cursor: 'pointer',
-	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), z-index 0ms',  // ✅ OPTIMISÉ : Anime seulement transform
+	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',
 	  position: 'relative',
 	  overflow: 'hidden',
-	  border: isActive ? '3px solid #F7FAFC' : '2px solid rgba(255,255,255,0.2)',
-	  transform: isHovered ? 'scale(1.02)' : 'scale(1)',
-	  boxShadow: isHovered ? visualTheme.shadows.panelHover : '0 2px 6px rgba(0, 0, 0, 0.06)',  // ✅ OPTIMISÉ : Ombre ultra-légère
+	  border: isActive ? '2px solid #FFFFFF' : '1px solid rgba(255,255,255,0.25)',
+	  transform: isHovered ? 'scale(1.01)' : 'scale(1)',  // Réduction du zoom (plus sobre)
+	  boxShadow: isHovered ? visualTheme.shadows.panelHover : visualTheme.shadows.panel,
 	  zIndex: isHovered ? 10 : 1,
-	  borderRadius: visualTheme.borderRadius.xl
+	  borderRadius: visualTheme.borderRadius.lg  // Coins moins arrondis (plus académique)
 	}}
     >
       <div style={{
@@ -139,7 +139,7 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.05)',  // Overlay très subtil (académique)
           pointerEvents: 'none'
         }} />
       )}
