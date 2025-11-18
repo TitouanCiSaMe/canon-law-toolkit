@@ -145,10 +145,10 @@ const styles = {
   },
 
   infoBox: {
-    background: 'linear-gradient(135deg, #F5F5DC 0%, #FAEBD7 100%)',
+    background: 'linear-gradient(135deg, #DEB887 0%, #D2B48C 100%)',
     padding: globalTheme.spacing.md,
     borderRadius: globalTheme.borderRadius.md,
-    borderLeft: `4px solid #1e40af`,
+    borderLeft: `4px solid #8B4513`,
     marginBottom: globalTheme.spacing.lg
   },
 
@@ -159,7 +159,7 @@ const styles = {
     marginBottom: globalTheme.spacing.xs,
     fontSize: globalTheme.typography.size.sm,
     fontWeight: globalTheme.typography.weight.semibold,
-    color: '#1e40af'
+    color: '#8B4513'
   },
 
   infoText: {
@@ -174,7 +174,7 @@ const styles = {
     padding: globalTheme.spacing.lg,
     borderRadius: globalTheme.borderRadius.md,
     border: `1px solid ${globalTheme.colors.border.light}`,
-    borderLeft: `3px solid #1e40af`,
+    borderLeft: `3px solid #8B4513`,
     marginBottom: globalTheme.spacing.lg,
     boxShadow: globalTheme.shadows.card
   },
@@ -198,7 +198,7 @@ const styles = {
     padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`,
     borderRadius: globalTheme.borderRadius.md,
     border: 'none',
-    background: '#1e40af',
+    background: '#8B4513',
     color: '#FFFFFF',
     fontFamily: globalTheme.typography.fontFamily.secondary,
     fontSize: globalTheme.typography.size.md,

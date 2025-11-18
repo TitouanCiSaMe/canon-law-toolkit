@@ -69,7 +69,7 @@ const ProximityVariationView = () => {
           <FormField label={t('queryGenerator.proximity.attribute')} type="select" value={formData.attribute} onChange={(v) => setFormData({ ...formData, attribute: v })} options={attributeOptions} />
         </div>
 
-        <RadioGroup label={t('queryGenerator.proximityVariation.variationType')} value={formData.variationType} onChange={(v) => setFormData({ ...formData, variationType: v })} options={variationOptions} name="variation" />
+        <RadioGroup label={t('queryGenerator.proximityVariation.variationType')} value={formData.variationType} onChange={(v) => setFormData({ ...formData, variationType: v })} options={variationOptions} name="variation" inline={true} />
         <Checkbox label={t('queryGenerator.proximity.bidirectional')} checked={formData.bidirectional} onChange={(c) => setFormData({ ...formData, bidirectional: c })} />
 
         <button type="submit" style={styles.submitButton}>{t('queryGenerator.ui.generate')}</button>

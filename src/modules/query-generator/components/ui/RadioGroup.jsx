@@ -14,15 +14,22 @@ import { globalTheme } from '@shared/theme/globalTheme';
  * @param {function} props.onChange - Callback de changement
  * @param {Array} props.options - Options [{value, label, description}]
  * @param {string} props.name - Nom du groupe radio
+ * @param {boolean} props.inline - Afficher les options en ligne (par défaut: false)
  */
-const RadioGroup = ({ label, value, onChange, options, name }) => {
+const RadioGroup = ({ label, value, onChange, options, name, inline = false }) => {
   return (
     <div style={styles.container}>
       {label && <div style={styles.label}>{label}</div>}
 
-      <div style={styles.optionsContainer}>
+      <div style={{
+        ...styles.optionsContainer,
+        ...(inline && styles.optionsContainerInline)
+      }}>
         {options.map((option) => (
-          <label key={option.value} style={styles.option}>
+          <label key={option.value} style={{
+            ...styles.option,
+            ...(inline && styles.optionInline)
+          }}>
             <input
               type="radio"
               name={name}
@@ -82,6 +89,12 @@ const styles = {
     gap: globalTheme.spacing.md
   },
 
+  optionsContainerInline: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: globalTheme.spacing.lg
+  },
+
   option: {
     display: 'flex',
     alignItems: 'flex-start',
@@ -95,6 +108,11 @@ const styles = {
     ':hover': {
       background: globalTheme.colors.background.hover
     }
+  },
+
+  optionInline: {
+    padding: `${globalTheme.spacing.sm} ${globalTheme.spacing.md}`,
+    alignItems: 'center'
   },
 
   radio: {

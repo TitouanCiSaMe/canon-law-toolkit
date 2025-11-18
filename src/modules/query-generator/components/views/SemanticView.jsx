@@ -57,7 +57,7 @@ const SemanticView = () => {
     <div style={styles.container}>
       <div style={styles.infoBox}>
         <div style={styles.infoHeader}>
-          <Brain size={18} style={{ color: '#2D5016' }} />
+          <Brain size={18} style={{ color: '#8B4513' }} />
           <strong>{t('queryGenerator.semantic.title')}</strong>
         </div>
         <p style={styles.infoText}>{t('queryGenerator.semantic.description')}</p>
@@ -101,6 +101,7 @@ const SemanticView = () => {
           onChange={(v) => setFormData({ ...formData, contextMode: v })}
           options={contextModeOptions}
           name="contextMode"
+          inline={true}
         />
 
         <button type="submit" style={styles.submitButton}>
@@ -128,10 +129,10 @@ const styles = {
   container: { padding: 0 },
 
   infoBox: {
-    background: 'linear-gradient(135deg, #C8E6C9 0%, #DCEDC8 100%)',
+    background: 'linear-gradient(135deg, #DEB887 0%, #D2B48C 100%)',
     padding: globalTheme.spacing.md,
     borderRadius: globalTheme.borderRadius.md,
-    borderLeft: '4px solid #2D5016',
+    borderLeft: '4px solid #8B4513',
     marginBottom: globalTheme.spacing.lg
   },
 
@@ -142,7 +143,7 @@ const styles = {
     marginBottom: globalTheme.spacing.xs,
     fontSize: globalTheme.typography.size.sm,
     fontWeight: globalTheme.typography.weight.semibold,
-    color: '#2D5016'
+    color: '#8B4513'
   },
 
   infoText: {
@@ -152,9 +153,9 @@ const styles = {
     lineHeight: '1.4'
   },
 
-  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #2D5016', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
+  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #8B4513', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
   formTitle: { fontSize: globalTheme.typography.size.lg, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.lg, paddingBottom: globalTheme.spacing.sm, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
-  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#2D5016', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
+  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#8B4513', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
 };
 
 export default SemanticView;
