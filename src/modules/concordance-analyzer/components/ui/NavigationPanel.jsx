@@ -118,18 +118,20 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
           fontSize: '0.85rem',
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          opacity: 0.8,
+          opacity: 0.95,
           marginBottom: '0.5rem',
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
+          color: textColor
         }}>
           {t(`concordance.panels.${config.id}.subtitle`)}
         </div>
-        
+
         <h3 style={{
           fontSize: config.size === 'large' ? '2rem' : config.size === 'wide' ? '1.5rem' : '1.3rem',
           fontWeight: '500',
           marginBottom: '1rem',
-          fontFamily: '"Crimson Text", serif'
+          fontFamily: '"Crimson Text", serif',
+          color: textColor
         }}>
           {t(`concordance.panels.${config.id}.title`)}
         </h3>
