@@ -145,8 +145,8 @@ const styles = {
   },
 
   infoBox: {
-    background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
-    padding: globalTheme.spacing.lg,
+    background: 'linear-gradient(135deg, #F5F5DC 0%, #FAEBD7 100%)',
+    padding: globalTheme.spacing.md,
     borderRadius: globalTheme.borderRadius.md,
     borderLeft: `4px solid #1e40af`,
     marginBottom: globalTheme.spacing.lg
@@ -157,7 +157,7 @@ const styles = {
     alignItems: 'center',
     gap: globalTheme.spacing.sm,
     marginBottom: globalTheme.spacing.xs,
-    fontSize: globalTheme.typography.size.md,
+    fontSize: globalTheme.typography.size.sm,
     fontWeight: globalTheme.typography.weight.semibold,
     color: '#1e40af'
   },
@@ -166,7 +166,7 @@ const styles = {
     margin: 0,
     fontSize: globalTheme.typography.size.sm,
     color: globalTheme.colors.text.secondary,
-    lineHeight: '1.5'
+    lineHeight: '1.4'
   },
 
   form: {

@@ -42,7 +42,7 @@ const VariationView = () => {
     <div style={styles.container}>
       <div style={styles.infoBox}>
         <div style={styles.infoHeader}>
-          <Edit3 size={18} style={{ color: '#7c3aed' }} />
+          <Edit3 size={18} style={{ color: '#B8860B' }} />
           <strong>{t('queryGenerator.variation.title')}</strong>
         </div>
         <p style={styles.infoText}>{t('queryGenerator.variation.description')}</p>
@@ -96,10 +96,10 @@ const styles = {
   container: { padding: 0 },
 
   infoBox: {
-    background: 'linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%)',
-    padding: globalTheme.spacing.lg,
+    background: 'linear-gradient(135deg, #FFE4B5 0%, #FAEBD7 100%)',
+    padding: globalTheme.spacing.md,
     borderRadius: globalTheme.borderRadius.md,
-    borderLeft: '4px solid #7c3aed',
+    borderLeft: '4px solid #B8860B',
     marginBottom: globalTheme.spacing.lg
   },
 
@@ -108,21 +108,21 @@ const styles = {
     alignItems: 'center',
     gap: globalTheme.spacing.sm,
     marginBottom: globalTheme.spacing.xs,
-    fontSize: globalTheme.typography.size.md,
+    fontSize: globalTheme.typography.size.sm,
     fontWeight: globalTheme.typography.weight.semibold,
-    color: '#7c3aed'
+    color: '#B8860B'
   },
 
   infoText: {
     margin: 0,
     fontSize: globalTheme.typography.size.sm,
     color: globalTheme.colors.text.secondary,
-    lineHeight: '1.5'
+    lineHeight: '1.4'
   },
 
-  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #7c3aed', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
+  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #B8860B', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
   formTitle: { fontSize: globalTheme.typography.size.lg, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.lg, paddingBottom: globalTheme.spacing.sm, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
-  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#7c3aed', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
+  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#B8860B', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
 };
 
 export default VariationView;
