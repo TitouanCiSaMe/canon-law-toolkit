@@ -1,6 +1,6 @@
 # Architecture - Canon Law Toolkit
 
-**Version** : 1.2.0
+**Version** : 1.3.0
 **Date** : Novembre 2025
 **Mainteneur** : Titouan (CiSaMe - Circulation des Savoirs médiévaux)
 
@@ -8,18 +8,20 @@
 
 ## 📐 Vue d'Ensemble
 
-CALKIT est une application React modulaire pour l'analyse de concordances de textes canoniques médiévaux. Architecture basée sur des modules autonomes avec système i18n complet.
+CALKIT est une application React modulaire pour l'analyse de concordances de textes canoniques médiévaux et la génération de requêtes CQL. Architecture basée sur des modules autonomes avec système i18n complet.
 
 ## 🏗️ Stack Technique
 
 | Technologie | Version | Usage |
 |------------|---------|-------|
-| **React** | 19.0.0 | Framework UI |
-| **Vite** | 6.x | Build tool & dev server |
-| **React Router** | 7.x | Routing SPA |
-| **Recharts** | 2.x | Visualisations (bar, line, pie) |
-| **D3.js** | 7.x | Timeline Gantt |
-| **react-i18next** | 15.x | Internationalisation FR/EN |
+| **React** | 18.2.0 | Framework UI |
+| **Vite** | 5.0.8 | Build tool & dev server |
+| **React Router** | 6.20.0 | Routing SPA |
+| **Recharts** | 2.10.3 | Visualisations (bar, line, pie) |
+| **D3.js** | Intégré | Timeline Gantt |
+| **react-i18next** | 13.5.0 | Internationalisation FR/EN |
+| **Vitest** | 1.0.4 | Test runner |
+| **React Testing Library** | 14.1.2 | Tests composants |
 
 ## 📁 Structure des Dossiers
 
@@ -27,7 +29,32 @@ CALKIT est une application React modulaire pour l'analyse de concordances de tex
 canon-law-toolkit/
 ├── src/
 │   ├── modules/
-│   │   └── concordance-analyzer/           # Module principal
+│   │   ├── query-generator/                # Générateur de requêtes CQL
+│   │   │   ├── components/
+│   │   │   │   ├── ui/                     # Composants UI (CSS Modules)
+│   │   │   │   │   ├── FormField.jsx
+│   │   │   │   │   ├── FormField.module.css
+│   │   │   │   │   ├── RadioGroup.jsx
+│   │   │   │   │   ├── RadioGroup.module.css
+│   │   │   │   │   ├── InfoBox.jsx
+│   │   │   │   │   ├── InfoBox.module.css
+│   │   │   │   │   ├── ResultCard.jsx
+│   │   │   │   │   └── ResultCard.module.css
+│   │   │   │   └── views/                  # 4 vues principales
+│   │   │   │       ├── ProximityView.jsx
+│   │   │   │       ├── VariationView.jsx
+│   │   │   │       ├── SemanticView.jsx
+│   │   │   │       └── ProximityVariationView.jsx
+│   │   │   ├── utils/                      # Générateurs de requêtes
+│   │   │   │   └── queryGenerators.js
+│   │   │   ├── docs/                       # Documentation (2413 lignes)
+│   │   │   │   ├── COMPONENTS.md
+│   │   │   │   ├── USER_GUIDE.md
+│   │   │   │   └── UTILS.md
+│   │   │   ├── __tests__/                  # Tests unitaires
+│   │   │   └── README.md
+│   │   │
+│   │   └── concordance-analyzer/           # Analyseur de concordances
 │   │       ├── components/
 │   │       │   ├── charts/                 # Graphiques réutilisables
 │   │       │   ├── comparison/             # Comparaison de corpus
@@ -59,16 +86,39 @@ canon-law-toolkit/
 │   │
 │   ├── pages/
 │   │   ├── Home.jsx                        # Page d'accueil
-│   │   ├── QueryGenerator.jsx              # Générateur de requêtes CQL
+│   │   ├── QueryGenerator.jsx              # Point d'entrée Query Generator
+│   │   ├── ConcordanceAnalyzer.jsx         # Point d'entrée Concordance Analyzer
 │   │   └── App.jsx                         # Point d'entrée React Router
 │   │
 │   └── main.jsx                            # Point d'entrée Vite
 │
 ├── public/                                 # Assets statiques
-└── docs/                                   # Documentation
+├── docs/                                   # Documentation projet
+├── scripts/                                # Scripts utilitaires
+└── vitest.config.js                        # Configuration Vitest
 ```
 
 ## 🎯 Modules
+
+### Query Generator
+
+Module pour générer des requêtes CQL (Corpus Query Language) destinées à NoSketch Engine.
+
+**4 types de recherche** :
+1. **Proximité** : Recherche de deux mots à distance configurable
+2. **Variations** : Génération de variantes orthographiques médiévales
+3. **Sémantique** : Recherche conceptuelle avancée
+4. **Proximité + Variations** : Combinaison des approches
+
+**Architecture** :
+- **4 composants UI** avec CSS Modules (FormField, RadioGroup, InfoBox, ResultCard)
+- **4 vues** (une par type de recherche)
+- **1 utilitaire** de génération de requêtes
+- **Documentation complète** (2413 lignes)
+
+**Tests** :
+- UI Components : 93/93 tests ✅ (100%)
+- View Components : 64/91 tests ✅ (70%)
 
 ### Concordance Analyzer
 
@@ -197,6 +247,41 @@ Enrichit les concordances avec les métadonnées.
 2. Match partiel sur titre + auteur
 3. Fallback : conservation données brutes
 
+## 🎨 Styling
+
+### CSS Modules
+
+Le projet utilise **CSS Modules** pour les nouveaux composants UI du Query Generator.
+
+**Avantages** :
+- ✅ Scoped CSS (pas de conflits de noms)
+- ✅ Meilleure maintenabilité
+- ✅ Optimisation du bundle (tree-shaking)
+- ✅ Intégration Vite native
+
+**Composants avec CSS Modules** :
+- `FormField` (src/modules/query-generator/components/ui/FormField.module.css)
+- `RadioGroup` (src/modules/query-generator/components/ui/RadioGroup.module.css)
+- `InfoBox` (src/modules/query-generator/components/ui/InfoBox.module.css)
+- `ResultCard` (src/modules/query-generator/components/ui/ResultCard.module.css)
+
+**Utilisation** :
+```jsx
+import styles from './FormField.module.css';
+
+const FormField = ({ label }) => (
+  <div className={styles.field}>
+    <label className={styles.label}>{label}</label>
+  </div>
+);
+```
+
+### Inline Styles (Legacy)
+
+Les anciens composants (Concordance Analyzer, Shared) utilisent encore des inline styles avec `globalTheme.js`.
+
+**Migration progressive** : Nouveaux composants utilisent CSS Modules.
+
 ## 🌍 Internationalisation
 
 ### Configuration
@@ -224,6 +309,10 @@ i18n
 {
   "sidebar": { "nav": {...}, "footer": {...} },
   "pagination": {...},
+  "queryGenerator": {
+    "ui": {...},
+    "views": {...}
+  },
   "concordance": {
     "charts": {
       "tooltip": {...},
@@ -232,14 +321,7 @@ i18n
     },
     "views": {
       "overview": {...},
-      "corpusComparison": {
-        "charts": {
-          "domains": {...},
-          "authors": {...},
-          "temporal": {...},
-          "terminology": {...}
-        }
-      }
+      "corpusComparison": {...}
     }
   }
 }
@@ -269,7 +351,7 @@ const MyComponent = () => {
 **Sidebar verticale fixe (280px)** :
 - Logo cliquable
 - Navigation modules
-- Liste des 9 vues
+- Liste des vues (9 pour Concordance Analyzer, 4 pour Query Generator)
 - Bouton filtres avec badge
 - Compteur de concordances
 - Switch langue FR/EN
@@ -320,31 +402,79 @@ const MyComponent = () => {
 
 ## 🧪 Tests
 
-### Test Manuel
+### Framework : Vitest
 
-```bash
-npm run dev
-# Ouvrir http://localhost:3000
-# Tester :
-# - Upload CSV métadonnées + concordances
-# - Navigation entre vues
-# - Filtres (texte, auteurs, domaines)
-# - Switch FR ↔ EN
-# - Exports CSV/JSON/PNG
-# - Comparaison de 2 corpus
+Le projet utilise **Vitest** comme test runner moderne et rapide.
+
+**Configuration** : `vitest.config.js`
+
+```javascript
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/setupTests.js']
+  }
+});
 ```
 
-### Points de Test Clés
+### Commandes
 
-- [ ] Upload et parsing CSV
-- [ ] Enrichissement métadonnées
-- [ ] Filtres multiples combinés
-- [ ] Calculs analytics corrects
-- [ ] Tous les graphiques s'affichent
-- [ ] Tooltips localisés
-- [ ] Exports fonctionnels
-- [ ] Comparaison de corpus
-- [ ] Responsive (desktop uniquement)
+```bash
+# Tests unitaires
+npm test
+
+# Tests avec UI interactive
+npm run test:ui
+
+# Tests avec couverture
+npm run test:coverage
+
+# Lancer tests une fois (CI)
+npm run test:run
+```
+
+### Couverture Actuelle
+
+**Query Generator** :
+- ✅ UI Components : 93/93 tests (100%)
+  - FormField.test.jsx
+  - RadioGroup.test.jsx
+  - InfoBox.test.jsx
+  - ResultCard.test.jsx
+- ⚠️ View Components : 64/91 tests (70%)
+  - ProximityView.test.jsx
+  - VariationView.test.jsx
+  - SemanticView.test.jsx
+  - ProximityVariationView.test.jsx
+
+**Concordance Analyzer** :
+- 🚧 Tests à venir
+
+**Shared Components** :
+- 🚧 Tests à venir
+
+### Outils de Test
+
+- **Vitest** : Test runner (remplace Jest)
+- **React Testing Library** : Tests orientés utilisateur
+- **jsdom** : Environnement DOM pour tests
+- **@testing-library/user-event** : Simulation d'interactions utilisateur
+
+### Stratégie de Test
+
+**Unit Tests** :
+- Composants UI isolés
+- Utilitaires (parsers, générateurs de requêtes)
+- Hooks personnalisés
+
+**Integration Tests** :
+- Vues complètes avec interactions
+- Flux de données (upload → parsing → analytics)
+
+**E2E Tests** (à venir) :
+- Parcours utilisateur complets
+- Tests multi-modules
 
 ## 🚀 Déploiement
 
@@ -361,9 +491,45 @@ npm run build
 - Code splitting par route
 - Assets hashés pour cache
 
+### Plateformes Recommandées
+
+**Vercel** (⭐ Recommandé) :
+- Zero-config pour Vite + React
+- Déploiement automatique depuis Git
+- HTTPS et CDN inclus
+- Preview deployments
+
+**Netlify** :
+- Interface drag & drop
+- Redirects pour React Router
+- Formulaires et fonctions serverless
+
+**Cloudflare Pages** :
+- Bandwidth illimité
+- Builds illimités
+- CDN ultra-rapide
+
+**GitHub Pages** :
+- Gratuit à vie
+- Nécessite configuration base path pour React Router
+
+### Configuration React Router
+
+**vercel.json** :
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+
+**public/_redirects** (Netlify) :
+```
+/*    /index.html   200
+```
+
 ### Variables d'Environnement
 
-Aucune variable requise pour l'instant.
+Aucune variable requise actuellement. Le projet fonctionne entièrement côté client.
 
 ## 📝 Conventions de Code
 
@@ -373,6 +539,7 @@ Aucune variable requise pour l'instant.
 - **Hooks** : camelCase avec `use` (`useMyHook.js`)
 - **Utilitaires** : camelCase (`parseData.js`)
 - **Constantes** : UPPER_SNAKE_CASE
+- **CSS Modules** : kebab-case (`.module.css`)
 
 ### Structure Fichiers
 
@@ -417,19 +584,22 @@ Format : `<type>(<scope>): <message>`
 
 **Exemples** :
 ```
-feat(i18n): Add German translation
-fix(charts): Correct temporal chart data calculation
-docs(readme): Update installation instructions
+feat(query-generator): Add CSS Modules to UI components
+fix(tests): Convert View tests from Jest to Vitest mocking
+docs(query-generator): Add complete documentation
 ```
 
 ## 🔗 Ressources
 
-- [Documentation React 19](https://react.dev/)
+- [Documentation React 18](https://react.dev/)
 - [Vite Documentation](https://vitejs.dev/)
+- [Vitest Documentation](https://vitest.dev/)
 - [Recharts Examples](https://recharts.org/)
 - [react-i18next Guide](https://react.i18next.com/)
+- [CSS Modules Documentation](https://github.com/css-modules/css-modules)
 
 ---
 
 **Dernière mise à jour** : Novembre 2025
+**Version** : 1.3.0
 **Contributeurs** : Titouan (CiSaMe)

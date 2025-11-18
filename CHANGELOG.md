@@ -5,6 +5,109 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.3.0] - 2025-11-18
+
+### 🎨 Migration CSS Modules & Documentation complète
+
+Amélioration majeure de la qualité du code avec migration vers CSS Modules et documentation exhaustive du module Query Generator.
+
+### ✨ Ajouté
+
+**Documentation Query Generator**
+- **README.md** (285 lignes) : Vue d'ensemble complète du module
+- **docs/COMPONENTS.md** (650 lignes) : Documentation API de tous les composants
+  - Props détaillées avec types
+  - 50+ exemples de code
+  - Guide de migration CSS Modules
+  - Documentation des 4 vues
+- **docs/USER_GUIDE.md** (820 lignes) : Guide utilisateur complet
+  - Introduction au CQL
+  - Guides pas-à-pas pour les 4 types de recherche
+  - Cas d'usage pratiques (théologie, philologie, analyse conceptuelle)
+  - FAQ détaillée
+- **docs/UTILS.md** (658 lignes) : Documentation des utilitaires
+  - Signatures de fonctions complètes
+  - Explications algorithmiques (complexité Big O)
+  - Benchmarks de performance
+  - Exemples d'usage avancé
+
+**Total** : 2,413 lignes de documentation professionnelle
+
+**CSS Modules**
+- **FormField.module.css** (60 lignes) : Styles pour champs de formulaire
+  - Classes scoped : `.field`, `.label`, `.required`, `.input`, `.textarea`, `.helpText`
+  - Remplace les inline styles par CSS structuré
+- **RadioGroup.module.css** (103 lignes) : Styles pour groupes radio/checkbox
+  - Support inline et vertical layout
+  - États hover, focus, disabled
+  - Variantes radio et checkbox
+- **InfoBox.module.css** (117 lignes) : Styles pour boîtes d'information
+  - 4 types : info, success, warning, error
+  - Icônes et couleurs adaptatives
+  - Animations smooth
+- **ResultCard.module.css** (110 lignes) : Styles pour cartes de résultat
+  - Variante médiévale avec parchemin
+  - Boutons primaires et secondaires
+  - Layout responsive
+
+**Avantages CSS Modules** :
+- ✅ CSS scoped (pas de conflits de noms de classes)
+- ✅ Meilleure maintenabilité
+- ✅ Tree-shaking automatique par Vite
+- ✅ Performance optimale
+
+### 🔧 Modifié
+
+**Migration composants UI vers CSS Modules**
+- `FormField.jsx` : Migration complète de `style={styles.X}` vers `className={styles.X}`
+- `RadioGroup.jsx` : Support layout inline/vertical avec classes conditionnelles
+- `InfoBox.jsx` : Sélection dynamique de classes selon type (info/success/warning/error)
+- `ResultCard.jsx` : Variante médiévale avec classes conditionnelles
+
+**Tous les tests UI passent** : 93/93 tests ✅ (100%)
+
+**Correction tests Vitest**
+- Conversion de tous les tests View de Jest vers Vitest
+- Fix: `jest.mock()` → `vi.mock()` avec import explicite de Vitest
+- Fix: `jest.fn()` → `vi.fn()`
+- Fix: `jest.clearAllMocks()` → `vi.clearAllMocks()`
+- Fix bug dans VariationView : export mock avec le bon nom de fonction
+
+**Résultat** : 64/91 tests View passent maintenant (vs 45/91 avant) → **+19 tests** ✅
+
+**Documentation projet**
+- `README.md` : Ajout section Query Generator détaillée, section déploiement, versions corrigées
+- `ARCHITECTURE.md` : Ajout module Query Generator, section CSS Modules, section tests Vitest
+- `CHANGELOG.md` : Cette entrée v1.3.0
+
+### 📊 Statistiques
+
+- **Documentation ajoutée** : 2,413 lignes
+- **Fichiers CSS Modules créés** : 4 (390 lignes total)
+- **Composants migrés** : 4 composants UI
+- **Tests corrigés** : +19 tests passent (45 → 64)
+- **Couverture tests UI** : 100% (93/93)
+- **Commits** : 3 commits ciblés
+
+### 🐛 Corrections
+
+**Tests**
+- Fix: Mocks Vitest dans ProximityView.test.jsx
+- Fix: Mocks Vitest dans VariationView.test.jsx (+ correction export name)
+- Fix: Mocks Vitest dans ProximityVariationView.test.jsx
+- Fix: Mocks Vitest dans SemanticView.test.jsx
+
+### ⚡ Performance
+
+**CSS Modules** :
+- Réduction de la taille du bundle JavaScript (styles extraits en CSS)
+- Tree-shaking automatique des styles non utilisés
+- Meilleur cache navigateur (CSS séparé du JS)
+
+**Mainteneur** : Titouan (CiSaMe)
+
+---
+
 ## [1.2.0] - 2025-11-17
 
 ### 🌍 Internationalisation complète
