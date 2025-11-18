@@ -48,7 +48,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProximityView from '../ProximityView';
-import { generateProximityQuery as mockGenerateProximityQuery } from '../../../utils/queryGenerators';
+import { generateProximityQuery } from '../../../utils/queryGenerators';
 
 // ============================================================================
 // TESTS DE RENDU INITIAL
@@ -174,8 +174,8 @@ describe('ProximityView - Soumission du formulaire', () => {
     jest.clearAllMocks();
   });
 
-  it('devrait appeler mockGenerateProximityQuery à la soumission', () => {
-    mockGenerateProximityQuery.mockReturnValue({
+  it('devrait appeler generateProximityQuery à la soumission', () => {
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,10} [lemma="Augustinus"]',
       lemma1: 'intentio',
       lemma2: 'Augustinus',
@@ -189,7 +189,7 @@ describe('ProximityView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityQuery).toHaveBeenCalledWith(
+    expect(generateProximityQuery).toHaveBeenCalledWith(
       'intentio',
       'Augustinus',
       10,
@@ -199,7 +199,7 @@ describe('ProximityView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher le résultat après soumission réussie', async () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,10} [lemma="Augustinus"]',
       lemma1: 'intentio',
       lemma2: 'Augustinus',
@@ -220,7 +220,7 @@ describe('ProximityView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher une erreur si la génération échoue', async () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       error: 'Les deux lemmes doivent être renseignés'
     });
 
@@ -239,7 +239,7 @@ describe('ProximityView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec les bonnes valeurs modifiées', () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[word="ratio"] []{0,20} [word="Thomas"]',
       lemma1: 'ratio',
       lemma2: 'Thomas',
@@ -269,7 +269,7 @@ describe('ProximityView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityQuery).toHaveBeenCalledWith(
+    expect(generateProximityQuery).toHaveBeenCalledWith(
       'ratio',
       'Thomas',
       20,
@@ -290,7 +290,7 @@ describe('ProximityView - Affichage des résultats', () => {
   });
 
   it('devrait afficher les métadonnées dans ResultCard', async () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="intentio"] []{0,10} [lemma="Augustinus"]',
       lemma1: 'intentio',
       lemma2: 'Augustinus',
@@ -319,7 +319,7 @@ describe('ProximityView - Affichage des résultats', () => {
 
   it('devrait cacher le résultat en cas d\'erreur', async () => {
     // D'abord un succès
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -338,7 +338,7 @@ describe('ProximityView - Affichage des résultats', () => {
     });
 
     // Ensuite une erreur
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       error: 'Erreur de test'
     });
 
@@ -367,7 +367,7 @@ describe('ProximityView - Cas limites', () => {
   });
 
   it('devrait gérer les valeurs de distance aux limites', () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -384,7 +384,7 @@ describe('ProximityView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityQuery).toHaveBeenCalledWith(
+    expect(generateProximityQuery).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       100,
@@ -394,7 +394,7 @@ describe('ProximityView - Cas limites', () => {
   });
 
   it('devrait gérer les espaces dans les lemmes', () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="test"]',
       lemma1: 'test',
       lemma2: 'test2',
@@ -411,11 +411,11 @@ describe('ProximityView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(mockGenerateProximityQuery).toHaveBeenCalled();
+    expect(generateProximityQuery).toHaveBeenCalled();
   });
 
   it('devrait gérer plusieurs soumissions successives', async () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="test1"]',
       lemma1: 'test1',
       lemma2: 'test2',
@@ -435,7 +435,7 @@ describe('ProximityView - Cas limites', () => {
     });
 
     // Deuxième soumission
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="test2"]',
       lemma1: 'test2',
       lemma2: 'test3',
@@ -462,7 +462,7 @@ describe('ProximityView - Intégration', () => {
   });
 
   it('devrait permettre un workflow complet', async () => {
-    mockGenerateProximityQuery.mockReturnValue({
+    generateProximityQuery.mockReturnValue({
       query: '[lemma="ratio"] []{0,15} [lemma="intellectus"]',
       lemma1: 'ratio',
       lemma2: 'intellectus',
