@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Layers } from 'lucide-react';
 import { FormField, RadioGroup, Checkbox, InfoBox, ResultCard } from '../ui';
 import { generateProximityWithVariations } from '../../utils/queryGenerators';
 import { globalTheme } from '@shared/theme/globalTheme';
@@ -47,9 +48,13 @@ const ProximityVariationView = () => {
 
   return (
     <div style={styles.container}>
-      <InfoBox type="info" title={t('queryGenerator.proximityVariation.title')}>
-        {t('queryGenerator.proximityVariation.description')}
-      </InfoBox>
+      <div style={styles.infoBox}>
+        <div style={styles.infoHeader}>
+          <Layers size={18} style={{ color: '#0891b2' }} />
+          <strong>{t('queryGenerator.proximityVariation.title')}</strong>
+        </div>
+        <p style={styles.infoText}>{t('queryGenerator.proximityVariation.description')}</p>
+      </div>
 
       <form onSubmit={handleSubmit} style={styles.form}>
         <h3 style={styles.formTitle}>{t('queryGenerator.proximityVariation.formTitle')}</h3>
@@ -84,10 +89,36 @@ const ProximityVariationView = () => {
 
 const styles = {
   container: { padding: 0 },
-  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.xxl, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, marginBottom: globalTheme.spacing.xl, boxShadow: globalTheme.shadows.card },
-  formTitle: { fontSize: globalTheme.typography.size.xl, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.xl, paddingBottom: globalTheme.spacing.md, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
+
+  infoBox: {
+    background: 'linear-gradient(135deg, #ECFEFF 0%, #CFFAFE 100%)',
+    padding: globalTheme.spacing.lg,
+    borderRadius: globalTheme.borderRadius.md,
+    borderLeft: '4px solid #0891b2',
+    marginBottom: globalTheme.spacing.lg
+  },
+
+  infoHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: globalTheme.spacing.sm,
+    marginBottom: globalTheme.spacing.xs,
+    fontSize: globalTheme.typography.size.md,
+    fontWeight: globalTheme.typography.weight.semibold,
+    color: '#0891b2'
+  },
+
+  infoText: {
+    margin: 0,
+    fontSize: globalTheme.typography.size.sm,
+    color: globalTheme.colors.text.secondary,
+    lineHeight: '1.5'
+  },
+
+  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #0891b2', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
+  formTitle: { fontSize: globalTheme.typography.size.lg, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.lg, paddingBottom: globalTheme.spacing.sm, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
   row: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: globalTheme.spacing.lg },
-  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: globalTheme.palettes.concordance.primary.blue, color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.lg }
+  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#0891b2', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
 };
 
 export default ProximityVariationView;
