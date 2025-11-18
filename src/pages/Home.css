@@ -6,14 +6,14 @@
 }
 .home-page h1 {
   font-size: 3rem;
-  color: #1e3a5f;
+  color: #5C3317;
   margin-bottom: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 .home-page p {
   font-size: 1.25rem;
-  color: #334155;
+  color: #704214;
   margin-bottom: 3rem;
   line-height: 1.6;
 }
@@ -24,25 +24,25 @@
   margin-top: 2rem;
 }
 .tool-card {
-  background: white;
+  background: #FFFEF9;
   padding: 2.5rem;
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(92, 51, 23, 0.12);
+  border: 1px solid #E8DCC6;
   transition: all 0.25s ease;
   color: inherit;
   text-decoration: none;
 }
 .tool-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.12);
-  border-color: #cbd5e0;
+  box-shadow: 0 4px 12px rgba(92, 51, 23, 0.18);
+  border-color: #D4AF37;
 }
 .tool-card h3 {
-  color: #1e3a5f;
+  color: #5C3317;
   font-weight: 600;
 }
 .tool-card svg {
-  color: #2c5282;
+  color: #704214;
   margin-bottom: 1rem;
 }

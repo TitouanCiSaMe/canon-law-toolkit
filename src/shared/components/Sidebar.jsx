@@ -106,11 +106,11 @@ const Sidebar = ({
         position: 'fixed',
         left: isDesktop ? 0 : (isOpen ? 0 : '-280px'),
         top: 0,
-        background: 'linear-gradient(180deg, #1e3a5f 0%, #1a2f4a 100%)',  // Bleu marine académique
+        background: 'linear-gradient(180deg, #5C3317 0%, #3E2723 100%)',  // Brun encre médiéval
         color: '#F7FAFC',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '4px 0 16px rgba(0, 0, 0, 0.2)',
+        boxShadow: '4px 0 16px rgba(0, 0, 0, 0.25)',
         zIndex: 1000,
         overflowY: 'auto',
         transition: 'left 0.3s ease',
@@ -213,9 +213,9 @@ const Sidebar = ({
             display: 'block',
             padding: '0.75rem 1.5rem',
             textDecoration: 'none',
-            color: location.pathname === '/query-generator' ? '#e0e7ff' : '#cbd5e0',
-            background: location.pathname === '/query-generator' ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-            borderLeft: location.pathname === '/query-generator' ? '3px solid #e0e7ff' : '3px solid transparent',
+            color: location.pathname === '/query-generator' ? '#F0E68C' : '#cbd5e0',
+            background: location.pathname === '/query-generator' ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
+            borderLeft: location.pathname === '/query-generator' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
             fontSize: '0.95rem',
             fontWeight: location.pathname === '/query-generator' ? '600' : '400'
@@ -231,9 +231,9 @@ const Sidebar = ({
             display: 'block',
             padding: '0.75rem 1.5rem',
             textDecoration: 'none',
-            color: location.pathname === '/concordance-analyzer' ? '#e0e7ff' : '#cbd5e0',
-            background: location.pathname === '/concordance-analyzer' ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-            borderLeft: location.pathname === '/concordance-analyzer' ? '3px solid #e0e7ff' : '3px solid transparent',
+            color: location.pathname === '/concordance-analyzer' ? '#F0E68C' : '#cbd5e0',
+            background: location.pathname === '/concordance-analyzer' ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
+            borderLeft: location.pathname === '/concordance-analyzer' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
             fontSize: '0.95rem',
             fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400'
@@ -277,9 +277,9 @@ const Sidebar = ({
                   width: '100%',
                   padding: '0.75rem 1.5rem',
                   border: 'none',
-                  background: activeView === view.id ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-                  color: activeView === view.id ? '#e0e7ff' : '#cbd5e0',
-                  borderLeft: activeView === view.id ? '3px solid #e0e7ff' : '3px solid transparent',
+                  background: activeView === view.id ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
+                  color: activeView === view.id ? '#F0E68C' : '#cbd5e0',
+                  borderLeft: activeView === view.id ? '3px solid #D4AF37' : '3px solid transparent',
                   cursor: 'pointer',
                   transition: 'all 0.2s',
                   fontSize: '0.9rem',
@@ -316,10 +316,10 @@ const Sidebar = ({
             style={{
               margin: '1rem 1.5rem',
               padding: '1rem',
-              background: 'rgba(224, 231, 255, 0.1)',
-              border: '2px solid rgba(224, 231, 255, 0.4)',
+              background: 'rgba(240, 230, 140, 0.1)',
+              border: '2px solid rgba(212, 175, 55, 0.5)',
               borderRadius: '6px',
-              color: '#e0e7ff',
+              color: '#F0E68C',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -329,19 +329,19 @@ const Sidebar = ({
               fontSize: '1rem'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(224, 231, 255, 0.15)';
-              e.currentTarget.style.borderColor = 'rgba(224, 231, 255, 0.6)';
+              e.currentTarget.style.background = 'rgba(240, 230, 140, 0.2)';
+              e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.7)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(224, 231, 255, 0.1)';
-              e.currentTarget.style.borderColor = 'rgba(224, 231, 255, 0.4)';
+              e.currentTarget.style.background = 'rgba(240, 230, 140, 0.1)';
+              e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
             }}
           >
             <span>🔍 {t('concordance.buttons.filters')}</span>
             {activeFiltersCount > 0 && (
               <span style={{
-                background: '#e0e7ff',
-                color: '#1e3a5f',
+                background: '#D4AF37',
+                color: '#3E2723',
                 padding: '0.25rem 0.75rem',
                 borderRadius: '12px',
                 fontSize: '0.85rem',
@@ -356,17 +356,17 @@ const Sidebar = ({
           <div style={{
             padding: '1.5rem',
             textAlign: 'center',
-            background: 'rgba(255, 255, 255, 0.08)',
+            background: 'rgba(212, 175, 55, 0.15)',
             margin: '0 1.5rem 1rem 1.5rem',
             borderRadius: '6px',
-            border: '1px solid rgba(255, 255, 255, 0.1)'
+            border: '1px solid rgba(212, 175, 55, 0.3)'
           }}>
             <div style={{
               fontSize: '3rem',
               fontWeight: '300',
               lineHeight: '1',
               marginBottom: '0.5rem',
-              color: '#e0e7ff'
+              color: '#F0E68C'
             }}>
               {concordanceCount.toLocaleString()}
             </div>

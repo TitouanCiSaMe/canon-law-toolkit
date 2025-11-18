@@ -42,22 +42,23 @@ const medievalPalette = {
 };
 
 /**
- * Palette ACADÉMIQUE - Pour le module ConcordanceAnalyzer
- * Palette sobre et institutionnelle (bleu marine/gris)
+ * Palette MÉDIÉVALE ACADÉMIQUE - Pour le module ConcordanceAnalyzer
+ * Inspirée des manuscrits enluminés et bibliothèques médiévales
  */
 const concordancePalette = {
   primary: {
-    main: '#1e3a5f',      // Bleu marine profond (académique)
-    light: '#2c5282',     // Bleu marine moyen
-    dark: '#1a2f4a',      // Bleu marine très foncé
-    blue: '#1e40af',      // Bleu classique
-    blueHover: '#1e3a8a'  // Bleu hover plus foncé
+    main: '#5C3317',      // Brun encre principal (terre de sienne brûlée)
+    light: '#704214',     // Brun encre moyen
+    dark: '#3E2723',      // Brun très foncé (sépia profond)
+    blue: '#1e40af',      // Bleu lapis-lazuli (enluminure)
+    blueHover: '#1e3a8a'  // Bleu lapis foncé
   },
   accent: {
-    blue: '#334155',      // Gris ardoise (neutre)
-    green: '#059669',     // Vert discret (success)
-    orange: '#b8860b',    // Or antique (important) - lien avec médiéval
-    red: '#dc2626'        // Rouge sobre (erreur)
+    gold: '#B8860B',      // Or antique (enluminure principale)
+    goldLight: '#D4AF37', // Or clair
+    green: '#2D5016',     // Vert malachite foncé
+    red: '#B91C1C',       // Rouge vermillon (enluminure)
+    blue: '#1e40af'       // Bleu lapis-lazuli
   }
 };
 
@@ -86,13 +87,13 @@ export const globalTheme = {
     
     // Fond et surfaces
     background: {
-      default: '#FFFFFF',   // Fond général (blanc pur - épuré)
-      paper: '#FFFFFF',     // Fond des cartes (blanc pur)
-      page: '#FAFAFA',      // Fond général de page (gris très clair)
-      card: '#FFFFFF',      // Fond des cards (blanc)
-      hover: '#f8fafc',     // Hover des options (blanc bleuté très subtil)
-      active: '#f1f5f9',    // Fond actif (gris bleuté clair)
-      panel: '#FAFAFA'      // Fond panels (gris très clair)
+      default: '#FAF6ED',   // Fond général (parchemin clair)
+      paper: '#FFFEF9',     // Fond des cartes (parchemin très clair)
+      page: '#F4E8D0',      // Fond général de page (parchemin vieilli)
+      card: '#FFFEF9',      // Fond des cards (parchemin très clair)
+      hover: '#F0E4CC',     // Hover des options (parchemin moyen)
+      active: '#E8DCC6',    // Fond actif (parchemin plus foncé)
+      panel: '#FAF6ED'      // Fond panels (parchemin clair)
     },
     
     // Texte - Contraste amélioré
@@ -230,24 +231,24 @@ export const globalTheme = {
   },
   
   // ------------------------------------------------------------------------
-  // Graphiques (palette académique sobre)
+  // Graphiques (palette médiévale académique)
   // ------------------------------------------------------------------------
   charts: {
-    // Palette principale (bleus/gris sobres)
+    // Palette principale (tons médiévaux)
     colors: [
-      '#1e3a5f',  // Bleu marine principal
-      '#2c5282',  // Bleu marine moyen
-      '#1e40af',  // Bleu classique
-      '#334155',  // Gris ardoise
-      '#475569',  // Gris ardoise moyen
-      '#64748b',  // Gris bleuté
-      '#b8860b'   // Or antique (accent)
+      '#5C3317',  // Brun encre principal
+      '#704214',  // Brun encre moyen
+      '#8B4513',  // Brun sépia
+      '#B8860B',  // Or antique
+      '#1e40af',  // Bleu lapis-lazuli
+      '#2D5016',  // Vert malachite
+      '#B91C1C'   // Rouge vermillon
     ],
 
     // Couleurs spécifiques
-    temporal: '#1e40af',    // Ligne temporelle (bleu classique)
-    domain: '#1e3a5f',      // Barres domaines (bleu marine)
-    grid: '#e5e7eb'         // Grille (gris très clair)
+    temporal: '#704214',    // Ligne temporelle (brun encre)
+    domain: '#5C3317',      // Barres domaines (brun principal)
+    grid: '#E8DCC6'         // Grille (parchemin moyen)
   }
 };
 

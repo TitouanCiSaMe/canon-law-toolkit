@@ -44,7 +44,7 @@ const GlobalLayout = ({
     <div style={{
       display: 'flex',
       minHeight: '100vh',
-      background: '#FFFFFF'
+      background: '#FAF6ED'
     }}>
       {/* Sidebar */}
       {showSidebar && (
