@@ -9,11 +9,16 @@
  * - L'affichage des résultats multiples
  */
 
+// Mock du module variationGenerators AVANT tout import
+const mockGenerateAllVariationQueries = jest.fn();
+jest.mock('../../../utils/variationGenerators', () => ({
+  mockGenerateAllVariationQueries: mockGenerateAllVariationQueries
+}));
+
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import VariationView from '../VariationView';
-import { generateAllVariationQueries } from '../../../utils/variationGenerators';
 
 // ============================================================================
 // MOCKS
@@ -25,7 +30,7 @@ jest.mock('react-i18next', () => ({
     t: (key) => {
       const translations = {
         'queryGenerator.variation.title': 'Variations orthographiques',
-        'queryGenerator.variation.description': 'Description des variations',
+        'queryGenerator.variation.description': 'Générez des requêtes pour trouver des variantes orthographiques avec support pour le latin médiéval.',
         'queryGenerator.variation.formTitle': 'Recherche de variations',
         'queryGenerator.variation.word': 'Mot à rechercher',
         'queryGenerator.variation.desinenceType': 'Type de désinence',
@@ -36,18 +41,13 @@ jest.mock('react-i18next', () => ({
         'queryGenerator.variation.mediumQuery': 'Requête moyenne',
         'queryGenerator.variation.complexQuery': 'Requête complexe',
         'queryGenerator.variation.medievalQuery': 'Requête médiévale',
-        'queryGenerator.variation.medievalHelp': 'Aide médiévale',
+        'queryGenerator.variation.medievalHelp': 'Inclut substitutions ae/e, v/u, j/i, ti/ci, etc.',
         'queryGenerator.ui.generate': 'Générer la requête',
         'common.error': 'Erreur'
       };
       return translations[key] || key;
     }
   })
-}));
-
-// Mock du module variationGenerators
-jest.mock('../../../utils/variationGenerators', () => ({
-  generateAllVariationQueries: jest.fn()
 }));
 
 // ============================================================================
@@ -64,7 +64,7 @@ describe('VariationView - Rendu initial', () => {
     render(<VariationView />);
 
     expect(screen.getByText('Variations orthographiques')).toBeInTheDocument();
-    expect(screen.getByText('Description des variations')).toBeInTheDocument();
+    expect(screen.getByText('Générez des requêtes pour trouver des variantes orthographiques avec support pour le latin médiéval.')).toBeInTheDocument();
   });
 
   it('devrait afficher le titre et la description', () => {
@@ -172,8 +172,8 @@ describe('VariationView - Soumission du formulaire', () => {
     jest.clearAllMocks();
   });
 
-  it('devrait appeler generateAllVariationQueries à la soumission', () => {
-    generateAllVariationQueries.mockReturnValue({
+  it('devrait appeler mockGenerateAllVariationQueries à la soumission', () => {
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'intentio',
       requete1: '[word="intentio|int[A-z]?ntio"]',
       requete2: '[word="intentio|[A-z]*ntio"]',
@@ -192,14 +192,14 @@ describe('VariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(generateAllVariationQueries).toHaveBeenCalledWith(
+    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
       'intentio',
       true
     );
   });
 
   it('devrait afficher les 4 types de requêtes après soumission réussie', async () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'intentio',
       requete1: '[word="simple"]',
       requete2: '[word="medium"]',
@@ -227,7 +227,7 @@ describe('VariationView - Soumission du formulaire', () => {
   });
 
   it('devrait afficher une erreur si la génération échoue', async () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       error: 'Le mot doit être renseigné'
     });
 
@@ -246,7 +246,7 @@ describe('VariationView - Soumission du formulaire', () => {
   });
 
   it('devrait appeler avec withSuffix=false pour forme exacte', () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'ratio',
       requete1: '[word="ratio"]',
       requete2: '[word="ratio"]',
@@ -264,14 +264,14 @@ describe('VariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(generateAllVariationQueries).toHaveBeenCalledWith(
+    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
       'intentio',
       false
     );
   });
 
   it('devrait appeler avec le mot modifié', () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'ratio',
       requete1: '[word="ratio"]',
       requete2: '[word="ratio"]',
@@ -288,7 +288,7 @@ describe('VariationView - Soumission du formulaire', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(generateAllVariationQueries).toHaveBeenCalledWith(
+    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
       'ratio',
       true
     );
@@ -306,7 +306,7 @@ describe('VariationView - Affichage des résultats', () => {
   });
 
   it('devrait afficher les 4 ResultCard avec les bonnes requêtes', async () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="query1"]',
       requete2: '[word="query2"]',
@@ -339,7 +339,7 @@ describe('VariationView - Affichage des résultats', () => {
 
   it('devrait cacher les résultats en cas d\'erreur', async () => {
     // D'abord un succès
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="test1"]',
       requete2: '[word="test2"]',
@@ -358,7 +358,7 @@ describe('VariationView - Affichage des résultats', () => {
     });
 
     // Ensuite une erreur
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       error: 'Erreur de test'
     });
 
@@ -387,7 +387,7 @@ describe('VariationView - Cas limites', () => {
   });
 
   it('devrait gérer un mot vide', () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       error: 'Le mot doit être renseigné'
     });
 
@@ -399,14 +399,14 @@ describe('VariationView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(generateAllVariationQueries).toHaveBeenCalledWith(
+    expect(mockGenerateAllVariationQueries).toHaveBeenCalledWith(
       '',
       true
     );
   });
 
   it('devrait gérer les espaces dans le mot', () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="test"]',
       requete2: '[word="test"]',
@@ -423,11 +423,11 @@ describe('VariationView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(generateAllVariationQueries).toHaveBeenCalled();
+    expect(mockGenerateAllVariationQueries).toHaveBeenCalled();
   });
 
   it('devrait gérer plusieurs soumissions successives', async () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'test1',
       requete1: '[word="test1"]',
       requete2: '[word="test1"]',
@@ -447,7 +447,7 @@ describe('VariationView - Cas limites', () => {
     });
 
     // Deuxième soumission
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'test2',
       requete1: '[word="test2"]',
       requete2: '[word="test2"]',
@@ -477,7 +477,7 @@ describe('VariationView - Intégration', () => {
   });
 
   it('devrait permettre un workflow complet', async () => {
-    generateAllVariationQueries.mockReturnValue({
+    mockGenerateAllVariationQueries.mockReturnValue({
       mot: 'philosophia',
       requete1: '[word="philosophia|phil[A-z]?sophia"]',
       requete2: '[word="philosophia|[A-z]*sophia"]',
