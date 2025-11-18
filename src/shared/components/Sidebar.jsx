@@ -45,17 +45,17 @@ const Sidebar = ({
   const location = useLocation();
   const { isDesktop } = useBreakpoint();
 
-  // Navigation des vues du concordance analyzer
+  // Navigation des vues du concordance analyzer (symboles médiévaux)
   const views = [
-    { id: 'overview', icon: '🏠', label: t('concordance.panels.overview.title') },
-    { id: 'domains', icon: '📚', label: t('concordance.panels.domains.title') },
-    { id: 'temporal', icon: '⏰', label: t('concordance.panels.temporal.title') },
-    { id: 'authors', icon: '✍️', label: t('concordance.panels.authors.title') },
-    { id: 'linguistic', icon: '🔤', label: t('concordance.panels.linguistic.title') },
-    { id: 'places', icon: '🌍', label: t('concordance.panels.places.title') },
-    { id: 'data', icon: '📋', label: t('concordance.panels.data.title') },
-    { id: 'corpusComparison', icon: '⚖️', label: t('concordance.panels.corpusComparison.title') },
-    { id: 'concordances', icon: '📁', label: t('concordance.panels.concordances.title') }
+    { id: 'overview', icon: '◈', label: t('concordance.panels.overview.title') },
+    { id: 'domains', icon: '⚜', label: t('concordance.panels.domains.title') },
+    { id: 'temporal', icon: '⧗', label: t('concordance.panels.temporal.title') },
+    { id: 'authors', icon: '✒', label: t('concordance.panels.authors.title') },
+    { id: 'linguistic', icon: '❦', label: t('concordance.panels.linguistic.title') },
+    { id: 'places', icon: '✦', label: t('concordance.panels.places.title') },
+    { id: 'data', icon: '⟐', label: t('concordance.panels.data.title') },
+    { id: 'corpusComparison', icon: '⚖', label: t('concordance.panels.corpusComparison.title') },
+    { id: 'concordances', icon: '⊞', label: t('concordance.panels.concordances.title') }
   ];
 
   const toggleLanguage = () => {
@@ -171,7 +171,7 @@ const Sidebar = ({
           gap: '1rem',
           marginBottom: '0.5rem'
         }}>
-          <span style={{ fontSize: '2rem' }}>📚</span>
+          <span style={{ fontSize: '2rem' }}>⚖</span>
           <div>
             <div style={{ 
               fontSize: '1.8rem', 
@@ -221,7 +221,7 @@ const Sidebar = ({
             fontWeight: location.pathname === '/query-generator' ? '600' : '400'
           }}
         >
-          🔍 {t('nav.queryGenerator')}
+          ⟐ {t('nav.queryGenerator')}
         </Link>
 
         <Link
@@ -239,7 +239,7 @@ const Sidebar = ({
             fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400'
           }}
         >
-          📊 {t('nav.concordanceAnalyzer')}
+          ◈ {t('nav.concordanceAnalyzer')}
         </Link>
       </nav>
 
@@ -337,7 +337,7 @@ const Sidebar = ({
               e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
             }}
           >
-            <span>🔍 {t('concordance.buttons.filters')}</span>
+            <span>⊞ {t('concordance.buttons.filters')}</span>
             {activeFiltersCount > 0 && (
               <span style={{
                 background: '#D4AF37',

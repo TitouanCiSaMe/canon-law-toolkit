@@ -143,7 +143,7 @@ const DomainChart = ({
           fontSize: '3rem',       // Grande taille
           marginBottom: '1rem'    // Espacement sous l'icône
         }}>
-          📚
+          ⚜
         </div>
         
         {/* Message explicite */}

@@ -94,17 +94,13 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
 	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',
 	  position: 'relative',
 	  overflow: 'hidden',
-	  border: isActive
-	    ? '3px solid #D4AF37'
-	    : '2px solid rgba(212, 175, 55, 0.3)',
-	  borderTop: '4px solid rgba(212, 175, 55, 0.5)',  // Bordure supérieure dorée
-	  borderLeft: '4px solid rgba(212, 175, 55, 0.4)',  // Bordure gauche dorée
+	  border: isActive ? '2px solid #D4AF37' : '1px solid rgba(212, 175, 55, 0.2)',
 	  transform: isHovered ? 'scale(1.01)' : 'scale(1)',
 	  boxShadow: isHovered
-	    ? '0 4px 16px rgba(92, 51, 23, 0.25), inset 0 1px 0 rgba(212, 175, 55, 0.2)'
-	    : '0 2px 8px rgba(92, 51, 23, 0.15), inset 0 1px 0 rgba(212, 175, 55, 0.1)',
+	    ? '0 4px 12px rgba(92, 51, 23, 0.2)'
+	    : '0 2px 6px rgba(92, 51, 23, 0.12)',
 	  zIndex: isHovered ? 10 : 1,
-	  borderRadius: '6px'  // Coins légèrement arrondis
+	  borderRadius: '6px'
 	}}
     >
       <div style={{
