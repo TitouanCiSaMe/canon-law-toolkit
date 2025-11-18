@@ -210,7 +210,7 @@ const CorpusUploader = ({ onCompare }) => {
           >
             {!corpusA ? (
               <>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📁</div>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⊞</div>
                 <div style={{ fontSize: '1rem', fontWeight: '500', color: '#475569', marginBottom: '0.5rem' }}>
                   Glisser-déposer ou cliquer
                 </div>
@@ -278,7 +278,7 @@ const CorpusUploader = ({ onCompare }) => {
           >
             {!corpusB ? (
               <>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📁</div>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⊞</div>
                 <div style={{ fontSize: '1rem', fontWeight: '500', color: '#475569', marginBottom: '0.5rem' }}>
                   Glisser-déposer ou cliquer
                 </div>
@@ -339,7 +339,7 @@ const CorpusUploader = ({ onCompare }) => {
             }
           }}
         >
-          ⚖️ Comparer les corpus
+          ⚖ Comparer les corpus
         </button>
         
         {(!corpusA || !corpusB) && (
@@ -366,7 +366,7 @@ const CorpusUploader = ({ onCompare }) => {
           color: '#475569',
           lineHeight: '1.6'
         }}>
-          <strong>💡 Note :</strong> Les fichiers doivent être au format XML NoSketch ou CSV exporté depuis NoSketch Engine.
+          <strong>Note :</strong> Les fichiers doivent être au format XML NoSketch ou CSV exporté depuis NoSketch Engine.
           Taille maximum : 50MB par fichier.
         </div>
       </div>

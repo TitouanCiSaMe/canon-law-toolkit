@@ -34,7 +34,7 @@ const Header = () => {
           </Link>
         </nav>
         <button onClick={toggleLanguage} className="language-toggle">
-          🌐 {i18n.language.toUpperCase()}
+          ◈ {i18n.language.toUpperCase()}
         </button>
       </div>
     </header>

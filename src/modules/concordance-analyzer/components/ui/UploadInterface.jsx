@@ -140,7 +140,7 @@ const UploadInterface = ({
           color: '#FECACA',
           width: '100%'
         }}>
-          ⚠️ <strong>{t('common.error')}</strong> {error}
+          ⚠ <strong>{t('common.error')}</strong> {error}
         </div>
       )}
     </div>
@@ -199,7 +199,7 @@ const FileUploadSection = ({
         }}
       >
         <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem', opacity: 0.7 }}>
-          {title.includes('Métadonnées') ? '📋' : '📄'}
+          {title.includes('Métadonnées') ? '⟐' : '⟐'}
         </div>
         <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>
           {description}
@@ -237,7 +237,7 @@ const FileUploadSection = ({
           borderRadius: '4px',
           fontSize: '0.8rem'
         }}>
-          ✅ <strong>{selectedFile.name}</strong><br/>
+          ✓ <strong>{selectedFile.name}</strong><br/>
           {fileInfo && <span>{fileInfo}</span>}
         </div>
       )}

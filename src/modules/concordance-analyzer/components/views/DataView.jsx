@@ -214,7 +214,7 @@ const DataView = ({
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    📄 {t('concordance.dataView.fullText')}
+                    ⟐ {t('concordance.dataView.fullText')}
                   </button>
                 </div>
               </div>
@@ -288,7 +288,7 @@ const DataView = ({
                         fontSize: '0.75rem',
                         fontWeight: '600'
                       }}>
-                        {item.fromLookup ? `✅ ${t('concordance.dataView.badges.enriched')}` : `⚠️ ${t('concordance.dataView.badges.parsed')}`}
+                        {item.fromLookup ? `✓ ${t('concordance.dataView.badges.enriched')}` : `⚠ ${t('concordance.dataView.badges.parsed')}`}
                       </span>
                       {/* Identifiants techniques (debug/traçabilité) */}
                       <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>

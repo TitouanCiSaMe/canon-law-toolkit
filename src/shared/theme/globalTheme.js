@@ -42,22 +42,23 @@ const medievalPalette = {
 };
 
 /**
- * Palette CONCORDANCE - Pour le module ConcordanceAnalyzer
- * Palette moderne et académique (violet/bleu)
+ * Palette MÉDIÉVALE ACADÉMIQUE - Pour le module ConcordanceAnalyzer
+ * Inspirée des manuscrits enluminés et bibliothèques médiévales
  */
 const concordancePalette = {
   primary: {
-    main: '#553C9A',      // Violet principal
-    light: '#6B46C1',     // Violet clair
-    dark: '#3730a3',      // Indigo foncé
-    blue: '#2563eb',      // Bleu vif
-    blueHover: '#1d4ed8'  // Bleu hover
+    main: '#5C3317',      // Brun encre principal (terre de sienne brûlée)
+    light: '#704214',     // Brun encre moyen
+    dark: '#3E2723',      // Brun très foncé (sépia profond)
+    blue: '#1e40af',      // Bleu lapis-lazuli (enluminure)
+    blueHover: '#1e3a8a'  // Bleu lapis foncé
   },
   accent: {
-    blue: '#3b82f6',      // Stats principale
-    green: '#10b981',     // Stats positive
-    orange: '#f59e0b',    // Stats importante
-    red: '#ef4444'        // Erreur / alerte
+    gold: '#B8860B',      // Or antique (enluminure principale)
+    goldLight: '#D4AF37', // Or clair
+    green: '#2D5016',     // Vert malachite foncé
+    red: '#B91C1C',       // Rouge vermillon (enluminure)
+    blue: '#1e40af'       // Bleu lapis-lazuli
   }
 };
 
@@ -86,13 +87,13 @@ export const globalTheme = {
     
     // Fond et surfaces
     background: {
-      default: '#FAFAF8',   // Fond général (parchemin clair)
-      paper: '#FFFFFF',     // Fond des cartes (blanc pur)
-      page: '#f8f9fa',      // Fond général de page
-      card: '#ffffff',      // Fond des cards
-      hover: '#f1f5f9',     // Hover des options
-      active: '#eff6ff',    // Fond actif
-      panel: '#F7FAFC'      // Texte sur panels foncés
+      default: '#FAF6ED',   // Fond général (parchemin clair)
+      paper: '#FFFEF9',     // Fond des cartes (parchemin très clair)
+      page: '#F4E8D0',      // Fond général de page (parchemin vieilli)
+      card: '#FFFEF9',      // Fond des cards (parchemin très clair)
+      hover: '#F0E4CC',     // Hover des options (parchemin moyen)
+      active: '#E8DCC6',    // Fond actif (parchemin plus foncé)
+      panel: '#FAF6ED'      // Fond panels (parchemin clair)
     },
     
     // Texte - Contraste amélioré
@@ -118,28 +119,28 @@ export const globalTheme = {
   },
   
   // ------------------------------------------------------------------------
-  // Espacements standardisés
+  // Espacements standardisés (augmentés pour plus de respiration)
   // ------------------------------------------------------------------------
   spacing: {
-    xs: '0.25rem',    // 4px  - Très petit gap
-    sm: '0.5rem',     // 8px  - Petit gap
-    md: '0.75rem',    // 12px - Gap moyen
-    lg: '1rem',       // 16px - Gap standard
-    xl: '1.5rem',     // 24px - Grand gap
-    xxl: '2rem',      // 32px - Très grand gap
-    xxxl: '3rem'      // 48px - Énorme gap
+    xs: '0.5rem',     // 8px  - Très petit gap
+    sm: '0.75rem',    // 12px - Petit gap
+    md: '1rem',       // 16px - Gap moyen
+    lg: '1.5rem',     // 24px - Gap standard
+    xl: '2rem',       // 32px - Grand gap
+    xxl: '3rem',      // 48px - Très grand gap
+    xxxl: '4rem'      // 64px - Énorme gap
   },
   
   // ------------------------------------------------------------------------
-  // Ombres élégantes
+  // Ombres sobres (réduites pour aspect plus plat et académique)
   // ------------------------------------------------------------------------
   shadows: {
-    card: '0 2px 8px rgba(0, 0, 0, 0.08)',           // Ombre subtile (repos)
-    cardHover: '0 4px 16px rgba(0, 0, 0, 0.12)',     // Ombre au hover
-    panel: '0 4px 12px rgba(0, 0, 0, 0.1)',          // Panel standard
-    panelHover: '0 8px 24px rgba(0, 0, 0, 0.15)',    // Panel au hover
-    elevated: '0 8px 24px rgba(0, 0, 0, 0.15)',      // Modals, dropdowns
-    strong: '0 12px 32px rgba(0, 0, 0, 0.2)'         // Très élevé
+    card: '0 1px 3px rgba(0, 0, 0, 0.06)',           // Ombre très subtile (repos)
+    cardHover: '0 2px 8px rgba(0, 0, 0, 0.08)',      // Ombre légère au hover
+    panel: '0 1px 4px rgba(0, 0, 0, 0.05)',          // Panel très discret
+    panelHover: '0 2px 8px rgba(0, 0, 0, 0.08)',     // Panel au hover
+    elevated: '0 4px 12px rgba(0, 0, 0, 0.1)',       // Modals, dropdowns
+    strong: '0 8px 16px rgba(0, 0, 0, 0.12)'         // Élevé mais sobre
   },
   
   // ------------------------------------------------------------------------
@@ -193,61 +194,123 @@ export const globalTheme = {
   },
 
   // ------------------------------------------------------------------------
-  // Glassmorphism (effet verre moderne)
+  // Glassmorphism (simplifié pour aspect plus sobre)
   // ------------------------------------------------------------------------
   glassmorphism: {
-    background: 'rgba(255, 255, 255, 0.85)',
-    blur: 'blur(10px)',
-    border: '2px solid rgba(255, 255, 255, 0.5)',
-    shadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+    background: 'rgba(255, 255, 255, 0.95)',
+    blur: 'blur(4px)',
+    border: '1px solid rgba(0, 0, 0, 0.08)',
+    shadow: '0 2px 8px rgba(0, 0, 0, 0.06)'
   },
   
   // ------------------------------------------------------------------------
-  // Typographie
+  // Typographie (Hiérarchie médiévale académique)
   // ------------------------------------------------------------------------
   typography: {
     fontFamily: {
-      primary: '"Crimson Text", Georgia, serif',    // Titres (médiéval)
-      secondary: '"Lato", sans-serif',              // UI (moderne)
-      sans: '"Inter", sans-serif',                  // Alternative (concordance)
-      serif: '"Crimson Text", serif'                // Alternative (concordance)
+      primary: '"Crimson Text", Georgia, serif',    // Titres principaux (médiéval)
+      secondary: '"Lato", "Helvetica Neue", sans-serif',    // UI/Corps de texte
+      heading: '"EB Garamond", "Crimson Text", Georgia, serif',  // Grands titres (style livre ancien)
+      display: '"Cormorant Garamond", "EB Garamond", serif',     // Titres display (enluminure)
+      body: '"Lato", "Helvetica Neue", sans-serif', // Corps de texte principal
+      mono: '"Courier New", Courier, monospace'     // Code/données
     },
     size: {
       xs: '0.75rem',     // 12px - Métadonnées
       sm: '0.85rem',     // 13.6px - Labels
       md: '0.875rem',    // 14px - Corps de texte
-      lg: '1rem',        // 16px - Titres secondaires
-      xl: '1.25rem',     // 20px - Titres
-      xxl: '1.5rem',     // 24px - Grands titres
-      xxxl: '2rem'       // 32px - Titres principaux
+      lg: '1rem',        // 16px - Texte standard
+      xl: '1.25rem',     // 20px - Petits titres
+      xxl: '1.5rem',     // 24px - Titres moyens
+      xxxl: '2rem',      // 32px - Grands titres
+      display: '2.5rem'  // 40px - Titres display
     },
     weight: {
+      light: '300',
       normal: '400',
       medium: '500',
       semibold: '600',
-      bold: '700'
+      bold: '700',
+      black: '900'
+    },
+    // Styles de titres hiérarchiques
+    heading: {
+      h1: {
+        fontFamily: '"EB Garamond", "Crimson Text", Georgia, serif',
+        fontSize: '2.5rem',     // 40px
+        fontWeight: '700',
+        lineHeight: '1.2',
+        letterSpacing: '-0.02em',
+        color: '#5C3317',       // Brun encre principal
+        textTransform: 'none'
+      },
+      h2: {
+        fontFamily: '"Crimson Text", Georgia, serif',
+        fontSize: '2rem',       // 32px
+        fontWeight: '600',
+        lineHeight: '1.3',
+        letterSpacing: '-0.01em',
+        color: '#5C3317',       // Brun encre principal
+        textTransform: 'none'
+      },
+      h3: {
+        fontFamily: '"Crimson Text", Georgia, serif',
+        fontSize: '1.5rem',     // 24px
+        fontWeight: '600',
+        lineHeight: '1.4',
+        letterSpacing: '0',
+        color: '#704214',       // Brun encre moyen
+        textTransform: 'none'
+      },
+      h4: {
+        fontFamily: '"Lato", sans-serif',
+        fontSize: '1.25rem',    // 20px
+        fontWeight: '600',
+        lineHeight: '1.4',
+        letterSpacing: '0',
+        color: '#704214',       // Brun encre moyen
+        textTransform: 'none'
+      },
+      h5: {
+        fontFamily: '"Lato", sans-serif',
+        fontSize: '1rem',       // 16px
+        fontWeight: '600',
+        lineHeight: '1.5',
+        letterSpacing: '0.01em',
+        color: '#8B4513',       // Brun sépia
+        textTransform: 'uppercase'
+      },
+      h6: {
+        fontFamily: '"Lato", sans-serif',
+        fontSize: '0.875rem',   // 14px
+        fontWeight: '700',
+        lineHeight: '1.5',
+        letterSpacing: '0.05em',
+        color: '#8B4513',       // Brun sépia
+        textTransform: 'uppercase'
+      }
     }
   },
   
   // ------------------------------------------------------------------------
-  // Graphiques (pour Recharts)
+  // Graphiques (palette médiévale académique)
   // ------------------------------------------------------------------------
   charts: {
-    // Palette principale (concordance)
+    // Palette principale (tons médiévaux)
     colors: [
-      '#2563eb',  // Bleu vif
-      '#1d4ed8',  // Bleu moyen
-      '#1e40af',  // Bleu foncé
-      '#3730a3',  // Indigo
-      '#4338ca',  // Indigo moyen
-      '#6366f1',  // Indigo clair
-      '#8b5cf6'   // Violet
+      '#5C3317',  // Brun encre principal
+      '#704214',  // Brun encre moyen
+      '#8B4513',  // Brun sépia
+      '#B8860B',  // Or antique
+      '#1e40af',  // Bleu lapis-lazuli
+      '#2D5016',  // Vert malachite
+      '#B91C1C'   // Rouge vermillon
     ],
-    
+
     // Couleurs spécifiques
-    temporal: '#3b82f6',    // Ligne temporelle
-    domain: '#553C9A',      // Barres domaines
-    grid: '#e2e8f0'         // Grille
+    temporal: '#704214',    // Ligne temporelle (brun encre)
+    domain: '#5C3317',      // Barres domaines (brun principal)
+    grid: '#E8DCC6'         // Grille (parchemin moyen)
   }
 };
 
@@ -311,34 +374,98 @@ export const createGradient = (color1, color2) =>
   `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
 
 /**
- * Génère les styles CSS globaux
+ * Génère les styles CSS globaux avec hiérarchie typographique
  * @returns {string} CSS string
  */
 export const generateGlobalStyles = () => `
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   body {
-    font-family: ${globalTheme.typography.fontFamily.primary};
+    font-family: ${globalTheme.typography.fontFamily.body};
     color: ${globalTheme.colors.text.primary};
     background: ${globalTheme.colors.background.default};
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: ${globalTheme.typography.size.md};
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: ${globalTheme.typography.weight.bold};
-    line-height: 1.2;
+
+  h1 {
+    font-family: ${globalTheme.typography.heading.h1.fontFamily};
+    font-size: ${globalTheme.typography.heading.h1.fontSize};
+    font-weight: ${globalTheme.typography.heading.h1.fontWeight};
+    line-height: ${globalTheme.typography.heading.h1.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h1.letterSpacing};
+    color: ${globalTheme.typography.heading.h1.color};
+    margin-bottom: 1.5rem;
   }
-  
+
+  h2 {
+    font-family: ${globalTheme.typography.heading.h2.fontFamily};
+    font-size: ${globalTheme.typography.heading.h2.fontSize};
+    font-weight: ${globalTheme.typography.heading.h2.fontWeight};
+    line-height: ${globalTheme.typography.heading.h2.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h2.letterSpacing};
+    color: ${globalTheme.typography.heading.h2.color};
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    font-family: ${globalTheme.typography.heading.h3.fontFamily};
+    font-size: ${globalTheme.typography.heading.h3.fontSize};
+    font-weight: ${globalTheme.typography.heading.h3.fontWeight};
+    line-height: ${globalTheme.typography.heading.h3.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h3.letterSpacing};
+    color: ${globalTheme.typography.heading.h3.color};
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-family: ${globalTheme.typography.heading.h4.fontFamily};
+    font-size: ${globalTheme.typography.heading.h4.fontSize};
+    font-weight: ${globalTheme.typography.heading.h4.fontWeight};
+    line-height: ${globalTheme.typography.heading.h4.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h4.letterSpacing};
+    color: ${globalTheme.typography.heading.h4.color};
+    margin-bottom: 0.875rem;
+  }
+
+  h5 {
+    font-family: ${globalTheme.typography.heading.h5.fontFamily};
+    font-size: ${globalTheme.typography.heading.h5.fontSize};
+    font-weight: ${globalTheme.typography.heading.h5.fontWeight};
+    line-height: ${globalTheme.typography.heading.h5.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h5.letterSpacing};
+    color: ${globalTheme.typography.heading.h5.color};
+    text-transform: ${globalTheme.typography.heading.h5.textTransform};
+    margin-bottom: 0.75rem;
+  }
+
+  h6 {
+    font-family: ${globalTheme.typography.heading.h6.fontFamily};
+    font-size: ${globalTheme.typography.heading.h6.fontSize};
+    font-weight: ${globalTheme.typography.heading.h6.fontWeight};
+    line-height: ${globalTheme.typography.heading.h6.lineHeight};
+    letter-spacing: ${globalTheme.typography.heading.h6.letterSpacing};
+    color: ${globalTheme.typography.heading.h6.color};
+    text-transform: ${globalTheme.typography.heading.h6.textTransform};
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
     transition: ${globalTheme.transitions.fast};
   }
-  
+
   button {
     font-family: ${globalTheme.typography.fontFamily.secondary};
     cursor: pointer;

@@ -70,7 +70,7 @@ const WordCloud = ({
           marginBottom: '1rem',
           color: '#94a3b8',
         }}>
-          ☁️
+          ❦
         </div>
         <h3 style={{
           fontSize: '1.25rem',

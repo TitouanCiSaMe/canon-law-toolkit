@@ -80,6 +80,9 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
+  // Utiliser la couleur de texte personnalisée ou blanc pur par défaut pour meilleur contraste
+  const textColor = config.textColor || '#FFFFFF';
+
   return (
     <div
       onClick={onClick}
@@ -88,17 +91,19 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
 	style={{
 	  gridArea: config.gridArea,
 	  background: config.gradient,
-	  color: '#F7FAFC',
+	  color: textColor,
 	  padding: config.size === 'large' ? '3rem' : config.size === 'wide' ? '2rem' : '2rem',
 	  cursor: 'pointer',
-	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), z-index 0ms',  // ✅ OPTIMISÉ : Anime seulement transform
+	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',
 	  position: 'relative',
 	  overflow: 'hidden',
-	  border: isActive ? '3px solid #F7FAFC' : '2px solid rgba(255,255,255,0.2)',
-	  transform: isHovered ? 'scale(1.02)' : 'scale(1)',
-	  boxShadow: isHovered ? visualTheme.shadows.panelHover : '0 2px 6px rgba(0, 0, 0, 0.06)',  // ✅ OPTIMISÉ : Ombre ultra-légère
+	  border: isActive ? '2px solid #D4AF37' : '1px solid rgba(212, 175, 55, 0.2)',
+	  transform: isHovered ? 'scale(1.01)' : 'scale(1)',
+	  boxShadow: isHovered
+	    ? '0 4px 12px rgba(92, 51, 23, 0.2)'
+	    : '0 2px 6px rgba(92, 51, 23, 0.12)',
 	  zIndex: isHovered ? 10 : 1,
-	  borderRadius: visualTheme.borderRadius.xl
+	  borderRadius: '6px'
 	}}
     >
       <div style={{
@@ -113,18 +118,20 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
           fontSize: '0.85rem',
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          opacity: 0.8,
+          opacity: 0.95,
           marginBottom: '0.5rem',
-          fontFamily: '"Inter", sans-serif'
+          fontFamily: '"Inter", sans-serif',
+          color: textColor
         }}>
           {t(`concordance.panels.${config.id}.subtitle`)}
         </div>
-        
+
         <h3 style={{
           fontSize: config.size === 'large' ? '2rem' : config.size === 'wide' ? '1.5rem' : '1.3rem',
           fontWeight: '500',
           marginBottom: '1rem',
-          fontFamily: '"Crimson Text", serif'
+          fontFamily: '"Crimson Text", serif',
+          color: textColor
         }}>
           {t(`concordance.panels.${config.id}.title`)}
         </h3>
@@ -139,7 +146,7 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.05)',  // Overlay très subtil (académique)
           pointerEvents: 'none'
         }} />
       )}

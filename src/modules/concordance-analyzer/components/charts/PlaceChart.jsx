@@ -142,11 +142,11 @@ const PlaceChart = ({
         color: '#64748b'         // Gris neutre
       }}>
         {/* Icône visuelle */}
-        <div style={{ 
+        <div style={{
           fontSize: '3rem',       // Grande taille
           marginBottom: '1rem'    // Espacement sous l'icône
         }}>
-          🗺️
+          ✦
         </div>
         
         {/* Message explicite */}

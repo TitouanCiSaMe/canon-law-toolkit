@@ -346,7 +346,7 @@ const RadarChart = ({ datasets, height = 400 }) => {
         color: '#718096',
         textAlign: 'center'
       }}>
-        💡 Les valeurs sont normalisées sur une échelle 0-100 pour faciliter la comparaison visuelle
+        Note : Les valeurs sont normalisées sur une échelle 0-100 pour faciliter la comparaison visuelle
       </div>
     </div>
   );

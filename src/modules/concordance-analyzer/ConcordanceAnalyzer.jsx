@@ -347,7 +347,7 @@ const ConcordanceAnalyzerPanels = () => {
                   }
                 }}
               >
-               🔍 {t('concordance.buttons.filters')}
+               ⊞ {t('concordance.buttons.filters')}
                 {activeFilterCount > 0 && (
                   <span style={{
                     position: 'absolute',

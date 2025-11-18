@@ -194,7 +194,7 @@ const ComparisonTemporalChart = ({
         padding: '4rem',
         color: '#64748b'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⏰</div>
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⧗</div>
         <h3>{t('concordance.charts.noData.temporal')}</h3>
       </div>
     );
@@ -205,10 +205,10 @@ const ComparisonTemporalChart = ({
   // ============================================================================
   
   const granularityOptions = [
-    { value: 'year', label: t('concordance.views.corpusComparison.charts.temporal.granularity.years'), icon: '📅' },
-    { value: 'decade', label: t('concordance.views.corpusComparison.charts.temporal.granularity.decades'), icon: '📊' },
-    { value: 'quarter', label: t('concordance.views.corpusComparison.charts.temporal.granularity.quarters'), icon: '⏳' },
-    { value: 'half', label: t('concordance.views.corpusComparison.charts.temporal.granularity.halves'), icon: '🕰️' }
+    { value: 'year', label: t('concordance.views.corpusComparison.charts.temporal.granularity.years'), icon: '⧗' },
+    { value: 'decade', label: t('concordance.views.corpusComparison.charts.temporal.granularity.decades'), icon: '◈' },
+    { value: 'quarter', label: t('concordance.views.corpusComparison.charts.temporal.granularity.quarters'), icon: '⧗' },
+    { value: 'half', label: t('concordance.views.corpusComparison.charts.temporal.granularity.halves'), icon: '⧗' }
   ];
 
   const countModeOptions = [
@@ -216,13 +216,13 @@ const ComparisonTemporalChart = ({
       value: 'works',
       label: t('concordance.views.corpusComparison.charts.temporal.countMode.works'),
       description: t('concordance.views.corpusComparison.charts.temporal.countMode.worksDesc'),
-      icon: '📚'
+      icon: '⚜'
     },
     {
       value: 'concordances',
       label: t('concordance.views.corpusComparison.charts.temporal.countMode.concordances'),
       description: t('concordance.views.corpusComparison.charts.temporal.countMode.concordancesDesc'),
-      icon: '📄'
+      icon: '⟐'
     }
   ];
 
@@ -290,7 +290,7 @@ const ComparisonTemporalChart = ({
           fontSize: '1.3rem',
           color: '#1e293b'
         }}>
-          ⏰ {t('concordance.views.corpusComparison.charts.temporal.title')}
+          ⧗ {t('concordance.views.corpusComparison.charts.temporal.title')}
         </h3>
 
         {/* Export buttons */}
@@ -326,7 +326,7 @@ const ComparisonTemporalChart = ({
               color: visualTheme.colors.text.primary,
               marginBottom: visualTheme.spacing.md
             }}>
-              📊 {t('concordance.views.corpusComparison.charts.temporal.scaleLabel')}
+              ◈ {t('concordance.views.corpusComparison.charts.temporal.scaleLabel')}
             </h5>
             <div style={{
               display: 'grid',
@@ -373,7 +373,7 @@ const ComparisonTemporalChart = ({
               color: visualTheme.colors.text.primary,
               marginBottom: visualTheme.spacing.md
             }}>
-              📈 {t('concordance.views.corpusComparison.charts.temporal.countModeLabel')}
+              ◈ {t('concordance.views.corpusComparison.charts.temporal.countModeLabel')}
             </h5>
             <div style={{
               display: 'flex',
@@ -603,7 +603,7 @@ const ComparisonTemporalChart = ({
             color: '#1e293b',
             marginBottom: '1rem'
           }}>
-            📊 {t('concordance.views.corpusComparison.charts.temporal.distributionBy', { 
+            ◈ {t('concordance.views.corpusComparison.charts.temporal.distributionBy', { 
               granularity: granularityLabels[granularity].toLowerCase() 
             })}
           </h5>

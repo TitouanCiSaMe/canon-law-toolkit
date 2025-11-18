@@ -121,7 +121,7 @@ const FilterMenu = ({
             fontWeight: '500'
           }}
         >
-          🗑️ {t('concordance.filters.resetAll')}
+          ✕ {t('concordance.filters.resetAll')}
         </button>
       )}
 
@@ -134,7 +134,7 @@ const FilterMenu = ({
           fontWeight: '500',
           opacity: 0.9
         }}>
-          🔍 {t('concordance.filters.textSearch')}
+          ⊞ {t('concordance.filters.textSearch')}
         </label>
         <input
           type="text"
@@ -155,7 +155,7 @@ const FilterMenu = ({
 
       {/* Section Auteurs */}
       <FilterSection
-        title={`👤 ${t('concordance.filters.authors')}`}
+        title={`✒ ${t('concordance.filters.authors')}`}
         items={availableAuthors}
         activeItems={activeFilters.authors}
         onToggle={(value) => toggleFilter('authors', value)}
@@ -163,7 +163,7 @@ const FilterMenu = ({
 
       {/* Section Domaines */}
       <FilterSection
-        title={`📚 ${t('concordance.filters.domains')}`}
+        title={`⚜ ${t('concordance.filters.domains')}`}
         items={availableDomains}
         activeItems={activeFilters.domains}
         onToggle={(value) => toggleFilter('domains', value)}
@@ -171,7 +171,7 @@ const FilterMenu = ({
 
       {/* Section Périodes */}
       <FilterSection
-        title={`📅 ${t('concordance.filters.periods')}`}
+        title={`⧗ ${t('concordance.filters.periods')}`}
         items={availablePeriods}
         activeItems={activeFilters.periods}
         onToggle={(value) => toggleFilter('periods', value)}
@@ -179,7 +179,7 @@ const FilterMenu = ({
 
       {/* Section Lieux */}
       <FilterSection
-        title={`🌍 ${t('concordance.filters.places')}`}
+        title={`✦ ${t('concordance.filters.places')}`}
         items={availablePlaces}
         activeItems={activeFilters.places}
         onToggle={(value) => toggleFilter('places', value)}

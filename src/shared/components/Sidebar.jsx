@@ -45,17 +45,17 @@ const Sidebar = ({
   const location = useLocation();
   const { isDesktop } = useBreakpoint();
 
-  // Navigation des vues du concordance analyzer
+  // Navigation des vues du concordance analyzer (symboles médiévaux)
   const views = [
-    { id: 'overview', icon: '🏠', label: t('concordance.panels.overview.title') },
-    { id: 'domains', icon: '📚', label: t('concordance.panels.domains.title') },
-    { id: 'temporal', icon: '⏰', label: t('concordance.panels.temporal.title') },
-    { id: 'authors', icon: '✍️', label: t('concordance.panels.authors.title') },
-    { id: 'linguistic', icon: '🔤', label: t('concordance.panels.linguistic.title') },
-    { id: 'places', icon: '🌍', label: t('concordance.panels.places.title') },
-    { id: 'data', icon: '📋', label: t('concordance.panels.data.title') },
-    { id: 'corpusComparison', icon: '⚖️', label: t('concordance.panels.corpusComparison.title') },
-    { id: 'concordances', icon: '📁', label: t('concordance.panels.concordances.title') }
+    { id: 'overview', icon: '◈', label: t('concordance.panels.overview.title') },
+    { id: 'domains', icon: '⚜', label: t('concordance.panels.domains.title') },
+    { id: 'temporal', icon: '⧗', label: t('concordance.panels.temporal.title') },
+    { id: 'authors', icon: '✒', label: t('concordance.panels.authors.title') },
+    { id: 'linguistic', icon: '❦', label: t('concordance.panels.linguistic.title') },
+    { id: 'places', icon: '✦', label: t('concordance.panels.places.title') },
+    { id: 'data', icon: '⟐', label: t('concordance.panels.data.title') },
+    { id: 'corpusComparison', icon: '⚖', label: t('concordance.panels.corpusComparison.title') },
+    { id: 'concordances', icon: '⊞', label: t('concordance.panels.concordances.title') }
   ];
 
   const toggleLanguage = () => {
@@ -106,11 +106,11 @@ const Sidebar = ({
         position: 'fixed',
         left: isDesktop ? 0 : (isOpen ? 0 : '-280px'),
         top: 0,
-        background: 'linear-gradient(180deg, #78350F 0%, #92400E 100%)',
+        background: 'linear-gradient(180deg, #5C3317 0%, #3E2723 100%)',  // Brun encre médiéval
         color: '#F7FAFC',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '4px 0 16px rgba(0, 0, 0, 0.15)',
+        boxShadow: '4px 0 16px rgba(0, 0, 0, 0.25)',
         zIndex: 1000,
         overflowY: 'auto',
         transition: 'left 0.3s ease',
@@ -171,7 +171,7 @@ const Sidebar = ({
           gap: '1rem',
           marginBottom: '0.5rem'
         }}>
-          <span style={{ fontSize: '2rem' }}>📚</span>
+          <span style={{ fontSize: '2rem' }}>⚖</span>
           <div>
             <div style={{ 
               fontSize: '1.8rem', 
@@ -213,15 +213,15 @@ const Sidebar = ({
             display: 'block',
             padding: '0.75rem 1.5rem',
             textDecoration: 'none',
-            color: location.pathname === '/query-generator' ? '#FCD34D' : '#F7FAFC',
-            background: location.pathname === '/query-generator' ? 'rgba(252, 211, 77, 0.1)' : 'transparent',
-            borderLeft: location.pathname === '/query-generator' ? '4px solid #FCD34D' : '4px solid transparent',
+            color: location.pathname === '/query-generator' ? '#F0E68C' : '#cbd5e0',
+            background: location.pathname === '/query-generator' ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
+            borderLeft: location.pathname === '/query-generator' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
             fontSize: '0.95rem',
             fontWeight: location.pathname === '/query-generator' ? '600' : '400'
           }}
         >
-          🔍 {t('nav.queryGenerator')}
+          ⟐ {t('nav.queryGenerator')}
         </Link>
 
         <Link
@@ -231,15 +231,15 @@ const Sidebar = ({
             display: 'block',
             padding: '0.75rem 1.5rem',
             textDecoration: 'none',
-            color: location.pathname === '/concordance-analyzer' ? '#FCD34D' : '#F7FAFC',
-            background: location.pathname === '/concordance-analyzer' ? 'rgba(252, 211, 77, 0.1)' : 'transparent',
-            borderLeft: location.pathname === '/concordance-analyzer' ? '4px solid #FCD34D' : '4px solid transparent',
+            color: location.pathname === '/concordance-analyzer' ? '#F0E68C' : '#cbd5e0',
+            background: location.pathname === '/concordance-analyzer' ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
+            borderLeft: location.pathname === '/concordance-analyzer' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
             fontSize: '0.95rem',
             fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400'
           }}
         >
-          📊 {t('nav.concordanceAnalyzer')}
+          ◈ {t('nav.concordanceAnalyzer')}
         </Link>
       </nav>
 
@@ -277,9 +277,9 @@ const Sidebar = ({
                   width: '100%',
                   padding: '0.75rem 1.5rem',
                   border: 'none',
-                  background: activeView === view.id ? 'rgba(252, 211, 77, 0.1)' : 'transparent',
-                  color: activeView === view.id ? '#FCD34D' : '#F7FAFC',
-                  borderLeft: activeView === view.id ? '4px solid #FCD34D' : '4px solid transparent',
+                  background: activeView === view.id ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
+                  color: activeView === view.id ? '#F0E68C' : '#cbd5e0',
+                  borderLeft: activeView === view.id ? '3px solid #D4AF37' : '3px solid transparent',
                   cursor: 'pointer',
                   transition: 'all 0.2s',
                   fontSize: '0.9rem',
@@ -316,10 +316,10 @@ const Sidebar = ({
             style={{
               margin: '1rem 1.5rem',
               padding: '1rem',
-              background: 'rgba(252, 211, 77, 0.15)',
-              border: '2px solid #FCD34D',
-              borderRadius: '8px',
-              color: '#FCD34D',
+              background: 'rgba(240, 230, 140, 0.1)',
+              border: '2px solid rgba(212, 175, 55, 0.5)',
+              borderRadius: '6px',
+              color: '#F0E68C',
               cursor: 'pointer',
               transition: 'all 0.2s',
               display: 'flex',
@@ -329,19 +329,19 @@ const Sidebar = ({
               fontSize: '1rem'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(252, 211, 77, 0.25)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.background = 'rgba(240, 230, 140, 0.2)';
+              e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.7)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(252, 211, 77, 0.15)';
-              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.background = 'rgba(240, 230, 140, 0.1)';
+              e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.5)';
             }}
           >
-            <span>🔍 {t('concordance.buttons.filters')}</span>
+            <span>⊞ {t('concordance.buttons.filters')}</span>
             {activeFiltersCount > 0 && (
               <span style={{
-                background: '#FCD34D',
-                color: '#78350F',
+                background: '#D4AF37',
+                color: '#3E2723',
                 padding: '0.25rem 0.75rem',
                 borderRadius: '12px',
                 fontSize: '0.85rem',
@@ -356,16 +356,17 @@ const Sidebar = ({
           <div style={{
             padding: '1.5rem',
             textAlign: 'center',
-            background: 'rgba(255, 255, 255, 0.05)',
+            background: 'rgba(212, 175, 55, 0.15)',
             margin: '0 1.5rem 1rem 1.5rem',
-            borderRadius: '8px'
+            borderRadius: '6px',
+            border: '1px solid rgba(212, 175, 55, 0.3)'
           }}>
             <div style={{
               fontSize: '3rem',
               fontWeight: '300',
               lineHeight: '1',
               marginBottom: '0.5rem',
-              color: '#FCD34D'
+              color: '#F0E68C'
             }}>
               {concordanceCount.toLocaleString()}
             </div>
