@@ -107,7 +107,7 @@ const ProximityView = () => {
         />
 
         <button type="submit" style={styles.submitButton}>
-          🚀 {t('queryGenerator.ui.generate')}
+          {t('queryGenerator.ui.generate')}
         </button>
       </form>
 
@@ -136,26 +136,25 @@ const ProximityView = () => {
 
 const styles = {
   container: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: `${globalTheme.spacing.xxl} ${globalTheme.spacing.lg}`
+    padding: 0
   },
 
   form: {
     background: globalTheme.colors.background.card,
     padding: globalTheme.spacing.xxl,
-    borderRadius: globalTheme.borderRadius.lg,
-    border: `2px solid ${globalTheme.colors.border.light}`,
-    marginBottom: globalTheme.spacing.xxl,
+    borderRadius: globalTheme.borderRadius.md,
+    border: `1px solid ${globalTheme.colors.border.light}`,
+    marginBottom: globalTheme.spacing.xl,
     boxShadow: globalTheme.shadows.card
   },
 
   formTitle: {
-    ...globalTheme.typography.heading.h3,
-    color: globalTheme.palettes.concordance.primary.main,
+    fontSize: globalTheme.typography.size.xl,
+    fontWeight: globalTheme.typography.weight.semibold,
+    color: globalTheme.colors.text.primary,
     marginBottom: globalTheme.spacing.xl,
-    borderBottom: `2px solid ${globalTheme.colors.border.light}`,
-    paddingBottom: globalTheme.spacing.md
+    paddingBottom: globalTheme.spacing.md,
+    borderBottom: `1px solid ${globalTheme.colors.border.light}`
   },
 
   row: {
@@ -165,24 +164,17 @@ const styles = {
   },
 
   submitButton: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: globalTheme.spacing.sm,
-    padding: `${globalTheme.spacing.lg} ${globalTheme.spacing.xxl}`,
+    padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`,
     borderRadius: globalTheme.borderRadius.md,
-    border: `2px solid ${globalTheme.palettes.concordance.primary.blue}`,
+    border: 'none',
     background: globalTheme.palettes.concordance.primary.blue,
     color: '#FFFFFF',
     fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.lg,
+    fontSize: globalTheme.typography.size.md,
     fontWeight: globalTheme.typography.weight.semibold,
     cursor: 'pointer',
-    transition: globalTheme.transitions.normal,
-    marginTop: globalTheme.spacing.lg,
-    ':hover': {
-      transform: 'translateY(-1px)',
-      boxShadow: globalTheme.shadows.cardHover
-    }
+    transition: globalTheme.transitions.fast,
+    marginTop: globalTheme.spacing.lg
   }
 };
 

@@ -22,25 +22,25 @@ const QueryGenerator = () => {
     {
       id: 'proximity',
       label: t('queryGenerator.tabs.proximity'),
-      icon: <Search size={18} />,
+      icon: <Search size={16} />,
       component: <ProximityView />
     },
     {
       id: 'variation',
       label: t('queryGenerator.tabs.variation'),
-      icon: <Edit3 size={18} />,
+      icon: <Edit3 size={16} />,
       component: <VariationView />
     },
     {
       id: 'proximityVariation',
       label: t('queryGenerator.tabs.proximityVariation'),
-      icon: <Layers size={18} />,
+      icon: <Layers size={16} />,
       component: <ProximityVariationView />
     },
     {
       id: 'semantic',
       label: t('queryGenerator.tabs.semantic'),
-      icon: <Brain size={18} />,
+      icon: <Brain size={16} />,
       component: <SemanticView />
     }
   ];
@@ -49,15 +49,15 @@ const QueryGenerator = () => {
 
   return (
     <div style={styles.container}>
-      {/* Header */}
-      <header style={styles.header}>
-        <h1 style={styles.title}>
-          📜 {t('queryGenerator.app.title')}
+      {/* En-tête simple et compact */}
+      <div style={styles.pageHeader}>
+        <h1 style={styles.pageTitle}>
+          {t('queryGenerator.app.title')}
         </h1>
-        <p style={styles.subtitle}>
+        <p style={styles.pageSubtitle}>
           {t('queryGenerator.app.subtitle')}
         </p>
-      </header>
+      </div>
 
       {/* Navigation par onglets */}
       <div style={styles.tabsContainer}>
@@ -87,40 +87,45 @@ const QueryGenerator = () => {
 const styles = {
   container: {
     minHeight: '100vh',
-    background: globalTheme.colors.background.default
+    background: globalTheme.colors.background.default,
+    padding: 0
   },
 
-  header: {
-    background: `linear-gradient(135deg, ${globalTheme.palettes.concordance.primary.main} 0%, ${globalTheme.palettes.concordance.primary.light} 100%)`,
-    color: globalTheme.colors.text.light,
+  // En-tête compact comme Home
+  pageHeader: {
     padding: `${globalTheme.spacing.xxl} ${globalTheme.spacing.xl}`,
     textAlign: 'center',
-    borderBottom: `3px solid ${globalTheme.palettes.concordance.primary.dark}`,
-    boxShadow: globalTheme.shadows.card
+    maxWidth: '1200px',
+    margin: '0 auto'
   },
 
-  title: {
+  pageTitle: {
     fontFamily: globalTheme.typography.heading.h1.fontFamily,
-    fontSize: '2.5rem',
+    fontSize: '2rem',
     fontWeight: globalTheme.typography.weight.bold,
+    color: globalTheme.palettes.concordance.primary.main,
     marginBottom: globalTheme.spacing.md,
-    textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-    letterSpacing: '1px'
+    letterSpacing: '-0.02em'
   },
 
-  subtitle: {
+  pageSubtitle: {
     fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.xl,
-    opacity: 0.95,
-    fontStyle: 'italic'
+    fontSize: globalTheme.typography.size.lg,
+    color: globalTheme.colors.text.secondary,
+    lineHeight: 1.6
   },
 
+  // Onglets modernes et épurés
   tabsContainer: {
     display: 'flex',
-    background: globalTheme.colors.background.active,
-    borderBottom: `2px solid ${globalTheme.colors.border.medium}`,
-    overflow: 'x-auto',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+    background: globalTheme.colors.background.card,
+    borderTop: `1px solid ${globalTheme.colors.border.light}`,
+    borderBottom: `2px solid ${globalTheme.colors.border.light}`,
+    overflow: 'auto',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    marginBottom: globalTheme.spacing.xl
   },
 
   tab: {
@@ -130,33 +135,31 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: globalTheme.spacing.sm,
-    padding: `${globalTheme.spacing.lg} ${globalTheme.spacing.md}`,
+    padding: `${globalTheme.spacing.md} ${globalTheme.spacing.lg}`,
     background: 'transparent',
     border: 'none',
     borderRight: `1px solid ${globalTheme.colors.border.light}`,
-    color: globalTheme.palettes.concordance.primary.dark,
+    color: globalTheme.colors.text.secondary,
     fontFamily: globalTheme.typography.fontFamily.secondary,
     fontSize: globalTheme.typography.size.md,
-    fontWeight: globalTheme.typography.weight.semibold,
+    fontWeight: globalTheme.typography.weight.medium,
     cursor: 'pointer',
-    transition: globalTheme.transitions.normal,
-    position: 'relative',
-
-    ':hover': {
-      background: globalTheme.colors.background.hover,
-      color: globalTheme.palettes.concordance.primary.main
-    }
+    transition: globalTheme.transitions.fast,
+    whiteSpace: 'nowrap'
   },
 
   tabActive: {
-    background: globalTheme.colors.background.card,
-    color: globalTheme.palettes.concordance.primary.main,
+    background: globalTheme.colors.background.active,
+    color: globalTheme.palettes.concordance.primary.blue,
+    fontWeight: globalTheme.typography.weight.semibold,
     borderBottom: `3px solid ${globalTheme.palettes.concordance.primary.blue}`,
-    fontWeight: globalTheme.typography.weight.bold
+    marginBottom: '-2px'
   },
 
   content: {
-    padding: `${globalTheme.spacing.xxl} 0`
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: `0 ${globalTheme.spacing.lg} ${globalTheme.spacing.xxl}`
   }
 };
 

@@ -64,7 +64,7 @@ const VariationView = () => {
         />
 
         <button type="submit" style={styles.submitButton}>
-          🔄 {t('queryGenerator.ui.generate')}
+          {t('queryGenerator.ui.generate')}
         </button>
       </form>
 
@@ -88,10 +88,10 @@ const VariationView = () => {
 };
 
 const styles = {
-  container: { maxWidth: '1200px', margin: '0 auto', padding: `${globalTheme.spacing.xxl} ${globalTheme.spacing.lg}` },
-  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.xxl, borderRadius: globalTheme.borderRadius.lg, border: `2px solid ${globalTheme.colors.border.light}`, marginBottom: globalTheme.spacing.xxl, boxShadow: globalTheme.shadows.card },
-  formTitle: { ...globalTheme.typography.heading.h3, color: globalTheme.palettes.concordance.primary.main, marginBottom: globalTheme.spacing.xl, borderBottom: `2px solid ${globalTheme.colors.border.light}`, paddingBottom: globalTheme.spacing.md },
-  submitButton: { display: 'inline-flex', alignItems: 'center', gap: globalTheme.spacing.sm, padding: `${globalTheme.spacing.lg} ${globalTheme.spacing.xxl}`, borderRadius: globalTheme.borderRadius.md, border: `2px solid ${globalTheme.palettes.concordance.primary.blue}`, background: globalTheme.palettes.concordance.primary.blue, color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.lg, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.normal, marginTop: globalTheme.spacing.lg }
+  container: { padding: 0 },
+  form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.xxl, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, marginBottom: globalTheme.spacing.xl, boxShadow: globalTheme.shadows.card },
+  formTitle: { fontSize: globalTheme.typography.size.xl, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.xl, paddingBottom: globalTheme.spacing.md, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
+  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: globalTheme.palettes.concordance.primary.blue, color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.lg }
 };
 
 export default VariationView;

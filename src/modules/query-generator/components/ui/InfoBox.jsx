@@ -93,36 +93,36 @@ const InfoBox = ({ type = 'info', title, children, icon }) => {
 
 const styles = {
   box: {
-    padding: globalTheme.spacing.xl,
+    padding: globalTheme.spacing.lg,
     borderRadius: globalTheme.borderRadius.md,
-    marginBottom: globalTheme.spacing.xl,
-    transition: globalTheme.transitions.normal
+    marginBottom: globalTheme.spacing.lg
   },
 
   header: {
     display: 'flex',
     alignItems: 'center',
-    gap: globalTheme.spacing.md,
-    marginBottom: globalTheme.spacing.md
+    gap: globalTheme.spacing.sm,
+    marginBottom: globalTheme.spacing.sm
   },
 
   icon: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexShrink: 0
   },
 
   title: {
-    ...globalTheme.typography.heading.h4,
-    marginBottom: 0,
-    fontWeight: globalTheme.typography.weight.bold
+    fontSize: globalTheme.typography.size.md,
+    fontWeight: globalTheme.typography.weight.semibold,
+    marginBottom: 0
   },
 
   content: {
     fontFamily: globalTheme.typography.fontFamily.secondary,
     fontSize: globalTheme.typography.size.md,
     lineHeight: '1.6',
-    paddingLeft: `calc(20px + ${globalTheme.spacing.md})`
+    paddingLeft: `calc(20px + ${globalTheme.spacing.sm})`
   }
 };
 
