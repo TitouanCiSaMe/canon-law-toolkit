@@ -369,7 +369,7 @@
       "itemsPerPage": "Items per page"
     },
     "dataView": {
-      "title": "Detailed concordance data",
+      "title": "",
       "contextDisplay": "Context display:",
       "oneLine": "One line",
       "fullText": "Full text",
@@ -417,7 +417,7 @@
         "sectionTitle": "Geographic distribution"
       },
       "linguistic": {
-        "sectionTitle": "Terminological analysis",
+        "sectionTitle": "",
         "noData": "No terminological data available",
         "importFirst": "Please import your files first to see lexical analysis."
       },

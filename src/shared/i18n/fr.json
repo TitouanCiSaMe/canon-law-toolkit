@@ -374,7 +374,7 @@
       "itemsPerPage": "Éléments par page"
     },
     "dataView": {
-      "title": "Données de concordance détaillées",
+      "title": "",
       "contextDisplay": "Affichage du contexte :",
       "oneLine": "Une ligne",
       "fullText": "Texte complet",
@@ -437,7 +437,7 @@
         "sectionTitle": "Répartition géographique"
       },
       "linguistic": {
-        "sectionTitle": "Analyse terminologique",
+        "sectionTitle": "",
         "noData": "Aucune donnée terminologique disponible",
         "importFirst": "Importez d'abord vos fichiers pour voir l'analyse lexicale."
       },
