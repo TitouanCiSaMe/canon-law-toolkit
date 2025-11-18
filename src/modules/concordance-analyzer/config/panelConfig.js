@@ -43,6 +43,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.temporal.subtitle',
     color: visualTheme.colors.accent.gold,            // Or antique
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
+    textColor: visualTheme.colors.primary.dark,       // Texte brun foncé pour contraste sur fond or
     icon: '⧗',  // Symbole temporel
     gridArea: '1 / 3 / 2 / 4',
     size: 'medium'
@@ -93,6 +94,7 @@ export const panelConfig = {
     subtitle: 'concordance.panels.corpusComparison.subtitle',
     color: visualTheme.colors.accent.gold,            // Or antique (enluminure)
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
+    textColor: visualTheme.colors.primary.dark,       // Texte brun foncé pour contraste sur fond or
     icon: '⚖',  // Balance (symbole juridique)
     gridArea: '3 / 1 / 4 / 5',  // Full width, ligne 3
     size: 'wide'

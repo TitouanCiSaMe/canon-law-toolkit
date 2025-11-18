@@ -80,6 +80,9 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
+  // Utiliser la couleur de texte personnalisée ou blanc par défaut
+  const textColor = config.textColor || '#F7FAFC';
+
   return (
     <div
       onClick={onClick}
@@ -88,7 +91,7 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
 	style={{
 	  gridArea: config.gridArea,
 	  background: config.gradient,
-	  color: '#F7FAFC',
+	  color: textColor,
 	  padding: config.size === 'large' ? '3rem' : config.size === 'wide' ? '2rem' : '2rem',
 	  cursor: 'pointer',
 	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',

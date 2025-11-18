@@ -227,7 +227,7 @@ const OverviewView = ({
   const renderSemiCompactPanel = (icon, title, stat, subtitle) => (
     <div style={{ textAlign: 'center', padding: '1.5rem' }}>
       <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
-      <div style={{ fontSize: statFontSize, fontWeight: '300', color: '#F7FAFC', marginBottom: '0.5rem' }}>{stat}</div>
+      <div style={{ fontSize: statFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>{stat}</div>
       <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{subtitle}</div>
     </div>
   );
@@ -260,7 +260,7 @@ const OverviewView = ({
           // Tablet: Version semi-compacte
           <div style={{ textAlign: 'center', padding: '1.5rem' }}>
             <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{panelConfig.overview.icon}</div>
-            <div style={{ fontSize: mainStatFontSize, fontWeight: '300', color: '#F7FAFC', marginBottom: '0.5rem' }}>
+            <div style={{ fontSize: mainStatFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>
               {analytics.total.toLocaleString()}
             </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
@@ -335,8 +335,7 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem',
-              color: '#F7FAFC'
+              marginBottom: '0.5rem'
             }}>
               {analytics.domains.length}
             </div>
@@ -389,8 +388,7 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem',
-              color: '#F7FAFC'
+              marginBottom: '0.5rem'
             }}>
               {analytics.periods.length > 0 ?
                 Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
@@ -443,8 +441,7 @@ const OverviewView = ({
               fontSize: statFontSize,
               fontWeight: '300',
               marginBottom: '0.5rem',
-              textAlign: 'center',
-              color: '#F7FAFC'
+              textAlign: 'center'
             }}>
               {analytics.authors.length}
             </div>
@@ -485,8 +482,7 @@ const OverviewView = ({
               fontSize: statFontSize,
               fontWeight: '300',
               marginBottom: '0.5rem',
-              textAlign: 'center',
-              color: '#F7FAFC'
+              textAlign: 'center'
             }}>
               {analytics.keyTerms.length}
             </div>
@@ -545,8 +541,7 @@ const OverviewView = ({
 	    <div style={{
 	      fontSize: '3rem',
 	      fontWeight: '300',
-	      marginBottom: '1rem',
-	      color: '#F7FAFC'
+	      marginBottom: '1rem'
 	    }}>
 	      ⚖
 	    </div>
@@ -666,8 +661,7 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem',
-              color: '#F7FAFC'
+              marginBottom: '0.5rem'
             }}>
               {filteredData.length}
             </div>
@@ -713,8 +707,7 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem',
-              color: '#F7FAFC'
+              marginBottom: '0.5rem'
             }}>
               {analytics.places?.length || 0}
             </div>
