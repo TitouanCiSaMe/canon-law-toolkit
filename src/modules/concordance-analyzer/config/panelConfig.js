@@ -22,7 +22,7 @@ export const panelConfig = {
     title: 'concordance.panels.overview.title',
     subtitle: 'concordance.panels.overview.subtitle',
     color: visualTheme.colors.primary.main,           // Brun encre principal
-    gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.light),
+    gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.dark),
     icon: '◈',  // Symbole académique/ornement
     gridArea: '1 / 1 / 2 / 2',
     size: 'medium'
@@ -32,7 +32,7 @@ export const panelConfig = {
     title: 'concordance.panels.domains.title',
     subtitle: 'concordance.panels.domains.subtitle',
     color: visualTheme.colors.primary.light,          // Brun encre moyen
-    gradient: createGradient(visualTheme.colors.primary.light, '#8B4513'),
+    gradient: createGradient(visualTheme.colors.primary.light, visualTheme.colors.primary.main),
     icon: '⚜',  // Fleur de lys (académique)
     gridArea: '1 / 2 / 2 / 3',
     size: 'medium'
@@ -53,7 +53,7 @@ export const panelConfig = {
     title: 'concordance.panels.places.title',
     subtitle: 'concordance.panels.places.subtitle',
     color: visualTheme.colors.accent.green,           // Vert malachite
-    gradient: createGradient(visualTheme.colors.accent.green, '#3D6622'),
+    gradient: createGradient(visualTheme.colors.accent.green, '#1F3510'),
     icon: '✦',  // Étoile ornementale (cartographie médiévale)
     gridArea: '1 / 4 / 2 / 5',
     size: 'medium'
@@ -63,7 +63,7 @@ export const panelConfig = {
     title: 'concordance.panels.authors.title',
     subtitle: 'concordance.panels.authors.subtitle',
     color: '#704214',                                 // Brun encre moyen
-    gradient: createGradient('#704214', '#8B4513'),
+    gradient: createGradient('#704214', visualTheme.colors.primary.main),
     icon: '✒',  // Plume calligraphique
     gridArea: '2 / 1 / 3 / 2',
     size: 'medium'

@@ -80,8 +80,8 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
-  // Utiliser la couleur de texte personnalisée ou blanc par défaut
-  const textColor = config.textColor || '#F7FAFC';
+  // Utiliser la couleur de texte personnalisée ou blanc pur par défaut pour meilleur contraste
+  const textColor = config.textColor || '#FFFFFF';
 
   return (
     <div
