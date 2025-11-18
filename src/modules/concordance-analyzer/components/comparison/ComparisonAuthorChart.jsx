@@ -84,12 +84,12 @@ const ComparisonAuthorChart = ({
           background: 'white',
           padding: '1rem',
           borderRadius: '8px',
-          border: '2px solid #3b82f6'
+          border: '2px solid #8B4513'
         }}>
           <h4 style={{
             fontSize: '1rem',
             marginBottom: '1rem',
-            color: '#3b82f6',
+            color: '#8B4513',
             textAlign: 'center',
             fontWeight: '600'
           }}>
@@ -114,7 +114,7 @@ const ComparisonAuthorChart = ({
               
               <Bar
                 dataKey="value"
-                fill="#3b82f6"
+                fill="#8B4513"
                 radius={[8, 8, 0, 0]}
               />
             </BarChart>
@@ -128,12 +128,12 @@ const ComparisonAuthorChart = ({
           background: 'white',
           padding: '1rem',
           borderRadius: '8px',
-          border: '2px solid #ef4444'
+          border: '2px solid #A0522D'
         }}>
           <h4 style={{
             fontSize: '1rem',
             marginBottom: '1rem',
-            color: '#ef4444',
+            color: '#A0522D',
             textAlign: 'center',
             fontWeight: '600'
           }}>
@@ -158,7 +158,7 @@ const ComparisonAuthorChart = ({
               
               <Bar
                 dataKey="value"
-                fill="#ef4444"
+                fill="#A0522D"
                 radius={[8, 8, 0, 0]}
               />
             </BarChart>
@@ -178,7 +178,7 @@ const ComparisonAuthorChart = ({
           <div style={{
             width: '20px',
             height: '20px',
-            background: '#3b82f6',
+            background: '#8B4513',
             borderRadius: '4px'
           }} />
           <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
@@ -187,7 +187,7 @@ const ComparisonAuthorChart = ({
           <div style={{
             width: '20px',
             height: '20px',
-            background: '#ef4444',
+            background: '#A0522D',
             borderRadius: '4px'
           }} />
           <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>

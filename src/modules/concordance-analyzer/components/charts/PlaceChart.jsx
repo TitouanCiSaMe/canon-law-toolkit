@@ -59,20 +59,20 @@ import CustomTooltipChart from './CustomTooltipChart';
  * <PlaceChart data={[]} />
  * // Affiche : Message "Aucune donnée de lieu disponible"
  */
-const PlaceChart = ({ 
+const PlaceChart = ({
   data,                    // Données à afficher
   type = 'bar',           // Type par défaut : barres
   height = 400,           // Hauteur par défaut : 400px
   maxItems = 15,          // Limite par défaut : 15 lieux
   chartId = `place-chart-${Date.now()}`,  // ID auto-généré si non fourni
-  colors = [              // Palette de verts par défaut (géographie)
-    '#059669',  // Vert émeraude
-    '#047857',  // Vert foncé
-    '#065f46',  // Vert très foncé
-    '#10b981',  // Vert clair
-    '#34d399',  // Vert vif
-    '#6ee7b7',  // Vert pastel
-    '#a7f3d0'   // Vert très clair
+  colors = [              // Palette médiévale brune par défaut
+    '#8B4513',  // Brun principal
+    '#A0522D',  // Brun-rougeâtre (sienna)
+    '#6B4423',  // Brun foncé
+    '#C19A6B',  // Beige doré (camel)
+    '#8B6914',  // Or sombre (dark goldenrod)
+    '#DEB887',  // Burlywood (tan moyen)
+    '#D2B48C'   // Tan clair
   ]
 }) => {
 
@@ -222,9 +222,9 @@ const PlaceChart = ({
             {/* TOOLTIP AU SURVOL */}
             <Tooltip content={<CustomTooltipChart allData={data} valueLabel={t('concordance.charts.labels.concordances')} />} />
             {/* BARRES */}
-            <Bar 
+            <Bar
               dataKey="value"           // Clé des données pour les hauteurs
-              fill="#065F46"            // Couleur vert foncé (géographie)
+              fill="#8B4513"            // Couleur brun médiéval (géographie)
               radius={[8, 8, 0, 0]}     // Coins arrondis en haut uniquement
             />
           </BarChart>

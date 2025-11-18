@@ -67,11 +67,11 @@ import CustomTooltipChart from './CustomTooltipChart';
  * <TemporalChart data={[]} />
  * // Affiche : Message "Aucune donnée temporelle disponible"
  */
-const TemporalChart = ({ 
+const TemporalChart = ({
   data,                    // Données à afficher
   height = 400,           // Hauteur par défaut : 400px
   showBrush = true,       // Brush activé par défaut
-  lineColor = '#2563eb',  // Bleu par défaut
+  lineColor = '#8B4513',  // Brun médiéval par défaut
   chartId = `temporal-chart-${Date.now()}`  // ID auto-généré si non fourni
 }) => {
   
@@ -219,11 +219,11 @@ const TemporalChart = ({
            * Rendu conditionnel : n'apparaît que si showBrush={true}
            */}
           {showBrush && (
-            <Brush 
+            <Brush
               dataKey="period"            // Clé pour les labels du brush
               height={30}                 // Hauteur du brush
-              stroke="#2563eb"            // Couleur de la bordure
-              fill="rgba(37, 99, 235, 0.1)"  // Remplissage semi-transparent
+              stroke="#8B4513"            // Couleur de la bordure (brun médiéval)
+              fill="rgba(139, 69, 19, 0.1)"  // Remplissage semi-transparent brun
             />
           )}
         </LineChart>

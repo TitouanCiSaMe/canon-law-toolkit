@@ -107,13 +107,13 @@ const RadarChart = ({ datasets, height = 400 }) => {
   });
 
   /**
-   * Palette de couleurs académiques pour les séries
+   * Palette de couleurs médiévales pour les séries
    * Alignée avec la charte graphique du projet
    */
   const COLORS = {
-    primary: '#4A90E2',    // Bleu académique
-    secondary: '#E27D60',  // Terracotta
-    tertiary: '#85DCB0'    // Vert menthe
+    primary: '#8B4513',    // Brun médiéval principal
+    secondary: '#A0522D',  // Brun-rougeâtre (sienna)
+    tertiary: '#C19A6B'    // Beige doré (camel)
   };
 
   /**

@@ -54,8 +54,8 @@ const concordancePalette = {
     blueHover: '#1e3a8a'  // Bleu lapis foncé
   },
   accent: {
-    gold: '#B8860B',      // Or antique (enluminure principale)
-    goldLight: '#D4AF37', // Or clair
+    gold: '#8B4513',      // Brun principal (remplacement de l'or pour meilleur contraste)
+    goldLight: '#A0522D', // Brun-rougeâtre clair (sienna)
     green: '#2D5016',     // Vert malachite foncé
     red: '#B91C1C',       // Rouge vermillon (enluminure)
     blue: '#1e40af'       // Bleu lapis-lazuli
@@ -296,20 +296,20 @@ export const globalTheme = {
   // Graphiques (palette médiévale académique)
   // ------------------------------------------------------------------------
   charts: {
-    // Palette principale (tons médiévaux)
+    // Palette principale (tons médiévaux cohérents)
     colors: [
-      '#5C3317',  // Brun encre principal
-      '#704214',  // Brun encre moyen
-      '#8B4513',  // Brun sépia
-      '#B8860B',  // Or antique
-      '#1e40af',  // Bleu lapis-lazuli
-      '#2D5016',  // Vert malachite
-      '#B91C1C'   // Rouge vermillon
+      '#8B4513',  // Brun principal (saddle brown)
+      '#A0522D',  // Brun-rougeâtre (sienna)
+      '#6B4423',  // Brun foncé
+      '#C19A6B',  // Beige doré (camel)
+      '#8B6914',  // Or sombre (dark goldenrod)
+      '#DEB887',  // Burlywood (tan moyen)
+      '#D2B48C'   // Tan clair
     ],
 
     // Couleurs spécifiques
-    temporal: '#704214',    // Ligne temporelle (brun encre)
-    domain: '#5C3317',      // Barres domaines (brun principal)
+    temporal: '#8B4513',    // Ligne temporelle (brun principal)
+    domain: '#8B4513',      // Barres domaines (brun principal)
     grid: '#E8DCC6'         // Grille (parchemin moyen)
   }
 };

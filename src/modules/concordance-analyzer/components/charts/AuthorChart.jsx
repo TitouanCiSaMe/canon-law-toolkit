@@ -65,14 +65,14 @@ const AuthorChart = ({
   height = 400,           // Hauteur par défaut : 400px
   maxItems = 15,          // Limite par défaut : 15 auteurs
   chartId = `author-chart-${Date.now()}`,  // ID auto-généré si non fourni
-  colors = [              // Palette de bleus par défaut
-    '#2563eb',  // Bleu vif
-    '#1d4ed8',  // Bleu moyen
-    '#1e40af',  // Bleu foncé
-    '#3730a3',  // Indigo
-    '#4338ca',  // Indigo moyen
-    '#6366f1',  // Indigo clair
-    '#8b5cf6'   // Violet
+  colors = [              // Palette médiévale brune par défaut
+    '#8B4513',  // Brun principal
+    '#A0522D',  // Brun-rougeâtre (sienna)
+    '#6B4423',  // Brun foncé
+    '#C19A6B',  // Beige doré (camel)
+    '#8B6914',  // Or sombre (dark goldenrod)
+    '#DEB887',  // Burlywood (tan moyen)
+    '#D2B48C'   // Tan clair
   ]
 }) => {
 
@@ -222,9 +222,9 @@ const AuthorChart = ({
             {/* TOOLTIP AU SURVOL */}
             <Tooltip content={<CustomTooltipChart allData={data} valueLabel="Concordances" />} />
             {/* BARRES */}
-            <Bar 
+            <Bar
               dataKey="value"           // Clé des données pour les hauteurs
-              fill="#1A365D"            // Couleur bleu académique (auteurs)
+              fill="#8B4513"            // Couleur brun médiéval (auteurs)
               radius={[8, 8, 0, 0]}     // Coins arrondis en haut uniquement
             />
           </BarChart>

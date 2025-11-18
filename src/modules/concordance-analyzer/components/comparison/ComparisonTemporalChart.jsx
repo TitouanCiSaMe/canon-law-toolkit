@@ -468,7 +468,7 @@ const ComparisonTemporalChart = ({
                   <div style={{
                     fontSize: visualTheme.typography.size.xl,
                     fontWeight: visualTheme.typography.weight.semibold,
-                    color: '#3b82f6'
+                    color: '#8B4513'
                   }}>
                     {stats.totalA}
                   </div>
@@ -481,7 +481,7 @@ const ComparisonTemporalChart = ({
                   <div style={{
                     fontSize: visualTheme.typography.size.xl,
                     fontWeight: visualTheme.typography.weight.semibold,
-                    color: '#ef4444'
+                    color: '#A0522D'
                   }}>
                     {stats.totalB}
                   </div>
@@ -513,7 +513,7 @@ const ComparisonTemporalChart = ({
                   <div style={{
                     fontSize: visualTheme.typography.size.xl,
                     fontWeight: visualTheme.typography.weight.semibold,
-                    color: '#3b82f6'
+                    color: '#8B4513'
                   }}>
                     {stats.avgA}
                   </div>
@@ -526,7 +526,7 @@ const ComparisonTemporalChart = ({
                   <div style={{
                     fontSize: visualTheme.typography.size.xl,
                     fontWeight: visualTheme.typography.weight.semibold,
-                    color: '#ef4444'
+                    color: '#A0522D'
                   }}>
                     {stats.avgB}
                   </div>
@@ -558,7 +558,7 @@ const ComparisonTemporalChart = ({
                   <div style={{
                     fontSize: visualTheme.typography.size.lg,
                     fontWeight: visualTheme.typography.weight.semibold,
-                    color: '#3b82f6'
+                    color: '#8B4513'
                   }}>
                     {stats.maxA.period}
                   </div>
@@ -571,7 +571,7 @@ const ComparisonTemporalChart = ({
                   <div style={{
                     fontSize: visualTheme.typography.size.lg,
                     fontWeight: visualTheme.typography.weight.semibold,
-                    color: '#ef4444'
+                    color: '#A0522D'
                   }}>
                     {stats.maxB.period}
                   </div>
@@ -649,9 +649,9 @@ const ComparisonTemporalChart = ({
                 type="monotone"
                 dataKey="countA"
                 name={t('concordance.views.corpusComparison.charts.legend.corpusA')}
-                stroke="#3b82f6"
+                stroke="#8B4513"
                 strokeWidth={3}
-                dot={{ fill: '#3b82f6', r: 5 }}
+                dot={{ fill: '#8B4513', r: 5 }}
                 activeDot={{ r: 7 }}
               />
               
@@ -659,9 +659,9 @@ const ComparisonTemporalChart = ({
                 type="monotone"
                 dataKey="countB"
                 name={t('concordance.views.corpusComparison.charts.legend.corpusB')}
-                stroke="#ef4444"
+                stroke="#A0522D"
                 strokeWidth={3}
-                dot={{ fill: '#ef4444', r: 5 }}
+                dot={{ fill: '#A0522D', r: 5 }}
                 activeDot={{ r: 7 }}
               />
             </LineChart>
