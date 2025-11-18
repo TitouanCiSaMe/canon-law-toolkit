@@ -1,0 +1,111 @@
+/**
+ * Styles pour InfoBox
+ */
+
+.box {
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border: 2px solid;
+  border-left-width: 5px;
+}
+
+/* Type variants */
+.boxInfo {
+  background: linear-gradient(135deg, #DDD6B8 0%, #E6D7B8 100%);
+  border-color: #e2e8f0;
+  border-left-color: #1e40af;
+}
+
+.boxSuccess {
+  background: linear-gradient(135deg, #DFF0D8 0%, #D4EDDA 100%);
+  border-color: #C3E6CB;
+  border-left-color: #28A745;
+}
+
+.boxWarning {
+  background: linear-gradient(135deg, #FFF3CD 0%, #FCF8E3 100%);
+  border-color: #FFEEBA;
+  border-left-color: #FFC107;
+}
+
+.boxError {
+  background: linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%);
+  border-color: #F5C6CB;
+  border-left-color: #DC3545;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconInfo {
+  color: #1e40af;
+}
+
+.iconSuccess {
+  color: #28A745;
+}
+
+.iconWarning {
+  color: #FFC107;
+}
+
+.iconError {
+  color: #DC3545;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.titleInfo {
+  color: #1e293b;
+}
+
+.titleSuccess {
+  color: #155724;
+}
+
+.titleWarning {
+  color: #856404;
+}
+
+.titleError {
+  color: #721C24;
+}
+
+.content {
+  font-family: "Lato", "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  padding-left: calc(20px + 0.75rem);
+}
+
+.contentInfo {
+  color: #1e293b;
+}
+
+.contentSuccess {
+  color: #155724;
+}
+
+.contentWarning {
+  color: #856404;
+}
+
+.contentError {
+  color: #721C24;
+}

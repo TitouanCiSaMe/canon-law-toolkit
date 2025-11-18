@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { globalTheme } from '@shared/theme/globalTheme';
+import styles from './FormField.module.css';
 
 /**
  * FormField - Champ de formulaire universel
@@ -44,7 +44,7 @@ const FormField = ({
           <select
             value={value}
             onChange={handleChange}
-            style={styles.input}
+            className={styles.input}
             required={required}
           >
             {options.map(opt => (
@@ -61,7 +61,7 @@ const FormField = ({
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
-            style={{ ...styles.input, ...styles.textarea }}
+            className={`${styles.input} ${styles.textarea}`}
             required={required}
             rows={rows}
           />
@@ -74,7 +74,7 @@ const FormField = ({
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
-            style={styles.input}
+            className={styles.input}
             min={min}
             max={max}
             required={required}
@@ -88,7 +88,7 @@ const FormField = ({
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
-            style={styles.input}
+            className={styles.input}
             required={required}
           />
         );
@@ -96,67 +96,15 @@ const FormField = ({
   };
 
   return (
-    <div style={styles.field}>
-      <label style={styles.label}>
+    <div className={styles.field}>
+      <label className={styles.label}>
         {label}
-        {required && <span style={styles.required}> *</span>}
+        {required && <span className={styles.required}> *</span>}
       </label>
       {renderInput()}
-      {helpText && <div style={styles.helpText}>{helpText}</div>}
+      {helpText && <div className={styles.helpText}>{helpText}</div>}
     </div>
   );
-};
-
-const styles = {
-  field: {
-    marginBottom: globalTheme.spacing.lg
-  },
-
-  label: {
-    display: 'block',
-    marginBottom: globalTheme.spacing.sm,
-    fontFamily: globalTheme.typography.fontFamily.secondary,
-    fontSize: globalTheme.typography.size.md,
-    fontWeight: globalTheme.typography.weight.semibold,
-    color: globalTheme.palettes.concordance.primary.light,
-    letterSpacing: '0.01em'
-  },
-
-  required: {
-    color: globalTheme.palettes.concordance.accent.red
-  },
-
-  input: {
-    width: '100%',
-    padding: `${globalTheme.spacing.md} ${globalTheme.spacing.lg}`,
-    border: `2px solid ${globalTheme.colors.border.light}`,
-    borderRadius: globalTheme.borderRadius.md,
-    fontSize: globalTheme.typography.size.md,
-    fontFamily: globalTheme.typography.fontFamily.secondary,
-    background: '#FFFEF7',
-    color: globalTheme.colors.text.dark,
-    transition: globalTheme.transitions.normal,
-    outline: 'none',
-
-    ':focus': {
-      borderColor: globalTheme.palettes.concordance.primary.blue,
-      background: '#FFFFFF',
-      boxShadow: `0 0 0 3px rgba(30, 64, 175, 0.1)`
-    }
-  },
-
-  textarea: {
-    resize: 'vertical',
-    minHeight: '60px',
-    lineHeight: '1.5'
-  },
-
-  helpText: {
-    marginTop: globalTheme.spacing.xs,
-    fontSize: globalTheme.typography.size.sm,
-    color: globalTheme.colors.text.muted,
-    fontStyle: 'italic'
-  }
 };
 
 export default FormField;
