@@ -352,7 +352,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
             <div style={{
               width: '20px',
               height: '12px',
-              background: '#3b82f6',
+              background: '#94a3b8',
               borderRadius: '2px'
             }} />
             <span>{t('concordance.timeline.legend.timeRange')}</span>
@@ -361,7 +361,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
             <div style={{
               width: '12px',
               height: '12px',
-              background: '#3b82f6',
+              background: '#94a3b8',
               transform: 'rotate(45deg)'
             }} />
             <span>{t('concordance.timeline.legend.preciseDate')}</span>

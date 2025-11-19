@@ -296,15 +296,15 @@ export const globalTheme = {
   // Graphiques (palette médiévale académique)
   // ------------------------------------------------------------------------
   charts: {
-    // Palette principale (tons médiévaux cohérents)
+    // Palette principale (couleurs vives et contrastées pour meilleure distinction)
     colors: [
-      '#8B4513',  // Brun principal (saddle brown)
-      '#A0522D',  // Brun-rougeâtre (sienna)
-      '#6B4423',  // Brun foncé
-      '#C19A6B',  // Beige doré (camel)
-      '#8B6914',  // Or sombre (dark goldenrod)
-      '#DEB887',  // Burlywood (tan moyen)
-      '#D2B48C'   // Tan clair
+      '#2563EB',  // Bleu royal vif (Théologie)
+      '#DC2626',  // Rouge vif (Droit canonique)
+      '#16A34A',  // Vert émeraude (Droit romain)
+      '#9333EA',  // Violet vif
+      '#EA580C',  // Orange vif
+      '#0891B2',  // Cyan
+      '#CA8A04'   // Jaune doré
     ],
 
     // Couleurs spécifiques
