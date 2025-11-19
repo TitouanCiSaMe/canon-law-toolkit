@@ -247,7 +247,7 @@ const CorpusUploader = ({ onCompare }) => {
             gap: '0.5rem'
           }}>
             <span style={{
-              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+              background: 'linear-gradient(135deg, #F6AD55 0%, #D69E2E 100%)',
               color: 'white',
               width: '32px',
               height: '32px',
@@ -313,8 +313,8 @@ const CorpusUploader = ({ onCompare }) => {
           onClick={handleCompare}
           disabled={!corpusA || !corpusB}
           style={{
-            background: corpusA && corpusB 
-              ? 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)' 
+            background: corpusA && corpusB
+              ? 'linear-gradient(135deg, #B8860B 0%, #9A7A0A 100%)'
               : '#e2e8f0',
             color: corpusA && corpusB ? 'white' : '#94a3b8',
             border: 'none',
@@ -324,18 +324,18 @@ const CorpusUploader = ({ onCompare }) => {
             borderRadius: '8px',
             cursor: corpusA && corpusB ? 'pointer' : 'not-allowed',
             transition: 'all 0.3s ease',
-            boxShadow: corpusA && corpusB ? '0 4px 6px rgba(220, 38, 38, 0.2)' : 'none'
+            boxShadow: corpusA && corpusB ? '0 4px 6px rgba(184, 134, 11, 0.3)' : 'none'
           }}
           onMouseEnter={(e) => {
             if (corpusA && corpusB) {
               e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 6px 12px rgba(220, 38, 38, 0.3)';
+              e.target.style.boxShadow = '0 6px 12px rgba(184, 134, 11, 0.4)';
             }
           }}
           onMouseLeave={(e) => {
             if (corpusA && corpusB) {
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 6px rgba(220, 38, 38, 0.2)';
+              e.target.style.boxShadow = '0 4px 6px rgba(184, 134, 11, 0.3)';
             }
           }}
         >
