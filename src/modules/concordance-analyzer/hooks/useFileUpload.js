@@ -100,25 +100,97 @@ export const useFileUpload = () => {
   const [selectedConcordanceBFile, setSelectedConcordanceBFile] = useState(null);
 
   // ============================================================================
+  // HANDLER : CHARGEMENT MÉTADONNÉES PAR DÉFAUT
+  // ============================================================================
+
+  /**
+   * Charge les métadonnées par défaut depuis le fichier public
+   *
+   * Cette fonction fetch le fichier de métadonnées par défaut depuis
+   * /data/default-metadata.csv et le parse automatiquement au démarrage.
+   * L'utilisateur peut toujours remplacer ces métadonnées via l'upload manuel.
+   *
+   * @param {Function} setMetadataLookup - Setter pour stocker le lookup
+   *
+   * @example
+   * useEffect(() => {
+   *   loadDefaultMetadata(setMetadataLookup);
+   * }, []);
+   */
+  const loadDefaultMetadata = (setMetadataLookup) => {
+    setLoading(true);
+    setProcessingStep(t('concordance.upload.processing.loadingDefaultMetadata'));
+
+    fetch('/data/default-metadata.csv')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Fichier de métadonnées par défaut introuvable');
+        }
+        return response.text();
+      })
+      .then(csvText => {
+        Papa.parse(csvText, {
+          header: false,
+          complete: (results) => {
+            try {
+              console.log('📊 Chargement métadonnées par défaut...');
+              console.log('Lignes CSV:', results.data.length);
+
+              const lookup = parseMetadataFile(results.data);
+              const count = Object.keys(lookup).length;
+
+              console.log(`✅ ${count} métadonnées par défaut chargées`);
+
+              setMetadataLookup(lookup);
+              setSelectedMetadataFile(null); // Pas de fichier uploadé
+              setProcessingStep(`✅ ${count} métadonnées pré-chargées (vous pouvez les remplacer)`);
+              setLoading(false);
+
+              setTimeout(() => setProcessingStep(''), 5000);
+            } catch (err) {
+              console.error('❌ Erreur parsing métadonnées par défaut:', err);
+              setError(t('concordance.upload.errors.parsingMetadata', { message: err.message }));
+              setLoading(false);
+              setProcessingStep('');
+            }
+          },
+          error: (err) => {
+            console.error('❌ Erreur parsing CSV:', err);
+            setError(t('concordance.upload.errors.parsingMetadata', { message: err.message }));
+            setLoading(false);
+            setProcessingStep('');
+          }
+        });
+      })
+      .catch(err => {
+        console.error('❌ Erreur chargement métadonnées par défaut:', err);
+        // Ne pas afficher d'erreur si les métadonnées par défaut ne sont pas disponibles
+        // L'utilisateur pourra toujours les uploader manuellement
+        setLoading(false);
+        setProcessingStep('');
+      });
+  };
+
+  // ============================================================================
   // HANDLER : UPLOAD MÉTADONNÉES
   // ============================================================================
-  
+
   /**
    * Handler pour l'upload et le parsing du fichier de métadonnées
-   * 
+   *
    * Parse un fichier CSV contenant les métadonnées des œuvres et crée
    * un lookup indexé par identifiant pour un accès rapide lors de
    * l'enrichissement des concordances.
-   * 
+   *
    * Processus :
    * 1. Validation du fichier
    * 2. Parsing CSV avec Papa Parse
    * 3. Création du lookup avec parseMetadataFile
    * 4. Mise à jour des états
-   * 
+   *
    * @param {File} file - Fichier CSV à parser
    * @param {Function} setMetadataLookup - Setter pour stocker le lookup
-   * 
+   *
    * @example
    * handleMetadataFileUpload(file, setMetadataLookup);
    * // Après succès, processingStep affiche "✅ X métadonnées chargées"
@@ -397,12 +469,13 @@ export const useFileUpload = () => {
     selectedMetadataFile,
     selectedConcordanceFile,
     selectedConcordanceBFile, // ✨ NOUVEAU
-    
+
     // Setters (pour permettre au composant parent de modifier les états si besoin)
     setError,
     setProcessingStep,
-    
+
     // Handlers
+    loadDefaultMetadata, // ✨ NOUVEAU : Chargement automatique des métadonnées
     handleMetadataFileUpload,
     handleConcordanceFileUpload,
     handleConcordanceFileUploadB // ✨ NOUVEAU

@@ -333,6 +333,7 @@
       },
       "processing": {
         "loadingMetadata": "Chargement des métadonnées...",
+        "loadingDefaultMetadata": "Chargement des métadonnées par défaut...",
         "metadataLoaded": "{{count}} métadonnées chargées",
         "analyzingConcordancesA": "Analyse des concordances (Corpus A)...",
         "concordancesAnalyzedA": "{{count}} concordances analysées (Corpus A)",

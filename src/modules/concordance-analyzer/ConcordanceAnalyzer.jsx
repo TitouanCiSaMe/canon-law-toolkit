@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFilteredData } from './hooks/useFilteredData';
 import { useAnalytics } from './hooks/useAnalytics';
@@ -99,10 +99,23 @@ const ConcordanceAnalyzerPanels = () => {
     selectedMetadataFile,
     selectedConcordanceFile,
     selectedConcordanceBFile, // ✨ NOUVEAU
+    loadDefaultMetadata, // ✨ NOUVEAU : Pré-chargement métadonnées
     handleMetadataFileUpload,
     handleConcordanceFileUpload,
     handleConcordanceFileUploadB // ✨ NOUVEAU
   } = useFileUpload();
+
+  // ============================================================================
+  // PRÉ-CHARGEMENT : Métadonnées par défaut au démarrage
+  // ============================================================================
+
+  useEffect(() => {
+    // Charger les métadonnées par défaut uniquement si aucune n'est chargée
+    if (Object.keys(metadataLookup).length === 0) {
+      console.log('🚀 Pré-chargement des métadonnées par défaut...');
+      loadDefaultMetadata(setMetadataLookup);
+    }
+  }, []); // Exécuté une seule fois au montage
     
   // États pour le système de filtrage
   const [showFilters, setShowFilters] = useState(false);
