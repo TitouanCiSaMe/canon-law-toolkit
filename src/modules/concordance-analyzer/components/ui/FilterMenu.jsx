@@ -81,10 +81,11 @@ const FilterMenu = ({
         borderBottom: '2px solid rgba(255,255,255,0.2)',
         paddingBottom: '1rem'
       }}>
-        <h2 style={{ 
-          fontSize: '1.5rem', 
+        <h2 style={{
+          fontSize: '1.5rem',
           fontWeight: '500',
-          margin: 0
+          margin: 0,
+          color: '#F7FAFC'
         }}>
           {t('concordance.filters.title')} {activeFilterCount > 0 && `(${activeFilterCount})`}
         </h2>

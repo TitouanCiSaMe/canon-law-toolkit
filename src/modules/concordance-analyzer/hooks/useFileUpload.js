@@ -146,7 +146,7 @@ export const useFileUpload = () => {
               setProcessingStep(`✅ ${count} métadonnées pré-chargées (vous pouvez les remplacer)`);
               setLoading(false);
 
-              setTimeout(() => setProcessingStep(''), 5000);
+              // Message reste affiché en permanence (pas de setTimeout)
             } catch (err) {
               console.error('❌ Erreur parsing métadonnées par défaut:', err);
               setError(t('concordance.upload.errors.parsingMetadata', { message: err.message }));
@@ -222,7 +222,7 @@ export const useFileUpload = () => {
           setProcessingStep(`✅ ${t('concordance.upload.processing.metadataLoaded', { count })}`);
           setLoading(false);
 
-          setTimeout(() => setProcessingStep(''), 3000);
+          // Message reste affiché en permanence (pas de setTimeout)
         } catch (err) {
           console.error('❌ Erreur parsing métadonnées:', err);
           setError(t('concordance.upload.errors.parsingMetadata', { message: err.message }));
