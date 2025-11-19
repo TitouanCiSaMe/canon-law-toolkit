@@ -106,16 +106,97 @@ const ConcordanceAnalyzerPanels = () => {
   } = useFileUpload();
 
   // ============================================================================
-  // PRÉ-CHARGEMENT : Métadonnées par défaut au démarrage
+  // PERSISTENCE : Restauration depuis sessionStorage au montage
   // ============================================================================
 
   useEffect(() => {
-    // Charger les métadonnées par défaut uniquement si aucune n'est chargée
-    if (Object.keys(metadataLookup).length === 0) {
+    let hasRestoredData = false;
+
+    try {
+      // Restaurer les métadonnées
+      const savedMetadata = sessionStorage.getItem('calkit_metadataLookup');
+      if (savedMetadata) {
+        const parsed = JSON.parse(savedMetadata);
+        if (Object.keys(parsed).length > 0) {
+          console.log('🔄 Restauration des métadonnées depuis sessionStorage');
+          setMetadataLookup(parsed);
+          hasRestoredData = true;
+        }
+      }
+
+      // Restaurer les concordances (mode single)
+      const savedConcordances = sessionStorage.getItem('calkit_concordanceData');
+      if (savedConcordances) {
+        const parsed = JSON.parse(savedConcordances);
+        if (parsed.length > 0) {
+          console.log('🔄 Restauration des concordances depuis sessionStorage');
+          setConcordanceData(parsed);
+        }
+      }
+
+      // Restaurer le mode comparison
+      const savedComparison = sessionStorage.getItem('calkit_corpusComparison');
+      if (savedComparison) {
+        const parsed = JSON.parse(savedComparison);
+        if (parsed.A.concordanceData || parsed.B.concordanceData) {
+          console.log('🔄 Restauration de la comparaison de corpus depuis sessionStorage');
+          setCorpusComparison(parsed);
+        }
+      }
+    } catch (error) {
+      console.error('❌ Erreur lors de la restauration depuis sessionStorage:', error);
+      // En cas d'erreur, on nettoie le storage corrompu
+      sessionStorage.removeItem('calkit_metadataLookup');
+      sessionStorage.removeItem('calkit_concordanceData');
+      sessionStorage.removeItem('calkit_corpusComparison');
+    }
+
+    // Charger les métadonnées par défaut uniquement si aucune n'a été restaurée
+    if (!hasRestoredData) {
       console.log('🚀 Pré-chargement des métadonnées par défaut...');
       loadDefaultMetadata(setMetadataLookup);
     }
   }, []); // Exécuté une seule fois au montage
+
+  // ============================================================================
+  // PERSISTENCE : Sauvegarde dans sessionStorage à chaque changement
+  // ============================================================================
+
+  // Sauvegarder les métadonnées
+  useEffect(() => {
+    if (Object.keys(metadataLookup).length > 0) {
+      try {
+        sessionStorage.setItem('calkit_metadataLookup', JSON.stringify(metadataLookup));
+        console.log('💾 Métadonnées sauvegardées dans sessionStorage');
+      } catch (error) {
+        console.error('❌ Erreur sauvegarde métadonnées:', error);
+      }
+    }
+  }, [metadataLookup]);
+
+  // Sauvegarder les concordances (mode single)
+  useEffect(() => {
+    if (concordanceData.length > 0) {
+      try {
+        sessionStorage.setItem('calkit_concordanceData', JSON.stringify(concordanceData));
+        console.log('💾 Concordances sauvegardées dans sessionStorage');
+      } catch (error) {
+        console.error('❌ Erreur sauvegarde concordances:', error);
+      }
+    }
+  }, [concordanceData]);
+
+  // Sauvegarder le mode comparison
+  useEffect(() => {
+    if (corpusComparison.A.concordanceData || corpusComparison.B.concordanceData) {
+      try {
+        sessionStorage.setItem('calkit_corpusComparison', JSON.stringify(corpusComparison));
+        console.log('💾 Comparaison de corpus sauvegardée dans sessionStorage');
+      } catch (error) {
+        console.error('❌ Erreur sauvegarde comparaison:', error);
+      }
+    }
+  }, [corpusComparison]);
     
   // États pour le système de filtrage
   const [showFilters, setShowFilters] = useState(false);
