@@ -92,9 +92,9 @@ export const panelConfig = {
     id: 'corpusComparison',
     title: 'concordance.panels.corpusComparison.title',
     subtitle: 'concordance.panels.corpusComparison.subtitle',
-    color: visualTheme.colors.primary.blue,           // Bleu lapis-lazuli (cohérent avec charte)
-    gradient: createGradient(visualTheme.colors.primary.blue, visualTheme.colors.primary.blueHover),
-    textColor: '#FFFFFF',                              // Texte blanc pour contraste sur fond bleu
+    color: visualTheme.colors.accent.gold,            // Or antique (enluminure)
+    gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
+    textColor: visualTheme.colors.primary.dark,       // Texte brun foncé pour contraste sur fond or
     icon: '⚖',  // Balance (symbole juridique)
     gridArea: '3 / 1 / 4 / 5',  // Full width, ligne 3
     size: 'wide'
