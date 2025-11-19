@@ -95,12 +95,12 @@ const ComparisonTermChart = ({
           background: 'white',
           padding: '1rem',
           borderRadius: '8px',
-          border: '2px solid #8B4513'
+          border: '2px solid #1e40af'
         }}>
           <h4 style={{
             fontSize: '1rem',
             marginBottom: '1rem',
-            color: '#8B4513',
+            color: '#1e40af',
             textAlign: 'center',
             fontWeight: '600'
           }}>
@@ -110,7 +110,7 @@ const ComparisonTermChart = ({
           <ResponsiveContainer width="100%" height={height}>
             <BarChart data={chartDataA}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              
+
               <XAxis
                 dataKey="name"
                 angle={-45}
@@ -118,14 +118,14 @@ const ComparisonTermChart = ({
                 height={120}
                 style={{ fontSize: '0.75rem' }}
               />
-              
+
               <YAxis style={{ fontSize: '0.85rem' }} />
-              
+
               <Tooltip content={<CustomTooltipChart allData={chartDataA} valueLabel={t('concordance.views.corpusComparison.charts.terminology.occurrences')} />} />
-              
+
               <Bar
                 dataKey="value"
-                fill="#8B4513"
+                fill="#1e40af"
                 radius={[8, 8, 0, 0]}
               />
             </BarChart>
@@ -139,12 +139,12 @@ const ComparisonTermChart = ({
           background: 'white',
           padding: '1rem',
           borderRadius: '8px',
-          border: '2px solid #A0522D'
+          border: '2px solid #553C9A'
         }}>
           <h4 style={{
             fontSize: '1rem',
             marginBottom: '1rem',
-            color: '#A0522D',
+            color: '#553C9A',
             textAlign: 'center',
             fontWeight: '600'
           }}>
@@ -154,7 +154,7 @@ const ComparisonTermChart = ({
           <ResponsiveContainer width="100%" height={height}>
             <BarChart data={chartDataB}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              
+
               <XAxis
                 dataKey="name"
                 angle={-45}
@@ -162,14 +162,14 @@ const ComparisonTermChart = ({
                 height={120}
                 style={{ fontSize: '0.75rem' }}
               />
-              
+
               <YAxis style={{ fontSize: '0.85rem' }} />
-              
+
               <Tooltip content={<CustomTooltipChart allData={chartDataB} valueLabel={t('concordance.views.corpusComparison.charts.terminology.occurrences')} />} />
-              
+
               <Bar
                 dataKey="value"
-                fill="#A0522D"
+                fill="#553C9A"
                 radius={[8, 8, 0, 0]}
               />
             </BarChart>
@@ -189,7 +189,7 @@ const ComparisonTermChart = ({
           <div style={{
             width: '20px',
             height: '20px',
-            background: '#8B4513',
+            background: '#1e40af',
             borderRadius: '4px'
           }} />
           <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
@@ -198,7 +198,7 @@ const ComparisonTermChart = ({
           <div style={{
             width: '20px',
             height: '20px',
-            background: '#A0522D',
+            background: '#553C9A',
             borderRadius: '4px'
           }} />
           <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>
