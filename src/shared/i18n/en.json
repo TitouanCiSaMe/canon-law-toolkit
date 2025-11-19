@@ -330,6 +330,7 @@
       },
       "processing": {
         "loadingMetadata": "Loading metadata...",
+        "loadingDefaultMetadata": "Loading default metadata...",
         "metadataLoaded": "{{count}} metadata entries loaded",
         "analyzingConcordancesA": "Analyzing concordances (Corpus A)...",
         "concordancesAnalyzedA": "{{count}} concordances analyzed (Corpus A)",
