@@ -169,7 +169,7 @@ const TemporalChart = ({
             label={{
               value: t('concordance.charts.labels.period'),  // Label de l'axe traduit
               position: 'insideBottom',
-              offset: -5,
+              offset: -25,  // Déplacé plus haut pour éviter le chevauchement avec le brush
               style: {
                 fontSize: labelFontSize,  // Taille responsive
                 fill: '#64748b'           // Gris pour le label
