@@ -95,12 +95,12 @@ const ComparisonTermChart = ({
           background: 'white',
           padding: '1rem',
           borderRadius: '8px',
-          border: '2px solid #1e40af'
+          border: '2px solid #2563EB'
         }}>
           <h4 style={{
             fontSize: '1rem',
             marginBottom: '1rem',
-            color: '#1e40af',
+            color: '#2563EB',
             textAlign: 'center',
             fontWeight: '600'
           }}>
@@ -125,7 +125,7 @@ const ComparisonTermChart = ({
 
               <Bar
                 dataKey="value"
-                fill="#1e40af"
+                fill="#2563EB"
                 radius={[8, 8, 0, 0]}
               />
             </BarChart>
@@ -139,12 +139,12 @@ const ComparisonTermChart = ({
           background: 'white',
           padding: '1rem',
           borderRadius: '8px',
-          border: '2px solid #553C9A'
+          border: '2px solid #D69E2E'
         }}>
           <h4 style={{
             fontSize: '1rem',
             marginBottom: '1rem',
-            color: '#553C9A',
+            color: '#D69E2E',
             textAlign: 'center',
             fontWeight: '600'
           }}>
@@ -169,7 +169,7 @@ const ComparisonTermChart = ({
 
               <Bar
                 dataKey="value"
-                fill="#553C9A"
+                fill="#D69E2E"
                 radius={[8, 8, 0, 0]}
               />
             </BarChart>
@@ -189,7 +189,7 @@ const ComparisonTermChart = ({
           <div style={{
             width: '20px',
             height: '20px',
-            background: '#1e40af',
+            background: '#2563EB',
             borderRadius: '4px'
           }} />
           <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
@@ -198,7 +198,7 @@ const ComparisonTermChart = ({
           <div style={{
             width: '20px',
             height: '20px',
-            background: '#553C9A',
+            background: '#D69E2E',
             borderRadius: '4px'
           }} />
           <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>

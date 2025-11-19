@@ -107,13 +107,13 @@ const RadarChart = ({ datasets, height = 400 }) => {
   });
 
   /**
-   * Palette de couleurs médiévales pour les séries
-   * Alignée avec la charte graphique du projet
+   * Palette de couleurs vives pour les séries
+   * Couleurs contrastées pour une meilleure lisibilité
    */
   const COLORS = {
-    primary: '#8B4513',    // Brun médiéval principal
-    secondary: '#A0522D',  // Brun-rougeâtre (sienna)
-    tertiary: '#C19A6B'    // Beige doré (camel)
+    primary: '#2563EB',    // Bleu royal vif
+    secondary: '#D69E2E',  // Orange doré
+    tertiary: '#10B981'    // Vert émeraude
   };
 
   /**
