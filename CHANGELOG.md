@@ -5,6 +5,112 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.4.0] - 2025-11-20
+
+### 🏠 Refonte complète de la page d'accueil et améliorations UX
+
+Refonte majeure de la page d'accueil avec présentation détaillée du projet, ajout de la persistance des données, et multiples améliorations de l'expérience utilisateur.
+
+### ✨ Ajouté
+
+**Page d'accueil redesignée**
+- **Hero Section** : Titre du projet, description principale et tagline accrocheur
+- **Section About** : Présentation détaillée avec 4 feature cards
+  - Import facile (exports NoSketch Engine)
+  - Analyses visuelles (temporelles, domaines, auteurs)
+  - Filtrage avancé (auteur, domaine, période, recherche textuelle)
+  - Comparaison de corpus (analyse côte à côte)
+- **Section Tools** : Deux cartes détaillées avec guides d'utilisation
+  - **Concordance Analyzer** : Guide en 4 étapes (métadonnées → concordances → exploration → comparaison)
+  - **Query Generator** : Guide en 4 étapes (type → configuration → prévisualisation → copie)
+- **Section Getting Started** : Tutoriel en 3 étapes pour les nouveaux utilisateurs
+- **Design** : Palette médiévale académique (#5C3317, #B8860B, #E8DCC6)
+- **Responsive** : Design adaptatif mobile/tablette/desktop
+- **Stats** : 366 lignes de CSS, 87 nouvelles clés i18n FR
+
+**Traductions anglaises complètes**
+- 87+ clés de traduction EN pour la page d'accueil
+- Correspondance exacte avec les traductions FR
+- Avertissement critique sur les paramètres d'export NoSketch Engine
+  - FR : "ID de l'édition" et "numéro de pages" requis
+  - EN : Export settings warning in concordance analyzer
+
+**Persistance des données (sessionStorage)**
+- Sauvegarde automatique des métadonnées uploadées
+- Sauvegarde automatique des concordances uploadées
+- Restauration automatique au rechargement de la page
+- Messages de statut persistants après restauration
+- Amélioration significative de l'UX (pas de perte de données)
+
+**Pré-chargement des métadonnées**
+- Chargement automatique des métadonnées par défaut au démarrage
+- Facilite la prise en main pour les nouveaux utilisateurs
+- Permet de tester l'outil sans upload initial
+
+**Configuration Vercel**
+- Ajout de `vercel.json` pour support de React Router
+- Redirections configurées pour SPA
+- Prêt pour déploiement production
+
+### 🔧 Modifié
+
+**Améliorations UX Concordance Analyzer**
+- Couleurs de Timeline améliorées pour meilleure distinction entre périodes
+- Bannière metadata persistante pour meilleure visibilité du statut
+- Titres des filtres en blanc pour meilleur contraste
+- Meilleur positionnement des labels dans les graphiques
+- Suppression des couleurs rouges de l'interface de comparaison de corpus
+- Palette de couleurs médiévales marron (#8B4513) cohérente sur tous les graphiques
+
+**Interface utilisateur**
+- Effets hover sur tous les éléments interactifs de la home
+- Grilles responsive avec espacements optimisés
+- Ombres et transitions fluides
+- Hiérarchie visuelle améliorée
+
+### 📊 Statistiques
+
+- **Fichiers modifiés** : 10+
+- **Lignes ajoutées** : 600+ (CSS + JSX + JSON)
+- **Clés i18n ajoutées** : 87 (FR) + 87 (EN) = 174 clés
+- **Commits** : 20+ depuis v1.3.0
+- **PRs mergées** : #21-#31
+
+### 🐛 Corrections
+
+**Concordance Analyzer**
+- Fix: Couleurs de Timeline pour meilleure lisibilité
+- Fix: Persistance des messages de statut après restauration
+- Fix: Contraste des titres de filtres (maintenant en blanc)
+- Fix: Positionnement des labels dans les graphiques
+- Fix: Suppression des couleurs rouges inappropriées
+
+**Configuration**
+- Fix: Vercel routing pour React Router (SPA)
+
+### ⚡ Performance
+
+- SessionStorage pour persistance (plus léger que localStorage)
+- Pré-chargement des métadonnées par défaut optimisé
+- CSS responsive avec grid layouts performants
+
+### 🎨 Design
+
+**Page d'accueil**
+- Palette médiévale académique cohérente
+- Typographie hiérarchisée claire
+- Espacements et marges optimisés
+- Animations et transitions fluides
+
+**Concordance Analyzer**
+- Palette marron médiévale (#8B4513) uniforme
+- Meilleur contraste (textes blancs sur fonds sombres)
+- Timeline avec couleurs distinctes par période
+
+**Mainteneur** : Titouan (CiSaMe)
+
+---
+
 ## [1.3.0] - 2025-11-18
 
 ### 🎨 Migration CSS Modules & Documentation complète

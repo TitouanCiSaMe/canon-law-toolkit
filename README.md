@@ -1,6 +1,6 @@
 # CALKIT - Canon Law Analysis Toolkit
 
-[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://gitlab.com/cisame/canon-law-toolkit)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://gitlab.com/cisame/canon-law-toolkit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![React](https://img.shields.io/badge/react-18.2.0-61dafb.svg)](https://react.dev/)
 [![i18n](https://img.shields.io/badge/i18n-FR%20%7C%20EN-orange.svg)](src/shared/i18n)
@@ -85,8 +85,10 @@ npm run preview
 ### Concordance Analyzer
 
 1. **Upload des fichiers** :
-   - Métadonnées (CSV complet avec identifiants Edi-XX)
+   - Métadonnées (CSV complet avec identifiants Edi-XX) - Pré-chargement automatique au démarrage
    - Export NoSketch Engine (CSV avec concordances)
+   - ⚠️ **Important** : Lors de l'export depuis NoSketch Engine, cochez "ID de l'édition" et "numéro de pages"
+   - 💾 Persistance automatique : vos données sont sauvegardées et restaurées au rechargement
 
 2. **Exploration des données** :
    - Vue d'ensemble avec statistiques globales
@@ -129,6 +131,13 @@ npm run preview
   - Messages d'aide contextuels
 
 ### Concordance Analyzer
+
+#### Gestion des données
+
+- **Persistance automatique** : Les données uploadées sont sauvegardées dans sessionStorage
+- **Restauration automatique** : Vos métadonnées et concordances sont restaurées au rechargement de la page
+- **Pré-chargement intelligent** : Métadonnées par défaut chargées automatiquement au démarrage
+- **Messages de statut** : Indicateurs persistants du statut de vos données
 
 #### Analyse lexicométrique
 
@@ -359,6 +368,6 @@ Université de Strasbourg
 
 ---
 
-**Version** : 1.3.0
+**Version** : 1.4.0
 **Dernière mise à jour** : Novembre 2025
 **Status** : Production-ready ✅
