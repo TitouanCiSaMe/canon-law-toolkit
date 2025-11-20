@@ -99,6 +99,7 @@ const ConcordanceAnalyzerPanels = () => {
     selectedMetadataFile,
     selectedConcordanceFile,
     selectedConcordanceBFile, // ✨ NOUVEAU
+    setProcessingStep, // ✨ Setter pour afficher le statut des métadonnées
     loadDefaultMetadata, // ✨ NOUVEAU : Pré-chargement métadonnées
     handleMetadataFileUpload,
     handleConcordanceFileUpload,
@@ -118,8 +119,10 @@ const ConcordanceAnalyzerPanels = () => {
       if (savedMetadata) {
         const parsed = JSON.parse(savedMetadata);
         if (Object.keys(parsed).length > 0) {
+          const count = Object.keys(parsed).length;
           console.log('🔄 Restauration des métadonnées depuis sessionStorage');
           setMetadataLookup(parsed);
+          setProcessingStep(`✅ ${count} métadonnées restaurées (vous pouvez les remplacer)`);
           hasRestoredData = true;
         }
       }
