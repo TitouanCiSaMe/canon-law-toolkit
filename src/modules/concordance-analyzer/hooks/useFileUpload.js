@@ -330,7 +330,7 @@ export const useFileUpload = () => {
           console.log('\n✅ Parsing Corpus A terminé !');
 
           setLoading(false);
-          setTimeout(() => setProcessingStep(''), 5000);
+          // Message reste affiché en permanence (pas de setTimeout)
         } catch (err) {
           console.error('❌ Erreur parsing concordances A:', err);
           setError(t('concordance.upload.errors.parsingConcordancesA', { message: err.message }));
@@ -440,7 +440,7 @@ export const useFileUpload = () => {
           console.log('\n✅ Parsing Corpus B terminé !');
 
           setLoading(false);
-          setTimeout(() => setProcessingStep(''), 5000);
+          // Message reste affiché en permanence (pas de setTimeout)
         } catch (err) {
           console.error('❌ Erreur parsing concordances B:', err);
           setError(t('concordance.upload.errors.parsingConcordancesB', { message: err.message }));
@@ -473,6 +473,8 @@ export const useFileUpload = () => {
     // Setters (pour permettre au composant parent de modifier les états si besoin)
     setError,
     setProcessingStep,
+    setSelectedConcordanceFile, // ✨ NOUVEAU : Pour restaurer l'état depuis sessionStorage
+    setSelectedConcordanceBFile, // ✨ NOUVEAU : Pour restaurer l'état depuis sessionStorage
 
     // Handlers
     loadDefaultMetadata, // ✨ NOUVEAU : Chargement automatique des métadonnées

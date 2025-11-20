@@ -99,6 +99,9 @@ const ConcordanceAnalyzerPanels = () => {
     selectedMetadataFile,
     selectedConcordanceFile,
     selectedConcordanceBFile, // ✨ NOUVEAU
+    setProcessingStep, // ✨ Setter pour afficher le statut
+    setSelectedConcordanceFile, // ✨ Setter pour restaurer l'état
+    setSelectedConcordanceBFile, // ✨ Setter pour restaurer l'état
     loadDefaultMetadata, // ✨ NOUVEAU : Pré-chargement métadonnées
     handleMetadataFileUpload,
     handleConcordanceFileUpload,
@@ -118,8 +121,10 @@ const ConcordanceAnalyzerPanels = () => {
       if (savedMetadata) {
         const parsed = JSON.parse(savedMetadata);
         if (Object.keys(parsed).length > 0) {
+          const count = Object.keys(parsed).length;
           console.log('🔄 Restauration des métadonnées depuis sessionStorage');
           setMetadataLookup(parsed);
+          setProcessingStep(`✅ ${count} métadonnées restaurées (vous pouvez les remplacer)`);
           hasRestoredData = true;
         }
       }
@@ -131,6 +136,11 @@ const ConcordanceAnalyzerPanels = () => {
         if (parsed.length > 0) {
           console.log('🔄 Restauration des concordances depuis sessionStorage');
           setConcordanceData(parsed);
+          // Créer un objet File factice pour activer l'interface (3ème colonne)
+          const fakeFile = new File([], 'données-restaurées.csv', { type: 'text/csv' });
+          setSelectedConcordanceFile(fakeFile);
+          // Afficher le message de statut permanent
+          setProcessingStep(`✅ ${parsed.length} concordances restaurées`);
         }
       }
 
