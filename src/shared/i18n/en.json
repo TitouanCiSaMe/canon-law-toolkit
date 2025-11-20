@@ -19,7 +19,92 @@
   },
   "home": {
     "welcome": "Welcome to Canon Law Toolkit",
-    "description": "Platform of tools for medieval canon law analysis"
+    "description": "Platform of tools for medieval canon law analysis",
+    "tagline": "Analyze your corpora, compare your data and generate advanced linguistic queries",
+    "about": {
+      "title": "About CALKIT",
+      "description": "CALKIT (Canon Law Analysis Toolkit) is a digital platform dedicated to the study of medieval canon law. It offers powerful tools for analyzing concordances, exploring terminologies, and generating linguistic queries adapted to ancient Latin corpora.",
+      "features": {
+        "upload": {
+          "title": "Easy Import",
+          "description": "Upload your NoSketch Engine exports and metadata files with a simple drag-and-drop interface"
+        },
+        "analyze": {
+          "title": "Visual Analytics",
+          "description": "Explore your data through interactive charts: temporal evolution, domain distribution, author statistics"
+        },
+        "filter": {
+          "title": "Advanced Filtering",
+          "description": "Refine your analyses with powerful filters by author, domain, period, or place"
+        },
+        "compare": {
+          "title": "Corpus Comparison",
+          "description": "Compare two distinct corpora to identify similarities and differences across multiple criteria"
+        }
+      }
+    },
+    "tools": {
+      "title": "Our Tools",
+      "startButton": "Get Started",
+      "concordance": {
+        "subtitle": "Analyze and visualize your concordances",
+        "what": {
+          "title": "What is it?",
+          "description": "The Concordance Analyzer allows you to import your NoSketch Engine exports, enrich them with metadata, and explore them through various visualizations (temporal, by domain, by author). You can also compare two distinct corpora."
+        },
+        "howto": {
+          "title": "How to use it?",
+          "step1": "Import your metadata (CSV file with information about the works) ⚠️ IMPORTANT: In NoSketch Engine, you must check 'Edition ID' and 'page number' when exporting the metadata",
+          "step2": "Import your NoSketch Engine export (concordances)",
+          "step3": "Explore your data through the different views (Overview, Temporal, Domains, Authors, etc.)",
+          "step4": "Optional: Import a second corpus to compare two datasets"
+        },
+        "features": {
+          "title": "Features",
+          "temporal": "Temporal analysis with timeline and chronological charts",
+          "domains": "Exploration by domains (Theology, Canon Law, Roman Law...)",
+          "authors": "Statistics by author with ranking and charts",
+          "comparison": "Comparison of 2 corpora with detailed comparative charts",
+          "export": "Export data as CSV and charts as PNG"
+        }
+      },
+      "query": {
+        "subtitle": "Build advanced linguistic queries",
+        "what": {
+          "title": "What is it?",
+          "description": "The Query Generator is a tool that helps you build complex CQL (Corpus Query Language) queries for NoSketch Engine. It handles proximity searches, orthographic variations, and semantic contexts."
+        },
+        "howto": {
+          "title": "How to use it?",
+          "step1": "Choose a query type: proximity, variations, proximity + variations, or semantic context",
+          "step2": "Enter your search parameters (lemmas, distance, variation type...)",
+          "step3": "Click 'Generate Query' to create the CQL query",
+          "step4": "Copy the generated query and use it directly in NoSketch Engine"
+        },
+        "features": {
+          "title": "Features",
+          "advanced": "Advanced proximity search with configurable distance and bidirectional mode",
+          "regex": "Automatic generation of complex regex patterns for orthographic variations",
+          "lemma": "Support for lemmas and medieval Latin variants (ae/e, v/u, j/i, ti/ci...)",
+          "copy": "One-click copy to use directly in NoSketch Engine"
+        }
+      }
+    },
+    "gettingStarted": {
+      "title": "Quick Start",
+      "step1": {
+        "title": "Choose your tool",
+        "description": "Start with the Concordance Analyzer to explore your data, or use the Query Generator to build advanced searches"
+      },
+      "step2": {
+        "title": "Import your data",
+        "description": "For the Concordance Analyzer: upload your metadata and NoSketch exports. For the Query Generator: configure your search parameters"
+      },
+      "step3": {
+        "title": "Explore and analyze",
+        "description": "Use interactive visualizations, filters, and comparison tools to discover insights in your medieval canon law corpora"
+      }
+    }
   },
   "common": {
     "messages": {

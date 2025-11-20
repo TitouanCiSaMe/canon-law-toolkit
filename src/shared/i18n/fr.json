@@ -54,7 +54,7 @@
         },
         "howto": {
           "title": "Comment l'utiliser ?",
-          "step1": "Importez vos métadonnées (fichier CSV avec les informations sur les œuvres)",
+          "step1": "Importez vos métadonnées (fichier CSV avec les informations sur les œuvres) ⚠️ IMPORTANT : Dans NoSketch Engine, cochez obligatoirement 'ID de l'édition' et 'numéro de pages' lors de l'export des métadonnées",
           "step2": "Importez votre export NoSketch Engine (concordances)",
           "step3": "Explorez vos données à travers les différentes vues (Vue d'ensemble, Temporelle, Domaines, Auteurs, etc.)",
           "step4": "Optionnel : Importez un second corpus pour comparer deux ensembles de données"
