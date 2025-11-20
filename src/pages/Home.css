@@ -1,48 +1,365 @@
+/* ============================================================================
+   HOME PAGE - CALKIT
+   ============================================================================ */
+
 .home-page {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
-.home-page h1 {
+
+/* ============================================================================
+   HERO SECTION
+   ============================================================================ */
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 0 4rem;
+  border-bottom: 2px solid #E8DCC6;
+  margin-bottom: 4rem;
+}
+
+.hero-section h1 {
   font-size: 3rem;
   color: #5C3317;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+  margin-bottom: 1rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
-.home-page p {
-  font-size: 1.25rem;
+
+.hero-description {
+  font-size: 1.5rem;
   color: #704214;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   line-height: 1.6;
+  font-weight: 500;
 }
-.tools-grid {
+
+.hero-tagline {
+  font-size: 1.1rem;
+  color: #8B4513;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   ABOUT SECTION
+   ============================================================================ */
+
+.about-section {
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: #5C3317;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.about-section > p {
+  font-size: 1.1rem;
+  color: #704214;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
-.tool-card {
+
+.feature-item {
   background: #FFFEF9;
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(92, 51, 23, 0.12);
+  box-shadow: 0 1px 3px rgba(92, 51, 23, 0.08);
   border: 1px solid #E8DCC6;
+  text-align: center;
   transition: all 0.25s ease;
-  color: inherit;
-  text-decoration: none;
 }
-.tool-card:hover {
+
+.feature-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(92, 51, 23, 0.18);
+  box-shadow: 0 4px 12px rgba(92, 51, 23, 0.12);
   border-color: #D4AF37;
 }
-.tool-card h3 {
+
+.feature-item svg {
+  color: #B8860B;
+  margin-bottom: 1rem;
+}
+
+.feature-item h4 {
   color: #5C3317;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+  color: #704214;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================================
+   TOOLS SECTION
+   ============================================================================ */
+
+.tools-section {
+  margin-bottom: 4rem;
+}
+
+.tools-section h2 {
+  font-size: 2rem;
+  color: #5C3317;
+  margin-bottom: 3rem;
+  text-align: center;
   font-weight: 600;
 }
-.tool-card svg {
+
+.tool-detailed-card {
+  background: #FFFEF9;
+  border: 2px solid #E8DCC6;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 8px rgba(92, 51, 23, 0.08);
+  transition: all 0.3s ease;
+}
+
+.tool-detailed-card:hover {
+  box-shadow: 0 4px 16px rgba(92, 51, 23, 0.12);
+  border-color: #D4AF37;
+}
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #E8DCC6;
+}
+
+.tool-header svg {
+  color: #B8860B;
+  flex-shrink: 0;
+}
+
+.tool-header h3 {
+  color: #5C3317;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.tool-subtitle {
+  color: #8B4513;
+  font-size: 1.05rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.tool-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .tool-content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.tool-description,
+.tool-howto,
+.tool-features {
+  background: #FAF6ED;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #E8DCC6;
+}
+
+.tool-description h4,
+.tool-howto h4,
+.tool-features h4 {
+  color: #5C3317;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+.tool-description p {
   color: #704214;
-  margin-bottom: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.tool-howto ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #704214;
+}
+
+.tool-howto ol li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.tool-howto ol li:last-child {
+  margin-bottom: 0;
+}
+
+.tool-features ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #704214;
+}
+
+.tool-features ul li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.tool-features ul li:last-child {
+  margin-bottom: 0;
+}
+
+.tool-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #B8860B 0%, #9A7A0A 100%);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+}
+
+.tool-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+}
+
+/* ============================================================================
+   GETTING STARTED SECTION
+   ============================================================================ */
+
+.getting-started-section {
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #FAF6ED 0%, #FFFEF9 100%);
+  border-radius: 1rem;
+  border: 2px solid #E8DCC6;
+}
+
+.getting-started-section h2 {
+  font-size: 2rem;
+  color: #5C3317;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.step-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 2px solid #E8DCC6;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(92, 51, 23, 0.12);
+  border-color: #D4AF37;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #B8860B 0%, #9A7A0A 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.3);
+}
+
+.step-card h4 {
+  color: #5C3317;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.step-card p {
+  color: #704214;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .tool-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tool-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .tool-content {
+    grid-template-columns: 1fr;
+  }
 }
