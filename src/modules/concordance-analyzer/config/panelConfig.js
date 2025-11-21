@@ -17,6 +17,16 @@ import { visualTheme, createGradient } from '@shared/theme/globalTheme';
 // ============================================================================
 
 export const panelConfig = {
+  concordances: {
+    id: 'concordances',
+    title: 'concordance.panels.concordances.title',
+    subtitle: 'concordance.panels.concordances.subtitle',
+    color: '#5C3317',                                 // Brun encre principal
+    gradient: createGradient('#5C3317', '#704214'),
+    icon: '⊞',  // Symbole catalogue/archive
+    gridArea: '1 / 1 / 2 / 5',  // Full width, ligne 1
+    size: 'wide'
+  },
   overview: {
     id: 'overview',
     title: 'concordance.panels.overview.title',
@@ -24,7 +34,7 @@ export const panelConfig = {
     color: visualTheme.colors.primary.main,           // Brun encre principal
     gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.dark),
     icon: '◈',  // Symbole académique/ornement
-    gridArea: '1 / 1 / 2 / 2',
+    gridArea: '2 / 1 / 3 / 2',
     size: 'medium'
   },
   domains: {
@@ -34,7 +44,7 @@ export const panelConfig = {
     color: visualTheme.colors.primary.light,          // Brun encre moyen
     gradient: createGradient(visualTheme.colors.primary.light, visualTheme.colors.primary.main),
     icon: '⚜',  // Fleur de lys (académique)
-    gridArea: '1 / 2 / 2 / 3',
+    gridArea: '2 / 2 / 3 / 3',
     size: 'medium'
   },
   temporal: {
@@ -45,7 +55,7 @@ export const panelConfig = {
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
     textColor: visualTheme.colors.primary.dark,       // Texte brun foncé pour contraste sur fond or
     icon: '⧗',  // Symbole temporel
-    gridArea: '1 / 3 / 2 / 4',
+    gridArea: '2 / 3 / 3 / 4',
     size: 'medium'
   },
   places: {
@@ -55,7 +65,7 @@ export const panelConfig = {
     color: visualTheme.colors.accent.green,           // Vert malachite
     gradient: createGradient(visualTheme.colors.accent.green, '#1F3510'),
     icon: '✦',  // Étoile ornementale (cartographie médiévale)
-    gridArea: '1 / 4 / 2 / 5',
+    gridArea: '2 / 4 / 3 / 5',
     size: 'medium'
   },
   authors: {
@@ -65,7 +75,7 @@ export const panelConfig = {
     color: '#704214',                                 // Brun encre moyen
     gradient: createGradient('#704214', visualTheme.colors.primary.main),
     icon: '✒',  // Plume calligraphique
-    gridArea: '2 / 1 / 3 / 2',
+    gridArea: '3 / 1 / 4 / 2',
     size: 'medium'
   },
   linguistic: {
@@ -75,7 +85,7 @@ export const panelConfig = {
     color: visualTheme.colors.primary.blue,           // Bleu lapis-lazuli
     gradient: createGradient(visualTheme.colors.primary.blue, visualTheme.colors.primary.blueHover),
     icon: '❦',  // Hedera (symbole textuel médiéval)
-    gridArea: '2 / 2 / 3 / 3',
+    gridArea: '3 / 2 / 4 / 3',
     size: 'medium'
   },
   data: {
@@ -85,7 +95,7 @@ export const panelConfig = {
     color: visualTheme.colors.primary.dark,           // Brun très foncé (sépia)
     gradient: createGradient(visualTheme.colors.primary.dark, visualTheme.colors.primary.main),
     icon: '⟐',  // Symbole manuscrit/tablette
-    gridArea: '2 / 3 / 3 / 5',  // S'étend sur 2 colonnes
+    gridArea: '3 / 3 / 4 / 5',  // S'étend sur 2 colonnes
     size: 'medium'
   },
   corpusComparison: {
@@ -96,16 +106,6 @@ export const panelConfig = {
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
     textColor: visualTheme.colors.primary.dark,       // Texte brun foncé pour contraste sur fond or
     icon: '⚖',  // Balance (symbole juridique)
-    gridArea: '3 / 1 / 4 / 5',  // Full width, ligne 3
-    size: 'wide'
-  },
-  concordances: {
-    id: 'concordances',
-    title: 'concordance.panels.concordances.title',
-    subtitle: 'concordance.panels.concordances.subtitle',
-    color: '#5C3317',                                 // Brun encre principal
-    gradient: createGradient('#5C3317', '#704214'),
-    icon: '⊞',  // Symbole catalogue/archive
     gridArea: '4 / 1 / 5 / 5',  // Full width, ligne 4
     size: 'wide'
   }

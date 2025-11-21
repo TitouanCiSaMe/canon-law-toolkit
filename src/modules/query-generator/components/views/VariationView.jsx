@@ -62,7 +62,7 @@ const VariationView = () => {
 
         <RadioGroup
           label={t('queryGenerator.variation.desinenceType')}
-          value={withSuffix}
+          value={String(withSuffix)}
           onChange={(val) => setWithSuffix(val === 'true')}
           options={desinenceOptions.map(opt => ({ ...opt, value: String(opt.value) }))}
           name="desinence"
