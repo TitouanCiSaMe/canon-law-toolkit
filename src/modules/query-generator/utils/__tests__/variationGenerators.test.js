@@ -148,7 +148,7 @@ describe('variationGenerators', () => {
       expect(result.error).toBeDefined();
     });
 
-    it('devrait générer les 4 types de requêtes', () => {
+    it('devrait générer les 4 types de requêtes avec attribut word par défaut', () => {
       const result = generateAllVariationQueries('intentio', true);
 
       expect(result.mot).toBe('intentio');
@@ -157,6 +157,18 @@ describe('variationGenerators', () => {
       expect(result.requete3).toContain('[word=');
       expect(result.requete_medievale).toContain('[word=');
       expect(result.desinence).toBe('pointetoile');
+      expect(result.attribute).toBe('word');
+    });
+
+    it('devrait générer des requêtes avec attribut lemma', () => {
+      const result = generateAllVariationQueries('intentio', true, 'lemma');
+
+      expect(result.mot).toBe('intentio');
+      expect(result.requete1).toContain('[lemma=');
+      expect(result.requete2).toContain('[lemma=');
+      expect(result.requete3).toContain('[lemma=');
+      expect(result.requete_medievale).toContain('[lemma=');
+      expect(result.attribute).toBe('lemma');
     });
 
     it('devrait avoir des patterns différents pour chaque type', () => {
@@ -176,6 +188,14 @@ describe('variationGenerators', () => {
     it('devrait gérer le mode sans suffixe', () => {
       const result = generateAllVariationQueries('intentio', false);
       expect(result.desinence).toBe('nothing');
+      expect(result.requete1).not.toContain('[A-z]*');
+    });
+
+    it('devrait combiner suffixe et attribut lemma', () => {
+      const result = generateAllVariationQueries('intentio', false, 'lemma');
+      expect(result.desinence).toBe('nothing');
+      expect(result.attribute).toBe('lemma');
+      expect(result.requete1).toContain('[lemma=');
       expect(result.requete1).not.toContain('[A-z]*');
     });
   });

@@ -15,6 +15,7 @@ const VariationView = () => {
 
   const [mot, setMot] = useState('intentio');
   const [withSuffix, setWithSuffix] = useState(true);
+  const [attribute, setAttribute] = useState('word');
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
@@ -22,7 +23,7 @@ const VariationView = () => {
     e.preventDefault();
     setError(null);
 
-    const queryResult = generateAllVariationQueries(mot, withSuffix);
+    const queryResult = generateAllVariationQueries(mot, withSuffix, attribute);
 
     if (queryResult.error) {
       setError(queryResult.error);
@@ -36,6 +37,11 @@ const VariationView = () => {
   const desinenceOptions = [
     { value: true, label: t('queryGenerator.variation.withSuffix') },
     { value: false, label: t('queryGenerator.variation.exactForm') }
+  ];
+
+  const attributeOptions = [
+    { value: 'word', label: t('queryGenerator.attributes.word') },
+    { value: 'lemma', label: t('queryGenerator.attributes.lemma') }
   ];
 
   return (
@@ -68,6 +74,14 @@ const VariationView = () => {
           name="desinence"
         />
 
+        <RadioGroup
+          label={t('queryGenerator.proximity.attribute')}
+          value={attribute}
+          onChange={setAttribute}
+          options={attributeOptions}
+          name="attribute"
+        />
+
         <button type="submit" style={styles.submitButton}>
           {t('queryGenerator.ui.generate')}
         </button>
@@ -80,12 +94,6 @@ const VariationView = () => {
           <ResultCard title={t('queryGenerator.variation.simpleQuery')} query={result.requete1} />
           <ResultCard title={t('queryGenerator.variation.mediumQuery')} query={result.requete2} />
           <ResultCard title={t('queryGenerator.variation.complexQuery')} query={result.requete3} />
-          <ResultCard
-            title={t('queryGenerator.variation.medievalQuery')}
-            query={result.requete_medievale}
-            variant="medieval"
-            metadata={{ [t('queryGenerator.variation.medievalHelp')]: '✓' }}
-          />
         </>
       )}
     </div>

@@ -162,9 +162,10 @@ export function generateVariationPatterns(mot, variationType = 'simple', withSuf
  * Génère les 4 types de requêtes de variations (simple, medium, complex, medieval)
  * @param {string} mot - Mot à rechercher
  * @param {boolean} withSuffix - Avec désinences ?
+ * @param {string} attribute - Attribut de recherche ('word' ou 'lemma')
  * @returns {Object} Objet avec les 4 types de requêtes
  */
-export function generateAllVariationQueries(mot, withSuffix = true) {
+export function generateAllVariationQueries(mot, withSuffix = true, attribute = 'word') {
   const cleanedWord = sanitizeInput(mot);
 
   if (!cleanedWord) {
@@ -180,11 +181,12 @@ export function generateAllVariationQueries(mot, withSuffix = true) {
 
   return {
     mot: cleanedWord,
-    requete1: `[word="${patterns1.join('|')}"]`,
-    requete2: `[word="${patterns2.join('|')}"]`,
-    requete3: `[word="${patterns3.join('|')}"]`,
-    requete_medievale: `[word="${medievalPatterns.join('|')}"]`,
+    requete1: `[${attribute}="${patterns1.join('|')}"]`,
+    requete2: `[${attribute}="${patterns2.join('|')}"]`,
+    requete3: `[${attribute}="${patterns3.join('|')}"]`,
+    requete_medievale: `[${attribute}="${medievalPatterns.join('|')}"]`,
     desinence: withSuffix ? 'pointetoile' : 'nothing',
+    attribute,
     patterns: {
       simple: patterns1,
       medium: patterns2,
