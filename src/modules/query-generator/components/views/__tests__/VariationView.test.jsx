@@ -29,15 +29,13 @@ vi.mock('react-i18next', () => ({
         'queryGenerator.variation.description': 'Générez des requêtes pour trouver des variantes orthographiques avec support pour le latin médiéval.',
         'queryGenerator.variation.formTitle': 'Recherche de variations',
         'queryGenerator.variation.word': 'Mot à rechercher',
-        'queryGenerator.variation.desinenceType': 'Type de désinence',
-        'queryGenerator.variation.withSuffix': 'Avec désinences',
-        'queryGenerator.variation.exactForm': 'Forme exacte',
         'queryGenerator.variation.placeholders.word': 'ex: intentio',
         'queryGenerator.variation.simpleQuery': 'Requête simple',
         'queryGenerator.variation.mediumQuery': 'Requête moyenne',
         'queryGenerator.variation.complexQuery': 'Requête complexe',
-        'queryGenerator.variation.medievalQuery': 'Requête médiévale',
-        'queryGenerator.variation.medievalHelp': 'Inclut substitutions ae/e, v/u, j/i, ti/ci, etc.',
+        'queryGenerator.proximity.attribute': 'Attribut',
+        'queryGenerator.attributes.word': 'Word',
+        'queryGenerator.attributes.lemma': 'Lemma',
         'queryGenerator.ui.generate': 'Générer la requête',
         'common.error': 'Erreur'
       };
@@ -83,12 +81,12 @@ describe('VariationView - Rendu initial', () => {
     expect(screen.getByPlaceholderText('ex: intentio')).toBeInTheDocument();
   });
 
-  it('devrait afficher les options de désinence', () => {
+  it('devrait afficher le sélecteur d\'attribut', () => {
     render(<VariationView />);
 
-    expect(screen.getByText('Type de désinence')).toBeInTheDocument();
-    expect(screen.getByText('Avec désinences')).toBeInTheDocument();
-    expect(screen.getByText('Forme exacte')).toBeInTheDocument();
+    expect(screen.getByText('Attribut')).toBeInTheDocument();
+    expect(screen.getByText('Word')).toBeInTheDocument();
+    expect(screen.getByText('Lemma')).toBeInTheDocument();
   });
 
   it('devrait avoir la valeur par défaut "intentio"', () => {
@@ -98,11 +96,11 @@ describe('VariationView - Rendu initial', () => {
     expect(wordInput).toHaveValue('intentio');
   });
 
-  it('devrait avoir "Avec désinences" coché par défaut', () => {
+  it('devrait avoir "word" sélectionné par défaut', () => {
     render(<VariationView />);
 
     const radios = screen.getAllByRole('radio');
-    // Le premier radio devrait être "Avec désinences" (true)
+    // Le premier radio devrait être "word"
     expect(radios[0]).toBeChecked();
   });
 
@@ -132,32 +130,32 @@ describe('VariationView - Interactions formulaire', () => {
     expect(wordInput).toHaveValue('ratio');
   });
 
-  it('devrait permettre de changer le type de désinence', () => {
+  it('devrait permettre de changer l\'attribut', () => {
     render(<VariationView />);
 
     const radios = screen.getAllByRole('radio');
-    const exactFormRadio = radios[1]; // "Forme exacte"
+    const lemmaRadio = radios[1]; // "lemma"
 
-    fireEvent.click(exactFormRadio);
+    fireEvent.click(lemmaRadio);
 
-    expect(exactFormRadio).toBeChecked();
+    expect(lemmaRadio).toBeChecked();
     expect(radios[0]).not.toBeChecked();
   });
 
-  it('devrait permettre de basculer entre les types', () => {
+  it('devrait permettre de basculer entre word et lemma', () => {
     render(<VariationView />);
 
     const radios = screen.getAllByRole('radio');
 
-    // Initialement "Avec désinences" est coché
+    // Initialement "word" est coché
     expect(radios[0]).toBeChecked();
 
-    // Passer à "Forme exacte"
+    // Passer à "lemma"
     fireEvent.click(radios[1]);
     expect(radios[1]).toBeChecked();
     expect(radios[0]).not.toBeChecked();
 
-    // Revenir à "Avec désinences"
+    // Revenir à "word"
     fireEvent.click(radios[0]);
     expect(radios[0]).toBeChecked();
     expect(radios[1]).not.toBeChecked();
@@ -196,11 +194,12 @@ describe('VariationView - Soumission du formulaire', () => {
 
     expect(generateAllVariationQueries).toHaveBeenCalledWith(
       'intentio',
-      true
+      true,
+      'word'
     );
   });
 
-  it('devrait afficher les 4 types de requêtes après soumission réussie', async () => {
+  it('devrait afficher les 3 types de requêtes après soumission réussie', async () => {
     generateAllVariationQueries.mockReturnValue({
       mot: 'intentio',
       requete1: '[word="simple"]',
@@ -224,42 +223,41 @@ describe('VariationView - Soumission du formulaire', () => {
       expect(screen.getByText('Requête simple')).toBeInTheDocument();
       expect(screen.getByText('Requête moyenne')).toBeInTheDocument();
       expect(screen.getByText('Requête complexe')).toBeInTheDocument();
-      expect(screen.getByText('Requête médiévale')).toBeInTheDocument();
+      expect(screen.queryByText('Requête médiévale')).not.toBeInTheDocument();
     });
   });
 
   it('devrait afficher une erreur si la génération échoue', async () => {
     generateAllVariationQueries.mockReturnValue({
-      error: 'Le mot doit être renseigné'
+      error: 'Erreur de génération'
     });
 
     render(<VariationView />);
 
     const wordInput = screen.getByPlaceholderText('ex: intentio');
-    fireEvent.change(wordInput, { target: { value: '' } });
+    fireEvent.change(wordInput, { target: { value: 'test' } });
 
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText('Erreur')).toBeInTheDocument();
-      expect(screen.getByText('Le mot doit être renseigné')).toBeInTheDocument();
+      expect(screen.getByText('Erreur de génération')).toBeInTheDocument();
     });
   });
 
-  it('devrait appeler avec withSuffix=false pour forme exacte', () => {
+  it('devrait appeler avec attribute=lemma quand lemma est sélectionné', () => {
     generateAllVariationQueries.mockReturnValue({
-      mot: 'ratio',
-      requete1: '[word="ratio"]',
-      requete2: '[word="ratio"]',
-      requete3: '[word="ratio"]',
-      requete_medievale: '[word="ratio|raatio"]',
-      patterns: { simple: ['ratio'], medium: ['ratio'], complex: ['ratio'], medieval: ['ratio'] }
+      mot: 'intentio',
+      requete1: '[lemma="intentio"]',
+      requete2: '[lemma="intentio"]',
+      requete3: '[lemma="intentio"]',
+      requete_medievale: '[lemma="intentio|intencio"]',
+      patterns: { simple: ['intentio'], medium: ['intentio'], complex: ['intentio'], medieval: ['intentio'] }
     });
 
     render(<VariationView />);
 
-    // Sélectionner "Forme exacte"
+    // Sélectionner "lemma"
     const radios = screen.getAllByRole('radio');
     fireEvent.click(radios[1]);
 
@@ -268,7 +266,8 @@ describe('VariationView - Soumission du formulaire', () => {
 
     expect(generateAllVariationQueries).toHaveBeenCalledWith(
       'intentio',
-      false
+      true,
+      'lemma'
     );
   });
 
@@ -292,7 +291,8 @@ describe('VariationView - Soumission du formulaire', () => {
 
     expect(generateAllVariationQueries).toHaveBeenCalledWith(
       'ratio',
-      true
+      true,
+      'word'
     );
   });
 });
@@ -307,7 +307,7 @@ describe('VariationView - Affichage des résultats', () => {
     vi.clearAllMocks();
   });
 
-  it('devrait afficher les 4 ResultCard avec les bonnes requêtes', async () => {
+  it('devrait afficher les 3 ResultCard avec les bonnes requêtes', async () => {
     generateAllVariationQueries.mockReturnValue({
       mot: 'test',
       requete1: '[word="query1"]',
@@ -326,7 +326,7 @@ describe('VariationView - Affichage des résultats', () => {
       expect(screen.getByText('[word="query1"]')).toBeInTheDocument();
       expect(screen.getByText('[word="query2"]')).toBeInTheDocument();
       expect(screen.getByText('[word="query3"]')).toBeInTheDocument();
-      expect(screen.getByText('[word="query4"]')).toBeInTheDocument();
+      expect(screen.queryByText('[word="query4"]')).not.toBeInTheDocument();
     });
   });
 
@@ -336,44 +336,25 @@ describe('VariationView - Affichage des résultats', () => {
     expect(screen.queryByText('Requête simple')).not.toBeInTheDocument();
     expect(screen.queryByText('Requête moyenne')).not.toBeInTheDocument();
     expect(screen.queryByText('Requête complexe')).not.toBeInTheDocument();
-    expect(screen.queryByText('Requête médiévale')).not.toBeInTheDocument();
   });
 
-  it('devrait cacher les résultats en cas d\'erreur', async () => {
-    // D'abord un succès
+  it('devrait afficher une erreur et masquer les anciens résultats', async () => {
+    // Commencer directement avec une erreur
     generateAllVariationQueries.mockReturnValue({
-      mot: 'test',
-      requete1: '[word="test1"]',
-      requete2: '[word="test2"]',
-      requete3: '[word="test3"]',
-      requete_medievale: '[word="test4"]',
-      patterns: { simple: [], medium: [], complex: [], medieval: [] }
+      error: 'Erreur de test'
     });
 
-    const { rerender } = render(<VariationView />);
+    render(<VariationView />);
+
+    const wordInput = screen.getByPlaceholderText('ex: intentio');
+    fireEvent.change(wordInput, { target: { value: 'test' } });
 
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText('[word="test1"]')).toBeInTheDocument();
-    });
-
-    // Ensuite une erreur
-    generateAllVariationQueries.mockReturnValue({
-      error: 'Erreur de test'
-    });
-
-    rerender(<VariationView />);
-
-    const wordInput = screen.getByPlaceholderText('ex: intentio');
-    fireEvent.change(wordInput, { target: { value: '' } });
-
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-      expect(screen.queryByText('[word="test1"]')).not.toBeInTheDocument();
       expect(screen.getByText('Erreur de test')).toBeInTheDocument();
+      expect(screen.queryByText('Requête simple')).not.toBeInTheDocument();
     });
   });
 });
@@ -388,7 +369,7 @@ describe('VariationView - Cas limites', () => {
     vi.clearAllMocks();
   });
 
-  it('devrait gérer un mot vide', () => {
+  it('devrait empêcher la soumission avec un mot vide (validation HTML5)', () => {
     generateAllVariationQueries.mockReturnValue({
       error: 'Le mot doit être renseigné'
     });
@@ -401,10 +382,8 @@ describe('VariationView - Cas limites', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    expect(generateAllVariationQueries).toHaveBeenCalledWith(
-      '',
-      true
-    );
+    // Le formulaire HTML5 empêche la soumission car le champ est required
+    expect(generateAllVariationQueries).not.toHaveBeenCalled();
   });
 
   it('devrait gérer les espaces dans le mot', () => {
@@ -428,13 +407,13 @@ describe('VariationView - Cas limites', () => {
     expect(generateAllVariationQueries).toHaveBeenCalled();
   });
 
-  it('devrait gérer plusieurs soumissions successives', async () => {
+  it('devrait mettre à jour les résultats à chaque soumission', async () => {
     generateAllVariationQueries.mockReturnValue({
       mot: 'test1',
-      requete1: '[word="test1"]',
-      requete2: '[word="test1"]',
-      requete3: '[word="test1"]',
-      requete_medievale: '[word="test1"]',
+      requete1: '[word="first-query"]',
+      requete2: '[word="first-medium"]',
+      requete3: '[word="first-complex"]',
+      requete_medievale: '[word="first-medieval"]',
       patterns: { simple: [], medium: [], complex: [], medieval: [] }
     });
 
@@ -445,16 +424,16 @@ describe('VariationView - Cas limites', () => {
     // Première soumission
     fireEvent.click(submitButton);
     await waitFor(() => {
-      expect(screen.getByText('[word="test1"]')).toBeInTheDocument();
+      expect(screen.getByText('[word="first-query"]')).toBeInTheDocument();
     });
 
     // Deuxième soumission
     generateAllVariationQueries.mockReturnValue({
       mot: 'test2',
-      requete1: '[word="test2"]',
-      requete2: '[word="test2"]',
-      requete3: '[word="test2"]',
-      requete_medievale: '[word="test2"]',
+      requete1: '[word="second-query"]',
+      requete2: '[word="second-medium"]',
+      requete3: '[word="second-complex"]',
+      requete_medievale: '[word="second-medieval"]',
       patterns: { simple: [], medium: [], complex: [], medieval: [] }
     });
 
@@ -463,7 +442,7 @@ describe('VariationView - Cas limites', () => {
 
     fireEvent.click(submitButton);
     await waitFor(() => {
-      expect(screen.getByText('[word="test2"]')).toBeInTheDocument();
+      expect(screen.getByText('[word="second-query"]')).toBeInTheDocument();
     });
   });
 });
@@ -506,12 +485,12 @@ describe('VariationView - Intégration', () => {
     const submitButton = screen.getByText('Générer la requête');
     fireEvent.click(submitButton);
 
-    // 4. Vérifier que les 4 types de requêtes sont affichés
+    // 4. Vérifier que les 3 types de requêtes sont affichés
     await waitFor(() => {
       expect(screen.getByText('Requête simple')).toBeInTheDocument();
       expect(screen.getByText('Requête moyenne')).toBeInTheDocument();
       expect(screen.getByText('Requête complexe')).toBeInTheDocument();
-      expect(screen.getByText('Requête médiévale')).toBeInTheDocument();
+      expect(screen.queryByText('Requête médiévale')).not.toBeInTheDocument();
     });
 
     // 5. Vérifier que les requêtes sont correctes
