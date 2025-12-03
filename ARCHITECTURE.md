@@ -8,7 +8,7 @@
 
 ## 📐 Vue d'Ensemble
 
-CALKIT est une application React modulaire pour l'analyse de concordances de textes canoniques médiévaux et la génération de requêtes CQL. Architecture basée sur des modules autonomes avec système i18n complet.
+CiSaMe (Circulation des Savoirs Médiévaux) est une application React modulaire pour l'analyse de concordances de textes canoniques médiévaux et la génération de requêtes CQL. Architecture basée sur des modules autonomes avec système i18n complet.
 
 ## 🏗️ Stack Technique
 
