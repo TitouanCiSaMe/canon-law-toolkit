@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "CALKIT",
-    "subtitle": "Canon Law Analysis Toolkit"
+    "title": "CiSaMe",
+    "subtitle": "Medieval Knowledge Circulation"
   },
   "nav": {
     "home": "Home",
@@ -15,15 +15,15 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 CISAME<br/>Canon Law Toolkit"
+    "copyright": "© 2025 CiSaMe<br/>Medieval Knowledge Circulation"
   },
   "home": {
-    "welcome": "Welcome to Canon Law Toolkit",
+    "welcome": "Welcome to CiSaMe",
     "description": "Platform of tools for medieval canon law analysis",
     "tagline": "Analyze your corpora, compare your data and generate advanced linguistic queries",
     "about": {
-      "title": "About CALKIT",
-      "description": "CALKIT (Canon Law Analysis Toolkit) is a digital platform dedicated to the study of medieval canon law. It offers powerful tools for analyzing concordances, exploring terminologies, and generating linguistic queries adapted to ancient Latin corpora.",
+      "title": "About CiSaMe",
+      "description": "CiSaMe (Circulation des Savoirs Médiévaux / Medieval Knowledge Circulation) is a digital platform dedicated to the study of medieval canon law. It offers powerful tools for analyzing concordances, exploring terminologies, and generating linguistic queries adapted to ancient Latin corpora.",
       "features": {
         "upload": {
           "title": "Easy Import",

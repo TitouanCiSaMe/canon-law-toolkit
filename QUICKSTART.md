@@ -1,4 +1,4 @@
-# Guide de démarrage rapide - CALKIT Concordance Analyzer
+# Guide de démarrage rapide - CiSaMe Concordance Analyzer
 
 Guide pratique pour commencer à utiliser l'analyseur de concordances en 5 minutes. 🚀
 

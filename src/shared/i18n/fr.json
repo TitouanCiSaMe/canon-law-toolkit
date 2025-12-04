@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "CALKIT",
-    "subtitle": "Canon Law Analysis Toolkit"
+    "title": "CiSaMe",
+    "subtitle": "Circulation des Savoirs Médiévaux"
   },
   "nav": {
     "home": "Accueil",
@@ -15,15 +15,15 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 CISAME<br/>Canon Law Toolkit"
+    "copyright": "© 2025 CiSaMe<br/>Circulation des Savoirs Médiévaux"
   },
   "home": {
-    "welcome": "Bienvenue sur Canon Law Toolkit",
+    "welcome": "Bienvenue sur CiSaMe",
     "description": "Plateforme d'outils pour l'analyse du droit canon médiéval",
     "tagline": "Analysez vos corpus, comparez vos données et générez des requêtes linguistiques avancées",
     "about": {
-      "title": "À propos de CALKIT",
-      "description": "CALKIT (Canon Law Analysis Toolkit) est une plateforme spécialisée dans l'analyse de corpus de droit canon médiéval. Elle offre des outils puissants pour explorer, visualiser et comparer vos données textuelles issues de NoSketch Engine.",
+      "title": "À propos de CiSaMe",
+      "description": "CiSaMe (Circulation des Savoirs Médiévaux) est une plateforme spécialisée dans l'analyse de corpus de droit canon médiéval. Elle offre des outils puissants pour explorer, visualiser et comparer vos données textuelles issues de NoSketch Engine.",
       "features": {
         "upload": {
           "title": "Import facile",

@@ -2,7 +2,7 @@
  * Sidebar - Navigation verticale fixe à gauche
  * 
  * Contient :
- * - Logo et titre CALKIT
+ * - Logo et titre CiSaMe
  * - Navigation entre modules
  * - Navigation entre vues (concordance analyzer)
  * - Bouton filtres avec badge
@@ -153,7 +153,7 @@ const Sidebar = ({
         </button>
       )}
 
-      {/* Header - Logo CALKIT */}
+      {/* Header - Logo CiSaMe */}
       <Link
         to="/"
         onClick={handleLinkClick}
@@ -173,21 +173,21 @@ const Sidebar = ({
         }}>
           <span style={{ fontSize: '2rem' }}>⚖</span>
           <div>
-            <div style={{ 
-              fontSize: '1.8rem', 
+            <div style={{
+              fontSize: '1.8rem',
               fontWeight: 'bold',
               fontFamily: '"Crimson Text", serif',
               letterSpacing: '-0.02em'
             }}>
-              CALKIT
+              CiSaMe
             </div>
-            <div style={{ 
-              fontSize: '0.7rem', 
+            <div style={{
+              fontSize: '0.7rem',
               opacity: 0.9,
               letterSpacing: '0.05em',
               marginTop: '0.25rem'
             }}>
-              Canon Law Analysis Toolkit
+              Circulation des Savoirs Médiévaux
             </div>
           </div>
         </div>

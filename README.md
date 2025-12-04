@@ -1,4 +1,4 @@
-# CALKIT - Canon Law Analysis Toolkit
+# CiSaMe - Circulation des Savoirs Médiévaux
 
 [![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://gitlab.com/cisame/canon-law-toolkit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -10,7 +10,7 @@ Plateforme d'outils numériques pour l'analyse du droit canon médiéval, dével
 
 ## 🎯 Présentation
 
-CALKIT est une suite d'outils web destinée aux chercheurs en histoire du droit médiéval. Le projet se compose de plusieurs modules spécialisés pour l'analyse lexicométrique et structurelle de corpus juridiques latins.
+CiSaMe (Circulation des Savoirs Médiévaux) est une suite d'outils web destinée aux chercheurs en histoire du droit médiéval. Le projet se compose de plusieurs modules spécialisés pour l'analyse lexicométrique et structurelle de corpus juridiques latins.
 
 ### Modules disponibles
 

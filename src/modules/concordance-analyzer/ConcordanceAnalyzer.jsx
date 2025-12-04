@@ -117,7 +117,7 @@ const ConcordanceAnalyzerPanels = () => {
 
     try {
       // Restaurer les métadonnées
-      const savedMetadata = sessionStorage.getItem('calkit_metadataLookup');
+      const savedMetadata = sessionStorage.getItem('cisame_metadataLookup');
       if (savedMetadata) {
         const parsed = JSON.parse(savedMetadata);
         if (Object.keys(parsed).length > 0) {
@@ -130,7 +130,7 @@ const ConcordanceAnalyzerPanels = () => {
       }
 
       // Restaurer les concordances (mode single)
-      const savedConcordances = sessionStorage.getItem('calkit_concordanceData');
+      const savedConcordances = sessionStorage.getItem('cisame_concordanceData');
       if (savedConcordances) {
         const parsed = JSON.parse(savedConcordances);
         if (parsed.length > 0) {
@@ -145,7 +145,7 @@ const ConcordanceAnalyzerPanels = () => {
       }
 
       // Restaurer le mode comparison
-      const savedComparison = sessionStorage.getItem('calkit_corpusComparison');
+      const savedComparison = sessionStorage.getItem('cisame_corpusComparison');
       if (savedComparison) {
         const parsed = JSON.parse(savedComparison);
         if (parsed.A.concordanceData || parsed.B.concordanceData) {
@@ -156,9 +156,9 @@ const ConcordanceAnalyzerPanels = () => {
     } catch (error) {
       console.error('❌ Erreur lors de la restauration depuis sessionStorage:', error);
       // En cas d'erreur, on nettoie le storage corrompu
-      sessionStorage.removeItem('calkit_metadataLookup');
-      sessionStorage.removeItem('calkit_concordanceData');
-      sessionStorage.removeItem('calkit_corpusComparison');
+      sessionStorage.removeItem('cisame_metadataLookup');
+      sessionStorage.removeItem('cisame_concordanceData');
+      sessionStorage.removeItem('cisame_corpusComparison');
     }
 
     // Charger les métadonnées par défaut uniquement si aucune n'a été restaurée
@@ -176,7 +176,7 @@ const ConcordanceAnalyzerPanels = () => {
   useEffect(() => {
     if (Object.keys(metadataLookup).length > 0) {
       try {
-        sessionStorage.setItem('calkit_metadataLookup', JSON.stringify(metadataLookup));
+        sessionStorage.setItem('cisame_metadataLookup', JSON.stringify(metadataLookup));
         console.log('💾 Métadonnées sauvegardées dans sessionStorage');
       } catch (error) {
         console.error('❌ Erreur sauvegarde métadonnées:', error);
@@ -188,7 +188,7 @@ const ConcordanceAnalyzerPanels = () => {
   useEffect(() => {
     if (concordanceData.length > 0) {
       try {
-        sessionStorage.setItem('calkit_concordanceData', JSON.stringify(concordanceData));
+        sessionStorage.setItem('cisame_concordanceData', JSON.stringify(concordanceData));
         console.log('💾 Concordances sauvegardées dans sessionStorage');
       } catch (error) {
         console.error('❌ Erreur sauvegarde concordances:', error);
@@ -200,7 +200,7 @@ const ConcordanceAnalyzerPanels = () => {
   useEffect(() => {
     if (corpusComparison.A.concordanceData || corpusComparison.B.concordanceData) {
       try {
-        sessionStorage.setItem('calkit_corpusComparison', JSON.stringify(corpusComparison));
+        sessionStorage.setItem('cisame_corpusComparison', JSON.stringify(corpusComparison));
         console.log('💾 Comparaison de corpus sauvegardée dans sessionStorage');
       } catch (error) {
         console.error('❌ Erreur sauvegarde comparaison:', error);

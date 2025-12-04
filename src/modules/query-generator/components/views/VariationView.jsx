@@ -14,7 +14,6 @@ const VariationView = () => {
   const { t } = useTranslation();
 
   const [mot, setMot] = useState('intentio');
-  const [withSuffix, setWithSuffix] = useState(true);
   const [attribute, setAttribute] = useState('word');
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -23,7 +22,7 @@ const VariationView = () => {
     e.preventDefault();
     setError(null);
 
-    const queryResult = generateAllVariationQueries(mot, withSuffix, attribute);
+    const queryResult = generateAllVariationQueries(mot, true, attribute);
 
     if (queryResult.error) {
       setError(queryResult.error);
@@ -33,11 +32,6 @@ const VariationView = () => {
       setError(null);
     }
   };
-
-  const desinenceOptions = [
-    { value: true, label: t('queryGenerator.variation.withSuffix') },
-    { value: false, label: t('queryGenerator.variation.exactForm') }
-  ];
 
   const attributeOptions = [
     { value: 'word', label: t('queryGenerator.attributes.word') },
@@ -64,14 +58,6 @@ const VariationView = () => {
           onChange={setMot}
           placeholder={t('queryGenerator.variation.placeholders.word')}
           required
-        />
-
-        <RadioGroup
-          label={t('queryGenerator.variation.desinenceType')}
-          value={withSuffix}
-          onChange={(val) => setWithSuffix(val === 'true')}
-          options={desinenceOptions.map(opt => ({ ...opt, value: String(opt.value) }))}
-          name="desinence"
         />
 
         <RadioGroup

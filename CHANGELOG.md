@@ -305,7 +305,7 @@ Refonte complète du layout avec sidebar verticale pour améliorer l'expérience
 
 **Nouvelle architecture UI**
 - **Sidebar verticale fixe** (280px à gauche)
-  - Logo CALKIT cliquable pour retour à l'accueil
+  - Logo CiSaMe cliquable pour retour à l'accueil
   - Navigation entre modules (Query Generator, Concordance Analyzer)
   - Liste complète des 9 vues avec icônes visuelles
   - Vue active marquée visuellement (fond jaune)

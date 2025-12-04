@@ -1,6 +1,6 @@
-# Guide de contribution - CALKIT
+# Guide de contribution - CiSaMe
 
-Merci de votre intérêt pour contribuer au Canon Law Analysis Toolkit ! Ce document fournit les guidelines pour contribuer au projet.
+Merci de votre intérêt pour contribuer à CiSaMe (Circulation des Savoirs Médiévaux) ! Ce document fournit les guidelines pour contribuer au projet.
 
 ## 🎯 Code de conduite
 
