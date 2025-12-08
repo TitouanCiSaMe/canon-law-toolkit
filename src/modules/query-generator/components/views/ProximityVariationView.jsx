@@ -19,7 +19,7 @@ const ProximityVariationView = () => {
     distance: 10,
     variationType: 'simple',
     attribute: 'word',
-    bidirectional: false
+    bidirectional: true
   });
 
   const [result, setResult] = useState(null);
@@ -33,6 +33,19 @@ const ProximityVariationView = () => {
     );
 
     queryResult.error ? (setError(queryResult.error), setResult(null)) : (setResult(queryResult), setError(null));
+  };
+
+  const getVariationExplanation = () => {
+    switch (formData.variationType) {
+      case 'simple':
+        return t('queryGenerator.proximityVariation.simpleExplanation');
+      case 'medium':
+        return t('queryGenerator.proximityVariation.mediumExplanation');
+      case 'complex':
+        return t('queryGenerator.proximityVariation.complexExplanation');
+      default:
+        return '';
+    }
   };
 
   const variationOptions = [
@@ -77,11 +90,13 @@ const ProximityVariationView = () => {
 
       {error && <InfoBox type="error" title={t('common.error')}>{error}</InfoBox>}
       {result && (
-        <ResultCard
-          title={t('queryGenerator.ui.queryGenerated')}
-          query={result.query}
-          patterns={result.patterns1}
-        />
+        <>
+          <ResultCard
+            title={t('queryGenerator.ui.queryGenerated')}
+            query={result.query}
+          />
+          <div style={styles.explanation}>{getVariationExplanation()}</div>
+        </>
       )}
     </div>
   );
@@ -118,7 +133,8 @@ const styles = {
   form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #8B4513', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
   formTitle: { fontSize: globalTheme.typography.size.lg, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.lg, paddingBottom: globalTheme.spacing.sm, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
   row: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: globalTheme.spacing.lg },
-  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#8B4513', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
+  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#8B4513', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md },
+  explanation: { fontSize: globalTheme.typography.size.sm, color: globalTheme.colors.text.secondary, fontStyle: 'italic', marginTop: '-12px', marginBottom: globalTheme.spacing.lg, paddingLeft: globalTheme.spacing.md }
 };
 
 export default ProximityVariationView;

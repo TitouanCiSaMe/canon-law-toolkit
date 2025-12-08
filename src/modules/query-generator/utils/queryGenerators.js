@@ -45,13 +45,19 @@ export function generateProximityQuery(
     return { error: 'Les deux lemmes doivent être renseignés' };
   }
 
-  const query1 = `[${attribute}="${clean1}"] []{0,${validDistance}} [${attribute}="${clean2}"]`;
+  // Crée une contrainte de non-répétition pour éviter les matches multiples
+  // dans les phrases avec mots répétés (ex: "ignorantia iuris ... ignorantia iuris")
+  const exclusionConstraint = `${attribute}!="${clean1}" & ${attribute}!="${clean2}"`;
+  const middlePattern = `[${exclusionConstraint}]{0,${validDistance}}`;
 
-  let finalQuery = query1;
+  let finalQuery;
 
   if (bidirectional) {
-    const query2 = `[${attribute}="${clean2}"] []{0,${validDistance}} [${attribute}="${clean1}"]`;
+    const query1 = `[${attribute}="${clean1}"] ${middlePattern} [${attribute}="${clean2}"]`;
+    const query2 = `[${attribute}="${clean2}"] ${middlePattern} [${attribute}="${clean1}"]`;
     finalQuery = `${query1} | ${query2}`;
+  } else {
+    finalQuery = `[${attribute}="${clean1}"] ${middlePattern} [${attribute}="${clean2}"]`;
   }
 
   return {
@@ -101,13 +107,19 @@ export function generateProximityWithVariations(
   const lemma1Pattern = patterns1.join('|');
   const lemma2Pattern = patterns2.join('|');
 
-  const query1 = `[${attribute}="${lemma1Pattern}"] []{0,${validDistance}} [${attribute}="${lemma2Pattern}"]`;
+  // Crée une contrainte de non-répétition pour éviter les matches multiples
+  // dans les phrases avec mots répétés (ex: "ignorantia iuris ... ignorantia iuris")
+  const exclusionConstraint = `${attribute}!="${lemma1Pattern}" & ${attribute}!="${lemma2Pattern}"`;
+  const middlePattern = `[${exclusionConstraint}]{0,${validDistance}}`;
 
-  let finalQuery = query1;
+  let finalQuery;
 
   if (bidirectional) {
-    const query2 = `[${attribute}="${lemma2Pattern}"] []{0,${validDistance}} [${attribute}="${lemma1Pattern}"]`;
+    const query1 = `[${attribute}="${lemma1Pattern}"] ${middlePattern} [${attribute}="${lemma2Pattern}"]`;
+    const query2 = `[${attribute}="${lemma2Pattern}"] ${middlePattern} [${attribute}="${lemma1Pattern}"]`;
     finalQuery = `${query1} | ${query2}`;
+  } else {
+    finalQuery = `[${attribute}="${lemma1Pattern}"] ${middlePattern} [${attribute}="${lemma2Pattern}"]`;
   }
 
   return {

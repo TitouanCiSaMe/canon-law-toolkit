@@ -156,8 +156,11 @@
       "withSuffix": "With endings",
       "exactForm": "Exact form",
       "simpleQuery": "Simple Query",
+      "simpleExplanation": "Replaces up to 1 letter per word (e.g., intentio → int[A-z]?ntio)",
       "mediumQuery": "Medium Query",
+      "mediumExplanation": "Replaces up to 1 letter with 0 or more letters (e.g., intentio → int[A-z]*ntio)",
       "complexQuery": "Complex Query",
+      "complexExplanation": "Replaces up to 2 letters with 0 or more letters (e.g., intentio → i[A-z]*te[A-z]*tio)",
       "medievalQuery": "Medieval Query",
       "medievalHelp": "Includes substitutions ae/e, v/u, j/i, ti/ci, etc.",
       "placeholders": {
@@ -170,8 +173,11 @@
       "formTitle": "Advanced Search",
       "variationType": "Variation type",
       "simple": "Simple",
+      "simpleExplanation": "Replaces up to 1 letter per word",
       "medium": "Medium",
+      "mediumExplanation": "Replaces up to 1 letter with 0 or more letters",
       "complex": "Complex",
+      "complexExplanation": "Replaces up to 2 letters with 0 or more letters",
       "all": "All"
     },
     "semantic": {
