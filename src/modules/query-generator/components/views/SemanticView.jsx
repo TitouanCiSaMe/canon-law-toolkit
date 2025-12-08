@@ -14,8 +14,8 @@ const SemanticView = () => {
   const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
-    centralLemma: 'intentio',
-    contextLemmas: 'voluntas, ratio, intellectus',
+    centralLemma: '',
+    contextLemmas: '',
     distance: 20,
     contextMode: 'any'
   });

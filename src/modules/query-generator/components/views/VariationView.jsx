@@ -13,7 +13,7 @@ import { globalTheme } from '@shared/theme/globalTheme';
 const VariationView = () => {
   const { t } = useTranslation();
 
-  const [mot, setMot] = useState('intentio');
+  const [mot, setMot] = useState('');
   const [attribute, setAttribute] = useState('word');
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
