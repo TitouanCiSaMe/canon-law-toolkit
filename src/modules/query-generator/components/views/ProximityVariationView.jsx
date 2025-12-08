@@ -14,12 +14,12 @@ const ProximityVariationView = () => {
   const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
-    lemma1: 'intentio',
-    lemma2: 'Augustinus',
+    lemma1: '',
+    lemma2: '',
     distance: 10,
     variationType: 'simple',
     attribute: 'word',
-    bidirectional: true
+    bidirectional: false
   });
 
   const [result, setResult] = useState(null);
@@ -38,7 +38,7 @@ const ProximityVariationView = () => {
   const variationOptions = [
     { value: 'simple', label: t('queryGenerator.proximityVariation.simple') },
     { value: 'medium', label: t('queryGenerator.proximityVariation.medium') },
-    { value: 'medieval', label: t('queryGenerator.proximityVariation.medieval') }
+    { value: 'complex', label: t('queryGenerator.proximityVariation.complex') }
   ];
 
   const attributeOptions = [

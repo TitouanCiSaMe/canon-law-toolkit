@@ -15,8 +15,8 @@ const ProximityView = () => {
 
   // État du formulaire
   const [formData, setFormData] = useState({
-    lemma1: 'intentio',
-    lemma2: 'Augustinus',
+    lemma1: '',
+    lemma2: '',
     distance: 10,
     attribute: 'lemma',
     bidirectional: true
