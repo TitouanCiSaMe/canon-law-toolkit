@@ -78,8 +78,13 @@ const VariationView = () => {
       {result && (
         <>
           <ResultCard title={t('queryGenerator.variation.simpleQuery')} query={result.requete1} />
+          <div style={styles.explanation}>{t('queryGenerator.variation.simpleExplanation')}</div>
+
           <ResultCard title={t('queryGenerator.variation.mediumQuery')} query={result.requete2} />
+          <div style={styles.explanation}>{t('queryGenerator.variation.mediumExplanation')}</div>
+
           <ResultCard title={t('queryGenerator.variation.complexQuery')} query={result.requete3} />
+          <div style={styles.explanation}>{t('queryGenerator.variation.complexExplanation')}</div>
         </>
       )}
     </div>
@@ -116,7 +121,8 @@ const styles = {
 
   form: { background: globalTheme.colors.background.card, padding: globalTheme.spacing.lg, borderRadius: globalTheme.borderRadius.md, border: `1px solid ${globalTheme.colors.border.light}`, borderLeft: '3px solid #8B4513', marginBottom: globalTheme.spacing.lg, boxShadow: globalTheme.shadows.card },
   formTitle: { fontSize: globalTheme.typography.size.lg, fontWeight: globalTheme.typography.weight.semibold, color: globalTheme.colors.text.primary, marginBottom: globalTheme.spacing.lg, paddingBottom: globalTheme.spacing.sm, borderBottom: `1px solid ${globalTheme.colors.border.light}` },
-  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#8B4513', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md }
+  submitButton: { padding: `${globalTheme.spacing.md} ${globalTheme.spacing.xl}`, borderRadius: globalTheme.borderRadius.md, border: 'none', background: '#8B4513', color: '#FFFFFF', fontFamily: globalTheme.typography.fontFamily.secondary, fontSize: globalTheme.typography.size.md, fontWeight: globalTheme.typography.weight.semibold, cursor: 'pointer', transition: globalTheme.transitions.fast, marginTop: globalTheme.spacing.md },
+  explanation: { fontSize: globalTheme.typography.size.sm, color: globalTheme.colors.text.secondary, fontStyle: 'italic', marginTop: '-12px', marginBottom: globalTheme.spacing.lg, paddingLeft: globalTheme.spacing.md }
 };
 
 export default VariationView;

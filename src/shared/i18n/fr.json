@@ -156,8 +156,11 @@
       "withSuffix": "Avec désinences",
       "exactForm": "Forme exacte",
       "simpleQuery": "Requête simple",
+      "simpleExplanation": "Remplace jusqu'à 1 lettre par mot (ex: intentio → int[A-z]?ntio)",
       "mediumQuery": "Requête moyenne",
+      "mediumExplanation": "Remplace jusqu'à 1 lettre par 0 ou plusieurs lettres (ex: intentio → int[A-z]*ntio)",
       "complexQuery": "Requête complexe",
+      "complexExplanation": "Remplace jusqu'à 2 lettres par 0 ou plusieurs lettres (ex: intentio → i[A-z]*te[A-z]*tio)",
       "medievalQuery": "Requête médiévale",
       "medievalHelp": "Inclut substitutions ae/e, v/u, j/i, ti/ci, etc.",
       "placeholders": {
@@ -170,8 +173,11 @@
       "formTitle": "Recherche avancée",
       "variationType": "Type de variations",
       "simple": "Simple",
+      "simpleExplanation": "Remplace jusqu'à 1 lettre par mot",
       "medium": "Moyen",
+      "mediumExplanation": "Remplace jusqu'à 1 lettre par 0 ou plusieurs lettres",
       "complex": "Complexe",
+      "complexExplanation": "Remplace jusqu'à 2 lettres par 0 ou plusieurs lettres",
       "all": "Toutes"
     },
     "semantic": {
