@@ -19,7 +19,7 @@ const ProximityVariationView = () => {
     distance: 10,
     variationType: 'simple',
     attribute: 'word',
-    bidirectional: false
+    bidirectional: true
   });
 
   const [result, setResult] = useState(null);
