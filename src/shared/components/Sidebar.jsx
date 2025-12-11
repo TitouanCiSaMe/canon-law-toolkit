@@ -413,37 +413,31 @@ const Sidebar = ({
 
       {/* Logos institutionnels */}
       <div style={{
-        padding: '1rem',
-        background: 'white',
+        padding: '1.25rem',
+        background: 'rgba(255, 255, 255, 0.08)',
         margin: '0 1rem 1rem 1rem',
         borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+        border: '1px solid rgba(255, 255, 255, 0.15)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+        alignItems: 'center'
       }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '0.75rem',
-          marginBottom: '0.75rem',
-          alignItems: 'center'
-        }}>
-          <img
-            src="/Logo/GIS-LOGO-LEM.png"
-            alt="LEM - Laboratoire d'études sur les monothéismes"
-            style={{ width: '100%', height: 'auto' }}
-          />
-          <img
-            src="/Logo/Logo Polen.png"
-            alt="POLEN - Pouvoirs LEttres Normes"
-            style={{ width: '100%', height: 'auto' }}
-          />
-        </div>
-        <div style={{ textAlign: 'center' }}>
-          <img
-            src="/Logo/anr.jpg"
-            alt="ANR - Agence nationale de la recherche"
-            style={{ width: '60%', height: 'auto' }}
-          />
-        </div>
+        <img
+          src="/Logo/GIS-LOGO-LEM.png"
+          alt="LEM - Laboratoire d'études sur les monothéismes"
+          style={{ width: '75%', height: 'auto', filter: 'brightness(1.1)' }}
+        />
+        <img
+          src="/Logo/Logo Polen.png"
+          alt="POLEN - Pouvoirs LEttres Normes"
+          style={{ width: '90%', height: 'auto', filter: 'brightness(1.1)' }}
+        />
+        <img
+          src="/Logo/anr.jpg"
+          alt="ANR - Agence nationale de la recherche"
+          style={{ width: '70%', height: 'auto', filter: 'brightness(1.1)' }}
+        />
       </div>
 
       {/* Footer */}
