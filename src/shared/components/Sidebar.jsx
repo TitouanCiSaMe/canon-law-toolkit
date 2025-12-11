@@ -426,17 +426,31 @@ const Sidebar = ({
         <img
           src="/Logo/GIS-LOGO-LEM.png"
           alt="LEM - Laboratoire d'études sur les monothéismes"
-          style={{ width: '75%', height: 'auto', filter: 'brightness(1.1)' }}
+          style={{ width: '85%', height: 'auto', filter: 'brightness(1.1)' }}
         />
         <img
-          src="/Logo/Logo Polen.png"
-          alt="POLEN - Pouvoirs LEttres Normes"
-          style={{ width: '90%', height: 'auto', filter: 'brightness(1.1)' }}
+          src="/Logo/Laboratoire_DRES_Etroit_Couleur(.png"
+          alt="Laboratoire DRES - Université de Strasbourg"
+          style={{ width: '95%', height: 'auto', filter: 'brightness(1.1)' }}
         />
+        <div style={{
+          background: 'white',
+          padding: '0.5rem',
+          borderRadius: '6px',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+          <img
+            src="/Logo/Logo Polen.png"
+            alt="POLEN - Pouvoirs LEttres Normes"
+            style={{ width: '95%', height: 'auto' }}
+          />
+        </div>
         <img
           src="/Logo/anr.jpg"
           alt="ANR - Agence nationale de la recherche"
-          style={{ width: '70%', height: 'auto', filter: 'brightness(1.1)' }}
+          style={{ width: '80%', height: 'auto', filter: 'brightness(1.1)' }}
         />
       </div>
 
