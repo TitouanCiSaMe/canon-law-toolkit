@@ -44,6 +44,23 @@ const Sidebar = ({
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { isDesktop } = useBreakpoint();
+  const [currentLogo, setCurrentLogo] = React.useState(0);
+
+  // Logos pour le carrousel
+  const logos = [
+    { src: '/Logo/GIS-LOGO-LEM.png', alt: 'LEM - Laboratoire d\'études sur les monothéismes', width: '85%', hasWhiteBg: false },
+    { src: '/Logo/Laboratoire_DRES_Etroit_Couleur(.png', alt: 'Laboratoire DRES - Université de Strasbourg', width: '95%', hasWhiteBg: false },
+    { src: '/Logo/Logo Polen.png', alt: 'POLEN - Pouvoirs LEttres Normes', width: '95%', hasWhiteBg: true },
+    { src: '/Logo/anr.jpg', alt: 'ANR - Agence nationale de la recherche', width: '80%', hasWhiteBg: false }
+  ];
+
+  // Rotation automatique du carrousel
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentLogo(prev => (prev + 1) % logos.length);
+    }, 3000); // Change tous les 3 secondes
+    return () => clearInterval(interval);
+  }, []);
 
   // Navigation des vues du concordance analyzer (symboles médiévaux)
   const views = [
@@ -411,47 +428,79 @@ const Sidebar = ({
         {i18n.language === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}
       </button>
 
-      {/* Logos institutionnels */}
+      {/* Logos institutionnels - Carrousel */}
       <div style={{
         padding: '1.25rem',
         background: 'rgba(255, 255, 255, 0.08)',
         margin: '0 1rem 1rem 1rem',
         borderRadius: '8px',
         border: '1px solid rgba(255, 255, 255, 0.15)',
+        minHeight: '100px',
         display: 'flex',
-        flexDirection: 'column',
-        gap: '1rem',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <img
-          src="/Logo/GIS-LOGO-LEM.png"
-          alt="LEM - Laboratoire d'études sur les monothéismes"
-          style={{ width: '85%', height: 'auto', filter: 'brightness(1.1)' }}
-        />
-        <img
-          src="/Logo/Laboratoire_DRES_Etroit_Couleur(.png"
-          alt="Laboratoire DRES - Université de Strasbourg"
-          style={{ width: '95%', height: 'auto', filter: 'brightness(1.1)' }}
-        />
-        <div style={{
-          background: 'white',
-          padding: '0.5rem',
-          borderRadius: '6px',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
+        {logos[currentLogo].hasWhiteBg ? (
+          <div style={{
+            background: 'white',
+            padding: '0.5rem',
+            borderRadius: '6px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            transition: 'all 0.5s ease',
+            opacity: 1,
+            animation: 'fadeIn 0.5s ease'
+          }}>
+            <img
+              src={logos[currentLogo].src}
+              alt={logos[currentLogo].alt}
+              style={{
+                width: logos[currentLogo].width,
+                height: 'auto',
+                transition: 'all 0.5s ease'
+              }}
+            />
+          </div>
+        ) : (
           <img
-            src="/Logo/Logo Polen.png"
-            alt="POLEN - Pouvoirs LEttres Normes"
-            style={{ width: '95%', height: 'auto' }}
+            src={logos[currentLogo].src}
+            alt={logos[currentLogo].alt}
+            style={{
+              width: logos[currentLogo].width,
+              height: 'auto',
+              filter: 'brightness(1.1)',
+              transition: 'all 0.5s ease',
+              opacity: 1,
+              animation: 'fadeIn 0.5s ease'
+            }}
           />
+        )}
+
+        {/* Indicateurs de position */}
+        <div style={{
+          position: 'absolute',
+          bottom: '0.5rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: '0.5rem'
+        }}>
+          {logos.map((_, index) => (
+            <div
+              key={index}
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: currentLogo === index ? '#F0E68C' : 'rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease'
+              }}
+            />
+          ))}
         </div>
-        <img
-          src="/Logo/anr.jpg"
-          alt="ANR - Agence nationale de la recherche"
-          style={{ width: '80%', height: 'auto', filter: 'brightness(1.1)' }}
-        />
       </div>
 
       {/* Footer */}
