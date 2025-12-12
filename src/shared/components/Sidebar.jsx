@@ -182,30 +182,22 @@ const Sidebar = ({
           transition: 'background 0.2s'
         }}
       >
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          marginBottom: '0.5rem'
-        }}>
-          <span style={{ fontSize: '2rem' }}>⚖</span>
-          <div>
-            <div style={{
-              fontSize: '1.8rem',
-              fontWeight: 'bold',
-              fontFamily: '"Crimson Text", serif',
-              letterSpacing: '-0.02em'
-            }}>
-              CiSaMe
-            </div>
-            <div style={{
-              fontSize: '0.7rem',
-              opacity: 0.9,
-              letterSpacing: '0.05em',
-              marginTop: '0.25rem'
-            }}>
-              Circulation des Savoirs Médiévaux
-            </div>
+        <div>
+          <div style={{
+            fontSize: '1.8rem',
+            fontWeight: 'bold',
+            fontFamily: '"Crimson Text", serif',
+            letterSpacing: '-0.02em',
+            marginBottom: '0.5rem'
+          }}>
+            CiSaMe
+          </div>
+          <div style={{
+            fontSize: '0.7rem',
+            opacity: 0.9,
+            letterSpacing: '0.05em'
+          }}>
+            Circulation des savoirs médiévaux au XII<sup>e</sup> siècle
           </div>
         </div>
       </Link>

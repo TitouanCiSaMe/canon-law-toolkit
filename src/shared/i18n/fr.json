@@ -6,7 +6,7 @@
   "nav": {
     "home": "Accueil",
     "queryGenerator": "Générateur de requêtes",
-    "concordanceAnalyzer": "Analyseur de concordances"
+    "concordanceAnalyzer": "Analyse des résultats"
   },
   "sidebar": {
     "nav": {
@@ -50,7 +50,7 @@
         "subtitle": "Analysez et visualisez vos concordances",
         "what": {
           "title": "Qu'est-ce que c'est ?",
-          "description": "L'Analyseur de concordances vous permet d'importer vos exports NoSketch Engine, de les enrichir avec des métadonnées, et de les explorer à travers différentes visualisations (temporelles, par domaine, par auteur). Vous pouvez également comparer deux corpus distincts."
+          "description": "L'Analyse des résultats vous permet d'importer vos exports NoSketch Engine, de les enrichir avec des métadonnées, et de les explorer à travers différentes visualisations (temporelles, par domaine, par auteur). Vous pouvez également comparer deux corpus distincts."
         },
         "howto": {
           "title": "Comment l'utiliser ?",
@@ -94,11 +94,11 @@
       "title": "Démarrage rapide",
       "step1": {
         "title": "Choisissez votre outil",
-        "description": "Sélectionnez l'Analyseur de concordances pour explorer vos données ou le Générateur de requêtes pour créer des recherches avancées"
+        "description": "Sélectionnez l'Analyse des résultats pour explorer vos données ou le Générateur de requêtes pour créer des recherches avancées"
       },
       "step2": {
         "title": "Importez vos données",
-        "description": "Pour l'Analyseur : importez vos métadonnées puis vos concordances. Vos données sont sauvegardées pendant toute la session du navigateur"
+        "description": "Pour l'Analyse des résultats : importez vos métadonnées puis vos concordances. Vos données sont sauvegardées pendant toute la session du navigateur"
       },
       "step3": {
         "title": "Explorez et analysez",
@@ -240,7 +240,7 @@
   },
   "concordance": {
     "app": {
-      "title": "Analyseur de Concordances",
+      "title": "Analyse des résultats",
       "subtitle": "Analyse lexicométrique du droit canon médiéval"
     },
     "panels": {
