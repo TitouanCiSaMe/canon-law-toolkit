@@ -20,27 +20,26 @@
 
 .cisame-box {
   display: inline-block;
-  background: #FFFEF9;
-  border: 3px solid #5C3317;
-  border-radius: 1rem;
-  padding: 2rem 4rem;
-  box-shadow: 0 4px 16px rgba(92, 51, 23, 0.15);
+  text-align: center;
 }
 
 .cisame-title {
-  font-family: 'Crimson Text', serif;
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-family: 'Unistra Encadre', 'Crimson Text', serif;
+  font-size: 3rem;
+  font-weight: 400;
   color: #5C3317;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .cisame-subtitle {
-  font-size: 1.1rem;
-  color: #704214;
-  letter-spacing: 0.02em;
-  font-style: italic;
+  font-family: 'Unistra Encadre', 'Crimson Text', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #5C3317;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
 }
 
 /* ============================================================================
@@ -230,16 +229,12 @@
    ============================================================================ */
 
 @media (max-width: 768px) {
-  .cisame-box {
-    padding: 1.5rem 2rem;
-  }
-
   .cisame-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .cisame-subtitle {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
 
   .project-description p {

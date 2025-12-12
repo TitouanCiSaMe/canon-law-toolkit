@@ -12,9 +12,9 @@ const Home = () => {
       {/* Hero Section - Encadré CiSaMe */}
       <section className="hero-section">
         <div className="cisame-box">
-          <div className="cisame-title">CiSaMe</div>
+          <div className="cisame-title">(_CiSaMe_)))</div>
           <div className="cisame-subtitle">
-            Circulation des savoirs médiévaux au XII<sup>e</sup> siècle
+            (_Circulation_des_savoirs_médiévaux_au_XII<sup>e</sup>_siècle_)))
           </div>
         </div>
       </section>
