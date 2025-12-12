@@ -388,9 +388,9 @@ const ConcordanceAnalyzerPanels = () => {
                     <button
                       onClick={() => navigateToView('overview')}
                       style={{
-                        background: 'linear-gradient(135deg, #805320 0%, #5C3317 100%)',
-                        border: 'none',
-                        color: '#FFFFFF',
+                        background: 'linear-gradient(135deg, #E8DCC6 0%, #D4C4A8 100%)',
+                        border: '1px solid #C9B999',
+                        color: '#5C3317',
                         cursor: 'pointer',
                         padding: '0.5rem 1rem',
                         borderRadius: '6px',
@@ -400,15 +400,17 @@ const ConcordanceAnalyzerPanels = () => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.5rem',
-                        boxShadow: '0 2px 4px rgba(92, 51, 23, 0.2)'
+                        boxShadow: '0 2px 4px rgba(92, 51, 23, 0.1)'
                       }}
                       onMouseOver={(e) => {
                         e.target.style.transform = 'translateY(-1px)';
-                        e.target.style.boxShadow = '0 4px 8px rgba(92, 51, 23, 0.3)';
+                        e.target.style.boxShadow = '0 4px 8px rgba(92, 51, 23, 0.15)';
+                        e.target.style.background = 'linear-gradient(135deg, #F0E6D2 0%, #E0D0B4 100%)';
                       }}
                       onMouseOut={(e) => {
                         e.target.style.transform = 'translateY(0)';
-                        e.target.style.boxShadow = '0 2px 4px rgba(92, 51, 23, 0.2)';
+                        e.target.style.boxShadow = '0 2px 4px rgba(92, 51, 23, 0.1)';
+                        e.target.style.background = 'linear-gradient(135deg, #E8DCC6 0%, #D4C4A8 100%)';
                       }}
                     >
                       <span>←</span> {t('concordance.buttons.back')}
