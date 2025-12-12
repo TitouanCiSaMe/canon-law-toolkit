@@ -65,14 +65,14 @@ const Sidebar = ({
   // Navigation des vues du concordance analyzer (symboles médiévaux)
   const views = [
     { id: 'overview', icon: '◈', label: t('concordance.panels.overview.title') },
+    { id: 'concordances', icon: '⊞', label: t('concordance.panels.concordances.title') },
     { id: 'domains', icon: '⚜', label: t('concordance.panels.domains.title') },
     { id: 'temporal', icon: '⧗', label: t('concordance.panels.temporal.title') },
     { id: 'authors', icon: '✒', label: t('concordance.panels.authors.title') },
     { id: 'linguistic', icon: '❦', label: t('concordance.panels.linguistic.title') },
     { id: 'places', icon: '✦', label: t('concordance.panels.places.title') },
     { id: 'data', icon: '⟐', label: t('concordance.panels.data.title') },
-    { id: 'corpusComparison', icon: '⚖', label: t('concordance.panels.corpusComparison.title') },
-    { id: 'concordances', icon: '⊞', label: t('concordance.panels.concordances.title') }
+    { id: 'corpusComparison', icon: '⚖', label: t('concordance.panels.corpusComparison.title') }
   ];
 
   const toggleLanguage = () => {

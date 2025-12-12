@@ -329,7 +329,7 @@ const OverviewView = ({
         {isMobile ? (
           renderCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length)
         ) : isTablet ? (
-          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, t('concordance.overview.legalDomains'))
+          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains'))
         ) : (
           <div style={{ textAlign: 'center' }}>
             <div style={{
@@ -340,7 +340,7 @@ const OverviewView = ({
               {analytics.domains.length}
             </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-              {t('concordance.overview.legalDomains')}
+              {analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains')}
             </div>
 
             {analytics.domains.slice(0, 3).map((domain, index) => (
