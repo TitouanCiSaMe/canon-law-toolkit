@@ -25,17 +25,17 @@
 
 .cisame-title {
   font-family: 'Unistra Encadre', 'Crimson Text', serif;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 400;
   color: #5C3317;
   letter-spacing: 0.02em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   line-height: 1.2;
 }
 
 .cisame-subtitle {
   font-family: 'Unistra Encadre', 'Crimson Text', serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
   color: #5C3317;
   letter-spacing: 0.01em;

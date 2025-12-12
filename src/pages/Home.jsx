@@ -14,7 +14,7 @@ const Home = () => {
         <div className="cisame-box">
           <div className="cisame-title">(_CiSaMe_)))</div>
           <div className="cisame-subtitle">
-            (_Circulation_des_savoirs_médiévaux_au_XII<sup>e</sup>_siècle_)))
+            (_Circulation_des_savoirs_médiévaux_au_XIIe_siècle_)))
           </div>
         </div>
       </section>

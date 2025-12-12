@@ -388,21 +388,32 @@ const ConcordanceAnalyzerPanels = () => {
                     <button
                       onClick={() => navigateToView('overview')}
                       style={{
-                        background: 'none',
+                        background: 'linear-gradient(135deg, #805320 0%, #5C3317 100%)',
                         border: 'none',
-                        color: academicColors.primary,
+                        color: '#FFFFFF',
                         cursor: 'pointer',
-                        padding: '0.25rem 0.5rem',
-                        borderRadius: '4px',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '6px',
                         transition: 'all 0.2s',
-                        fontSize: '0.9rem'
+                        fontSize: '0.9rem',
+                        fontWeight: '500',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        boxShadow: '0 2px 4px rgba(92, 51, 23, 0.2)'
                       }}
-                      onMouseOver={(e) => e.target.style.background = '#F0F4F8'}
-                      onMouseOut={(e) => e.target.style.background = 'none'}
+                      onMouseOver={(e) => {
+                        e.target.style.transform = 'translateY(-1px)';
+                        e.target.style.boxShadow = '0 4px 8px rgba(92, 51, 23, 0.3)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.transform = 'translateY(0)';
+                        e.target.style.boxShadow = '0 2px 4px rgba(92, 51, 23, 0.2)';
+                      }}
                     >
-                      {t('concordance.panels.overview.title')}
+                      <span>←</span> {t('concordance.buttons.back')}
                     </button>
-                    <span style={{ color: '#CBD5E1' }}>›</span>
+                    <span style={{ color: '#CBD5E1', margin: '0 0.5rem' }}>›</span>
 		    <span style={{ fontWeight: '500', color: '#2D3748' }}>
 		      {t(`concordance.panels.${activeView}.title`)}
 		    </span>
