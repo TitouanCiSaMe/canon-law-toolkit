@@ -85,7 +85,7 @@
   "queryGenerator": {
     "app": {
       "title": "Générateur de requêtes linguistiques",
-      "subtitle": "Outils avancés pour la recherche dans les corpus de textes anciens"
+      "subtitle": ""
     },
     "tabs": {
       "proximity": "Proximité",
@@ -103,7 +103,7 @@
     },
     "proximity": {
       "title": "Recherche de proximité",
-      "description": "Trouvez deux lemmes qui apparaissent à une distance donnée l'un de l'autre dans le texte. Parfait pour étudier les collocations et associations conceptuelles.",
+      "description": "Trouvez deux lemmes qui apparaissent à une distance donnée l'un de l'autre dans le texte.",
       "formTitle": "Paramètres de recherche",
       "lemma1": "Premier lemme",
       "lemma2": "Second lemme",
@@ -117,7 +117,7 @@
     },
     "variation": {
       "title": "Variations orthographiques",
-      "description": "Générez des requêtes pour trouver des variantes orthographiques avec support pour le latin médiéval.",
+      "description": "Générez des requêtes pour trouver des variantes orthographiques.",
       "formTitle": "Recherche de variations",
       "word": "Mot à rechercher",
       "desinenceType": "Type de désinence",
@@ -137,7 +137,7 @@
     },
     "proximityVariation": {
       "title": "Proximité avec variations",
-      "description": "Combinez proximité et variations orthographiques pour une recherche exhaustive.",
+      "description": "Combinez proximité et variations orthographiques.",
       "formTitle": "Recherche avancée",
       "variationType": "Type de variations",
       "simple": "Simple",
@@ -218,7 +218,7 @@
       },
       "domains": {
         "title": "Domaines",
-        "subtitle": "Répartition disciplinaire"
+        "subtitle": "Répartition par domaine traditionnel"
       },
       "temporal": {
         "title": "Chronologie",
@@ -246,7 +246,7 @@
       },
       "data": {
         "title": "Données",
-        "subtitle": "Concordances détaillées"
+        "subtitle": "Résultats détaillés"
       },
       "concordances": {
         "title": "Import",
@@ -276,7 +276,7 @@
       "enriched": "enrichies"
     },
     "overview": {
-      "concordancesAnalyzed": "Concordances analysées",
+      "concordancesAnalyzed": "Résultats analysés",
       "matchRate": "Taux de correspondance",
       "legalDomains": "domaines juridiques",
       "centuriesCovered": "siècles couverts",
@@ -284,7 +284,7 @@
       "keyTermsIdentified": "termes-clés identifiés",
       "uniqueKwicTerms": "termes KWIC uniques",
       "comparisonCriteria": "critères de comparaison",
-      "loadedConcordances": "concordances chargées",
+      "loadedConcordances": "résultats chargés",
       "enriched": "enrichies",
       "identifiedPlaces": "lieux identifiés",
       "readyToAnalyze": "Prêt à analyser",
@@ -438,7 +438,7 @@
       "oneLine": "Une ligne",
       "fullText": "Texte complet",
       "noData": "Aucune donnée disponible",
-      "importFirst": "Veuillez d'abord importer vos fichiers pour voir les concordances détaillées.",
+      "importFirst": "Veuillez d'abord importer vos fichiers pour voir les résultats détaillés.",
       "metadata": {
         "author": "Auteur :",
         "title": "Titre :",
