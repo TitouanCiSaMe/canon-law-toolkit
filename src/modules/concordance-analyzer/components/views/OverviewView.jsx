@@ -320,6 +320,22 @@ const OverviewView = ({
         )}
       </NavigationPanel>
 
+      {/* Panel Import de données */}
+      <NavigationPanel
+        config={panelConfig.concordances}
+        isActive={false}
+        onClick={() => navigateToView('concordances')}
+      >
+        {isMobile || isTablet ? (
+          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
+            <div style={{ fontSize: '2.5rem' }}>{panelConfig.concordances.icon}</div>
+            <div style={{ fontSize: '0.85rem', fontWeight: '600', marginTop: '0.5rem' }}>
+              {panelConfig.concordances.title}
+            </div>
+          </div>
+        ) : null}
+      </NavigationPanel>
+
       {/* Panel Domaines */}
       <NavigationPanel
         config={panelConfig.domains}
@@ -676,22 +692,6 @@ const OverviewView = ({
         )}
       </NavigationPanel>
 
-      {/* Panel Import de données */}
-      <NavigationPanel
-        config={panelConfig.concordances}
-        isActive={false}
-        onClick={() => navigateToView('concordances')}
-      >
-        {isMobile || isTablet ? (
-          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
-            <div style={{ fontSize: '2.5rem' }}>{panelConfig.concordances.icon}</div>
-            <div style={{ fontSize: '0.85rem', fontWeight: '600', marginTop: '0.5rem' }}>
-              {panelConfig.concordances.title}
-            </div>
-          </div>
-        ) : null}
-      </NavigationPanel>
-      
       {/* Panel Lieux */}
       <NavigationPanel
         config={panelConfig.places}
