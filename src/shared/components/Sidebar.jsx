@@ -185,22 +185,21 @@ const Sidebar = ({
         <div>
           <div style={{
             fontSize: '1.8rem',
-            fontWeight: 400,
-            fontFamily: '"Unistra Encadre", "Crimson Text", serif',
-            letterSpacing: '0.02em',
+            fontWeight: 700,
+            fontFamily: '"Crimson Text", serif',
+            letterSpacing: '-0.02em',
             marginBottom: '0.5rem'
           }}>
-            (_CiSaMe_)))
+            CiSaMe
           </div>
           <div style={{
-            fontSize: '0.65rem',
+            fontSize: '0.7rem',
             fontWeight: 400,
-            fontFamily: '"Unistra Encadre", "Crimson Text", serif',
-            opacity: 0.95,
-            letterSpacing: '0.01em',
+            opacity: 0.9,
+            letterSpacing: '0.02em',
             lineHeight: 1.3
           }}>
-            (_Circulation_des_savoirs_médiévaux_au_XIIe_siècle_)))
+            Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.6em' }}>e</sup> siècle
           </div>
         </div>
       </Link>
