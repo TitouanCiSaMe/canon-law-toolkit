@@ -326,14 +326,27 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('concordances')}
       >
-        {isMobile || isTablet ? (
-          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
-            <div style={{ fontSize: '2.5rem' }}>{panelConfig.concordances.icon}</div>
-            <div style={{ fontSize: '0.85rem', fontWeight: '600', marginTop: '0.5rem' }}>
-              {panelConfig.concordances.title}
+        {isMobile ? (
+          renderCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.itemCount || 0)
+        ) : isTablet ? (
+          renderSemiCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.itemCount || 0, parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze'))
+        ) : (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: statFontSize,
+              fontWeight: '300',
+              marginBottom: '0.5rem'
+            }}>
+              {parseStats.itemCount || 0}
+            </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+              {t('concordance.overview.loadedConcordances')}
+            </div>
+            <div style={{ fontSize: '0.85rem', opacity: 0.7 }}>
+              {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
             </div>
           </div>
-        ) : null}
+        )}
       </NavigationPanel>
 
       {/* Panel Domaines */}
