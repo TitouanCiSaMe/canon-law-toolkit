@@ -325,6 +325,11 @@ const OverviewView = ({
         config={panelConfig.concordances}
         isActive={false}
         onClick={() => navigateToView('concordances')}
+        style={
+          !parseStats.itemCount || parseStats.itemCount === 0
+            ? { border: '2px solid #D4AF37' }  // Contour doré fin quand vide
+            : {}
+        }
       >
         {isMobile ? (
           renderCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.itemCount || 0)

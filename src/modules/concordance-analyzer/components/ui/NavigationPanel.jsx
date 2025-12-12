@@ -76,7 +76,7 @@ import { visualTheme } from '@shared/theme/globalTheme';
  *   <StatisticsSummary />
  * </NavigationPanel>
  */
-const NavigationPanel = ({ config, isActive, onClick, children }) => {
+const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -103,7 +103,8 @@ const NavigationPanel = ({ config, isActive, onClick, children }) => {
 	    ? '0 4px 12px rgba(92, 51, 23, 0.2)'
 	    : '0 2px 6px rgba(92, 51, 23, 0.12)',
 	  zIndex: isHovered ? 10 : 1,
-	  borderRadius: '6px'
+	  borderRadius: '6px',
+	  ...style  // Permet d'override les styles par défaut
 	}}
     >
       <div style={{
