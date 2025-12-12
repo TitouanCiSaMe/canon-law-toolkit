@@ -18,92 +18,60 @@
     "copyright": "© 2025 CiSaMe<br/>Circulation des Savoirs Médiévaux"
   },
   "home": {
-    "welcome": "Bienvenue sur CiSaMe",
-    "description": "Plateforme d'outils pour l'analyse du droit canon médiéval",
-    "tagline": "Analysez vos corpus, comparez vos données et générez des requêtes linguistiques avancées",
-    "about": {
-      "title": "À propos de CiSaMe",
-      "description": "CiSaMe (Circulation des Savoirs Médiévaux) est une plateforme spécialisée dans l'analyse de corpus de droit canon médiéval. Elle offre des outils puissants pour explorer, visualiser et comparer vos données textuelles issues de NoSketch Engine.",
-      "features": {
-        "upload": {
-          "title": "Import facile",
-          "description": "Importez vos exports NoSketch Engine et vos métadonnées en quelques clics"
-        },
-        "analyze": {
-          "title": "Analyses visuelles",
-          "description": "Visualisez vos données avec des graphiques temporels, domaines, auteurs et lieux"
-        },
-        "filter": {
-          "title": "Filtrage avancé",
-          "description": "Filtrez vos concordances par auteur, domaine, période ou recherche textuelle"
-        },
-        "compare": {
-          "title": "Comparaison de corpus",
-          "description": "Comparez deux corpus distincts pour identifier les différences et similarités"
-        }
-      }
+    "projectDescription": {
+      "title": "Le projet",
+      "link": "« Circulation des savoirs médiévaux au XIIe siècle » (CiSaMe)",
+      "text1": "a pour ambition de renouveler l'histoire de la circulation des savoirs – juridiques, théologiques, philosophiques – au cours d'un long XIIe siècle (1050-1220), en amont de l'institutionnalisation des disciplines.",
+      "text2": "Ce site a pour objet de permettre l'interrogation de la base de données constituée dans le cadre du projet (dont le contenu est décrit",
+      "linkHere": "ici",
+      "text3": ") comme l'analyse et la visualisation des résultats obtenus. C'est à ces deux objets que correspondent les rubriques « Générateur de requêtes » et « Analyse des résultats ».",
+      "text4": "Des tutoriels expliquant le fonctionnement du site sont disponibles sur le",
+      "blogLink": "blog du projet"
     },
     "tools": {
-      "title": "Nos outils",
-      "startButton": "Commencer",
-      "concordance": {
-        "subtitle": "Analysez et visualisez vos concordances",
-        "what": {
-          "title": "Qu'est-ce que c'est ?",
-          "description": "L'Analyse des résultats vous permet d'importer vos exports NoSketch Engine, de les enrichir avec des métadonnées, et de les explorer à travers différentes visualisations (temporelles, par domaine, par auteur). Vous pouvez également comparer deux corpus distincts."
-        },
-        "howto": {
-          "title": "Comment l'utiliser ?",
-          "step1": "Importez vos métadonnées (fichier CSV avec les informations sur les œuvres) ⚠️ IMPORTANT : Dans NoSketch Engine, cochez obligatoirement 'ID de l'édition' et 'numéro de pages' lors de l'export des métadonnées",
-          "step2": "Importez votre export NoSketch Engine (concordances)",
-          "step3": "Explorez vos données à travers les différentes vues (Vue d'ensemble, Temporelle, Domaines, Auteurs, etc.)",
-          "step4": "Optionnel : Importez un second corpus pour comparer deux ensembles de données"
-        },
-        "features": {
-          "title": "Fonctionnalités",
-          "temporal": "Analyse temporelle avec timeline et graphiques chronologiques",
-          "domains": "Exploration par domaines (Théologie, Droit canonique, Droit romain...)",
-          "authors": "Statistiques par auteur avec classement et graphiques",
-          "comparison": "Comparaison de 2 corpus avec graphiques comparatifs détaillés",
-          "export": "Export des données en CSV et des graphiques en PNG"
-        }
-      },
       "query": {
-        "subtitle": "Construisez des requêtes linguistiques avancées",
         "what": {
-          "title": "Qu'est-ce que c'est ?",
-          "description": "Le Générateur de requêtes vous aide à construire des requêtes CQL (Corpus Query Language) complexes pour NoSketch Engine. Il offre une interface intuitive pour créer des recherches avancées avec lemmes, regex, distances et contraintes morphosyntaxiques."
+          "title": "OBJET",
+          "description": "Le Générateur de requêtes permet de construire des requêtes CQL (Corpus Query Language) complexes pour NoSketch Engine. Il offre une interface pour créer des recherches avancées avec lemmes, regex, distances et contraintes morphosyntaxiques."
         },
         "howto": {
-          "title": "Comment l'utiliser ?",
+          "title": "COMMENT L'UTILISER ?",
           "step1": "Choisissez le type de recherche (simple, lemme, regex, etc.)",
           "step2": "Configurez vos critères de recherche (distance entre tokens, contraintes...)",
           "step3": "Prévisualisez la requête CQL générée en temps réel",
           "step4": "Copiez la requête et utilisez-la dans NoSketch Engine"
         },
         "features": {
-          "title": "Fonctionnalités",
+          "title": "FONCTIONNALITÉS",
           "advanced": "Recherches avancées avec opérateurs CQL",
           "regex": "Support des expressions régulières",
           "lemma": "Recherche par lemme et formes fléchies",
-          "copy": "Copie en un clic de la requête générée"
+          "copy": "Copie de la requête générée"
         }
-      }
-    },
-    "gettingStarted": {
-      "title": "Démarrage rapide",
-      "step1": {
-        "title": "Choisissez votre outil",
-        "description": "Sélectionnez l'Analyse des résultats pour explorer vos données ou le Générateur de requêtes pour créer des recherches avancées"
       },
-      "step2": {
-        "title": "Importez vos données",
-        "description": "Pour l'Analyse des résultats : importez vos métadonnées puis vos concordances. Vos données sont sauvegardées pendant toute la session du navigateur"
+      "concordance": {
+        "what": {
+          "title": "OBJET",
+          "description": "L'analyse des résultats permet d'importer les exports NoSketch Engine, de les enrichir avec des métadonnées et de les explorer à travers différentes visualisations (temporelles, par domaine, par auteur). Vous pouvez également comparer deux exports de résultats distincts."
+        },
+        "howto": {
+          "title": "COMMENT L'UTILISER ?",
+          "step1": "Importez vos métadonnées (fichier CSV avec les informations sur les œuvres)",
+          "step2": "⚠️ IMPORTANT : Dans NoSketch Engine, cochez obligatoirement 'ID de l'édition' et 'numéro de pages' lors de l'export des métadonnées",
+          "step3": "Importez votre export NoSketch Engine (concordances)",
+          "step4": "Explorez les résultats à travers différentes vues (vue d'ensemble, temporelle, domaines, auteurs, etc.)",
+          "step5": "Optionnel : Importez un second export de résultats pour comparer deux ensembles de données"
+        },
+        "features": {
+          "title": "FONCTIONNALITÉS",
+          "temporal": "Analyse temporelle avec timeline et graphiques chronologiques",
+          "domains": "Exploration par domaines (Théologie, droit canonique, droit romain)",
+          "authors": "Statistiques par auteur avec classement et graphiques",
+          "comparison": "Comparaison de 2 jeux de résultats avec graphiques comparatifs détaillés",
+          "export": "Export des données en CSV et des graphiques en PNG"
+        }
       },
-      "step3": {
-        "title": "Explorez et analysez",
-        "description": "Naviguez entre les différentes vues, filtrez vos données, exportez vos graphiques et découvrez des insights sur votre corpus"
-      }
+      "startButton": "Commencer"
     }
   },
   "common": {
