@@ -204,7 +204,7 @@ const OverviewView = ({
     xs: 'auto',      // Mobile: hauteur automatique
     sm: 'auto',      // Phone landscape: hauteur automatique
     md: 'auto',      // Tablet: hauteur automatique
-    lg: 'repeat(2, minmax(200px, auto)) minmax(160px, auto)'  // Desktop: lignes 1-2 identiques, ligne 3 plus petite
+    lg: '320px 320px 280px'  // Desktop: hauteurs fixes généreuses pour tout voir
   });
 
   // Tailles de police responsives pour les statistiques
@@ -244,7 +244,7 @@ const OverviewView = ({
     <div style={{
       display: 'grid',
       gridTemplateColumns,
-      gridTemplateRows,  // Hauteurs responsives (ligne 1: 220px, ligne 2: 220px, ligne 3: 180px sur desktop)
+      gridTemplateRows,  // Hauteurs responsives (ligne 1: 320px, ligne 2: 320px, ligne 3: 280px sur desktop)
       gap: gridGap,
       background: academicColors.text,
       padding: containerPadding,
