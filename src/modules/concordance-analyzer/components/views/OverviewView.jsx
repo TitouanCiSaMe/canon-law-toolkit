@@ -204,7 +204,7 @@ const OverviewView = ({
     xs: 'auto',      // Mobile: hauteur automatique
     sm: 'auto',      // Phone landscape: hauteur automatique
     md: 'auto',      // Tablet: hauteur automatique
-    lg: 'minmax(220px, 1fr) minmax(220px, 1fr) minmax(180px, 0.8fr)'  // Desktop: 3 lignes avec hauteurs contrôlées
+    lg: 'repeat(2, minmax(200px, auto)) minmax(160px, auto)'  // Desktop: lignes 1-2 identiques, ligne 3 plus petite
   });
 
   // Tailles de police responsives pour les statistiques

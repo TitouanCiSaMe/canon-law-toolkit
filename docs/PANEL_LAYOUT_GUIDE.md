@@ -45,11 +45,11 @@ Ouvrez `src/modules/concordance-analyzer/config/panelConfig.js`
 **Disposition actuelle (Décembre 2025) :**
 
 ```
-Ligne 1 : [Vue d'ensemble] [Import] [Domaines] [Chronologie]
-          (1/1 → 2/2)      (1/2 →  (1/3 → 2/4) (1/4 → 2/5)
+Ligne 1 : [Import]         [Lieux]   [Domaines] [Chronologie]
+          (1/1 → 2/2)      (1/2 →    (1/3 → 2/4) (1/4 → 2/5)
                             2/3)
 
-Ligne 2 : [Lieux]          [Auteurs] [Terminologie] [Données]
+Ligne 2 : [Vue d'ensemble] [Auteurs] [Terminologie] [Données]
           (2/1 → 3/2)      (2/2 →    (2/3 → 3/4)    (2/4 → 3/5)
                             3/3)
 
@@ -168,6 +168,101 @@ Vous pouvez ajouter des styles personnalisés dans `OverviewView.jsx` via le pro
 
 ---
 
+## Modifier les hauteurs de lignes
+
+### Problème : Les panels sont tronqués ou nécessitent du scroll
+
+**Fichier à modifier :** `src/modules/concordance-analyzer/components/views/OverviewView.jsx`
+
+**Localisation :** Cherchez la variable `gridTemplateRows` (environ ligne 203)
+
+### Syntaxe actuelle
+
+```javascript
+const gridTemplateRows = useResponsiveValue({
+  xs: 'auto',      // Mobile: hauteur automatique
+  sm: 'auto',      // Phone landscape: hauteur automatique
+  md: 'auto',      // Tablet: hauteur automatique
+  lg: 'repeat(2, minmax(200px, auto)) minmax(160px, auto)'  // Desktop
+});
+```
+
+### Comprendre la syntaxe
+
+```javascript
+lg: 'repeat(2, minmax(200px, auto)) minmax(160px, auto)'
+    └───────┬───────────────────┘  └─────────┬──────────┘
+            │                                 │
+    Lignes 1-2: min 200px,          Ligne 3: min 160px,
+    hauteur automatique             hauteur automatique
+```
+
+**Décomposition :**
+- `repeat(2, minmax(200px, auto))` = Les 2 premières lignes ont une hauteur minimum de 200px
+- `minmax(160px, auto)` = La 3ème ligne a une hauteur minimum de 160px
+- `auto` = La hauteur s'adapte au contenu (peut être plus grande que le minimum)
+
+### Exemples de modifications
+
+#### Augmenter toutes les hauteurs de 20px
+
+```javascript
+lg: 'repeat(2, minmax(220px, auto)) minmax(180px, auto)'
+```
+
+#### Réduire la ligne 3 pour gagner de l'espace
+
+```javascript
+lg: 'repeat(2, minmax(200px, auto)) minmax(140px, auto)'
+```
+
+#### Fixer des hauteurs exactes (non recommandé - risque de débordement)
+
+```javascript
+lg: '250px 250px 180px'  // ⚠️ Attention : le contenu peut déborder
+```
+
+#### Hauteurs proportionnelles avec fractions
+
+```javascript
+lg: '1fr 1fr 0.8fr'  // Ligne 1 et 2 identiques, ligne 3 = 80% de leur hauteur
+```
+
+#### Combiner minimum et fractions (RECOMMANDÉ)
+
+```javascript
+lg: 'minmax(200px, 1fr) minmax(200px, 1fr) minmax(150px, 0.7fr)'
+// Ligne 1: min 200px, proportion 1
+// Ligne 2: min 200px, proportion 1
+// Ligne 3: min 150px, proportion 0.7 (plus compacte)
+```
+
+### Valeurs recommandées selon le contenu
+
+| Configuration | Cas d'usage |
+|--------------|-------------|
+| `repeat(3, minmax(180px, auto))` | Toutes les lignes égales, contenu compact |
+| `repeat(2, minmax(220px, auto)) minmax(160px, auto)` | Ligne 3 plus petite (actuel) |
+| `minmax(250px, 1fr) minmax(250px, 1fr) minmax(180px, 0.8fr)` | Plus d'espace pour lignes 1-2 |
+| `repeat(3, 1fr)` | Hauteurs égales, remplissage vertical complet |
+
+### Procédure de modification
+
+1. Ouvrir `src/modules/concordance-analyzer/components/views/OverviewView.jsx`
+2. Chercher `const gridTemplateRows = useResponsiveValue`
+3. Modifier UNIQUEMENT la valeur de `lg:` (desktop)
+4. Sauvegarder et tester dans le navigateur
+5. Ajuster jusqu'à ce que tous les panels soient visibles
+
+### ⚠️ Attention
+
+- Modifier uniquement `lg:` - laisser `xs`, `sm`, `md` en `'auto'`
+- Tester avec et sans données importées
+- Vérifier que le panel Comparaison Corpus n'est pas tronqué
+- Si un panel déborde, augmenter le `minmax()` de sa ligne
+
+---
+
 ## Grille responsive
 
 La grille s'adapte automatiquement selon la taille d'écran :
@@ -195,7 +290,7 @@ const gridTemplateColumns = useResponsiveValue({
 
 ## Checklist de modification
 
-Avant de modifier la disposition :
+### Pour déplacer un panel
 
 - [ ] Ouvrir `src/modules/concordance-analyzer/config/panelConfig.js`
 - [ ] Identifier le panel à déplacer
@@ -205,6 +300,17 @@ Avant de modifier la disposition :
 - [ ] Tester sur desktop (les `gridArea` s'appliquent uniquement ici)
 - [ ] Tester sur mobile/tablet (vérifier l'ordre JSX dans `OverviewView.jsx`)
 - [ ] Commit et push les modifications
+
+### Pour ajuster les hauteurs de lignes
+
+- [ ] Ouvrir `src/modules/concordance-analyzer/components/views/OverviewView.jsx`
+- [ ] Chercher `const gridTemplateRows = useResponsiveValue`
+- [ ] Modifier UNIQUEMENT la valeur `lg:` (ligne ~207)
+- [ ] Utiliser `minmax(XXXpx, auto)` pour hauteur minimum
+- [ ] Sauvegarder et recharger le navigateur
+- [ ] Vérifier que tous les panels sont visibles sans scroll
+- [ ] Tester avec et sans données
+- [ ] Commit et push si satisfait
 
 ---
 
@@ -229,6 +335,30 @@ Avant de modifier la disposition :
 **Solution :**
 - Si `gridArea` couvre 1 colonne → `size: 'medium'`
 - Si `gridArea` couvre 4 colonnes → `size: 'wide'`
+
+### Les panels sont tronqués / je dois scroller
+
+**Cause :** Les hauteurs de lignes (`gridTemplateRows`) sont trop petites.
+
+**Solution :**
+1. Ouvrir `OverviewView.jsx`
+2. Trouver `gridTemplateRows` (ligne ~203)
+3. Augmenter les valeurs `minmax()` :
+   ```javascript
+   // Exemple : augmenter de 20px
+   lg: 'repeat(2, minmax(220px, auto)) minmax(180px, auto)'
+   ```
+4. Tester jusqu'à ce que tout soit visible
+
+### Aucun changement visible après modification
+
+**Cause :** Le navigateur a mis en cache l'ancienne version.
+
+**Solution :**
+1. Hard refresh : `Ctrl+Shift+R` (Windows/Linux) ou `Cmd+Shift+R` (Mac)
+2. Vider le cache du navigateur
+3. Vérifier que le fichier a bien été sauvegardé
+4. Vérifier la console pour des erreurs JavaScript
 
 ---
 
