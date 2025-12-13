@@ -199,6 +199,14 @@ const OverviewView = ({
     lg: '2px'
   });
 
+  // Hauteur des lignes responsive pour éviter le scroll
+  const gridTemplateRows = useResponsiveValue({
+    xs: 'auto',      // Mobile: hauteur automatique
+    sm: 'auto',      // Phone landscape: hauteur automatique
+    md: 'auto',      // Tablet: hauteur automatique
+    lg: 'minmax(220px, 1fr) minmax(220px, 1fr) minmax(180px, 0.8fr)'  // Desktop: 3 lignes avec hauteurs contrôlées
+  });
+
   // Tailles de police responsives pour les statistiques
   const statFontSize = useResponsiveValue({
     xs: '2rem',      // Mobile
@@ -236,7 +244,7 @@ const OverviewView = ({
     <div style={{
       display: 'grid',
       gridTemplateColumns,
-      gridTemplateRows: 'auto',  // Auto-adjust sur toutes les tailles
+      gridTemplateRows,  // Hauteurs responsives (ligne 1: 220px, ligne 2: 220px, ligne 3: 180px sur desktop)
       gap: gridGap,
       background: academicColors.text,
       padding: containerPadding,
