@@ -17,16 +17,7 @@ import { visualTheme, createGradient } from '@shared/theme/globalTheme';
 // ============================================================================
 
 export const panelConfig = {
-  overview: {
-    id: 'overview',
-    title: 'concordance.panels.overview.title',
-    subtitle: 'concordance.panels.overview.subtitle',
-    color: visualTheme.colors.primary.main,           // Brun encre principal
-    gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.dark),
-    icon: '◈',  // Symbole académique/ornement
-    gridArea: '1 / 1 / 2 / 2',  // Ligne 1, colonne 1
-    size: 'medium'
-  },
+  // LIGNE 1 : Import, Lieux, Domaines, Chronologie
   concordances: {
     id: 'concordances',
     title: 'concordance.panels.concordances.title',
@@ -34,7 +25,17 @@ export const panelConfig = {
     color: '#5C3317',                                 // Brun encre principal
     gradient: createGradient('#5C3317', '#704214'),
     icon: '⊞',  // Symbole catalogue/archive
-    gridArea: '1 / 2 / 2 / 3',  // Ligne 1, colonne 2 (position 2 - après Vue d'ensemble)
+    gridArea: '1 / 1 / 2 / 2',  // Ligne 1, colonne 1 (haut gauche)
+    size: 'medium'
+  },
+  places: {
+    id: 'places',
+    title: 'concordance.panels.places.title',
+    subtitle: 'concordance.panels.places.subtitle',
+    color: visualTheme.colors.accent.green,           // Vert malachite
+    gradient: createGradient(visualTheme.colors.accent.green, '#1F3510'),
+    icon: '✦',  // Étoile ornementale (cartographie médiévale)
+    gridArea: '1 / 2 / 2 / 3',  // Ligne 1, colonne 2 (à droite de l'import)
     size: 'medium'
   },
   domains: {
@@ -58,14 +59,15 @@ export const panelConfig = {
     gridArea: '1 / 4 / 2 / 5',  // Ligne 1, colonne 4
     size: 'medium'
   },
-  places: {
-    id: 'places',
-    title: 'concordance.panels.places.title',
-    subtitle: 'concordance.panels.places.subtitle',
-    color: visualTheme.colors.accent.green,           // Vert malachite
-    gradient: createGradient(visualTheme.colors.accent.green, '#1F3510'),
-    icon: '✦',  // Étoile ornementale (cartographie médiévale)
-    gridArea: '2 / 1 / 3 / 2',  // Ligne 2, colonne 1
+  // LIGNE 2 : Vue d'ensemble, Auteurs, Terminologie, Données
+  overview: {
+    id: 'overview',
+    title: 'concordance.panels.overview.title',
+    subtitle: 'concordance.panels.overview.subtitle',
+    color: visualTheme.colors.primary.main,           // Brun encre principal
+    gradient: createGradient(visualTheme.colors.primary.main, visualTheme.colors.primary.dark),
+    icon: '◈',  // Symbole académique/ornement
+    gridArea: '2 / 1 / 3 / 2',  // Ligne 2, colonne 1 (sous l'import)
     size: 'medium'
   },
   authors: {
@@ -98,6 +100,7 @@ export const panelConfig = {
     gridArea: '2 / 4 / 3 / 5',  // Ligne 2, colonne 4
     size: 'medium'
   },
+  // LIGNE 3 : Comparaison Corpus (full width)
   corpusComparison: {
     id: 'corpusComparison',
     title: 'concordance.panels.corpusComparison.title',
