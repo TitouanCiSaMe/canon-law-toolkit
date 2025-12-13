@@ -176,75 +176,90 @@ Vous pouvez ajouter des styles personnalisés dans `OverviewView.jsx` via le pro
 
 **Localisation :** Cherchez la variable `gridTemplateRows` (environ ligne 203)
 
-### Syntaxe actuelle
+### Syntaxe actuelle (Décembre 2025)
 
 ```javascript
 const gridTemplateRows = useResponsiveValue({
   xs: 'auto',      // Mobile: hauteur automatique
   sm: 'auto',      // Phone landscape: hauteur automatique
   md: 'auto',      // Tablet: hauteur automatique
-  lg: 'repeat(2, minmax(200px, auto)) minmax(160px, auto)'  // Desktop
+  lg: '320px 320px 280px'  // Desktop: hauteurs fixes pour tout afficher
 });
 ```
 
 ### Comprendre la syntaxe
 
 ```javascript
-lg: 'repeat(2, minmax(200px, auto)) minmax(160px, auto)'
-    └───────┬───────────────────┘  └─────────┬──────────┘
-            │                                 │
-    Lignes 1-2: min 200px,          Ligne 3: min 160px,
-    hauteur automatique             hauteur automatique
+lg: '320px 320px 280px'
+    └─┬─┘ └─┬─┘ └─┬─┘
+      │     │     │
+   Ligne 1 Ligne 2 Ligne 3
+   (Import, (Vue     (Comparaison
+    Lieux,   d'ens.,  Corpus)
+    Domaines,Auteurs,
+    Chrono.) Termin.,
+             Données)
 ```
 
 **Décomposition :**
-- `repeat(2, minmax(200px, auto))` = Les 2 premières lignes ont une hauteur minimum de 200px
-- `minmax(160px, auto)` = La 3ème ligne a une hauteur minimum de 160px
-- `auto` = La hauteur s'adapte au contenu (peut être plus grande que le minimum)
+- **Ligne 1 : 320px** - Hauteur fixe pour Import, Lieux, Domaines, Chronologie
+- **Ligne 2 : 320px** - Hauteur fixe pour Vue d'ensemble, Auteurs, Terminologie, Données
+- **Ligne 3 : 280px** - Hauteur fixe pour Comparaison Corpus (plus compacte)
+- **Total : ~920px** + gaps (2px entre lignes) = tous les panels visibles sans scroll
 
 ### Exemples de modifications
 
-#### Augmenter toutes les hauteurs de 20px
+#### 1. Augmenter toutes les hauteurs de 20px (si le contenu déborde encore)
 
 ```javascript
-lg: 'repeat(2, minmax(220px, auto)) minmax(180px, auto)'
+lg: '340px 340px 300px'  // +20px partout
 ```
 
-#### Réduire la ligne 3 pour gagner de l'espace
+#### 2. Réduire les hauteurs pour écrans plus petits
 
 ```javascript
-lg: 'repeat(2, minmax(200px, auto)) minmax(140px, auto)'
+lg: '280px 280px 240px'  // -40px (minimum recommandé)
 ```
 
-#### Fixer des hauteurs exactes (non recommandé - risque de débordement)
+#### 3. Ligne 3 (Comparaison Corpus) plus grande
 
 ```javascript
-lg: '250px 250px 180px'  // ⚠️ Attention : le contenu peut déborder
+lg: '320px 320px 320px'  // Toutes les lignes identiques
 ```
 
-#### Hauteurs proportionnelles avec fractions
+#### 4. Hauteurs proportionnelles avec fractions (responsive vertical)
 
 ```javascript
-lg: '1fr 1fr 0.8fr'  // Ligne 1 et 2 identiques, ligne 3 = 80% de leur hauteur
+lg: '1fr 1fr 0.8fr'  // Remplissage automatique de l'espace disponible
+// ⚠️ Peut causer du débordement si l'écran est trop petit
 ```
 
-#### Combiner minimum et fractions (RECOMMANDÉ)
+#### 5. Combiner minimum et fractions (RECOMMANDÉ pour flexibilité)
 
 ```javascript
-lg: 'minmax(200px, 1fr) minmax(200px, 1fr) minmax(150px, 0.7fr)'
-// Ligne 1: min 200px, proportion 1
-// Ligne 2: min 200px, proportion 1
-// Ligne 3: min 150px, proportion 0.7 (plus compacte)
+lg: 'minmax(280px, 1fr) minmax(280px, 1fr) minmax(240px, 0.8fr)'
+// Ligne 1: min 280px, s'étend avec 1fr
+// Ligne 2: min 280px, s'étend avec 1fr
+// Ligne 3: min 240px, s'étend avec 0.8fr (plus compacte)
+```
+
+#### 6. Hauteur automatique (valeur d'origine - peut causer du scroll)
+
+```javascript
+lg: 'auto auto auto'  // Hauteur basée sur le contenu (non recommandé)
 ```
 
 ### Valeurs recommandées selon le contenu
 
-| Configuration | Cas d'usage |
-|--------------|-------------|
-| `repeat(3, minmax(180px, auto))` | Toutes les lignes égales, contenu compact |
-| `repeat(2, minmax(220px, auto)) minmax(160px, auto)` | Ligne 3 plus petite (actuel) |
-| `minmax(250px, 1fr) minmax(250px, 1fr) minmax(180px, 0.8fr)` | Plus d'espace pour lignes 1-2 |
-| `repeat(3, 1fr)` | Hauteurs égales, remplissage vertical complet |
+| Configuration | Cas d'usage | Notes |
+|--------------|-------------|-------|
+| `'320px 320px 280px'` | **ACTUEL** - Tout visible sans scroll | ✅ Recommandé pour écrans standards |
+| `'340px 340px 300px'` | Plus d'espace si contenu déborde | Pour écrans larges (>1600px) |
+| `'280px 280px 240px'` | Version compacte pour petits écrans | Minimum pour éviter le débordement |
+| `'320px 320px 320px'` | Toutes les lignes égales | Si Comparaison Corpus a plus de contenu |
+| `'minmax(280px, 1fr) minmax(280px, 1fr) minmax(240px, 0.8fr)'` | Flexibilité min + responsive | S'adapte à la hauteur de l'écran |
+| `'1fr 1fr 0.8fr'` | Remplissage automatique | ⚠️ Risque débordement si écran petit |
+| `'auto auto auto'` | Basé sur le contenu | ⚠️ Non recommandé (cause scroll) |
 
 ### Procédure de modification
 
@@ -304,13 +319,16 @@ const gridTemplateColumns = useResponsiveValue({
 ### Pour ajuster les hauteurs de lignes
 
 - [ ] Ouvrir `src/modules/concordance-analyzer/components/views/OverviewView.jsx`
-- [ ] Chercher `const gridTemplateRows = useResponsiveValue`
-- [ ] Modifier UNIQUEMENT la valeur `lg:` (ligne ~207)
-- [ ] Utiliser `minmax(XXXpx, auto)` pour hauteur minimum
-- [ ] Sauvegarder et recharger le navigateur
+- [ ] Chercher `const gridTemplateRows = useResponsiveValue` (ligne ~203)
+- [ ] Modifier UNIQUEMENT la valeur `lg:` (laisser `xs`, `sm`, `md` en `'auto'`)
+- [ ] Utiliser des hauteurs fixes : `lg: '320px 320px 280px'` (valeur actuelle)
+- [ ] Alternative : `lg: 'minmax(280px, 1fr) minmax(280px, 1fr) minmax(240px, 0.8fr)'`
+- [ ] Sauvegarder et faire un **hard refresh** (`Ctrl+Shift+R`)
 - [ ] Vérifier que tous les panels sont visibles sans scroll
-- [ ] Tester avec et sans données
-- [ ] Commit et push si satisfait
+- [ ] Tester avec et sans données importées
+- [ ] Si scroll : augmenter les valeurs (ex: `340px 340px 300px`)
+- [ ] Si trop d'espace : réduire les valeurs (ex: `280px 280px 240px`)
+- [ ] Commit et push une fois satisfait
 
 ---
 
@@ -338,17 +356,31 @@ const gridTemplateColumns = useResponsiveValue({
 
 ### Les panels sont tronqués / je dois scroller
 
-**Cause :** Les hauteurs de lignes (`gridTemplateRows`) sont trop petites.
+**Cause :** Les hauteurs de lignes (`gridTemplateRows`) sont trop petites ou en mode `auto`.
 
 **Solution :**
-1. Ouvrir `OverviewView.jsx`
-2. Trouver `gridTemplateRows` (ligne ~203)
-3. Augmenter les valeurs `minmax()` :
+1. Ouvrir `src/modules/concordance-analyzer/components/views/OverviewView.jsx`
+2. Trouver `const gridTemplateRows = useResponsiveValue` (ligne ~203)
+3. Modifier UNIQUEMENT la valeur `lg:` :
    ```javascript
-   // Exemple : augmenter de 20px
-   lg: 'repeat(2, minmax(220px, auto)) minmax(180px, auto)'
+   // AVANT (problématique)
+   lg: 'auto auto auto'
+
+   // APRÈS (solution qui fonctionne)
+   lg: '320px 320px 280px'
    ```
-4. Tester jusqu'à ce que tout soit visible
+4. Sauvegarder et faire un **hard refresh** (`Ctrl+Shift+R`)
+5. Vérifier que tous les panels sont visibles
+6. Si encore du scroll, augmenter les valeurs :
+   ```javascript
+   lg: '340px 340px 300px'  // +20px
+   ```
+7. Tester jusqu'à ce que tout soit visible
+
+**Valeurs testées qui fonctionnent :**
+- ✅ `'320px 320px 280px'` - Configuration actuelle (Décembre 2025)
+- ✅ `'340px 340px 300px'` - Pour plus d'espace
+- ✅ `'280px 280px 240px'` - Version compacte (minimum)
 
 ### Aucun changement visible après modification
 
