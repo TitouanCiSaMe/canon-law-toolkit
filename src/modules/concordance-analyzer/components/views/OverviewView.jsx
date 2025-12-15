@@ -334,15 +334,15 @@ const OverviewView = ({
         isActive={false}
         onClick={() => navigateToView('concordances')}
         style={
-          !parseStats.itemCount || parseStats.itemCount === 0
+          !parseStats.totalReferences || parseStats.totalReferences === 0
             ? { border: '2px solid #D4AF37' }  // Contour doré fin quand vide
             : {}
         }
       >
         {isMobile ? (
-          renderCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.itemCount || 0)
+          renderCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.totalReferences || 0)
         ) : isTablet ? (
-          renderSemiCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.itemCount || 0, parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze'))
+          renderSemiCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.totalReferences || 0, parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze'))
         ) : (
           <div style={{ textAlign: 'center' }}>
             <div style={{
@@ -350,7 +350,7 @@ const OverviewView = ({
               fontWeight: '300',
               marginBottom: '0.5rem'
             }}>
-              {parseStats.itemCount || 0}
+              {parseStats.totalReferences || 0}
             </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
               {t('concordance.overview.loadedConcordances')}
@@ -478,7 +478,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length, t('concordance.overview.referencedAuthors'))
         ) : (
-          <div>
+          <div style={{ paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -519,7 +519,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length, t('concordance.overview.keyTermsIdentified'))
         ) : (
-          <div>
+          <div style={{ paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -532,12 +532,15 @@ const OverviewView = ({
               {t('concordance.overview.keyTermsIdentified')}
             </div>
 
-            {analytics.keyTerms.slice(0, 4).map((term, index) => (
+            {analytics.keyTerms.slice(0, 3).map((term, index) => (
               <div key={term.term} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
+                alignItems: 'center',
                 fontSize: '0.8rem',
-                marginBottom: '0.5rem'
+                marginBottom: '0.5rem',
+                padding: '0.25rem 0',
+                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
               }}>
                 <span style={{ fontStyle: 'italic' }}>{term.term}</span>
                 <div style={{
