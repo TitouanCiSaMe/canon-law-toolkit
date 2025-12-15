@@ -118,7 +118,7 @@ const UploadInterface = ({
           padding: '1rem',
           textAlign: 'center',
           fontSize: '0.9rem',
-          color: '#FECACA',
+          color: '#FFFFFF',
           width: '100%'
         }}>
           ⚠ <strong>{t('common.error')}</strong> {error}

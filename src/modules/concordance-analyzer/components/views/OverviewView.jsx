@@ -340,20 +340,32 @@ const OverviewView = ({
         }
       >
         {isMobile ? (
-          renderCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.totalReferences || 0)
+          renderCompactPanel(
+            panelConfig.concordances.icon,
+            panelConfig.concordances.title,
+            corpusComparison?.B?.concordanceData ? '2 jeux' : (parseStats.totalReferences ? '1 jeu' : '0')
+          )
         ) : isTablet ? (
-          renderSemiCompactPanel(panelConfig.concordances.icon, panelConfig.concordances.title, parseStats.totalReferences || 0, parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze'))
+          renderSemiCompactPanel(
+            panelConfig.concordances.icon,
+            panelConfig.concordances.title,
+            corpusComparison?.B?.concordanceData ? '2 jeux' : (parseStats.totalReferences ? '1 jeu' : '0'),
+            parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')
+          )
         ) : (
           <div style={{ textAlign: 'center' }}>
             <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem'
+              fontSize: '1.1rem',
+              fontWeight: '500',
+              marginBottom: '0.5rem',
+              opacity: 0.9
             }}>
-              {parseStats.totalReferences || 0}
-            </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-              {t('concordance.overview.loadedConcordances')}
+              {corpusComparison?.B?.concordanceData
+                ? '2 Jeux de données chargés'
+                : parseStats.totalReferences
+                  ? '1 Jeu de données chargé'
+                  : 'Aucun jeu de données'
+              }
             </div>
             <div style={{ fontSize: '0.85rem', opacity: 0.7 }}>
               {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
@@ -373,7 +385,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains'))
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -426,7 +438,7 @@ const OverviewView = ({
             t('concordance.overview.centuriesCovered')
           )
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -694,7 +706,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.data.icon, panelConfig.data.title, filteredData.length, t('concordance.overview.loadedConcordances'))
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -724,7 +736,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.places.icon, panelConfig.places.title, analytics.places?.length || 0, t('concordance.overview.identifiedPlaces'))
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -741,11 +753,12 @@ const OverviewView = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 fontSize: '0.8rem',
-                marginBottom: '0.25rem',
-                opacity: 0.7
+                marginBottom: '0.5rem',
+                padding: '0.25rem 0',
+                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
               }}>
                 <span>{place.name.substring(0, 12)}...</span>
-                <span>{place.value}</span>
+                <span style={{ fontWeight: '500' }}>{place.value}</span>
               </div>
             ))}
           </div>
