@@ -44,18 +44,35 @@ const Sidebar = ({
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { isDesktop } = useBreakpoint();
+  const [currentLogo, setCurrentLogo] = React.useState(0);
+
+  // Logos pour le carrousel
+  const logos = [
+    { src: '/Logo/GIS-LOGO-LEM.png', alt: 'LEM - Laboratoire d\'études sur les monothéismes', width: '85%', hasWhiteBg: false },
+    { src: '/Logo/Laboratoire_DRES_Etroit_Couleur(.png', alt: 'Laboratoire DRES - Université de Strasbourg', width: '95%', hasWhiteBg: false },
+    { src: '/Logo/Logo Polen.png', alt: 'POLEN - Pouvoirs LEttres Normes', width: '95%', hasWhiteBg: true },
+    { src: '/Logo/anr.jpg', alt: 'ANR - Agence nationale de la recherche', width: '80%', hasWhiteBg: false }
+  ];
+
+  // Rotation automatique du carrousel
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentLogo(prev => (prev + 1) % logos.length);
+    }, 3000); // Change tous les 3 secondes
+    return () => clearInterval(interval);
+  }, []);
 
   // Navigation des vues du concordance analyzer (symboles médiévaux)
   const views = [
     { id: 'overview', icon: '◈', label: t('concordance.panels.overview.title') },
+    { id: 'concordances', icon: '⊞', label: t('concordance.panels.concordances.title') },
     { id: 'domains', icon: '⚜', label: t('concordance.panels.domains.title') },
     { id: 'temporal', icon: '⧗', label: t('concordance.panels.temporal.title') },
     { id: 'authors', icon: '✒', label: t('concordance.panels.authors.title') },
     { id: 'linguistic', icon: '❦', label: t('concordance.panels.linguistic.title') },
     { id: 'places', icon: '✦', label: t('concordance.panels.places.title') },
     { id: 'data', icon: '⟐', label: t('concordance.panels.data.title') },
-    { id: 'corpusComparison', icon: '⚖', label: t('concordance.panels.corpusComparison.title') },
-    { id: 'concordances', icon: '⊞', label: t('concordance.panels.concordances.title') }
+    { id: 'corpusComparison', icon: '⚖', label: t('concordance.panels.corpusComparison.title') }
   ];
 
   const toggleLanguage = () => {
@@ -165,30 +182,24 @@ const Sidebar = ({
           transition: 'background 0.2s'
         }}
       >
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          marginBottom: '0.5rem'
-        }}>
-          <span style={{ fontSize: '2rem' }}>⚖</span>
-          <div>
-            <div style={{
-              fontSize: '1.8rem',
-              fontWeight: 'bold',
-              fontFamily: '"Crimson Text", serif',
-              letterSpacing: '-0.02em'
-            }}>
-              CiSaMe
-            </div>
-            <div style={{
-              fontSize: '0.7rem',
-              opacity: 0.9,
-              letterSpacing: '0.05em',
-              marginTop: '0.25rem'
-            }}>
-              Circulation des Savoirs Médiévaux
-            </div>
+        <div>
+          <div style={{
+            fontSize: '1.8rem',
+            fontWeight: 700,
+            fontFamily: '"Crimson Text", serif',
+            letterSpacing: '-0.02em',
+            marginBottom: '0.5rem'
+          }}>
+            CiSaMe
+          </div>
+          <div style={{
+            fontSize: '0.7rem',
+            fontWeight: 400,
+            opacity: 0.9,
+            letterSpacing: '0.02em',
+            lineHeight: 1.3
+          }}>
+            Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.6em' }}>e</sup> siècle
           </div>
         </div>
       </Link>
@@ -410,6 +421,81 @@ const Sidebar = ({
       >
         {i18n.language === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}
       </button>
+
+      {/* Logos institutionnels - Carrousel */}
+      <div style={{
+        padding: '1.25rem',
+        background: 'rgba(255, 255, 255, 0.08)',
+        margin: '0 1rem 1rem 1rem',
+        borderRadius: '8px',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
+        minHeight: '100px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {logos[currentLogo].hasWhiteBg ? (
+          <div style={{
+            background: 'white',
+            padding: '0.5rem',
+            borderRadius: '6px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            transition: 'all 0.5s ease',
+            opacity: 1,
+            animation: 'fadeIn 0.5s ease'
+          }}>
+            <img
+              src={logos[currentLogo].src}
+              alt={logos[currentLogo].alt}
+              style={{
+                width: logos[currentLogo].width,
+                height: 'auto',
+                transition: 'all 0.5s ease'
+              }}
+            />
+          </div>
+        ) : (
+          <img
+            src={logos[currentLogo].src}
+            alt={logos[currentLogo].alt}
+            style={{
+              width: logos[currentLogo].width,
+              height: 'auto',
+              filter: 'brightness(1.1)',
+              transition: 'all 0.5s ease',
+              opacity: 1,
+              animation: 'fadeIn 0.5s ease'
+            }}
+          />
+        )}
+
+        {/* Indicateurs de position */}
+        <div style={{
+          position: 'absolute',
+          bottom: '0.5rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: '0.5rem'
+        }}>
+          {logos.map((_, index) => (
+            <div
+              key={index}
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: currentLogo === index ? '#F0E68C' : 'rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease'
+              }}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* Footer */}
       <div style={{

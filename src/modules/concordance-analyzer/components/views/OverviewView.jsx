@@ -199,6 +199,14 @@ const OverviewView = ({
     lg: '2px'
   });
 
+  // Hauteur des lignes responsive pour éviter le scroll
+  const gridTemplateRows = useResponsiveValue({
+    xs: 'auto',      // Mobile: hauteur automatique
+    sm: 'auto',      // Phone landscape: hauteur automatique
+    md: 'auto',      // Tablet: hauteur automatique
+    lg: '320px 320px 280px'  // Desktop: hauteurs fixes généreuses pour tout voir
+  });
+
   // Tailles de police responsives pour les statistiques
   const statFontSize = useResponsiveValue({
     xs: '2rem',      // Mobile
@@ -236,7 +244,7 @@ const OverviewView = ({
     <div style={{
       display: 'grid',
       gridTemplateColumns,
-      gridTemplateRows: 'auto',  // Auto-adjust sur toutes les tailles
+      gridTemplateRows,  // Hauteurs responsives (ligne 1: 320px, ligne 2: 320px, ligne 3: 280px sur desktop)
       gap: gridGap,
       background: academicColors.text,
       padding: containerPadding,
@@ -272,7 +280,13 @@ const OverviewView = ({
           </div>
         ) : (
           // Desktop: Version complète
-          <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            height: '100%',
+            textAlign: 'center'
+          }}>
             <div style={{
               fontSize: mainStatFontSize,
               fontWeight: '300',
@@ -320,6 +334,59 @@ const OverviewView = ({
         )}
       </NavigationPanel>
 
+      {/* Panel Import de données */}
+      <NavigationPanel
+        config={panelConfig.concordances}
+        isActive={false}
+        onClick={() => navigateToView('concordances')}
+        style={
+          !parseStats.totalReferences || parseStats.totalReferences === 0
+            ? { border: '2px solid #D4AF37' }  // Contour doré fin quand vide
+            : {}
+        }
+      >
+        {isMobile ? (
+          renderCompactPanel(
+            panelConfig.concordances.icon,
+            panelConfig.concordances.title,
+            corpusComparison?.B?.concordanceData ? '2 jeux' : (parseStats.totalReferences ? '1 jeu' : '0')
+          )
+        ) : isTablet ? (
+          renderSemiCompactPanel(
+            panelConfig.concordances.icon,
+            panelConfig.concordances.title,
+            corpusComparison?.B?.concordanceData ? '2 jeux' : (parseStats.totalReferences ? '1 jeu' : '0'),
+            parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')
+          )
+        ) : (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontSize: '1.5rem',
+              fontWeight: '500',
+              marginBottom: '0.75rem',
+              opacity: 0.95
+            }}>
+              {corpusComparison?.B?.concordanceData
+                ? '2 Jeux de données chargés'
+                : parseStats.totalReferences
+                  ? '1 Jeu de données chargé'
+                  : 'Aucun jeu de données'
+              }
+            </div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+              {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
+            </div>
+          </div>
+        )}
+      </NavigationPanel>
+
       {/* Panel Domaines */}
       <NavigationPanel
         config={panelConfig.domains}
@@ -329,9 +396,9 @@ const OverviewView = ({
         {isMobile ? (
           renderCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length)
         ) : isTablet ? (
-          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, t('concordance.overview.legalDomains'))
+          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains'))
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -340,7 +407,7 @@ const OverviewView = ({
               {analytics.domains.length}
             </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-              {t('concordance.overview.legalDomains')}
+              {analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains')}
             </div>
 
             {analytics.domains.slice(0, 3).map((domain, index) => (
@@ -384,7 +451,7 @@ const OverviewView = ({
             t('concordance.overview.centuriesCovered')
           )
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -436,7 +503,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length, t('concordance.overview.referencedAuthors'))
         ) : (
-          <div>
+          <div style={{ paddingBottom: '1rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -477,7 +544,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length, t('concordance.overview.keyTermsIdentified'))
         ) : (
-          <div>
+          <div style={{ paddingBottom: '1rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -490,12 +557,15 @@ const OverviewView = ({
               {t('concordance.overview.keyTermsIdentified')}
             </div>
 
-            {analytics.keyTerms.slice(0, 4).map((term, index) => (
+            {analytics.keyTerms.slice(0, 3).map((term, index) => (
               <div key={term.term} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
+                alignItems: 'center',
                 fontSize: '0.8rem',
-                marginBottom: '0.5rem'
+                marginBottom: '0.5rem',
+                padding: '0.25rem 0',
+                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
               }}>
                 <span style={{ fontStyle: 'italic' }}>{term.term}</span>
                 <div style={{
@@ -538,22 +608,14 @@ const OverviewView = ({
 	    )
 	  ) : (
 	  <div style={{ textAlign: 'center' }}>
-	    <div style={{
-	      fontSize: '3rem',
-	      fontWeight: '300',
-	      marginBottom: '1rem'
-	    }}>
-	      ⚖
-	    </div>
-
 	    {corpusComparison?.B?.concordanceData ? (
-	      // Mode ACTIF : 2 corpus chargés
+	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
 		<div style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
 		  {t('concordance.overview.corpusComparison')}
 		</div>
-		
-		{/* Stats des 2 corpus */}
+
+		{/* Stats des 2 jeux de données */}
 		<div style={{
 		  display: 'grid',
 		  gridTemplateColumns: '1fr auto 1fr',
@@ -572,11 +634,11 @@ const OverviewView = ({
 		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
 		      {corpusComparison.A?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Corpus A</div>
+		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Jeu de données A</div>
 		  </div>
-		  
+
 		  <div style={{ fontSize: '1rem', opacity: 0.7 }}>vs</div>
-		  
+
 		  <div style={{
 		    background: 'rgba(255,255,255,0.2)',
 		    padding: '0.4rem',
@@ -586,7 +648,7 @@ const OverviewView = ({
 		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
 		      {corpusComparison.B?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Corpus B</div>
+		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Jeu de données B</div>
 		  </div>
 		</div>
 		
@@ -628,17 +690,17 @@ const OverviewView = ({
 		    borderRadius: '50%',
 		    background: corpusComparison?.A?.concordanceData ? '#10b981' : 'rgba(255,255,255,0.3)'
 		  }} />
-		  <span>Corpus A</span>
-		  
+		  <span>Jeu de données A</span>
+
 		  <div style={{ margin: '0 0.5rem' }}>•</div>
-		  
+
 		  <div style={{
 		    width: '8px',
 		    height: '8px',
 		    borderRadius: '50%',
 		    background: corpusComparison?.B?.concordanceData ? '#10b981' : 'rgba(255,255,255,0.3)'
 		  }} />
-		  <span>Corpus B</span>
+		  <span>Jeu de données B</span>
 		</div>
 	      </>
 	    )}
@@ -657,7 +719,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.data.icon, panelConfig.data.title, filteredData.length, t('concordance.overview.loadedConcordances'))
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -676,22 +738,6 @@ const OverviewView = ({
         )}
       </NavigationPanel>
 
-      {/* Panel Import de données */}
-      <NavigationPanel
-        config={panelConfig.concordances}
-        isActive={false}
-        onClick={() => navigateToView('concordances')}
-      >
-        {isMobile || isTablet ? (
-          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
-            <div style={{ fontSize: '2.5rem' }}>{panelConfig.concordances.icon}</div>
-            <div style={{ fontSize: '0.85rem', fontWeight: '600', marginTop: '0.5rem' }}>
-              {panelConfig.concordances.title}
-            </div>
-          </div>
-        ) : null}
-      </NavigationPanel>
-      
       {/* Panel Lieux */}
       <NavigationPanel
         config={panelConfig.places}
@@ -703,7 +749,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.places.icon, panelConfig.places.title, analytics.places?.length || 0, t('concordance.overview.identifiedPlaces'))
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -720,11 +766,12 @@ const OverviewView = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 fontSize: '0.8rem',
-                marginBottom: '0.25rem',
-                opacity: 0.7
+                marginBottom: '0.5rem',
+                padding: '0.25rem 0',
+                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
               }}>
                 <span>{place.name.substring(0, 12)}...</span>
-                <span>{place.value}</span>
+                <span style={{ fontWeight: '500' }}>{place.value}</span>
               </div>
             ))}
           </div>

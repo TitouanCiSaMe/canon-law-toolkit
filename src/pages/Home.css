@@ -9,106 +9,68 @@
 }
 
 /* ============================================================================
-   HERO SECTION
+   HERO SECTION - Encadré CiSaMe
    ============================================================================ */
 
 .hero-section {
   text-align: center;
   padding: 3rem 0 4rem;
-  border-bottom: 2px solid #E8DCC6;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
-.hero-section h1 {
-  font-size: 3rem;
+.cisame-box {
+  display: inline-block;
+  text-align: center;
+}
+
+.cisame-title {
+  font-family: 'Unistra Encadre', 'Crimson Text', serif;
+  font-size: 5.5rem;
+  font-weight: 400;
   color: #5C3317;
+  letter-spacing: 0.02em;
   margin-bottom: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-.hero-description {
-  font-size: 1.5rem;
-  color: #704214;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  font-weight: 500;
-}
-
-.hero-tagline {
-  font-size: 1.1rem;
-  color: #8B4513;
-  font-style: italic;
-  max-width: 800px;
-  margin: 0 auto;
+.cisame-subtitle {
+  font-family: 'Unistra Encadre', 'Crimson Text', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #5C3317;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
 }
 
 /* ============================================================================
-   ABOUT SECTION
+   PROJECT DESCRIPTION
    ============================================================================ */
 
-.about-section {
-  margin-bottom: 4rem;
+.project-description {
+  max-width: 900px;
+  margin: 0 auto 4rem;
   padding: 0 1rem;
 }
 
-.about-section h2 {
-  font-size: 2rem;
-  color: #5C3317;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-weight: 600;
-}
-
-.about-section > p {
-  font-size: 1.1rem;
+.project-description p {
+  font-size: 1.05rem;
   color: #704214;
   line-height: 1.8;
-  max-width: 900px;
-  margin: 0 auto 3rem;
-  text-align: center;
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.feature-item {
-  background: #FFFEF9;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(92, 51, 23, 0.08);
-  border: 1px solid #E8DCC6;
-  text-align: center;
-  transition: all 0.25s ease;
-}
-
-.feature-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(92, 51, 23, 0.12);
-  border-color: #D4AF37;
-}
-
-.feature-item svg {
+.project-description a {
   color: #B8860B;
-  margin-bottom: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
 }
 
-.feature-item h4 {
-  color: #5C3317;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.feature-item p {
-  color: #704214;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0;
+.project-description a:hover {
+  color: #D4AF37;
+  border-bottom-color: #D4AF37;
 }
 
 /* ============================================================================
@@ -263,90 +225,19 @@
 }
 
 /* ============================================================================
-   GETTING STARTED SECTION
-   ============================================================================ */
-
-.getting-started-section {
-  margin-bottom: 4rem;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #FAF6ED 0%, #FFFEF9 100%);
-  border-radius: 1rem;
-  border: 2px solid #E8DCC6;
-}
-
-.getting-started-section h2 {
-  font-size: 2rem;
-  color: #5C3317;
-  margin-bottom: 3rem;
-  text-align: center;
-  font-weight: 600;
-}
-
-.steps-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.step-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  border: 2px solid #E8DCC6;
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.step-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(92, 51, 23, 0.12);
-  border-color: #D4AF37;
-}
-
-.step-number {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #B8860B 0%, #9A7A0A 100%);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0 auto 1.5rem;
-  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.3);
-}
-
-.step-card h4 {
-  color: #5C3317;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 1rem 0;
-}
-
-.step-card p {
-  color: #704214;
-  line-height: 1.7;
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-/* ============================================================================
    RESPONSIVE
    ============================================================================ */
 
 @media (max-width: 768px) {
-  .hero-section h1 {
+  .cisame-title {
     font-size: 2rem;
   }
 
-  .hero-description {
-    font-size: 1.2rem;
+  .cisame-subtitle {
+    font-size: 1.1rem;
   }
 
-  .hero-tagline {
+  .project-description p {
     font-size: 1rem;
   }
 

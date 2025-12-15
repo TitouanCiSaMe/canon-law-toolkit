@@ -388,21 +388,34 @@ const ConcordanceAnalyzerPanels = () => {
                     <button
                       onClick={() => navigateToView('overview')}
                       style={{
-                        background: 'none',
-                        border: 'none',
-                        color: academicColors.primary,
+                        background: 'linear-gradient(135deg, #E8DCC6 0%, #D4C4A8 100%)',
+                        border: '1px solid #C9B999',
+                        color: '#5C3317',
                         cursor: 'pointer',
-                        padding: '0.25rem 0.5rem',
-                        borderRadius: '4px',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '6px',
                         transition: 'all 0.2s',
-                        fontSize: '0.9rem'
+                        fontSize: '0.9rem',
+                        fontWeight: '500',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        boxShadow: '0 2px 4px rgba(92, 51, 23, 0.1)'
                       }}
-                      onMouseOver={(e) => e.target.style.background = '#F0F4F8'}
-                      onMouseOut={(e) => e.target.style.background = 'none'}
+                      onMouseOver={(e) => {
+                        e.target.style.transform = 'translateY(-1px)';
+                        e.target.style.boxShadow = '0 4px 8px rgba(92, 51, 23, 0.15)';
+                        e.target.style.background = 'linear-gradient(135deg, #F0E6D2 0%, #E0D0B4 100%)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.transform = 'translateY(0)';
+                        e.target.style.boxShadow = '0 2px 4px rgba(92, 51, 23, 0.1)';
+                        e.target.style.background = 'linear-gradient(135deg, #E8DCC6 0%, #D4C4A8 100%)';
+                      }}
                     >
-                      {t('concordance.panels.overview.title')}
+                      <span>←</span> {t('concordance.buttons.back')}
                     </button>
-                    <span style={{ color: '#CBD5E1' }}>›</span>
+                    <span style={{ color: '#CBD5E1', margin: '0 0.5rem' }}>›</span>
 		    <span style={{ fontWeight: '500', color: '#2D3748' }}>
 		      {t(`concordance.panels.${activeView}.title`)}
 		    </span>
