@@ -89,8 +89,8 @@ const CorpusComparisonView = ({ corpusComparison }) => {
     <div>
       {/* Header avec stats globales */}
       <div style={{
-        background: 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)',
-        color: 'white',
+        background: 'linear-gradient(135deg, #C9B999 0%, #D4C4A8 100%)',
+        color: '#5C3317',
         padding: '2rem',
         borderRadius: '8px',
         marginBottom: '2rem'
