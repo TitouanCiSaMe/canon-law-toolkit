@@ -3,19 +3,18 @@ import { useTranslation } from 'react-i18next';
 
 /**
  * Composant UploadInterface - Interface d'upload de fichiers
- * 
+ *
  * Affiche l'interface d'upload avec drag & drop pour :
- * - Fichier de métadonnées (commun)
- * - Fichier de concordances A (corpus principal ou corpus A en mode comparison)
- * - Fichier de concordances B (NOUVEAU - mode comparison uniquement)
- * 
- * @param {Object} metadataLookup - Lookup des métadonnées chargées
- * @param {File|null} selectedMetadataFile - Fichier métadonnées sélectionné
+ * - Fichier de concordances A (jeu de données principal)
+ * - Fichier de concordances B (jeu de données B pour comparaison)
+ *
+ * @param {Object} metadataLookup - Lookup des métadonnées chargées (conservé pour compatibilité)
+ * @param {File|null} selectedMetadataFile - Fichier métadonnées sélectionné (conservé pour compatibilité)
  * @param {File|null} selectedConcordanceFile - Fichier concordances A sélectionné
- * @param {File|null} selectedConcordanceBFile - Fichier concordances B sélectionné (NOUVEAU)
- * @param {Function} onMetadataUpload - Handler pour upload métadonnées
+ * @param {File|null} selectedConcordanceBFile - Fichier concordances B sélectionné
+ * @param {Function} onMetadataUpload - Handler pour upload métadonnées (conservé pour compatibilité)
  * @param {Function} onConcordanceUpload - Handler pour upload concordances A
- * @param {Function} onConcordanceBUpload - Handler pour upload concordances B (NOUVEAU)
+ * @param {Function} onConcordanceBUpload - Handler pour upload concordances B
  * @param {Function} onDrop - Handler pour drag & drop
  * @param {Function} onDragOver - Handler pour drag over
  * @param {Function} onDragLeave - Handler pour drag leave
@@ -28,10 +27,10 @@ const UploadInterface = ({
   metadataLookup,
   selectedMetadataFile,
   selectedConcordanceFile,
-  selectedConcordanceBFile, // ✨ NOUVEAU
+  selectedConcordanceBFile,
   onMetadataUpload,
   onConcordanceUpload,
-  onConcordanceBUpload, // ✨ NOUVEAU
+  onConcordanceBUpload,
   onDrop,
   onDragOver,
   onDragLeave,
@@ -52,29 +51,12 @@ const UploadInterface = ({
     }}>
       <div style={{
         display: 'grid',
-        gridTemplateColumns: selectedConcordanceFile ? '1fr 1fr 1fr' : '1fr 1fr', // ✨ MODIFIÉ : 3 colonnes si concordances A chargées
+        gridTemplateColumns: selectedConcordanceFile ? '1fr 1fr' : '1fr', // 2 colonnes si concordances A chargées, 1 sinon
         gap: '2rem',
         width: '100%',
         marginBottom: '2rem'
       }}>
-        {/* Upload métadonnées */}
-        <FileUploadSection
-          title={t('concordance.upload.metadata.title')}
-          description={t('concordance.upload.metadata.description')}
-          subtitle={t('concordance.upload.metadata.subtitle')}
-          onUpload={onMetadataUpload}
-          onDrop={(e) => onDrop(e, 'metadata')}
-          onDragOver={onDragOver}
-          onDragLeave={onDragLeave}
-          dragOver={dragOver}
-          selectedFile={selectedMetadataFile}
-          fileInfo={Object.keys(metadataLookup).length > 0
-            ? `${Object.keys(metadataLookup).length} ${t('concordance.upload.metadata.entriesLoaded')}`
-            : null
-          }
-        />
-
-        {/* Upload concordances A */}
+        {/* Upload concordances A (Jeu de données principal) */}
         <FileUploadSection
           title={t('concordance.upload.concordances.title')}
           description={t('concordance.upload.concordances.description')}
@@ -89,10 +71,9 @@ const UploadInterface = ({
             ? `${parseStats.totalReferences} ${t('concordance.upload.concordances.statsLoaded', { rate: parseStats.lookupRate })}`
             : null
           }
-          disabled={Object.keys(metadataLookup).length === 0}
         />
 
-        {/* ✨ NOUVEAU : Upload concordances B (mode comparison) */}
+        {/* Upload concordances B (Jeu de données B pour comparaison) */}
         {selectedConcordanceFile && (
           <FileUploadSection
             title={t('concordance.upload.corpusB.title')}
@@ -108,7 +89,7 @@ const UploadInterface = ({
               ? t('concordance.upload.corpusB.loaded')
               : null
             }
-            disabled={Object.keys(metadataLookup).length === 0 || !selectedConcordanceFile}
+            disabled={!selectedConcordanceFile}
           />
         )}
       </div>

@@ -241,8 +241,8 @@
         "subtitle": "Analyse multi-critères"
       },
       "corpusComparison": {
-        "title": "Comparaison de Corpus",
-        "subtitle": "Analyse comparative de 2 corpus distincts"
+        "title": "Comparaison de Jeux de données",
+        "subtitle": "Analyse comparative de 2 jeux de données distincts"
       },
       "data": {
         "title": "Données",
@@ -288,7 +288,7 @@
       "enriched": "enrichies",
       "identifiedPlaces": "lieux identifiés",
       "readyToAnalyze": "Prêt à analyser",
-      "corpusComparison": "Comparaison de 2 corpus",
+      "corpusComparison": "Comparaison de 2 jeux de données",
       "clickToAnalyze": "Cliquez pour analyser",
       "volume": "Volume",
       "domains": "Domaines",
@@ -516,17 +516,17 @@
         "filteredCorpus": "Corpus filtré"
       },
       "corpusComparison": {
-        "sectionTitle": "Comparaison de 2 Corpus",
-        "noData": "Veuillez charger 2 fichiers de concordances pour activer la comparaison",
-        "uploadInstructions": "Retournez à la page d'import pour charger vos deux corpus",
-        "corpusA": "Corpus A",
-        "corpusB": "Corpus B",
+        "sectionTitle": "Comparaison de 2 Jeux de données",
+        "noData": "Veuillez charger 2 jeux de données pour activer la comparaison",
+        "uploadInstructions": "Retournez à la page d'import pour charger vos deux jeux de données",
+        "corpusA": "Jeu de données A",
+        "corpusB": "Jeu de données B",
         "common": "Commun",
         "onlyA": "Seulement A",
         "onlyB": "Seulement B",
         "ratio": "Ratio",
-        "largerA": "Corpus A plus grand",
-        "largerB": "Corpus B plus grand",
+        "largerA": "Jeu de données A plus grand",
+        "largerB": "Jeu de données B plus grand",
         "equal": "Égalité",
         "concordances": "concordances",
         "overlap": "Chevauchement",
@@ -539,13 +539,13 @@
         "charts": {
           "domains": {
             "title": "Comparaison par domaines",
-            "corpusALabel": "Corpus A ({{count}} concordances)",
-            "corpusBLabel": "Corpus B ({{count}} concordances)"
+            "corpusALabel": "Jeu de données A ({{count}} concordances)",
+            "corpusBLabel": "Jeu de données B ({{count}} concordances)"
           },
           "authors": {
             "title": "Comparaison par auteurs",
-            "corpusALabel": "Corpus A ({{count}} concordances)",
-            "corpusBLabel": "Corpus B ({{count}} concordances)"
+            "corpusALabel": "Jeu de données A ({{count}} concordances)",
+            "corpusBLabel": "Jeu de données B ({{count}} concordances)"
           },
           "temporal": {
             "title": "Comparaison temporelle",
@@ -573,13 +573,13 @@
           },
           "terminology": {
             "title": "Comparaison terminologique",
-            "corpusALabel": "Termes Corpus A ({{count}} occurrences)",
-            "corpusBLabel": "Termes Corpus B ({{count}} occurrences)",
+            "corpusALabel": "Termes Jeu de données A ({{count}} occurrences)",
+            "corpusBLabel": "Termes Jeu de données B ({{count}} occurrences)",
             "occurrences": "occurrences"
           },
           "legend": {
-            "corpusA": "Corpus A",
-            "corpusB": "Corpus B"
+            "corpusA": "Jeu de données A",
+            "corpusB": "Jeu de données B"
           }
         }
       }

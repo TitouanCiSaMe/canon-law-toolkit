@@ -100,7 +100,7 @@ export const panelConfig = {
     gridArea: '2 / 4 / 3 / 5',  // Ligne 2, colonne 4
     size: 'medium'
   },
-  // LIGNE 3 : Comparaison Corpus (full width)
+  // LIGNE 3 : Comparaison Jeux de données (full width)
   corpusComparison: {
     id: 'corpusComparison',
     title: 'concordance.panels.corpusComparison.title',
@@ -108,7 +108,7 @@ export const panelConfig = {
     color: visualTheme.colors.accent.gold,            // Or antique (enluminure)
     gradient: createGradient(visualTheme.colors.accent.gold, visualTheme.colors.accent.goldLight),
     textColor: visualTheme.colors.primary.dark,       // Texte brun foncé pour contraste sur fond or
-    icon: '⚖',  // Balance (symbole juridique)
+    icon: '⊕',  // Plus encerclé (ajout/fusion de données)
     gridArea: '3 / 1 / 4 / 5',  // Ligne 3, full width
     size: 'wide'
   }
