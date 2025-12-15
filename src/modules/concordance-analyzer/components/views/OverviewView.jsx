@@ -280,7 +280,13 @@ const OverviewView = ({
           </div>
         ) : (
           // Desktop: Version complète
-          <div style={{ textAlign: 'center', margin: '2rem 0' }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            height: '100%',
+            textAlign: 'center'
+          }}>
             <div style={{
               fontSize: mainStatFontSize,
               fontWeight: '300',
@@ -353,12 +359,19 @@ const OverviewView = ({
             parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')
           )
         ) : (
-          <div style={{ textAlign: 'center' }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+            textAlign: 'center'
+          }}>
             <div style={{
-              fontSize: '1.1rem',
+              fontSize: '1.5rem',
               fontWeight: '500',
-              marginBottom: '0.5rem',
-              opacity: 0.9
+              marginBottom: '0.75rem',
+              opacity: 0.95
             }}>
               {corpusComparison?.B?.concordanceData
                 ? '2 Jeux de données chargés'
@@ -367,7 +380,7 @@ const OverviewView = ({
                   : 'Aucun jeu de données'
               }
             </div>
-            <div style={{ fontSize: '0.85rem', opacity: 0.7 }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>
               {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
             </div>
           </div>
@@ -490,7 +503,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length, t('concordance.overview.referencedAuthors'))
         ) : (
-          <div style={{ paddingBottom: '0.5rem' }}>
+          <div style={{ paddingBottom: '1rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -531,7 +544,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length, t('concordance.overview.keyTermsIdentified'))
         ) : (
-          <div style={{ paddingBottom: '0.5rem' }}>
+          <div style={{ paddingBottom: '1rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
