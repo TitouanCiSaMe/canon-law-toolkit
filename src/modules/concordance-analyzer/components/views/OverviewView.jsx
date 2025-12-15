@@ -580,22 +580,14 @@ const OverviewView = ({
 	    )
 	  ) : (
 	  <div style={{ textAlign: 'center' }}>
-	    <div style={{
-	      fontSize: '3rem',
-	      fontWeight: '300',
-	      marginBottom: '1rem'
-	    }}>
-	      ⚖
-	    </div>
-
 	    {corpusComparison?.B?.concordanceData ? (
-	      // Mode ACTIF : 2 corpus chargés
+	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
 		<div style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
 		  {t('concordance.overview.corpusComparison')}
 		</div>
-		
-		{/* Stats des 2 corpus */}
+
+		{/* Stats des 2 jeux de données */}
 		<div style={{
 		  display: 'grid',
 		  gridTemplateColumns: '1fr auto 1fr',
@@ -614,11 +606,11 @@ const OverviewView = ({
 		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
 		      {corpusComparison.A?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Corpus A</div>
+		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Jeu de données A</div>
 		  </div>
-		  
+
 		  <div style={{ fontSize: '1rem', opacity: 0.7 }}>vs</div>
-		  
+
 		  <div style={{
 		    background: 'rgba(255,255,255,0.2)',
 		    padding: '0.4rem',
@@ -628,7 +620,7 @@ const OverviewView = ({
 		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
 		      {corpusComparison.B?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Corpus B</div>
+		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Jeu de données B</div>
 		  </div>
 		</div>
 		
@@ -670,17 +662,17 @@ const OverviewView = ({
 		    borderRadius: '50%',
 		    background: corpusComparison?.A?.concordanceData ? '#10b981' : 'rgba(255,255,255,0.3)'
 		  }} />
-		  <span>Corpus A</span>
-		  
+		  <span>Jeu de données A</span>
+
 		  <div style={{ margin: '0 0.5rem' }}>•</div>
-		  
+
 		  <div style={{
 		    width: '8px',
 		    height: '8px',
 		    borderRadius: '50%',
 		    background: corpusComparison?.B?.concordanceData ? '#10b981' : 'rgba(255,255,255,0.3)'
 		  }} />
-		  <span>Corpus B</span>
+		  <span>Jeu de données B</span>
 		</div>
 	      </>
 	    )}
