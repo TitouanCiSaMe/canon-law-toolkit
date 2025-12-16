@@ -1,6 +1,6 @@
 # CiSaMe - Circulation des Savoirs Médiévaux
 
-[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://gitlab.com/cisame/canon-law-toolkit)
+[![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)](https://gitlab.com/cisame/canon-law-toolkit)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![React](https://img.shields.io/badge/react-18.2.0-61dafb.svg)](https://react.dev/)
 [![i18n](https://img.shields.io/badge/i18n-FR%20%7C%20EN-orange.svg)](src/shared/i18n)

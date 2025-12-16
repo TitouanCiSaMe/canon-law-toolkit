@@ -29,9 +29,25 @@ const ComparisonDomainChart = ({
   const { t } = useTranslation();
 
   // ============================================================================
+  // TRADUCTION DES DOMAINES
+  // ============================================================================
+
+  /**
+   * Traduit les noms de domaines depuis le français vers la langue active
+   * @param {string} domainName - Nom du domaine en français
+   * @returns {string} Nom traduit du domaine
+   */
+  const translateDomain = (domainName) => {
+    const translationKey = `metadata.domains.${domainName}`;
+    const translated = t(translationKey);
+    // Si la clé n'existe pas, retourner le nom original
+    return translated !== translationKey ? translated : domainName;
+  };
+
+  // ============================================================================
   // VALIDATION DES DONNÉES
   // ============================================================================
-  
+
   if (!dataA || !dataB || dataA.length === 0 || dataB.length === 0) {
     return (
       <div style={{
@@ -45,13 +61,24 @@ const ComparisonDomainChart = ({
     );
   }
 
+  // Traduire les données
+  const translatedDataA = dataA.map(item => ({
+    ...item,
+    name: translateDomain(item.name)
+  }));
+
+  const translatedDataB = dataB.map(item => ({
+    ...item,
+    name: translateDomain(item.name)
+  }));
+
   // Limiter aux top N domaines
-  const displayDataA = dataA.slice(0, maxItems);
-  const displayDataB = dataB.slice(0, maxItems);
-  
+  const displayDataA = translatedDataA.slice(0, maxItems);
+  const displayDataB = translatedDataB.slice(0, maxItems);
+
   // Calculer les totaux pour les labels
-  const totalA = dataA.reduce((sum, d) => sum + d.value, 0);
-  const totalB = dataB.reduce((sum, d) => sum + d.value, 0);
+  const totalA = translatedDataA.reduce((sum, d) => sum + d.value, 0);
+  const totalB = translatedDataB.reduce((sum, d) => sum + d.value, 0);
 
   // ============================================================================
   // RENDU SIDE-BY-SIDE
@@ -110,7 +137,7 @@ const ComparisonDomainChart = ({
 
               <YAxis style={{ fontSize: '0.85rem' }} />
 
-              <Tooltip content={<CustomTooltipChart allData={dataA} valueLabel={t('concordance.charts.labels.concordances')} />} />
+              <Tooltip content={<CustomTooltipChart allData={translatedDataA} valueLabel={t('concordance.charts.labels.concordances')} />} />
 
               <Bar
                 dataKey="value"
@@ -154,7 +181,7 @@ const ComparisonDomainChart = ({
 
               <YAxis style={{ fontSize: '0.85rem' }} />
 
-              <Tooltip content={<CustomTooltipChart allData={dataB} valueLabel={t('concordance.charts.labels.concordances')} />} />
+              <Tooltip content={<CustomTooltipChart allData={translatedDataB} valueLabel={t('concordance.charts.labels.concordances')} />} />
 
               <Bar
                 dataKey="value"

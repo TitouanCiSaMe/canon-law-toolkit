@@ -5,6 +5,148 @@ Tous les changements notables de ce projet seront documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.5.0] - 2025-12-16
+
+### 🌍 Corrections CalKit - Traductions et améliorations UX
+
+Implémentation complète des corrections du document "CalKit corrections.docx" incluant une refonte majeure des traductions anglaises, corrections des traductions françaises manquantes, et amélioration de l'interface utilisateur.
+
+### ✨ Ajouté
+
+**Traductions manquantes**
+- `concordance.overview.noDataset` : "Aucun jeu de données" / "No dataset"
+- `concordance.overview.oneDataset` : "1 jeu de données chargé" / "1 dataset loaded"
+- `concordance.overview.twoDatasetsLoaded` : "2 jeux de données chargés" / "2 datasets loaded"
+- `concordance.overview.legalDomain` : "domaine juridique" (singulier) / "field"
+- `concordance.upload.processing.preloadedMetadata` : Avec interpolation {{count}}
+- `concordance.buttons.back` : "Retour" / "Back" (EN était manquant)
+
+**Système de traduction des domaines juridiques**
+- Nouveau système de traduction pour les noms de domaines dans les graphiques
+- Fonction `translateDomain()` dans DomainChart.jsx et ComparisonDomainChart.jsx
+- Mappings ajoutés dans en.json et fr.json :
+  - "Théologie" → "Theology"
+  - "Droit canonique" → "Canon Law"
+  - "Droit romain" → "Roman Law"
+
+### 🔧 Modifié
+
+**Traductions anglaises (en.json) - Refonte complète**
+- Navigation : "Concordance Analyzer" → "Results Analysis"
+- Sous-titre du site : Passage de "Medieval Knowledge Circulation" au titre complet
+- Page d'accueil : Réécriture complète de toutes les sections (hero, about, tools, getting started)
+- Query Generator : Suppression des descriptions des onglets
+- Terminologie globale :
+  - "concordances" → "results" (dans tous les contextes)
+  - "Corpus A/B" → "Result A/B"
+  - "orthographic variations" → "spelling variations"
+- Footer : Simplification du copyright
+
+**Traductions françaises (fr.json)**
+- Query Generator : Suppression des descriptions des onglets (cohérence avec EN)
+- Footer : Simplification du copyright (cohérence avec EN)
+
+**Composants UI**
+
+*Footer.jsx (src/shared/components/Footer.jsx)*
+- Migration du texte hardcodé vers système de traduction
+- Utilisation de `dangerouslySetInnerHTML` pour supporter le HTML dans les traductions
+- Footer maintenant dynamique selon la langue sélectionnée
+
+*Sidebar.jsx (src/shared/components/Sidebar.jsx)*
+- **Inversion du comportement du bouton de langue** :
+  - Affiche maintenant la langue cible (celle vers laquelle on va basculer)
+  - FR : affiche "🇬🇧 English"
+  - EN : affiche "🇫🇷 Français"
+- **Centrage des items de menu** :
+  - Ajout de `textAlign: 'center'` sur les liens de navigation
+  - Amélioration de la symétrie visuelle
+
+*Home.jsx (src/pages/Home.jsx)*
+- Sous-titre rendu dynamique selon la langue active
+- FR : "(_Circulation_des_savoirs_médiévaux_au_XIIe_siècle_)))"
+- EN : "(_Circulation_of_Medieval_Knowledge_in_the_12th_century_)))"
+
+*OverviewView.jsx (src/modules/concordance-analyzer/components/views/OverviewView.jsx)*
+- Remplacement de tous les textes hardcodés par des clés de traduction :
+  - "Aucun jeu de données" → `t('concordance.overview.noDataset')`
+  - "1 Jeu de données chargé" → `t('concordance.overview.oneDataset')`
+  - "2 Jeux de données chargés" → `t('concordance.overview.twoDatasetsLoaded')`
+  - "domaine juridique" → `t('concordance.overview.legalDomain')`
+  - "Jeu de données A/B" → Clés de traduction (4 occurrences)
+- **Tentative d'amélioration du centrage des panels** (6 panels) :
+  - Ajout de `minHeight: '3rem'` aux conteneurs de numéros
+  - Ajout de `display: 'flex'`, `alignItems: 'center'`, `justifyContent: 'center'`
+  - Ajout de `minHeight: '1.5rem'` aux labels
+  - ⚠️ **NOTE** : Cette modification n'a pas complètement résolu le problème d'alignement vertical
+
+*useFileUpload.js (src/modules/concordance-analyzer/hooks/useFileUpload.js)*
+- Remplacement du message hardcodé de métadonnées pré-chargées
+- Utilisation de `t('concordance.upload.processing.preloadedMetadata', { count })`
+- Support de l'interpolation pour afficher le nombre de métadonnées
+
+*DomainChart.jsx (src/modules/concordance-analyzer/components/charts/DomainChart.jsx)*
+- Ajout de la fonction `translateDomain()` pour traduire les noms de domaines
+- Application de la traduction aux données avant rendu (bar chart et pie chart)
+- Fix du bug des noms de domaines en français dans la version anglaise
+
+*ComparisonDomainChart.jsx (src/modules/concordance-analyzer/components/comparison/ComparisonDomainChart.jsx)*
+- Même système de traduction des domaines appliqué pour la vue de comparaison
+- Cohérence entre les graphiques simples et comparatifs
+
+### 🐛 Corrections
+
+**Traductions**
+- Fix : Textes français apparaissant dans la version anglaise
+- Fix : Clé "back" manquante dans les boutons EN
+- Fix : Message de métadonnées pré-chargées non traduit
+- Fix : "Jeu de données A/B" hardcodé en français dans la comparaison de corpus
+- Fix : Domaines juridiques (Théologie, Droit canonique, Droit romain) affichés en français dans la version anglaise
+
+**Interface utilisateur**
+- Fix : Bouton de langue affichait la langue courante au lieu de la langue cible
+- Fix : Items de menu de la sidebar non centrés
+
+### ⚠️ Problèmes connus
+
+**Centrage des panels (OverviewView)**
+- Les numéros dans les 6 panels de même taille ne sont pas parfaitement alignés verticalement
+- Tentative de correction avec `minHeight` et flexbox n'a pas complètement résolu le problème
+- Nécessite une investigation plus approfondie du système de layout
+- Voir OverviewView.jsx:295-350 pour les tentatives de correction
+
+### 📊 Statistiques
+
+- **Fichiers modifiés** : 9 fichiers
+- **Traductions ajoutées/modifiées** : 100+ clés
+- **Composants migrés vers i18n** : 4 composants
+- **Commits** : 4 commits
+  - `19fecfa` : Implémentation des corrections CalKit pour FR et EN
+  - `d942a59` : Fix: traduction des domaines en anglais
+  - `6fc23a6` : Fix: traductions manquantes et amélioration du centrage des panels
+  - `8393ff6` : Fix: centrage des numéros, traductions manquantes et alignement des panels
+
+### 📝 Fichiers modifiés
+
+**Traductions**
+- `src/shared/i18n/en.json` : Refonte majeure (~95% des clés modifiées)
+- `src/shared/i18n/fr.json` : Ajout de clés manquantes
+
+**Composants partagés**
+- `src/shared/components/Footer.jsx` : Migration vers système i18n
+- `src/shared/components/Sidebar.jsx` : Inversion langue + centrage menu
+- `src/pages/Home.jsx` : Sous-titre dynamique
+
+**Module Concordance Analyzer**
+- `src/modules/concordance-analyzer/components/views/OverviewView.jsx` : Traductions + tentative centrage
+- `src/modules/concordance-analyzer/hooks/useFileUpload.js` : Message métadonnées
+- `src/modules/concordance-analyzer/components/charts/DomainChart.jsx` : Traduction domaines
+- `src/modules/concordance-analyzer/components/comparison/ComparisonDomainChart.jsx` : Traduction domaines
+
+**Mainteneur** : Titouan (CiSaMe)
+
+---
+
 ## [1.4.0] - 2025-11-20
 
 ### 🏠 Refonte complète de la page d'accueil et améliorations UX

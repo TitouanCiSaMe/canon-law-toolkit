@@ -229,7 +229,8 @@ const Sidebar = ({
             borderLeft: location.pathname === '/query-generator' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
             fontSize: '0.95rem',
-            fontWeight: location.pathname === '/query-generator' ? '600' : '400'
+            fontWeight: location.pathname === '/query-generator' ? '600' : '400',
+            textAlign: 'center'
           }}
         >
           ⟐ {t('nav.queryGenerator')}
@@ -247,7 +248,8 @@ const Sidebar = ({
             borderLeft: location.pathname === '/concordance-analyzer' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
             fontSize: '0.95rem',
-            fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400'
+            fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400',
+            textAlign: 'center'
           }}
         >
           ◈ {t('nav.concordanceAnalyzer')}
@@ -284,6 +286,7 @@ const Sidebar = ({
                 style={{
                   display: 'flex',
                   alignItems: 'center',
+                  justifyContent: 'center',
                   gap: '0.75rem',
                   width: '100%',
                   padding: '0.75rem 1.5rem',
@@ -295,7 +298,7 @@ const Sidebar = ({
                   transition: 'all 0.2s',
                   fontSize: '0.9rem',
                   fontWeight: activeView === view.id ? '600' : '400',
-                  textAlign: 'left'
+                  textAlign: 'center'
                 }}
                 onMouseEnter={(e) => {
                   if (activeView !== view.id) {
@@ -419,7 +422,7 @@ const Sidebar = ({
           e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
         }}
       >
-        {i18n.language === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}
+        {i18n.language === 'fr' ? '🇬🇧 English' : '🇫🇷 Français'}
       </button>
 
       {/* Logos institutionnels - Carrousel */}

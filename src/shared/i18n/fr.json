@@ -15,7 +15,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 CiSaMe<br/>Circulation des Savoirs Médiévaux"
+    "copyright": "© 2025 CiSaMe"
   },
   "home": {
     "projectDescription": {
@@ -103,7 +103,7 @@
     },
     "proximity": {
       "title": "Recherche de proximité",
-      "description": "Trouvez deux lemmes qui apparaissent à une distance donnée l'un de l'autre dans le texte.",
+      "description": "",
       "formTitle": "Paramètres de recherche",
       "lemma1": "Premier lemme",
       "lemma2": "Second lemme",
@@ -117,7 +117,7 @@
     },
     "variation": {
       "title": "Variations orthographiques",
-      "description": "Générez des requêtes pour trouver des variantes orthographiques.",
+      "description": "",
       "formTitle": "Recherche de variations",
       "word": "Mot à rechercher",
       "desinenceType": "Type de désinence",
@@ -137,7 +137,7 @@
     },
     "proximityVariation": {
       "title": "Proximité avec variations",
-      "description": "Combinez proximité et variations orthographiques.",
+      "description": "",
       "formTitle": "Recherche avancée",
       "variationType": "Type de variations",
       "simple": "Simple",
@@ -150,7 +150,7 @@
     },
     "semantic": {
       "title": "Contexte sémantique",
-      "description": "Trouvez un lemme central avec des termes de contexte spécifiques pour analyser les relations sémantiques.",
+      "description": "",
       "formTitle": "Recherche sémantique",
       "centralLemma": "Lemme central",
       "contextLemmas": "Lemmes de contexte (séparés par virgules)",
@@ -185,7 +185,13 @@
   },
   "metadata": {
     "unknownDomain": "Domaine inconnu",
-    "unknownPlace": "Lieu inconnu"
+    "unknownPlace": "Lieu inconnu",
+    "domains": {
+      "Théologie": "Théologie",
+      "Droit canonique": "Droit canonique",
+      "Droit romain": "Droit romain",
+      "Domaine inconnu": "Domaine inconnu"
+    }
   },
   "periods": {
     "century11": "XIe siècle",
@@ -279,6 +285,7 @@
       "concordancesAnalyzed": "Résultats analysés",
       "matchRate": "Taux de correspondance",
       "legalDomains": "domaines juridiques",
+      "legalDomain": "domaine juridique",
       "centuriesCovered": "siècles couverts",
       "referencedAuthors": "auteurs référencés",
       "keyTermsIdentified": "termes-clés identifiés",
@@ -293,7 +300,10 @@
       "volume": "Volume",
       "domains": "Domaines",
       "authors": "Auteurs",
-      "places": "Lieux"
+      "places": "Lieux",
+      "noDataset": "Aucun jeu de données",
+      "oneDataset": "1 jeu de données chargé",
+      "twoDatasetsLoaded": "2 jeux de données chargés"
     },
     "charts": {
       "domains": {
@@ -393,6 +403,7 @@
         "loadingMetadata": "Chargement des métadonnées...",
         "loadingDefaultMetadata": "Chargement des métadonnées par défaut...",
         "metadataLoaded": "{{count}} métadonnées chargées",
+        "preloadedMetadata": "✅ {{count}} métadonnées pré-chargées (vous pouvez les remplacer)",
         "analyzingConcordancesA": "Analyse des concordances (Corpus A)...",
         "concordancesAnalyzedA": "{{count}} concordances analysées (Corpus A)",
         "analyzingConcordancesB": "Analyse des concordances (Corpus B)...",

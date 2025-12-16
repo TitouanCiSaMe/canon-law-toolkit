@@ -80,6 +80,28 @@ const DomainChart = ({
   const { t } = useTranslation();
   const isMobile = useIsMobile();
 
+  // ============================================================================
+  // TRADUCTION DES DOMAINES
+  // ============================================================================
+
+  /**
+   * Traduit les noms de domaines depuis le français vers la langue active
+   * @param {string} domainName - Nom du domaine en français
+   * @returns {string} Nom traduit du domaine
+   */
+  const translateDomain = (domainName) => {
+    const translationKey = `metadata.domains.${domainName}`;
+    const translated = t(translationKey);
+    // Si la clé n'existe pas, retourner le nom original
+    return translated !== translationKey ? translated : domainName;
+  };
+
+  // Traduire les données
+  const translatedData = data.map(item => ({
+    ...item,
+    name: translateDomain(item.name)
+  }));
+
   // Hauteur responsive du graphique
   const responsiveHeight = useResponsiveValue({
     xs: height * 0.6,   // Mobile: 60% de la hauteur par défaut
@@ -180,7 +202,7 @@ const DomainChart = ({
           {/* ==================================================================
               BarChart : Graphique en barres Recharts
               ================================================================== */}
-          <BarChart data={data}>
+          <BarChart data={translatedData}>
 
             {/* GRILLE DE FOND */}
             <CartesianGrid
@@ -252,7 +274,7 @@ const DomainChart = ({
                 Pie : Le camembert lui-même
                 ============================================================== */}
             <Pie
-              data={data}               // Données source
+              data={translatedData}               // Données source
               dataKey="value"           // Clé pour les valeurs (tailles des parts)
               nameKey="name"            // Clé pour les noms (labels)
               cx="50%"                  // Centre X (milieu horizontal)
@@ -271,7 +293,7 @@ const DomainChart = ({
                   Génération des cellules colorées
                   Chaque part du camembert a sa propre couleur
                   ============================================================ */}
-              {data.map((entry, index) => (
+              {translatedData.map((entry, index) => (
                 <Cell 
                   key={`cell-${index}`}                    // Clé unique React
                   fill={colors[index % colors.length]}     // Couleur cyclique

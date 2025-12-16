@@ -5,7 +5,7 @@ import { Search, BarChart3 } from 'lucide-react';
 import './Home.css';
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="home-page">
@@ -14,7 +14,11 @@ const Home = () => {
         <div className="cisame-box">
           <div className="cisame-title">(_CiSaMe_)))</div>
           <div className="cisame-subtitle">
-            (_Circulation_des_savoirs_médiévaux_au_XIIe_siècle_)))
+            {i18n.language === 'fr' ? (
+              '(_Circulation_des_savoirs_médiévaux_au_XIIe_siècle_)))'
+            ) : (
+              '(_Circulation_of_Medieval_Knowledge_in_the_12th_century_)))'
+            )}
           </div>
         </div>
       </section>

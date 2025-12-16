@@ -1,12 +1,12 @@
 {
   "site": {
     "title": "CiSaMe",
-    "subtitle": "Medieval Knowledge Circulation"
+    "subtitle": "Circulation of Medieval Knowledge in the Twelfth Century"
   },
   "nav": {
     "home": "Home",
     "queryGenerator": "Query Generator",
-    "concordanceAnalyzer": "Concordance Analyzer"
+    "concordanceAnalyzer": "Results Analysis"
   },
   "sidebar": {
     "nav": {
@@ -15,95 +15,63 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 CiSaMe<br/>Medieval Knowledge Circulation"
+    "copyright": "© 2025 CiSaMe"
   },
   "home": {
-    "welcome": "Welcome to CiSaMe",
-    "description": "Platform of tools for medieval canon law analysis",
-    "tagline": "Analyze your corpora, compare your data and generate advanced linguistic queries",
-    "about": {
-      "title": "About CiSaMe",
-      "description": "CiSaMe (Circulation des Savoirs Médiévaux / Medieval Knowledge Circulation) is a digital platform dedicated to the study of medieval canon law. It offers powerful tools for analyzing concordances, exploring terminologies, and generating linguistic queries adapted to ancient Latin corpora.",
-      "features": {
-        "upload": {
-          "title": "Easy Import",
-          "description": "Upload your NoSketch Engine exports and metadata files with a simple drag-and-drop interface"
-        },
-        "analyze": {
-          "title": "Visual Analytics",
-          "description": "Explore your data through interactive charts: temporal evolution, domain distribution, author statistics"
-        },
-        "filter": {
-          "title": "Advanced Filtering",
-          "description": "Refine your analyses with powerful filters by author, domain, period, or place"
-        },
-        "compare": {
-          "title": "Corpus Comparison",
-          "description": "Compare two distinct corpora to identify similarities and differences across multiple criteria"
-        }
-      }
+    "projectDescription": {
+      "title": "The project",
+      "link": "\"Circulation of Medieval Knowledge in the 12th Century\" (CiSaMe)",
+      "text1": "aims to reassess the history of the circulation of knowledge — legal, theological, philosophical — during a long 12th century (1050-1220), prior to the institutionalization of disciplines.",
+      "text2": "The purpose of this site is to enable users to query the project database created (the content of which is described",
+      "linkHere": "here",
+      "text3": ") and to analyze and visualize the results obtained. These two purposes correspond to the \"Query Generator\" and \"Results Analysis\" sections.",
+      "text4": "Tutorials explaining how the site works are available on the",
+      "blogLink": "project blog"
     },
     "tools": {
-      "title": "Our Tools",
-      "startButton": "Get Started",
-      "concordance": {
-        "subtitle": "Analyze and visualize your concordances",
-        "what": {
-          "title": "What is it?",
-          "description": "The Concordance Analyzer allows you to import your NoSketch Engine exports, enrich them with metadata, and explore them through various visualizations (temporal, by domain, by author). You can also compare two distinct corpora."
-        },
-        "howto": {
-          "title": "How to use it?",
-          "step1": "Import your metadata (CSV file with information about the works) ⚠️ IMPORTANT: In NoSketch Engine, you must check 'Edition ID' and 'page number' when exporting the metadata",
-          "step2": "Import your NoSketch Engine export (concordances)",
-          "step3": "Explore your data through the different views (Overview, Temporal, Domains, Authors, etc.)",
-          "step4": "Optional: Import a second corpus to compare two datasets"
-        },
-        "features": {
-          "title": "Features",
-          "temporal": "Temporal analysis with timeline and chronological charts",
-          "domains": "Exploration by domains (Theology, Canon Law, Roman Law...)",
-          "authors": "Statistics by author with ranking and charts",
-          "comparison": "Comparison of 2 corpora with detailed comparative charts",
-          "export": "Export data as CSV and charts as PNG"
-        }
-      },
       "query": {
-        "subtitle": "Build advanced linguistic queries",
         "what": {
-          "title": "What is it?",
-          "description": "The Query Generator is a tool that helps you build complex CQL (Corpus Query Language) queries for NoSketch Engine. It handles proximity searches, orthographic variations, and semantic contexts."
+          "title": "PURPOSE",
+          "description": "The Query Generator is a tool that helps build complex CQL (Corpus Query Language) queries for NoSketch Engine. It allows proximity search, taking into account spelling variations and semantic contexts."
         },
         "howto": {
-          "title": "How to use it?",
-          "step1": "Choose a query type: proximity, variations, proximity + variations, or semantic context",
-          "step2": "Enter your search parameters (lemmas, distance, variation type...)",
-          "step3": "Click 'Generate Query' to create the CQL query",
-          "step4": "Copy the generated query and use it directly in NoSketch Engine"
+          "title": "HOW TO USE IT?",
+          "step1": "Choose the type of search (simple, lemma, regex, etc.)",
+          "step2": "Configure your search criteria (distance between tokens, constraints...)",
+          "step3": "Preview the CQL query generated in real time",
+          "step4": "Copy the query and use it in NoSketch Engine"
         },
         "features": {
-          "title": "Features",
-          "advanced": "Advanced proximity search with configurable distance and bidirectional mode",
-          "regex": "Automatic generation of complex regex patterns for orthographic variations",
-          "lemma": "Support for lemmas and medieval Latin variants (ae/e, v/u, j/i, ti/ci...)",
-          "copy": "One-click copy to use directly in NoSketch Engine"
+          "title": "FEATURES",
+          "advanced": "Advanced searches with CQL operators",
+          "regex": "Support for regular expressions",
+          "lemma": "Search by lemma and inflected forms",
+          "copy": "Copying the generated query"
         }
-      }
-    },
-    "gettingStarted": {
-      "title": "Quick Start",
-      "step1": {
-        "title": "Choose your tool",
-        "description": "Start with the Concordance Analyzer to explore your data, or use the Query Generator to build advanced searches"
       },
-      "step2": {
-        "title": "Import your data",
-        "description": "For the Concordance Analyzer: upload your metadata and NoSketch exports. For the Query Generator: configure your search parameters"
+      "concordance": {
+        "what": {
+          "title": "PURPOSE",
+          "description": "Results Analysis allows you to import NoSketch Engine search results and analyze them using different visualization tools (timeline, field, author). You can also compare two different sets of results."
+        },
+        "howto": {
+          "title": "HOW TO USE IT?",
+          "step1": "Import your metadata (CSV file)",
+          "step2": "⚠️ Warning: Before generating the CSV file in NoSketch Engine, you must check 'Edition ID' and 'page number'",
+          "step3": "Import your NoSketch Engine export",
+          "step4": "Analyze your data using different visualization tools (Overview, Timeline, Field, Author, etc.)",
+          "step5": "Optional: Import a second set of results and compare the two data sets"
+        },
+        "features": {
+          "title": "FEATURES",
+          "temporal": "Chronological analysis with timeline and chronological graphs",
+          "domains": "Exploration by traditional field (Theology, Canon Law, Roman Law)",
+          "authors": "Statistics by author with rankings and graphs",
+          "comparison": "Comparison of two sets of results with detailed comparative graphs",
+          "export": "Export data in CSV format and graph in PNG format"
+        }
       },
-      "step3": {
-        "title": "Explore and analyze",
-        "description": "Use interactive visualizations, filters, and comparison tools to discover insights in your medieval canon law corpora"
-      }
+      "startButton": "Get Started"
     }
   },
   "common": {
@@ -117,7 +85,7 @@
   "queryGenerator": {
     "app": {
       "title": "Linguistic Query Generator",
-      "subtitle": "Advanced tools for searching ancient text corpora"
+      "subtitle": ""
     },
     "tabs": {
       "proximity": "Proximity",
@@ -135,7 +103,7 @@
     },
     "proximity": {
       "title": "Proximity Search",
-      "description": "Find two lemmas that appear at a given distance from each other in the text. Perfect for studying collocations and conceptual associations.",
+      "description": "",
       "formTitle": "Search Parameters",
       "lemma1": "First lemma",
       "lemma2": "Second lemma",
@@ -148,8 +116,8 @@
       }
     },
     "variation": {
-      "title": "Orthographic Variations",
-      "description": "Generate queries to find orthographic variants with medieval Latin support.",
+      "title": "Spelling Variations",
+      "description": "",
       "formTitle": "Variation Search",
       "word": "Word to search",
       "desinenceType": "Ending type",
@@ -169,7 +137,7 @@
     },
     "proximityVariation": {
       "title": "Proximity with Variations",
-      "description": "Combine proximity and orthographic variations for exhaustive search.",
+      "description": "",
       "formTitle": "Advanced Search",
       "variationType": "Variation type",
       "simple": "Simple",
@@ -182,7 +150,7 @@
     },
     "semantic": {
       "title": "Semantic Context",
-      "description": "Find a central lemma with specific context terms to analyze semantic relationships.",
+      "description": "",
       "formTitle": "Semantic Search",
       "centralLemma": "Central lemma",
       "contextLemmas": "Context lemmas (comma-separated)",
@@ -217,7 +185,13 @@
   },
   "metadata": {
     "unknownDomain": "Unknown domain",
-    "unknownPlace": "Unknown place"
+    "unknownPlace": "Unknown place",
+    "domains": {
+      "Théologie": "Theology",
+      "Droit canonique": "Canon Law",
+      "Droit romain": "Roman Law",
+      "Domaine inconnu": "Unknown domain"
+    }
   },
   "periods": {
     "century11": "11th century",
@@ -240,8 +214,8 @@
   },
   "concordance": {
     "app": {
-      "title": "Concordance Analyzer",
-      "subtitle": "Lexicometric analysis of medieval canon law"
+      "title": "Results Analysis",
+      "subtitle": ""
     },
     "panels": {
       "overview": {
@@ -249,20 +223,20 @@
         "subtitle": "Global analysis"
       },
       "domains": {
-        "title": "Domains",
-        "subtitle": "Disciplinary distribution"
+        "title": "Field",
+        "subtitle": "Distribution by field"
       },
       "temporal": {
         "title": "Timeline",
-        "subtitle": "Temporal evolution"
+        "subtitle": ""
       },
       "authors": {
-        "title": "Authors",
-        "subtitle": "Main authorities"
+        "title": "Author(s)",
+        "subtitle": ""
       },
       "linguistic": {
-        "title": "Terminology",
-        "subtitle": "Specialized lexicon"
+        "title": "Vocabulary",
+        "subtitle": ""
       },
       "wordcloud": {
         "title": "Word Cloud",
@@ -273,12 +247,12 @@
         "subtitle": "Multi-criteria analysis"
       },
       "corpusComparison": {
-        "title": "Corpus Comparison",
-        "subtitle": "Comparative analysis of 2 distinct corpora"
+        "title": "Comparison of two sets of results",
+        "subtitle": ""
       },
       "data": {
         "title": "Data",
-        "subtitle": "Detailed concordances"
+        "subtitle": "Detailed result(s)"
       },
       "concordances": {
         "title": "Import",
@@ -286,7 +260,7 @@
       },
       "places": {
         "title": "Places",
-        "subtitle": "Geographic distribution"
+        "subtitle": "Geographical distribution"
       }
     },
     "buttons": {
@@ -296,45 +270,50 @@
       "export_concordances": "Export concordances as CSV",
       "export_analytics": "Export analytics as JSON",
       "export_chart": "Export chart as PNG",
-      "filters": "Filters"
+      "filters": "Filters",
+      "back": "Back"
     },
     "stats": {
       "total": "Total",
       "average": "Average",
       "richestPeriod": "Richest period",
       "averagePerPeriod": "Average per period",
-      "concordances": "Concordances",
+      "concordances": "Results",
       "enriched": "enriched"
     },
     "overview": {
-      "concordancesAnalyzed": "Concordances analyzed",
+      "concordancesAnalyzed": "Results analyzed",
       "matchRate": "Match rate",
-      "legalDomains": "legal domains",
+      "legalDomains": "field(s)",
+      "legalDomain": "field",
       "centuriesCovered": "centuries covered",
       "referencedAuthors": "referenced authors",
-      "keyTermsIdentified": "key terms identified",
+      "keyTermsIdentified": "term(s)",
       "uniqueKwicTerms": "unique KWIC terms",
       "comparisonCriteria": "comparison criteria",
-      "loadedConcordances": "loaded concordances",
+      "loadedConcordances": "result(s)",
       "enriched": "enriched",
-      "identifiedPlaces": "identified places",
+      "identifiedPlaces": "place(s)",
       "readyToAnalyze": "Ready to analyze",
-      "corpusComparison": "Comparison of 2 corpora",
+      "corpusComparison": "Comparison of 2 sets of results",
       "clickToAnalyze": "Click to analyze",
       "volume": "Volume",
-      "domains": "Domains",
+      "domains": "Field",
       "authors": "Authors",
-      "places": "Places"
+      "places": "Places",
+      "noDataset": "No dataset",
+      "oneDataset": "1 dataset loaded",
+      "twoDatasetsLoaded": "2 datasets loaded"
     },
     "charts": {
       "domains": {
-        "title": "Distribution by legal domains"
+        "title": "Distribution by field"
       },
       "authors": {
         "title": "Distribution by authors"
       },
       "places": {
-        "title": "Geographic distribution"
+        "title": "Geographical distribution"
       },
       "temporal": {
         "title": "Chronological evolution",
@@ -422,6 +401,7 @@
         "loadingMetadata": "Loading metadata...",
         "loadingDefaultMetadata": "Loading default metadata...",
         "metadataLoaded": "{{count}} metadata entries loaded",
+        "preloadedMetadata": "✅ {{count}} preloaded metadata entries (you can replace them)",
         "analyzingConcordancesA": "Analyzing concordances (Corpus A)...",
         "concordancesAnalyzedA": "{{count}} concordances analyzed (Corpus A)",
         "analyzingConcordancesB": "Analyzing concordances (Corpus B)...",
@@ -528,18 +508,18 @@
         "filteredCorpus": "Filtered corpus"
       },
       "corpusComparison": {
-        "sectionTitle": "Comparison of 2 Corpora",
-        "noData": "Please load 2 concordance files to enable comparison",
-        "corpusA": "Corpus A",
-        "corpusB": "Corpus B",
+        "sectionTitle": "Comparison of two sets of results",
+        "noData": "Please load 2 sets of results to enable comparison",
+        "corpusA": "Result A",
+        "corpusB": "Result B",
         "common": "Common",
         "onlyA": "Only A",
         "onlyB": "Only B",
         "ratio": "Ratio",
-        "largerA": "Corpus A larger",
-        "largerB": "Corpus B larger",
+        "largerA": "Result A larger",
+        "largerB": "Result B larger",
         "equal": "Equal",
-        "concordances": "concordances",
+        "concordances": "results",
         "overlap": "Overlap",
         "years": "years",
         "stats": {
@@ -549,14 +529,14 @@
         },
         "charts": {
           "domains": {
-            "title": "Comparison by domains",
-            "corpusALabel": "Corpus A ({{count}} concordances)",
-            "corpusBLabel": "Corpus B ({{count}} concordances)"
+            "title": "Comparison by field",
+            "corpusALabel": "Result A ({{count}} results)",
+            "corpusBLabel": "Result B ({{count}} results)"
           },
           "authors": {
             "title": "Comparison by authors",
-            "corpusALabel": "Corpus A ({{count}} concordances)",
-            "corpusBLabel": "Corpus B ({{count}} concordances)"
+            "corpusALabel": "Result A ({{count}} results)",
+            "corpusBLabel": "Result B ({{count}} results)"
           },
           "temporal": {
             "title": "Temporal comparison",
@@ -565,9 +545,9 @@
             "distributionBy": "Distribution by",
             "period": "Period",
             "numberOfWorks": "Number of works",
-            "numberOfConcordances": "Number of concordances",
+            "numberOfConcordances": "Number of results",
             "works": "works",
-            "concordances": "concordances",
+            "concordances": "results",
             "aggregatedChart": "Aggregated chart",
             "granularity": {
               "years": "Years",
@@ -578,19 +558,19 @@
             "countMode": {
               "works": "Number of works",
               "worksDesc": "Count each work only once",
-              "concordances": "Number of concordances",
+              "concordances": "Number of results",
               "concordancesDesc": "Count all occurrences"
             }
           },
           "terminology": {
             "title": "Terminological comparison",
-            "corpusALabel": "Corpus A terms ({{count}} occurrences)",
-            "corpusBLabel": "Corpus B terms ({{count}} occurrences)",
+            "corpusALabel": "Result A terms ({{count}} occurrences)",
+            "corpusBLabel": "Result B terms ({{count}} occurrences)",
             "occurrences": "occurrences"
           },
           "legend": {
-            "corpusA": "Corpus A",
-            "corpusB": "Corpus B"
+            "corpusA": "Result A",
+            "corpusB": "Result B"
           }
         }
       }

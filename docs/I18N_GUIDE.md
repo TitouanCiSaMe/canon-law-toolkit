@@ -68,6 +68,54 @@ function MyComponent() {
 // Résultat: "5ème sur 10"
 ```
 
+### Traductions de données dynamiques (ex: domaines juridiques)
+
+Pour traduire des données provenant du backend ou de fichiers CSV (comme les noms de domaines juridiques), utilisez un mapping de traduction :
+
+```jsx
+// Dans le composant
+import { useTranslation } from 'react-i18next';
+
+function DomainChart({ data }) {
+  const { t } = useTranslation();
+
+  // Fonction de traduction pour les domaines
+  const translateDomain = (domainName) => {
+    const translationKey = `metadata.domains.${domainName}`;
+    const translated = t(translationKey);
+    // Si la clé n'existe pas, retourner le nom original
+    return translated !== translationKey ? translated : domainName;
+  };
+
+  // Appliquer la traduction aux données
+  const translatedData = data.map(item => ({
+    ...item,
+    name: translateDomain(item.name)
+  }));
+
+  return <BarChart data={translatedData} />;
+}
+```
+
+```json
+// Dans fr.json et en.json
+{
+  "metadata": {
+    "domains": {
+      "Théologie": "Theology",
+      "Droit canonique": "Canon Law",
+      "Droit romain": "Roman Law"
+    }
+  }
+}
+```
+
+Cette approche permet de :
+- ✅ Traduire des données dynamiques provenant de sources externes
+- ✅ Gérer gracieusement les valeurs non traduites (fallback au nom original)
+- ✅ Centraliser les traductions dans les fichiers i18n
+- ✅ Supporter l'ajout de nouvelles valeurs sans modifier le code
+
 ## 📋 Structure des clés
 
 Les clés suivent une hiérarchie logique :
@@ -285,9 +333,27 @@ Le script retourne :
 - **Code 0** : Toutes les clés sont présentes ✅
 - **Code 1** : Des clés manquent ❌
 
+## ⚠️ Problèmes connus
+
+### Centrage des panels dans OverviewView
+
+**Problème** : Les numéros dans les 6 panels de même taille ne sont pas parfaitement alignés verticalement.
+
+**Localisation** : `src/modules/concordance-analyzer/components/views/OverviewView.jsx:295-350`
+
+**Tentatives de correction** :
+- Ajout de `minHeight: '3rem'` aux conteneurs de numéros
+- Ajout de `display: 'flex'`, `alignItems: 'center'`, `justifyContent: 'center'`
+- Ajout de `minHeight: '1.5rem'` aux labels
+
+**Status** : Non résolu - nécessite une investigation plus approfondie du système de layout.
+
+**Impact** : Visuel uniquement, n'affecte pas la fonctionnalité. Les différences de hauteur des textes traduits peuvent contribuer au problème d'alignement.
+
 ## 📖 Ressources
 
 - [react-i18next Documentation](https://react.i18next.com/)
 - [i18next Documentation](https://www.i18next.com/)
 - Fichier de traductions : `/src/shared/i18n/fr.json`
 - Script d'audit : `/scripts/audit-i18n.cjs`
+- Changelog : `/CHANGELOG.md` (voir v1.5.0 pour les dernières corrections CalKit)
