@@ -185,7 +185,13 @@
   },
   "metadata": {
     "unknownDomain": "Domaine inconnu",
-    "unknownPlace": "Lieu inconnu"
+    "unknownPlace": "Lieu inconnu",
+    "domains": {
+      "Théologie": "Théologie",
+      "Droit canonique": "Droit canonique",
+      "Droit romain": "Droit romain",
+      "Domaine inconnu": "Domaine inconnu"
+    }
   },
   "periods": {
     "century11": "XIe siècle",

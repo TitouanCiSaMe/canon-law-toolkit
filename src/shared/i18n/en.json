@@ -185,7 +185,13 @@
   },
   "metadata": {
     "unknownDomain": "Unknown domain",
-    "unknownPlace": "Unknown place"
+    "unknownPlace": "Unknown place",
+    "domains": {
+      "Théologie": "Theology",
+      "Droit canonique": "Canon Law",
+      "Droit romain": "Roman Law",
+      "Domaine inconnu": "Unknown domain"
+    }
   },
   "periods": {
     "century11": "11th century",
