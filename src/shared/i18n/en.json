@@ -270,7 +270,8 @@
       "export_concordances": "Export concordances as CSV",
       "export_analytics": "Export analytics as JSON",
       "export_chart": "Export chart as PNG",
-      "filters": "Filters"
+      "filters": "Filters",
+      "back": "Back"
     },
     "stats": {
       "total": "Total",

@@ -402,11 +402,15 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem'
+              marginBottom: '0.5rem',
+              minHeight: '3rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
               {analytics.domains.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains')}
             </div>
 
@@ -455,13 +459,17 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem'
+              marginBottom: '0.5rem',
+              minHeight: '3rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
               {analytics.periods.length > 0 ?
                 Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
                           Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {t('concordance.overview.centuriesCovered')}
             </div>
 
@@ -508,11 +516,15 @@ const OverviewView = ({
               fontSize: statFontSize,
               fontWeight: '300',
               marginBottom: '0.5rem',
-              textAlign: 'center'
+              textAlign: 'center',
+              minHeight: '3rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
               {analytics.authors.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
               {t('concordance.overview.referencedAuthors')}
             </div>
 
@@ -549,11 +561,15 @@ const OverviewView = ({
               fontSize: statFontSize,
               fontWeight: '300',
               marginBottom: '0.5rem',
-              textAlign: 'center'
+              textAlign: 'center',
+              minHeight: '3rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
               {analytics.keyTerms.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center' }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
               {t('concordance.overview.keyTermsIdentified')}
             </div>
 
@@ -634,7 +650,7 @@ const OverviewView = ({
 		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
 		      {corpusComparison.A?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Jeu de données A</div>
+		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</div>
 		  </div>
 
 		  <div style={{ fontSize: '1rem', opacity: 0.7 }}>vs</div>
@@ -648,7 +664,7 @@ const OverviewView = ({
 		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
 		      {corpusComparison.B?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Jeu de données B</div>
+		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</div>
 		  </div>
 		</div>
 		
@@ -690,7 +706,7 @@ const OverviewView = ({
 		    borderRadius: '50%',
 		    background: corpusComparison?.A?.concordanceData ? '#10b981' : 'rgba(255,255,255,0.3)'
 		  }} />
-		  <span>Jeu de données A</span>
+		  <span>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</span>
 
 		  <div style={{ margin: '0 0.5rem' }}>•</div>
 
@@ -700,7 +716,7 @@ const OverviewView = ({
 		    borderRadius: '50%',
 		    background: corpusComparison?.B?.concordanceData ? '#10b981' : 'rgba(255,255,255,0.3)'
 		  }} />
-		  <span>Jeu de données B</span>
+		  <span>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</span>
 		</div>
 	      </>
 	    )}
@@ -723,11 +739,15 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem'
+              marginBottom: '0.5rem',
+              minHeight: '3rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
               {filteredData.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {t('concordance.overview.loadedConcordances')}
             </div>
 
@@ -753,11 +773,15 @@ const OverviewView = ({
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
-              marginBottom: '0.5rem'
+              marginBottom: '0.5rem',
+              minHeight: '3rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
               {analytics.places?.length || 0}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {t('concordance.overview.identifiedPlaces')}
             </div>
 
