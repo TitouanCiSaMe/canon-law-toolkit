@@ -374,10 +374,10 @@ const OverviewView = ({
               opacity: 0.95
             }}>
               {corpusComparison?.B?.concordanceData
-                ? '2 Jeux de données chargés'
+                ? t('concordance.overview.twoDatasetsLoaded')
                 : parseStats.totalReferences
-                  ? '1 Jeu de données chargé'
-                  : 'Aucun jeu de données'
+                  ? t('concordance.overview.oneDataset')
+                  : t('concordance.overview.noDataset')
               }
             </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>
@@ -396,9 +396,9 @@ const OverviewView = ({
         {isMobile ? (
           renderCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length)
         ) : isTablet ? (
-          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains'))
+          renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains'))
         ) : (
-          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '1rem 0.5rem 0.5rem 0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -407,7 +407,7 @@ const OverviewView = ({
               {analytics.domains.length}
             </div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
-              {analytics.domains.length <= 1 ? 'domaine juridique' : t('concordance.overview.legalDomains')}
+              {analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains')}
             </div>
 
             {analytics.domains.slice(0, 3).map((domain, index) => (
@@ -451,7 +451,7 @@ const OverviewView = ({
             t('concordance.overview.centuriesCovered')
           )
         ) : (
-          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '1rem 0.5rem 0.5rem 0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -503,7 +503,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length, t('concordance.overview.referencedAuthors'))
         ) : (
-          <div style={{ paddingBottom: '1rem' }}>
+          <div style={{ padding: '1rem 0.5rem 0.5rem 0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -544,7 +544,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length, t('concordance.overview.keyTermsIdentified'))
         ) : (
-          <div style={{ paddingBottom: '1rem' }}>
+          <div style={{ padding: '1rem 0.5rem 0.5rem 0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -719,7 +719,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.data.icon, panelConfig.data.title, filteredData.length, t('concordance.overview.loadedConcordances'))
         ) : (
-          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '1rem 0.5rem 0.5rem 0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',
@@ -749,7 +749,7 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.places.icon, panelConfig.places.title, analytics.places?.length || 0, t('concordance.overview.identifiedPlaces'))
         ) : (
-          <div style={{ textAlign: 'center', paddingBottom: '0.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '1rem 0.5rem 0.5rem 0.5rem' }}>
             <div style={{
               fontSize: statFontSize,
               fontWeight: '300',

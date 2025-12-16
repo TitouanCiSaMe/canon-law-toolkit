@@ -284,6 +284,7 @@
       "concordancesAnalyzed": "Results analyzed",
       "matchRate": "Match rate",
       "legalDomains": "field(s)",
+      "legalDomain": "field",
       "centuriesCovered": "centuries covered",
       "referencedAuthors": "referenced authors",
       "keyTermsIdentified": "term(s)",
@@ -298,7 +299,10 @@
       "volume": "Volume",
       "domains": "Field",
       "authors": "Authors",
-      "places": "Places"
+      "places": "Places",
+      "noDataset": "No dataset",
+      "oneDataset": "1 dataset loaded",
+      "twoDatasetsLoaded": "2 datasets loaded"
     },
     "charts": {
       "domains": {
@@ -396,6 +400,7 @@
         "loadingMetadata": "Loading metadata...",
         "loadingDefaultMetadata": "Loading default metadata...",
         "metadataLoaded": "{{count}} metadata entries loaded",
+        "preloadedMetadata": "✅ {{count}} preloaded metadata entries (you can replace them)",
         "analyzingConcordancesA": "Analyzing concordances (Corpus A)...",
         "concordancesAnalyzedA": "{{count}} concordances analyzed (Corpus A)",
         "analyzingConcordancesB": "Analyzing concordances (Corpus B)...",

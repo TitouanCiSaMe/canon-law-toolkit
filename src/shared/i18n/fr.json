@@ -285,6 +285,7 @@
       "concordancesAnalyzed": "Résultats analysés",
       "matchRate": "Taux de correspondance",
       "legalDomains": "domaines juridiques",
+      "legalDomain": "domaine juridique",
       "centuriesCovered": "siècles couverts",
       "referencedAuthors": "auteurs référencés",
       "keyTermsIdentified": "termes-clés identifiés",
@@ -299,7 +300,10 @@
       "volume": "Volume",
       "domains": "Domaines",
       "authors": "Auteurs",
-      "places": "Lieux"
+      "places": "Lieux",
+      "noDataset": "Aucun jeu de données",
+      "oneDataset": "1 jeu de données chargé",
+      "twoDatasetsLoaded": "2 jeux de données chargés"
     },
     "charts": {
       "domains": {
@@ -399,6 +403,7 @@
         "loadingMetadata": "Chargement des métadonnées...",
         "loadingDefaultMetadata": "Chargement des métadonnées par défaut...",
         "metadataLoaded": "{{count}} métadonnées chargées",
+        "preloadedMetadata": "✅ {{count}} métadonnées pré-chargées (vous pouvez les remplacer)",
         "analyzingConcordancesA": "Analyse des concordances (Corpus A)...",
         "concordancesAnalyzedA": "{{count}} concordances analysées (Corpus A)",
         "analyzingConcordancesB": "Analyse des concordances (Corpus B)...",

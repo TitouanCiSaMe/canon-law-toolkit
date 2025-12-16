@@ -143,7 +143,7 @@ export const useFileUpload = () => {
 
               setMetadataLookup(lookup);
               setSelectedMetadataFile(null); // Pas de fichier uploadé
-              setProcessingStep(`✅ ${count} métadonnées pré-chargées (vous pouvez les remplacer)`);
+              setProcessingStep(t('concordance.upload.processing.preloadedMetadata', { count }));
               setLoading(false);
 
               // Message reste affiché en permanence (pas de setTimeout)
