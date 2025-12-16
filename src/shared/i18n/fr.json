@@ -15,7 +15,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 CiSaMe<br/>Circulation des Savoirs Médiévaux"
+    "copyright": "© 2025 CiSaMe"
   },
   "home": {
     "projectDescription": {
@@ -103,7 +103,7 @@
     },
     "proximity": {
       "title": "Recherche de proximité",
-      "description": "Trouvez deux lemmes qui apparaissent à une distance donnée l'un de l'autre dans le texte.",
+      "description": "",
       "formTitle": "Paramètres de recherche",
       "lemma1": "Premier lemme",
       "lemma2": "Second lemme",
@@ -117,7 +117,7 @@
     },
     "variation": {
       "title": "Variations orthographiques",
-      "description": "Générez des requêtes pour trouver des variantes orthographiques.",
+      "description": "",
       "formTitle": "Recherche de variations",
       "word": "Mot à rechercher",
       "desinenceType": "Type de désinence",
@@ -137,7 +137,7 @@
     },
     "proximityVariation": {
       "title": "Proximité avec variations",
-      "description": "Combinez proximité et variations orthographiques.",
+      "description": "",
       "formTitle": "Recherche avancée",
       "variationType": "Type de variations",
       "simple": "Simple",
@@ -150,7 +150,7 @@
     },
     "semantic": {
       "title": "Contexte sémantique",
-      "description": "Trouvez un lemme central avec des termes de contexte spécifiques pour analyser les relations sémantiques.",
+      "description": "",
       "formTitle": "Recherche sémantique",
       "centralLemma": "Lemme central",
       "contextLemmas": "Lemmes de contexte (séparés par virgules)",
