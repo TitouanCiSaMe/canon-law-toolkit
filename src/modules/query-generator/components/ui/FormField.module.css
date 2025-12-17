@@ -9,8 +9,8 @@
 .label {
   display: block;
   margin-bottom: 0.75rem;
-  font-family: "Lato", "Helvetica Neue", sans-serif;
-  font-size: 0.875rem;
+  font-family: "Unistra C", "Helvetica Neue", sans-serif;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #704214;
   letter-spacing: 0.01em;
@@ -25,8 +25,8 @@
   padding: 1rem 1.5rem;
   border: 2px solid #e2e8f0;
   border-radius: 6px;
-  font-size: 0.875rem;
-  font-family: "Lato", "Helvetica Neue", sans-serif;
+  font-size: 1.1rem;
+  font-family: "Unistra C", "Helvetica Neue", sans-serif;
   background: #fffef7;
   color: #1e293b;
   transition: all 250ms ease;
@@ -47,7 +47,7 @@
 
 .helpText {
   margin-top: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #5a5a5a;
   font-style: italic;
 }

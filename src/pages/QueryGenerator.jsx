@@ -101,7 +101,7 @@ const styles = {
 
   pageTitle: {
     fontFamily: globalTheme.typography.heading.h1.fontFamily,
-    fontSize: '2rem',
+    fontSize: '2.5rem',
     fontWeight: globalTheme.typography.weight.bold,
     color: globalTheme.palettes.concordance.primary.main,
     marginBottom: globalTheme.spacing.md,

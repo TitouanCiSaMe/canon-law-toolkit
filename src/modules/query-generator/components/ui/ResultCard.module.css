@@ -21,7 +21,7 @@
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #704214;
   margin-bottom: 1.5rem;
@@ -41,7 +41,7 @@
   border: 1px solid #e2e8f0;
   margin-bottom: 1.5rem;
   overflow-x: auto;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -59,7 +59,7 @@
   padding: 1rem;
   background: #f8f9fa;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .metadataItem {
@@ -72,7 +72,7 @@
   background: #F0F8FF;
   border: 1px dashed #4682B4;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .patternsLabel {
@@ -84,7 +84,7 @@
 .patternsContent {
   font-family: 'Courier New', Courier, monospace;
   color: #334155;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .actions {
@@ -100,8 +100,8 @@
   padding: 1rem 1.75rem;
   border-radius: 6px;
   border: 2px solid;
-  font-family: "Lato", "Helvetica Neue", sans-serif;
-  font-size: 0.875rem;
+  font-family: "Unistra C", "Helvetica Neue", sans-serif;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 250ms ease;
