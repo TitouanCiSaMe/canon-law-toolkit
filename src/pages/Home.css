@@ -25,7 +25,7 @@
 
 .cisame-title {
   font-family: var(--font-display);
-  font-size: 5.5rem;
+  font-size: 7rem;
   font-weight: 400;
   color: #5C3317;
   letter-spacing: 0.02em;
@@ -35,7 +35,7 @@
 
 .cisame-subtitle {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   font-weight: 400;
   color: #5C3317;
   letter-spacing: 0.01em;
@@ -54,7 +54,7 @@
 
 .project-description p {
   font-family: var(--font-primary);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   color: #704214;
   line-height: 1.8;
   margin-bottom: 1.5rem;
@@ -84,7 +84,7 @@
 
 .tools-section h2 {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #5C3317;
   margin-bottom: 3rem;
   text-align: center;
@@ -123,7 +123,7 @@
 .tool-header h3 {
   font-family: var(--font-heading);
   color: #5C3317;
-  font-size: 1.75rem;
+  font-size: 2.2rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
 }
@@ -131,7 +131,7 @@
 .tool-subtitle {
   font-family: var(--font-primary);
   color: #8B4513;
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-style: italic;
   margin: 0;
 }
@@ -163,12 +163,11 @@
 .tool-features h4 {
   font-family: var(--font-ui);
   color: #5C3317;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.9rem;
 }
 
 .tool-description p {
@@ -176,7 +175,7 @@
   color: #704214;
   line-height: 1.7;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
 }
 
 .tool-howto ol {
@@ -189,7 +188,7 @@
 .tool-howto ol li {
   margin-bottom: 0.75rem;
   line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
 }
 
 .tool-howto ol li:last-child {
@@ -206,7 +205,7 @@
 .tool-features ul li {
   margin-bottom: 0.75rem;
   line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
 }
 
 .tool-features ul li:last-child {
@@ -221,7 +220,7 @@
   padding: 1rem 2.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
@@ -239,15 +238,15 @@
 
 @media (max-width: 768px) {
   .cisame-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .cisame-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
 
   .project-description p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .tool-header {
@@ -256,7 +255,7 @@
   }
 
   .tool-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
 
   .tool-content {
