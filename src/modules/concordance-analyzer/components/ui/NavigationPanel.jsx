@@ -92,7 +92,7 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
 	  gridArea: config.gridArea,
 	  background: config.gradient,
 	  color: textColor,
-	  padding: config.size === 'large' ? '3rem' : config.size === 'wide' ? '2rem' : '2rem',
+	  padding: config.size === 'large' ? '1.5rem' : config.size === 'wide' ? '1rem' : '1rem',
 	  cursor: 'pointer',
 	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',
 	  position: 'relative',
