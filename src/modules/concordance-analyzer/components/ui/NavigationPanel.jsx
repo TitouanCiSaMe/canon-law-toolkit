@@ -92,7 +92,7 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
 	  gridArea: config.gridArea,
 	  background: config.gradient,
 	  color: textColor,
-	  padding: config.size === 'large' ? '3rem' : config.size === 'wide' ? '2rem' : '2rem',
+	  padding: config.size === 'large' ? '1.5rem' : config.size === 'wide' ? '1rem' : '1rem',
 	  cursor: 'pointer',
 	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',
 	  position: 'relative',
@@ -116,22 +116,22 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
         justifyContent: config.size === 'large' ? 'center' : config.size === 'wide' ? 'center' : 'flex-start'
       }}>
         <div style={{
-          fontSize: '0.85rem',
+          fontSize: '1.05rem',
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           opacity: 0.95,
           marginBottom: '0.5rem',
-          fontFamily: '"Inter", sans-serif',
+          fontFamily: visualTheme.typography.fontFamily.secondary,
           color: textColor
         }}>
           {t(`concordance.panels.${config.id}.subtitle`)}
         </div>
 
         <h3 style={{
-          fontSize: config.size === 'large' ? '2rem' : config.size === 'wide' ? '1.5rem' : '1.3rem',
+          fontSize: config.size === 'large' ? '2.5rem' : config.size === 'wide' ? '1.9rem' : '1.6rem',
           fontWeight: '500',
           marginBottom: '1rem',
-          fontFamily: '"Crimson Text", serif',
+          fontFamily: visualTheme.typography.fontFamily.heading,
           color: textColor
         }}>
           {t(`concordance.panels.${config.id}.title`)}

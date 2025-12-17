@@ -1,0 +1,257 @@
+/* ============================================================================
+   ENCADRÉS UNISTRA - CANON LAW TOOLKIT
+   ============================================================================
+
+   Composants d'encadrés réutilisables selon la charte Unistra.
+   Ces encadrés utilisent la police Unistra Encadre pour un rendu
+   typographique conforme à l'identité visuelle de l'Université.
+   ============================================================================ */
+
+/* ===== ENCADRÉ DE BASE ===== */
+
+.unistra-box {
+  font-family: var(--font-display);
+  border: var(--border-unistra);
+  border-radius: var(--border-radius-unistra);
+  padding: var(--spacing-encadre-md);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-unistra-subtle);
+  transition: box-shadow var(--transition-normal);
+}
+
+.unistra-box:hover {
+  box-shadow: var(--shadow-unistra-medium);
+}
+
+/* ===== VARIANTES DE TAILLE ===== */
+
+.unistra-box-sm {
+  padding: var(--spacing-encadre-sm);
+  border-width: 1px;
+}
+
+.unistra-box-lg {
+  padding: var(--spacing-encadre-lg);
+  border-width: 3px;
+}
+
+.unistra-box-xl {
+  padding: var(--spacing-encadre-xl);
+  border-width: 3px;
+}
+
+/* ===== TITRE D'ENCADRÉ ===== */
+
+.unistra-box-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-medieval-brown);
+  margin-bottom: var(--spacing-element);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.unistra-box-title-lg {
+  font-size: 2rem;
+}
+
+.unistra-box-title-xl {
+  font-size: 3rem;
+}
+
+/* ===== CONTENU D'ENCADRÉ ===== */
+
+.unistra-box-content {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.unistra-box-content p {
+  margin-bottom: 1rem;
+}
+
+.unistra-box-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== ENCADRÉ AVEC BORDURE ÉPAISSE (Logo, Hero) ===== */
+
+.unistra-box-hero {
+  font-family: var(--font-display);
+  border: var(--border-unistra-thick);
+  padding: var(--spacing-encadre-xl);
+  text-align: center;
+  background: linear-gradient(to bottom, #ffffff 0%, var(--color-medieval-light) 100%);
+}
+
+.unistra-box-hero-title {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-medieval-brown);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.unistra-box-hero-subtitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-medieval-brown);
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+/* ===== ENCADRÉ SIMPLE (Navigation, Sidebar) ===== */
+
+.unistra-box-simple {
+  font-family: var(--font-ui);
+  border: var(--border-unistra-thin);
+  padding: var(--spacing-encadre-sm);
+  background-color: var(--color-bg-panel);
+}
+
+.unistra-box-simple:hover {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-medieval-gold);
+}
+
+/* ===== ENCADRÉ DE SECTION (Headers) ===== */
+
+.unistra-section-header {
+  font-family: var(--font-heading);
+  border-bottom: var(--border-unistra);
+  padding-bottom: var(--spacing-tight);
+  margin-bottom: var(--spacing-element);
+}
+
+.unistra-section-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-medieval-brown);
+  margin: 0;
+}
+
+/* ===== ENCADRÉ DE CARTE (Tools, Features) ===== */
+
+.unistra-card {
+  font-family: var(--font-primary);
+  border: var(--border-unistra);
+  border-radius: var(--border-radius-unistra);
+  padding: var(--spacing-encadre-md);
+  background-color: var(--color-bg-primary);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.unistra-card:hover {
+  box-shadow: var(--shadow-unistra-strong);
+  transform: translateY(-2px);
+  border-color: var(--color-medieval-gold);
+}
+
+.unistra-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-medieval-brown);
+  margin-bottom: 0.75rem;
+}
+
+.unistra-card-content {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* ===== ENCADRÉ DE LOGO (Sidebar) ===== */
+
+.unistra-logo-box {
+  font-family: var(--font-display);
+  border: var(--border-unistra);
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--color-bg-primary);
+  margin-bottom: var(--spacing-element);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.unistra-logo-box:hover {
+  background-color: var(--color-hover-bg);
+  box-shadow: var(--shadow-unistra-medium);
+}
+
+.unistra-logo-box img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== ENCADRÉ DE PANEL (Overview) ===== */
+
+.unistra-panel {
+  font-family: var(--font-primary);
+  border: var(--border-unistra-thin);
+  border-radius: var(--border-radius-slight);
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-panel) 100%);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.unistra-panel:hover {
+  border-color: var(--color-medieval-gold);
+  box-shadow: var(--shadow-unistra-medium);
+  transform: scale(1.02);
+}
+
+.unistra-panel-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-medieval-brown);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.unistra-panel-stat {
+  font-family: var(--font-data);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-medieval-gold);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.unistra-panel-label {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .unistra-box {
+    padding: var(--spacing-encadre-sm);
+  }
+
+  .unistra-box-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .unistra-box-hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .unistra-panel-stat {
+    font-size: 2rem;
+  }
+}

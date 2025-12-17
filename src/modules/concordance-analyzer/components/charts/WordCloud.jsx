@@ -66,14 +66,14 @@ const WordCloud = ({
         textAlign: 'center',
       }}>
         <div style={{
-          fontSize: '3rem',
+          fontSize: '3.8rem',
           marginBottom: '1rem',
           color: '#94a3b8',
         }}>
           ❦
         </div>
         <h3 style={{
-          fontSize: '1.25rem',
+          fontSize: '1.6rem',
           fontWeight: '500',
           color: '#475569',
           marginBottom: '0.5rem',
@@ -82,7 +82,7 @@ const WordCloud = ({
         </h3>
         <p style={{
           color: '#64748b',
-          fontSize: '0.9rem',
+          fontSize: '1.15rem',
         }}>
           {t('concordance.messages.importForWordCloud')}
         </p>

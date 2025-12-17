@@ -7,6 +7,8 @@ import QueryGenerator from './pages/QueryGenerator';
 import ConcordanceAnalyzer from './pages/ConcordanceAnalyzer';
 import './shared/components/animations.css';
 import './styles/fonts.css';
+import './styles/unistra-theme.css';
+import './styles/unistra-boxes.css';
 
 function App() {
   return (

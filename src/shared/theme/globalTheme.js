@@ -208,22 +208,22 @@ export const globalTheme = {
   // ------------------------------------------------------------------------
   typography: {
     fontFamily: {
-      primary: '"Crimson Text", Georgia, serif',    // Titres principaux (médiéval)
-      secondary: '"Lato", "Helvetica Neue", sans-serif',    // UI/Corps de texte
-      heading: '"EB Garamond", "Crimson Text", Georgia, serif',  // Grands titres (style livre ancien)
-      display: '"Cormorant Garamond", "EB Garamond", serif',     // Titres display (enluminure)
-      body: '"Lato", "Helvetica Neue", sans-serif', // Corps de texte principal
+      primary: '"Unistra A", Georgia, serif',    // Titres principaux (médiéval)
+      secondary: '"Unistra C", "Helvetica Neue", sans-serif',    // UI/Corps de texte
+      heading: '"Unistra B", Georgia, serif',  // Grands titres (style livre ancien)
+      display: '"Unistra Encadre", serif',     // Titres display (enluminure)
+      body: '"Unistra C", "Helvetica Neue", sans-serif', // Corps de texte principal
       mono: '"Courier New", Courier, monospace'     // Code/données
     },
     size: {
-      xs: '0.75rem',     // 12px - Métadonnées
-      sm: '0.85rem',     // 13.6px - Labels
-      md: '0.875rem',    // 14px - Corps de texte
-      lg: '1rem',        // 16px - Texte standard
-      xl: '1.25rem',     // 20px - Petits titres
-      xxl: '1.5rem',     // 24px - Titres moyens
-      xxxl: '2rem',      // 32px - Grands titres
-      display: '2.5rem'  // 40px - Titres display
+      xs: '1.045rem',    // +10% Query Generator
+      sm: '1.155rem',    // +10% Query Generator
+      md: '1.21rem',     // +10% Query Generator
+      lg: '1.375rem',    // +10% Query Generator
+      xl: '1.705rem',    // +10% Query Generator
+      xxl: '2.09rem',    // +10% Query Generator
+      xxxl: '2.75rem',   // +10% Query Generator
+      display: '3.52rem' // +10% Query Generator
     },
     weight: {
       light: '300',
@@ -236,8 +236,8 @@ export const globalTheme = {
     // Styles de titres hiérarchiques
     heading: {
       h1: {
-        fontFamily: '"EB Garamond", "Crimson Text", Georgia, serif',
-        fontSize: '2.5rem',     // 40px
+        fontFamily: '"Unistra B", Georgia, serif',
+        fontSize: '3.2rem',     // 51.2px (+28%)
         fontWeight: '700',
         lineHeight: '1.2',
         letterSpacing: '-0.02em',
@@ -245,8 +245,8 @@ export const globalTheme = {
         textTransform: 'none'
       },
       h2: {
-        fontFamily: '"Crimson Text", Georgia, serif',
-        fontSize: '2rem',       // 32px
+        fontFamily: '"Unistra B", Georgia, serif',
+        fontSize: '2.5rem',       // 40px (+25%)
         fontWeight: '600',
         lineHeight: '1.3',
         letterSpacing: '-0.01em',
@@ -254,8 +254,8 @@ export const globalTheme = {
         textTransform: 'none'
       },
       h3: {
-        fontFamily: '"Crimson Text", Georgia, serif',
-        fontSize: '1.5rem',     // 24px
+        fontFamily: '"Unistra B", Georgia, serif',
+        fontSize: '1.9rem',     // 30.4px (+27%)
         fontWeight: '600',
         lineHeight: '1.4',
         letterSpacing: '0',
@@ -263,8 +263,8 @@ export const globalTheme = {
         textTransform: 'none'
       },
       h4: {
-        fontFamily: '"Lato", sans-serif',
-        fontSize: '1.25rem',    // 20px
+        fontFamily: '"Unistra C", sans-serif',
+        fontSize: '1.55rem',    // 24.8px (+24%)
         fontWeight: '600',
         lineHeight: '1.4',
         letterSpacing: '0',
@@ -272,8 +272,8 @@ export const globalTheme = {
         textTransform: 'none'
       },
       h5: {
-        fontFamily: '"Lato", sans-serif',
-        fontSize: '1rem',       // 16px
+        fontFamily: '"Unistra C", sans-serif',
+        fontSize: '1.25rem',       // 20px (+25%)
         fontWeight: '600',
         lineHeight: '1.5',
         letterSpacing: '0.01em',
@@ -281,8 +281,8 @@ export const globalTheme = {
         textTransform: 'uppercase'
       },
       h6: {
-        fontFamily: '"Lato", sans-serif',
-        fontSize: '0.875rem',   // 14px
+        fontFamily: '"Unistra C", sans-serif',
+        fontSize: '1.1rem',   // 17.6px (+26%)
         fontWeight: '700',
         lineHeight: '1.5',
         letterSpacing: '0.05em',
@@ -378,7 +378,7 @@ export const createGradient = (color1, color2) =>
  * @returns {string} CSS string
  */
 export const generateGlobalStyles = () => `
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+  /* Polices Unistra chargées via fonts.css */
 
   * {
     box-sizing: border-box;

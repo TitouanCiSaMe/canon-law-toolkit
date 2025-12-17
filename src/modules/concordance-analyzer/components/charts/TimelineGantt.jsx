@@ -61,15 +61,15 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
 
   // Tailles de police responsives
   const tickFontSize = useResponsiveValue({
-    xs: 9,      // Mobile: très petit
-    md: 10,     // Tablet: petit
-    lg: 11      // Desktop: taille normale
+    xs: 12,     // Mobile: très petit (+33%)
+    md: 13,     // Tablet: petit (+30%)
+    lg: 14      // Desktop: taille normale (+27%)
   });
 
   const labelFontSize = useResponsiveValue({
-    xs: 8,      // Mobile: très petit
-    md: 9,      // Tablet: petit
-    lg: 10      // Desktop: taille normale
+    xs: 10,     // Mobile: très petit (+25%)
+    md: 11,     // Tablet: petit (+22%)
+    lg: 13      // Desktop: taille normale (+30%)
   });
 
   // ============================================================================
@@ -314,9 +314,9 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
         background: 'white',
         borderRadius: '8px'
       }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⧗</div>
+        <div style={{ fontSize: '3.8rem', marginBottom: '1rem' }}>⧗</div>
         <h3>{t('concordance.timeline.noData')}</h3>
-        <p style={{ fontSize: '0.9rem' }}>
+        <p style={{ fontSize: '1.15rem' }}>
           {t('concordance.timeline.dateFormat')}
         </p>
       </div>
@@ -333,7 +333,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
         marginBottom: '1rem'
       }}>
         <h5 style={{
-          fontSize: '1rem',
+          fontSize: '1.25rem',
           fontWeight: '600',
           color: '#1e293b',
           margin: 0
@@ -345,7 +345,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
         <div style={{
           display: 'flex',
           gap: '1.5rem',
-          fontSize: '0.75rem',
+          fontSize: '0.95rem',
           color: '#64748b'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -506,7 +506,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
             color: 'white',
             padding: '0.75rem',
             borderRadius: '6px',
-            fontSize: '0.8rem',
+            fontSize: '1.0rem',
             maxWidth: '300px',
             zIndex: 1000,
             pointerEvents: 'none',
@@ -535,7 +535,7 @@ const TimelineGantt = ({ data, height = 600, chartId }) => {
         display: 'flex',
         flexWrap: 'wrap',
         gap: '1rem',
-        fontSize: '0.75rem'
+        fontSize: '0.95rem'
       }}>
         {Object.entries(domainColors).map(([domain, color]) => (
           <div key={domain} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>

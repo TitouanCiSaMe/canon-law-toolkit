@@ -91,15 +91,15 @@ const TemporalChart = ({
 
   // Taille de police responsive
   const axisFontSize = useResponsiveValue({
-    xs: '0.7rem',    // Mobile
-    md: '0.8rem',    // Tablet
-    lg: '0.85rem'    // Desktop
+    xs: '0.9rem',    // Mobile (+29%)
+    md: '1.0rem',    // Tablet (+25%)
+    lg: '1.1rem'     // Desktop (+29%)
   });
 
   const labelFontSize = useResponsiveValue({
-    xs: '0.75rem',   // Mobile
-    md: '0.85rem',   // Tablet
-    lg: '0.9rem'     // Desktop
+    xs: '0.95rem',   // Mobile (+27%)
+    md: '1.1rem',    // Tablet (+29%)
+    lg: '1.15rem'    // Desktop (+28%)
   });
 
   // ============================================================================
@@ -119,7 +119,7 @@ const TemporalChart = ({
       }}>
         {/* Icône visuelle */}
         <div style={{
-          fontSize: '3rem',       // Grande taille
+          fontSize: '3.8rem',     // Grande taille (+27%)
           marginBottom: '1rem'    // Espacement sous l'icône
         }}>
           ⧗

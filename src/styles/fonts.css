@@ -31,6 +31,93 @@
   font-style: italic;
 }
 
+/* Unistra B - Titres de sections */
+@font-face {
+  font-family: 'Unistra B';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraB-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unistra B';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraB-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unistra B';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraB-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Unistra B';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraB-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Unistra C - Éléments UI */
+@font-face {
+  font-family: 'Unistra C';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraC-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unistra C';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraC-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unistra C';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraC-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Unistra C';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraC-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Unistra D - Données et tableaux */
+@font-face {
+  font-family: 'Unistra D';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraD-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unistra D';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraD-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unistra D';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraD-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Unistra D';
+  src: url('/Police/Unistra_2.0/00_POLICES/UnistraD-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
 /* Unistra Encadre - Pour les boîtes */
 @font-face {
   font-family: 'Unistra Encadre';

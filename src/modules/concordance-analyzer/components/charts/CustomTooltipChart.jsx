@@ -200,7 +200,7 @@ const CustomTooltip = ({
           NOM DE L'ÉLÉMENT
           ================================================================== */}
       <div style={{
-        fontSize: '0.95rem',
+        fontSize: '1.2rem',
         fontWeight: '600',
         color: '#1A365D',                            // Bleu académique foncé
         marginBottom: '0.5rem',
@@ -220,14 +220,14 @@ const CustomTooltip = ({
         marginBottom: showPercentage || showRank ? '0.4rem' : '0'
       }}>
         <span style={{
-          fontSize: '0.85rem',
+          fontSize: '1.1rem',
           color: '#64748b',                          // Gris neutre
           fontWeight: '500'
         }}>
           {valueLabel} :
         </span>
         <span style={{
-          fontSize: '1rem',
+          fontSize: '1.25rem',
           fontWeight: '700',
           color: '#1A365D',                          // Bleu académique
           marginLeft: '0.5rem'
@@ -247,14 +247,14 @@ const CustomTooltip = ({
           marginBottom: showRank ? '0.4rem' : '0'
         }}>
           <span style={{
-            fontSize: '0.85rem',
+            fontSize: '1.1rem',
             color: '#64748b',
             fontWeight: '500'
           }}>
             {t('concordance.charts.tooltip.shareOfTotal')} :
           </span>
           <span style={{
-            fontSize: '0.9rem',
+            fontSize: '1.15rem',
             fontWeight: '600',
             color: '#2C5282',                        // Bleu moyen
             marginLeft: '0.5rem'
@@ -277,14 +277,14 @@ const CustomTooltip = ({
           borderTop: '1px solid #f1f5f9'            // Ligne de séparation légère
         }}>
           <span style={{
-            fontSize: '0.8rem',
+            fontSize: '1.0rem',
             color: '#64748b',
             fontStyle: 'italic'
           }}>
             {t('concordance.charts.tooltip.ranking')} :
           </span>
           <span style={{
-            fontSize: '0.85rem',
+            fontSize: '1.1rem',
             fontWeight: '600',
             color: '#553C9A',                        // Violet académique
             marginLeft: '0.5rem'
