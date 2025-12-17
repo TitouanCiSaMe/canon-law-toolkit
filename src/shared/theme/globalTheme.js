@@ -216,14 +216,14 @@ export const globalTheme = {
       mono: '"Courier New", Courier, monospace'     // Code/données
     },
     size: {
-      xs: '0.95rem',     // 15.2px - Métadonnées (+27%)
-      sm: '1.05rem',     // 16.8px - Labels (+24%)
-      md: '1.1rem',      // 17.6px - Corps de texte (+26%)
-      lg: '1.25rem',     // 20px - Texte standard (+25%)
-      xl: '1.55rem',     // 24.8px - Petits titres (+24%)
-      xxl: '1.9rem',     // 30.4px - Titres moyens (+27%)
-      xxxl: '2.5rem',    // 40px - Grands titres (+25%)
-      display: '3.2rem'  // 51.2px - Titres display (+28%)
+      xs: '1.045rem',    // +10% Query Generator
+      sm: '1.155rem',    // +10% Query Generator
+      md: '1.21rem',     // +10% Query Generator
+      lg: '1.375rem',    // +10% Query Generator
+      xl: '1.705rem',    // +10% Query Generator
+      xxl: '2.09rem',    // +10% Query Generator
+      xxxl: '2.75rem',   // +10% Query Generator
+      display: '3.52rem' // +10% Query Generator
     },
     weight: {
       light: '300',

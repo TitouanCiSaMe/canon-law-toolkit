@@ -193,7 +193,7 @@ const Sidebar = ({
             CiSaMe
           </div>
           <div style={{
-            fontSize: '1.1rem',
+            fontSize: '1.3rem',
             fontWeight: 400,
             fontFamily: 'var(--font-primary)',
             opacity: 0.9,

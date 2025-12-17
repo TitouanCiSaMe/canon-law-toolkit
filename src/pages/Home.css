@@ -54,11 +54,11 @@
 
 .project-description p {
   font-family: var(--font-primary);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #704214;
   line-height: 1.8;
   margin-bottom: 1.5rem;
-  text-align: left;
+  text-align: justify;
 }
 
 .project-description a {
