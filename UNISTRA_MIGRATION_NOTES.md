@@ -125,13 +125,63 @@ Headings migrés vers Unistra B/C avec augmentation :
 
 ---
 
+### Phase 4 - Concordance Analyzer (TERMINÉ)
+**Commit** : `a0bef52`
+
+**NavigationPanel.jsx** - Migration polices Unistra:
+- Subtitle : Inter → Unistra C (visualTheme), 0.85rem → 1.05rem (+24%)
+- Title large : Crimson Text → Unistra B (visualTheme), 2rem → 2.5rem (+25%)
+- Title wide : 1.5rem → 1.9rem (+27%)
+- Title medium : 1.3rem → 1.6rem (+23%)
+
+**Graphiques (Charts) - Augmentation tailles de police** :
+
+DomainChart.jsx, AuthorChart.jsx, PlaceChart.jsx (structure identique):
+- axisFontSize : xs 0.7→0.9rem (+29%), md 0.8→1.0rem (+25%), lg 0.85→1.1rem (+29%)
+- labelFontSize : xs 0.75→0.95rem (+27%), md 0.85→1.1rem (+29%), lg 0.9→1.15rem (+28%)
+- pieLabelFontSize : xs 0.65→0.85rem (+31%), md 0.75→0.95rem (+27%), lg 0.85→1.1rem (+29%)
+- Icône vide : 3rem → 3.8rem (+27%)
+
+TemporalChart.jsx:
+- axisFontSize : xs 0.7→0.9rem (+29%), md 0.8→1.0rem (+25%), lg 0.85→1.1rem (+29%)
+- labelFontSize : xs 0.75→0.95rem (+27%), md 0.85→1.1rem (+29%), lg 0.9→1.15rem (+28%)
+- Icône vide : 3rem → 3.8rem (+27%)
+
+TimelineGantt.jsx:
+- tickFontSize (px) : xs 9→12px (+33%), md 10→13px (+30%), lg 11→14px (+27%)
+- labelFontSize (px) : xs 8→10px (+25%), md 9→11px (+22%), lg 10→13px (+30%)
+- Titre : 1rem → 1.25rem (+25%)
+- Légende : 0.75rem → 0.95rem (+27%)
+- Tooltip : 0.8rem → 1.0rem (+25%)
+- Message erreur : 0.9rem → 1.15rem (+28%)
+- Domaines : 0.75rem → 0.95rem (+27%)
+- Icône vide : 3rem → 3.8rem (+27%)
+
+WordCloud.jsx:
+- Icône vide : 3rem → 3.8rem (+27%)
+- Titre vide : 1.25rem → 1.6rem (+28%)
+- Message : 0.9rem → 1.15rem (+28%)
+
+CustomTooltipChart.jsx:
+- Nom élément : 0.95rem → 1.2rem (+26%)
+- Label valeur : 0.85rem → 1.1rem (+29%)
+- Valeur : 1rem → 1.25rem (+25%)
+- Label pourcentage : 0.85rem → 1.1rem (+29%)
+- Pourcentage : 0.9rem → 1.15rem (+28%)
+- Label rang : 0.8rem → 1.0rem (+25%)
+- Rang : 0.85rem → 1.1rem (+29%)
+
+**Impact** : globalTheme.js ayant déjà été migré vers Unistra en Phase 3, tous les autres composants du Concordance Analyzer qui utilisent visualTheme bénéficient automatiquement des nouvelles polices Unistra.
+
+**Notes** : Augmentation généralisée de +22% à +33% sur tous les éléments textuels pour compenser la perte de taille visuelle des polices Unistra. Les graphiques conservent leur lisibilité optimale.
+
+---
+
 ## 📋 Prochaines étapes
 
-### Phase 4 - Concordance Analyzer
-- [ ] Vérifier si utilise globalTheme ou styles propres
-- [ ] Panels et navigation
-- [ ] Graphiques (labels, axes)
-- [ ] Tableaux de données
+### Phase 5 - Composants finaux (optionnel)
+- [ ] Autres composants UI du Concordance Analyzer si nécessaire
+- [ ] Vérification visuelle globale de l'application
 
 ---
 
