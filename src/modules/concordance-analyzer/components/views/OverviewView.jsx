@@ -410,23 +410,9 @@ const OverviewView = ({
             }}>
               {analytics.domains.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, minHeight: '1.5rem' }}>
               {analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains')}
             </div>
-
-            {analytics.domains.slice(0, 3).map((domain, index) => (
-              <div key={domain.name} style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '1.0rem',
-                marginBottom: '0.5rem',
-                padding: '0.25rem 0',
-                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
-              }}>
-                <span>{domain.name.length > 15 ? domain.name.substring(0, 15) + '...' : domain.name}</span>
-                <span style={{ fontWeight: '500' }}>{domain.value}</span>
-              </div>
-            ))}
           </div>
         )}
       </NavigationPanel>
@@ -524,23 +510,9 @@ const OverviewView = ({
             }}>
               {analytics.authors.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, textAlign: 'center', minHeight: '1.5rem' }}>
               {t('concordance.overview.referencedAuthors')}
             </div>
-
-            {analytics.authors.slice(0, 3).map((author, index) => (
-              <div key={author.name} style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '1.0rem',
-                marginBottom: '0.5rem',
-                padding: '0.25rem 0',
-                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
-              }}>
-                <span>{author.name.length > 15 ? author.name.substring(0, 15) + '...' : author.name}</span>
-                <span style={{ fontWeight: '500' }}>{author.value}</span>
-              </div>
-            ))}
           </div>
         )}
       </NavigationPanel>
@@ -569,32 +541,9 @@ const OverviewView = ({
             }}>
               {analytics.keyTerms.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, textAlign: 'center', minHeight: '1.5rem' }}>
               {t('concordance.overview.keyTermsIdentified')}
             </div>
-
-            {analytics.keyTerms.slice(0, 3).map((term, index) => (
-              <div key={term.term} style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                fontSize: '1.0rem',
-                marginBottom: '0.5rem',
-                padding: '0.25rem 0',
-                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
-              }}>
-                <span style={{ fontStyle: 'italic' }}>{term.term}</span>
-                <div style={{
-                  background: 'rgba(255,255,255,0.3)',
-                  padding: '0.1rem 0.5rem',
-                  borderRadius: '8px',
-                  fontSize: '0.9rem',
-                  fontWeight: '500'
-                }}>
-                  {term.count}
-                </div>
-              </div>
-            ))}
           </div>
         )}
       </NavigationPanel>
@@ -781,23 +730,9 @@ const OverviewView = ({
             }}>
               {analytics.places?.length || 0}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, minHeight: '1.5rem' }}>
               {t('concordance.overview.identifiedPlaces')}
             </div>
-
-            {analytics.places?.slice(0, 3).map((place, index) => (
-              <div key={place.name} style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '1.0rem',
-                marginBottom: '0.5rem',
-                padding: '0.25rem 0',
-                borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
-              }}>
-                <span>{place.name.substring(0, 12)}...</span>
-                <span style={{ fontWeight: '500' }}>{place.value}</span>
-              </div>
-            ))}
           </div>
         )}
       </NavigationPanel>
