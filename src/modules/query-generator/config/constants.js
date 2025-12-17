@@ -6,7 +6,7 @@
 /**
  * URL de base NoSketch Engine pour le corpus Allegations
  */
-export const NOSKETCH_BASE_URL = 'https://fip-185-155-93-80.iaas.unistra.fr/#concordance?corpname=Allegations&tab=advanced&queryselector=cql&attrs=word&viewmode=kwic&attr_allpos=all&refs_up=0&shorten_refs=1&glue=1&gdexcnt=300&show_gdex_scores=0&itemsPerPage=20&structs=s%2Cg&refs=%3Ddoc.id&default_attr=lemma&cql=';
+export const NOSKETCH_BASE_URL = 'https://fip-185-155-93-80.iaas.unistra.fr/#concordance?corpname=CiSaMe&tab=advanced&queryselector=cql&attrs=word&viewmode=kwic&attr_allpos=all&refs_up=0&shorten_refs=1&glue=1&gdexcnt=300&show_gdex_scores=0&itemsPerPage=20&structs=s%2Cg&refs=%3Ddoc.id&default_attr=lemma&cql=';
 
 /**
  * Substitutions spécifiques au latin médiéval
