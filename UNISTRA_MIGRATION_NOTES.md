@@ -61,13 +61,25 @@ Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.35em', posi
 
 ---
 
-## 📋 Prochaines étapes
+### Phase 2 - Page Home (TERMINÉ)
+**Commit** : `9adb10b`, `16fd955`
 
-### Phase 2 - Page Home
-- [ ] Titres principaux (déjà partiellement en Encadre)
-- [ ] Contenu texte
-- [ ] Sections about/tools
-- [ ] Boutons
+**Polices appliquées** :
+- Titre CiSaMe : `var(--font-display)` (Unistra Encadre) - 7rem
+- Sous-titre : `var(--font-display)` (Unistra Encadre) - 3.2rem
+- Description projet : `var(--font-primary)` (Unistra A) - 1.3rem
+- Titres sections : `var(--font-heading)` (Unistra B) - 2.5rem
+- Titres outils : `var(--font-heading)` (Unistra B) - 2.2rem
+- Sous-titres outils : `var(--font-primary)` (Unistra A) - 1.3rem
+- Headers sections : `var(--font-ui)` (Unistra C) - 1.1rem
+- Contenu descriptif : `var(--font-primary)` (Unistra A) - 1.15rem
+- Boutons CTA : `var(--font-ui)` (Unistra C) - 1.35rem
+
+**Notes** : Tailles augmentées de +21% à +28% (comme la 2ème itération Sidebar) pour compenser la perte de taille lors du changement de police.
+
+---
+
+## 📋 Prochaines étapes
 
 ### Phase 3 - Header global
 - [ ] Si header global existe
