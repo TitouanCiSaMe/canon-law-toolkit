@@ -576,10 +576,6 @@ const OverviewView = ({
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
-		<div style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
-		  {t('concordance.overview.corpusComparison')}
-		</div>
-
 		{/* Stats des 2 jeux de données */}
 		<div style={{
 		  display: 'grid',
@@ -628,14 +624,11 @@ const OverviewView = ({
 	    ) : (
 	      // Mode EN ATTENTE : Invitation à uploader
 	      <>
-		<div style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
-		  {t('concordance.overview.corpusComparison')}
-		</div>
 		<div style={{
 		  fontSize: '1.0rem',
 		  opacity: 0.7,
 		  lineHeight: '1.5',
-		  marginBottom: '1rem'
+		  marginBottom: '0.5rem'
 		}}>
 		  {t('concordance.views.corpusComparison.noData')}
 		</div>

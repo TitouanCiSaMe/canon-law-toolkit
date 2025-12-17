@@ -200,7 +200,7 @@ const Sidebar = ({
             letterSpacing: '0.02em',
             lineHeight: 1.3
           }}>
-            Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.35em', position: 'relative', top: '-0.5em' }}>e</sup> siècle
+            {t('site.subtitle')}
           </div>
         </div>
       </Link>
