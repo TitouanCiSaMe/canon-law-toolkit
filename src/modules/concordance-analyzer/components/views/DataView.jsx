@@ -154,14 +154,14 @@ const DataView = ({
               gap: '1rem'
             }}>
               <h4 style={{
-                fontSize: '1.25rem',
+                fontSize: '1.55rem',
                 fontWeight: '500',
                 color: '#1e293b',
                 margin: 0
               }}>
                 {t('concordance.dataView.title')}
               </h4>
-              
+
               {/* Sélecteur d'affichage du contexte (ligne/complet) */}
               <div style={{
                 display: 'flex',
@@ -169,7 +169,7 @@ const DataView = ({
                 gap: '0.75rem'
               }}>
                 <span style={{
-                  fontSize: '0.9rem',
+                  fontSize: '1.15rem',
                   color: '#64748b',
                   fontWeight: '500'
                 }}>
@@ -192,7 +192,7 @@ const DataView = ({
                       background: contextDisplay === 'line' ? '#1A365D' : 'transparent',
                       color: contextDisplay === 'line' ? 'white' : '#64748b',
                       fontWeight: '500',
-                      fontSize: '0.875rem',
+                      fontSize: '1.1rem',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease'
                     }}
@@ -209,7 +209,7 @@ const DataView = ({
                       background: contextDisplay === 'full' ? '#1A365D' : 'transparent',
                       color: contextDisplay === 'full' ? 'white' : '#64748b',
                       fontWeight: '500',
-                      fontSize: '0.875rem',
+                      fontSize: '1.1rem',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease'
                     }}
@@ -252,16 +252,16 @@ const DataView = ({
                   
                   {/* ===== MÉTADONNÉES ===== */}
                   <div style={{
-                    fontSize: '0.9rem',
+                    fontSize: '1.15rem',
                     color: '#6b7280',
                     marginBottom: '1rem',
                     fontWeight: '500'
                   }}>
                     {/* Grid responsive pour les métadonnées */}
-                    <div style={{ 
-                      display: 'grid', 
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-                      gap: '0.5rem' 
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                      gap: '0.5rem'
                     }}>
                       <div><strong>{t('concordance.dataView.metadata.author')}</strong> {item.author}</div>
                       <div><strong>{t('concordance.dataView.metadata.title')}</strong> {item.title}</div>
@@ -271,27 +271,27 @@ const DataView = ({
                       {/* Page optionnelle (si disponible) */}
                       {item.page && <div><strong>{t('concordance.dataView.metadata.page')}</strong> {item.page}</div>}
                     </div>
-                    
+
                     {/* Badge de source et identifiants */}
-                    <div style={{ 
-                      marginTop: '0.5rem', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '1rem' 
+                    <div style={{
+                      marginTop: '0.5rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '1rem'
                     }}>
                       {/* Badge coloré selon la source de données */}
-                      <span style={{ 
+                      <span style={{
                         background: item.fromLookup ? '#dcfce7' : '#fef2f2',
                         color: item.fromLookup ? '#166534' : '#dc2626',
                         padding: '0.25rem 0.5rem',
                         borderRadius: '12px',
-                        fontSize: '0.75rem',
+                        fontSize: '0.95rem',
                         fontWeight: '600'
                       }}>
                         {item.fromLookup ? `✓ ${t('concordance.dataView.badges.enriched')}` : `⚠ ${t('concordance.dataView.badges.parsed')}`}
                       </span>
                       {/* Identifiants techniques (debug/traçabilité) */}
-                      <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
+                      <span style={{ fontSize: '1.0rem', color: '#9ca3af' }}>
                         {t('concordance.dataView.metadata.id')} {item.id} • {t('concordance.dataView.metadata.ref')} {item.reference?.substring(0, 50)}...
                       </span>
                     </div>
@@ -305,7 +305,7 @@ const DataView = ({
                     - Right : contexte droit (80 car. en mode ligne, complet en mode full)
                   */}
                   <div style={{
-                    fontSize: '1.1rem',
+                    fontSize: '1.4rem',
                     lineHeight: '1.6',
                     color: '#1f2937'
                   }}>

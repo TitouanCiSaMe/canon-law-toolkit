@@ -102,7 +102,7 @@ const UploadInterface = ({
           borderRadius: '6px',
           padding: '1rem',
           textAlign: 'center',
-          fontSize: '0.9rem',
+          fontSize: '1.15rem',
           width: '100%'
         }}>
           {processingStep}
@@ -117,7 +117,7 @@ const UploadInterface = ({
           borderRadius: '6px',
           padding: '1rem',
           textAlign: 'center',
-          fontSize: '0.9rem',
+          fontSize: '1.15rem',
           color: '#FFFFFF',
           width: '100%'
         }}>
@@ -154,7 +154,7 @@ const FileUploadSection = ({
       pointerEvents: disabled ? 'none' : 'auto'
     }}>
       <h4 style={{
-        fontSize: '1.1rem',
+        fontSize: '1.4rem',
         marginBottom: '1rem',
         display: 'flex',
         alignItems: 'center',
@@ -179,13 +179,13 @@ const FileUploadSection = ({
           transition: 'all 0.2s ease'
         }}
       >
-        <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem', opacity: 0.7 }}>
+        <div style={{ fontSize: '1.9rem', marginBottom: '0.5rem', opacity: 0.7 }}>
           {title.includes('Métadonnées') ? '⟐' : '⟐'}
         </div>
-        <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+        <p style={{ fontSize: '1.15rem', marginBottom: '0.5rem' }}>
           {description}
         </p>
-        <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>
+        <p style={{ fontSize: '1.0rem', opacity: 0.8 }}>
           {subtitle}
         </p>
       </div>
@@ -203,7 +203,7 @@ const FileUploadSection = ({
           borderRadius: '4px',
           background: 'rgba(255,255,255,0.1)',
           color: '#F7FAFC',
-          fontSize: '0.85rem',
+          fontSize: '1.1rem',
           cursor: disabled ? 'not-allowed' : 'pointer'
         }}
       />
@@ -216,7 +216,7 @@ const FileUploadSection = ({
           background: 'rgba(16, 185, 129, 0.2)',
           border: '1px solid rgba(16, 185, 129, 0.4)',
           borderRadius: '4px',
-          fontSize: '0.8rem'
+          fontSize: '1.0rem'
         }}>
           ✓ <strong>{selectedFile.name}</strong><br/>
           {fileInfo && <span>{fileInfo}</span>}

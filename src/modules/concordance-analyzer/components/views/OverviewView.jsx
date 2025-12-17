@@ -226,7 +226,7 @@ const OverviewView = ({
   const renderCompactPanel = (icon, title, stat) => (
     <div style={{ textAlign: 'center', padding: '1rem' }}>
       <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{icon}</div>
-      <div style={{ fontSize: '0.85rem', fontWeight: '600', marginBottom: '0.25rem' }}>{t(title)}</div>
+      <div style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{t(title)}</div>
       <div style={{ fontSize: '1.5rem', fontWeight: '300' }}>{stat}</div>
     </div>
   );
@@ -236,7 +236,7 @@ const OverviewView = ({
     <div style={{ textAlign: 'center', padding: '1.5rem' }}>
       <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
       <div style={{ fontSize: statFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>{stat}</div>
-      <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{subtitle}</div>
+      <div style={{ fontSize: '1.15rem', opacity: 0.8 }}>{subtitle}</div>
     </div>
   );
 
@@ -271,10 +271,10 @@ const OverviewView = ({
             <div style={{ fontSize: mainStatFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>
               {analytics.total.toLocaleString()}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem' }}>
               {t('concordance.overview.concordancesAnalyzed')}
             </div>
-            <div style={{ fontSize: '0.85rem', opacity: 0.7 }}>
+            <div style={{ fontSize: '1.1rem', opacity: 0.7 }}>
               {parseStats.lookupRate || 0}% {t('concordance.overview.matchRate').toLowerCase()}
             </div>
           </div>
@@ -324,7 +324,7 @@ const OverviewView = ({
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              fontSize: '0.85rem',
+              fontSize: '1.1rem',
               opacity: 0.8
             }}>
               <span>{t('concordance.overview.matchRate')}</span>
@@ -368,7 +368,7 @@ const OverviewView = ({
             textAlign: 'center'
           }}>
             <div style={{
-              fontSize: '1.5rem',
+              fontSize: '1.9rem',
               fontWeight: '500',
               marginBottom: '0.75rem',
               opacity: 0.95
@@ -380,7 +380,7 @@ const OverviewView = ({
                   : t('concordance.overview.noDataset')
               }
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8 }}>
               {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
             </div>
           </div>
@@ -410,7 +410,7 @@ const OverviewView = ({
             }}>
               {analytics.domains.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains')}
             </div>
 
@@ -418,7 +418,7 @@ const OverviewView = ({
               <div key={domain.name} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontSize: '0.8rem',
+                fontSize: '1.0rem',
                 marginBottom: '0.5rem',
                 padding: '0.25rem 0',
                 borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
@@ -469,7 +469,7 @@ const OverviewView = ({
                 Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
                           Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {t('concordance.overview.centuriesCovered')}
             </div>
 
@@ -524,7 +524,7 @@ const OverviewView = ({
             }}>
               {analytics.authors.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
               {t('concordance.overview.referencedAuthors')}
             </div>
 
@@ -532,7 +532,7 @@ const OverviewView = ({
               <div key={author.name} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontSize: '0.8rem',
+                fontSize: '1.0rem',
                 marginBottom: '0.5rem',
                 padding: '0.25rem 0',
                 borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
@@ -569,7 +569,7 @@ const OverviewView = ({
             }}>
               {analytics.keyTerms.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', textAlign: 'center', minHeight: '1.5rem' }}>
               {t('concordance.overview.keyTermsIdentified')}
             </div>
 
@@ -578,7 +578,7 @@ const OverviewView = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                fontSize: '0.8rem',
+                fontSize: '1.0rem',
                 marginBottom: '0.5rem',
                 padding: '0.25rem 0',
                 borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'
@@ -588,7 +588,7 @@ const OverviewView = ({
                   background: 'rgba(255,255,255,0.3)',
                   padding: '0.1rem 0.5rem',
                   borderRadius: '8px',
-                  fontSize: '0.7rem',
+                  fontSize: '0.9rem',
                   fontWeight: '500'
                 }}>
                   {term.count}
@@ -627,7 +627,7 @@ const OverviewView = ({
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
-		<div style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
+		<div style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
 		  {t('concordance.overview.corpusComparison')}
 		</div>
 
@@ -637,7 +637,7 @@ const OverviewView = ({
 		  gridTemplateColumns: '1fr auto 1fr',
 		  gap: '0.5rem',
 		  alignItems: 'center',
-		  fontSize: '0.75rem',
+		  fontSize: '0.95rem',
 		  marginTop: '1rem',
 		  opacity: 0.9
 		}}>
@@ -647,13 +647,13 @@ const OverviewView = ({
 		    borderRadius: '4px',
 		    textAlign: 'center'
 		  }}>
-		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
+		    <div style={{ fontSize: '1.5rem', fontWeight: '500' }}>
 		      {corpusComparison.A?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</div>
+		    <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{t('concordance.views.corpusComparison.charts.legend.corpusA')}</div>
 		  </div>
 
-		  <div style={{ fontSize: '1rem', opacity: 0.7 }}>vs</div>
+		  <div style={{ fontSize: '1.25rem', opacity: 0.7 }}>vs</div>
 
 		  <div style={{
 		    background: 'rgba(255,255,255,0.2)',
@@ -661,16 +661,16 @@ const OverviewView = ({
 		    borderRadius: '4px',
 		    textAlign: 'center'
 		  }}>
-		    <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>
+		    <div style={{ fontSize: '1.5rem', fontWeight: '500' }}>
 		      {corpusComparison.B?.concordanceData?.length || 0}
 		    </div>
-		    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</div>
+		    <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{t('concordance.views.corpusComparison.charts.legend.corpusB')}</div>
 		  </div>
 		</div>
-		
+
 		<div style={{
 		  marginTop: '1rem',
-		  fontSize: '0.75rem',
+		  fontSize: '0.95rem',
 		  opacity: 0.8
 		}}>
 		  {t('concordance.overview.clickToAnalyze')}
@@ -679,25 +679,25 @@ const OverviewView = ({
 	    ) : (
 	      // Mode EN ATTENTE : Invitation à uploader
 	      <>
-		<div style={{ fontSize: '1rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
+		<div style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
 		  {t('concordance.overview.corpusComparison')}
 		</div>
 		<div style={{
-		  fontSize: '0.8rem',
+		  fontSize: '1.0rem',
 		  opacity: 0.7,
 		  lineHeight: '1.5',
 		  marginBottom: '1rem'
 		}}>
 		  {t('concordance.views.corpusComparison.noData')}
 		</div>
-		
+
 		{/* Indicateur visuel d'état */}
 		<div style={{
 		  display: 'flex',
 		  gap: '0.5rem',
 		  justifyContent: 'center',
 		  alignItems: 'center',
-		  fontSize: '0.7rem',
+		  fontSize: '0.9rem',
 		  opacity: 0.6
 		}}>
 		  <div style={{
@@ -747,11 +747,11 @@ const OverviewView = ({
             }}>
               {filteredData.length}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {t('concordance.overview.loadedConcordances')}
             </div>
 
-            <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
+            <div style={{ fontSize: '1.0rem', opacity: 0.7 }}>
               {parseStats.lookupRate ? `${parseStats.lookupRate}% ${t('concordance.overview.enriched')}` : t('concordance.overview.readyToAnalyze')}
             </div>
           </div>
@@ -781,7 +781,7 @@ const OverviewView = ({
             }}>
               {analytics.places?.length || 0}
             </div>
-            <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
               {t('concordance.overview.identifiedPlaces')}
             </div>
 
@@ -789,7 +789,7 @@ const OverviewView = ({
               <div key={place.name} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontSize: '0.8rem',
+                fontSize: '1.0rem',
                 marginBottom: '0.5rem',
                 padding: '0.25rem 0',
                 borderBottom: index < 2 ? '1px solid rgba(255,255,255,0.2)' : 'none'

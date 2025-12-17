@@ -9,6 +9,7 @@ import FilterMenu from './components/ui/FilterMenu';
 import UploadInterface from './components/ui/UploadInterface';
 import { exportConcordancesCSV, exportAnalyticsJSON } from './utils/ExportUtils';
 import { panelConfig, academicColors } from './config/panelConfig';
+import { visualTheme } from '../../shared/theme/globalTheme';
 import OverviewView from './components/views/OverviewView';
 import DomainsView from './components/views/DomainsView';
 import TemporalView from './components/views/TemporalView';
@@ -369,7 +370,7 @@ const ConcordanceAnalyzerPanels = () => {
 
             <div>
               <h1 style={{
-                fontSize: '1.75rem',
+                fontSize: '2.2rem',
                 fontWeight: '400',
                 color: academicColors.primary,
                 marginBottom: '0.25rem'
@@ -377,7 +378,7 @@ const ConcordanceAnalyzerPanels = () => {
                 {t('concordance.app.title')}
               </h1>
               <nav style={{
-                fontSize: '0.9rem',
+                fontSize: '1.15rem',
                 color: '#718096',
                 display: 'flex',
                 alignItems: 'center',
@@ -395,7 +396,7 @@ const ConcordanceAnalyzerPanels = () => {
                         padding: '0.5rem 1rem',
                         borderRadius: '6px',
                         transition: 'all 0.2s',
-                        fontSize: '0.9rem',
+                        fontSize: '1.15rem',
                         fontWeight: '500',
                         display: 'flex',
                         alignItems: 'center',
@@ -416,13 +417,13 @@ const ConcordanceAnalyzerPanels = () => {
                       <span>←</span> {t('concordance.buttons.back')}
                     </button>
                     <span style={{ color: '#CBD5E1', margin: '0 0.5rem' }}>›</span>
-		    <span style={{ fontWeight: '500', color: '#2D3748' }}>
+		    <span style={{ fontWeight: '500', color: '#2D3748', fontSize: '1.15rem' }}>
 		      {t(`concordance.panels.${activeView}.title`)}
 		    </span>
                   </>
                 )}
                 {activeView === 'overview' && (
-                  <span style={{ fontWeight: '500', color: '#2D3748' }}>
+                  <span style={{ fontWeight: '500', color: '#2D3748', fontSize: '1.15rem' }}>
                     {t('concordance.panels.overview.title')}
                   </span>
                 )}
@@ -443,7 +444,7 @@ const ConcordanceAnalyzerPanels = () => {
                   padding: '0.75rem 1.5rem',
                   borderRadius: '4px',
                   cursor: 'pointer',
-                  fontSize: '0.95rem',
+                  fontSize: '1.2rem',
                   fontWeight: '500',
                   transition: 'all 0.2s',
                   boxShadow: showFilters 
@@ -478,7 +479,7 @@ const ConcordanceAnalyzerPanels = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '0.7rem',
+                    fontSize: '0.9rem',
                     fontWeight: '700'
                   }}>
                     {activeFilterCount}
@@ -497,26 +498,29 @@ const ConcordanceAnalyzerPanels = () => {
             minWidth: '140px',
             boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
           }}>
-            <div style={{ 
-              fontSize: '1.3rem', 
+            <div style={{
+              fontSize: '1.65rem',
               fontWeight: '300',
-              lineHeight: '1.2'
+              lineHeight: '1.2',
+              fontFamily: visualTheme.typography.fontFamily.primary
             }}>
               {analytics.total.toLocaleString()}
             </div>
-            <div style={{ 
-              fontSize: '0.75rem', 
+            <div style={{
+              fontSize: '0.95rem',
               opacity: 0.9,
               textTransform: 'uppercase',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.05em',
+              fontFamily: visualTheme.typography.fontFamily.secondary
             }}>
               {t('concordance.stats.concordances')}
             </div>
             {parseStats.lookupRate && (
-              <div style={{ 
-                fontSize: '0.7rem', 
+              <div style={{
+                fontSize: '0.9rem',
                 opacity: 0.8,
-                marginTop: '0.25rem'
+                marginTop: '0.25rem',
+                fontFamily: visualTheme.typography.fontFamily.secondary
               }}>
                 {parseStats.lookupRate}% {t('concordance.stats.enriched')}
               </div>
