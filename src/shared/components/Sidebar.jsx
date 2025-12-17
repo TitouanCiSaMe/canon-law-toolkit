@@ -184,7 +184,7 @@ const Sidebar = ({
       >
         <div>
           <div style={{
-            fontSize: '2.2rem',
+            fontSize: '2.8rem',
             fontWeight: 700,
             fontFamily: 'var(--font-display)',
             letterSpacing: '0.02em',
@@ -193,14 +193,14 @@ const Sidebar = ({
             CiSaMe
           </div>
           <div style={{
-            fontSize: '0.85rem',
+            fontSize: '1.1rem',
             fontWeight: 400,
             fontFamily: 'var(--font-primary)',
             opacity: 0.9,
             letterSpacing: '0.02em',
             lineHeight: 1.3
           }}>
-            Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.45em', verticalAlign: 'super' }}>e</sup> siècle
+            Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.35em', position: 'relative', top: '-0.5em' }}>e</sup> siècle
           </div>
         </div>
       </Link>
@@ -208,7 +208,7 @@ const Sidebar = ({
       {/* Navigation modules */}
       <nav style={{ padding: '1rem 0' }}>
         <div style={{
-          fontSize: '0.8rem',
+          fontSize: '0.95rem',
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           opacity: 0.7,
@@ -230,7 +230,7 @@ const Sidebar = ({
             background: location.pathname === '/query-generator' ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
             borderLeft: location.pathname === '/query-generator' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
-            fontSize: '1.05rem',
+            fontSize: '1.15rem',
             fontWeight: location.pathname === '/query-generator' ? '600' : '400',
             fontFamily: 'var(--font-ui)',
             textAlign: 'center'
@@ -250,7 +250,7 @@ const Sidebar = ({
             background: location.pathname === '/concordance-analyzer' ? 'rgba(240, 230, 140, 0.15)' : 'transparent',
             borderLeft: location.pathname === '/concordance-analyzer' ? '3px solid #D4AF37' : '3px solid transparent',
             transition: 'all 0.2s',
-            fontSize: '1.05rem',
+            fontSize: '1.15rem',
             fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400',
             fontFamily: 'var(--font-ui)',
             textAlign: 'center'
@@ -272,7 +272,7 @@ const Sidebar = ({
         <>
           <nav style={{ padding: '1rem 0', flex: '1' }}>
             <div style={{
-              fontSize: '0.8rem',
+              fontSize: '0.95rem',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
               opacity: 0.7,
@@ -301,7 +301,7 @@ const Sidebar = ({
                   borderLeft: activeView === view.id ? '3px solid #D4AF37' : '3px solid transparent',
                   cursor: 'pointer',
                   transition: 'all 0.2s',
-                  fontSize: '1rem',
+                  fontSize: '1.1rem',
                   fontWeight: activeView === view.id ? '600' : '400',
                   fontFamily: 'var(--font-ui)',
                   textAlign: 'center'
@@ -393,7 +393,7 @@ const Sidebar = ({
               {concordanceCount.toLocaleString()}
             </div>
             <div style={{
-              fontSize: '0.85rem',
+              fontSize: '0.95rem',
               fontFamily: 'var(--font-ui)',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -422,7 +422,7 @@ const Sidebar = ({
           justifyContent: 'center',
           gap: '0.5rem',
           fontWeight: '500',
-          fontSize: '1rem',
+          fontSize: '1.1rem',
           fontFamily: 'var(--font-ui)'
         }}
         onMouseEnter={(e) => {
@@ -513,7 +513,7 @@ const Sidebar = ({
       {/* Footer */}
       <div style={{
         padding: '1.5rem',
-        fontSize: '0.8rem',
+        fontSize: '0.9rem',
         fontFamily: 'var(--font-primary)',
         textAlign: 'center',
         opacity: 0.7,
