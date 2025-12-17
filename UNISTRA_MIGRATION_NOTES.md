@@ -79,18 +79,57 @@ Circulation des savoirs médiévaux au XII<sup style={{ fontSize: '0.35em', posi
 
 ---
 
+### Phase 3 - Query Generator (TERMINÉ)
+**Commit** : `7016ef9`
+
+**globalTheme.js - Migration complète du système typographique** :
+
+Polices migrées :
+- `fontFamily.primary` : Crimson Text → **Unistra A**
+- `fontFamily.secondary` : Lato → **Unistra C**
+- `fontFamily.heading` : EB Garamond → **Unistra B**
+- `fontFamily.display` : Cormorant Garamond → **Unistra Encadre**
+- `fontFamily.body` : Lato → **Unistra C**
+- Suppression import Google Fonts (polices locales uniquement)
+
+Tailles de police augmentées (+24% à +28%) :
+- `size.xs` : 0.75rem → 0.95rem (+27%)
+- `size.sm` : 0.85rem → 1.05rem (+24%)
+- `size.md` : 0.875rem → 1.1rem (+26%)
+- `size.lg` : 1rem → 1.25rem (+25%)
+- `size.xl` : 1.25rem → 1.55rem (+24%)
+- `size.xxl` : 1.5rem → 1.9rem (+27%)
+- `size.xxxl` : 2rem → 2.5rem (+25%)
+- `size.display` : 2.5rem → 3.2rem (+28%)
+
+Headings migrés vers Unistra B/C avec augmentation :
+- `h1` : Unistra B, 2.5rem → 3.2rem (+28%)
+- `h2` : Unistra B, 2rem → 2.5rem (+25%)
+- `h3` : Unistra B, 1.5rem → 1.9rem (+27%)
+- `h4` : Unistra C, 1.25rem → 1.55rem (+24%)
+- `h5` : Unistra C, 1rem → 1.25rem (+25%)
+- `h6` : Unistra C, 0.875rem → 1.1rem (+26%)
+
+**QueryGenerator.jsx** :
+- `pageTitle` : 2rem → 2.5rem (+25%)
+
+**Composants UI modules CSS** :
+- `FormField.module.css` : Unistra C, tailles +25-26%
+- `ResultCard.module.css` : Unistra C, tailles +25-27%
+- `RadioGroup.module.css` : Unistra C, tailles +25-26%
+- `InfoBox.module.css` : Unistra C, tailles +26%
+
+**Impact** : Tous les modules du Query Generator (ProximityView, VariationView, ProximityVariationView, SemanticView) utilisent globalTheme → migration automatique complète de tous les composants.
+
+**Notes** : Migration centralisée via globalTheme.js permet une cohérence parfaite dans tout le module Query Generator et facilite les futures migrations.
+
+---
+
 ## 📋 Prochaines étapes
 
-### Phase 3 - Header global
-- [ ] Si header global existe
-
-### Phase 4 - Query Generator
-- [ ] Formulaires
-- [ ] Composants UI (FormField, RadioGroup, etc.)
-- [ ] ResultCard
-
-### Phase 5 - Concordance Analyzer
-- [ ] Panels
+### Phase 4 - Concordance Analyzer
+- [ ] Vérifier si utilise globalTheme ou styles propres
+- [ ] Panels et navigation
 - [ ] Graphiques (labels, axes)
 - [ ] Tableaux de données
 
