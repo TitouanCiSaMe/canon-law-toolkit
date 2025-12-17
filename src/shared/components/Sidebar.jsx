@@ -186,8 +186,8 @@ const Sidebar = ({
           <div style={{
             fontSize: '1.8rem',
             fontWeight: 700,
-            fontFamily: '"Crimson Text", serif',
-            letterSpacing: '-0.02em',
+            fontFamily: 'var(--font-display)',
+            letterSpacing: '0.02em',
             marginBottom: '0.5rem'
           }}>
             CiSaMe
@@ -195,6 +195,7 @@ const Sidebar = ({
           <div style={{
             fontSize: '0.7rem',
             fontWeight: 400,
+            fontFamily: 'var(--font-primary)',
             opacity: 0.9,
             letterSpacing: '0.02em',
             lineHeight: 1.3
@@ -212,7 +213,8 @@ const Sidebar = ({
           letterSpacing: '0.1em',
           opacity: 0.7,
           padding: '0.5rem 1.5rem',
-          fontWeight: '600'
+          fontWeight: '600',
+          fontFamily: 'var(--font-heading)'
         }}>
           {t('sidebar.nav.modules')}
         </div>
@@ -230,6 +232,7 @@ const Sidebar = ({
             transition: 'all 0.2s',
             fontSize: '0.95rem',
             fontWeight: location.pathname === '/query-generator' ? '600' : '400',
+            fontFamily: 'var(--font-ui)',
             textAlign: 'center'
           }}
         >
@@ -249,6 +252,7 @@ const Sidebar = ({
             transition: 'all 0.2s',
             fontSize: '0.95rem',
             fontWeight: location.pathname === '/concordance-analyzer' ? '600' : '400',
+            fontFamily: 'var(--font-ui)',
             textAlign: 'center'
           }}
         >
@@ -274,11 +278,12 @@ const Sidebar = ({
               opacity: 0.7,
               padding: '0.5rem 1.5rem',
               fontWeight: '600',
+              fontFamily: 'var(--font-heading)',
               marginBottom: '0.5rem'
             }}>
               {t('sidebar.nav.views')}
             </div>
-            
+
             {views.map(view => (
               <button
                 key={view.id}
@@ -298,6 +303,7 @@ const Sidebar = ({
                   transition: 'all 0.2s',
                   fontSize: '0.9rem',
                   fontWeight: activeView === view.id ? '600' : '400',
+                  fontFamily: 'var(--font-ui)',
                   textAlign: 'center'
                 }}
                 onMouseEnter={(e) => {
@@ -340,7 +346,8 @@ const Sidebar = ({
               alignItems: 'center',
               justifyContent: 'space-between',
               fontWeight: '600',
-              fontSize: '1rem'
+              fontSize: '1rem',
+              fontFamily: 'var(--font-ui)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(240, 230, 140, 0.2)';
@@ -378,6 +385,7 @@ const Sidebar = ({
             <div style={{
               fontSize: '3rem',
               fontWeight: '300',
+              fontFamily: 'var(--font-data)',
               lineHeight: '1',
               marginBottom: '0.5rem',
               color: '#F0E68C'
@@ -386,6 +394,7 @@ const Sidebar = ({
             </div>
             <div style={{
               fontSize: '0.75rem',
+              fontFamily: 'var(--font-ui)',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
               opacity: 0.9
@@ -413,7 +422,8 @@ const Sidebar = ({
           justifyContent: 'center',
           gap: '0.5rem',
           fontWeight: '500',
-          fontSize: '0.9rem'
+          fontSize: '0.9rem',
+          fontFamily: 'var(--font-ui)'
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
@@ -504,6 +514,7 @@ const Sidebar = ({
       <div style={{
         padding: '1.5rem',
         fontSize: '0.7rem',
+        fontFamily: 'var(--font-primary)',
         textAlign: 'center',
         opacity: 0.7,
         borderTop: '2px solid rgba(255, 255, 255, 0.2)'
