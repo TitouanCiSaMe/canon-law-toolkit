@@ -233,7 +233,7 @@ const OverviewView = ({
 
   // Helper: Rendu semi-compact pour tablet (icône + titre + stat principale)
   const renderSemiCompactPanel = (icon, title, stat, subtitle) => (
-    <div style={{ textAlign: 'center', padding: '0.75rem 1.5rem 1.5rem 1.5rem' }}>
+    <div style={{ textAlign: 'center', padding: '0rem 1.5rem 1.5rem 1.5rem' }}>
       <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
       <div style={{ fontSize: statFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>{stat}</div>
       <div style={{ fontSize: '1.15rem', opacity: 0.8 }}>{subtitle}</div>
@@ -266,7 +266,7 @@ const OverviewView = ({
           )
         ) : isTablet ? (
           // Tablet: Version semi-compacte
-          <div style={{ textAlign: 'center', padding: '0.75rem 1.5rem 1.5rem 1.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '0rem 1.5rem 1.5rem 1.5rem' }}>
             <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{panelConfig.overview.icon}</div>
             <div style={{ fontSize: mainStatFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>
               {analytics.total.toLocaleString()}
