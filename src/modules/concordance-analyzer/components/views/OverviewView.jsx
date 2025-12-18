@@ -204,7 +204,7 @@ const OverviewView = ({
     xs: 'auto',      // Mobile: hauteur automatique
     sm: 'auto',      // Phone landscape: hauteur automatique
     md: 'auto',      // Tablet: hauteur automatique
-    lg: '320px 320px 280px'  // Desktop: hauteurs fixes généreuses pour tout voir
+    lg: '320px 320px 200px'  // Desktop: ligne 3 réduite pour Comparaison
   });
 
   // Tailles de police responsives pour les statistiques
