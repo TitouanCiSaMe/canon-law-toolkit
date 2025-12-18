@@ -392,6 +392,21 @@ const gridTemplateColumns = useResponsiveValue({
 3. Vérifier que le fichier a bien été sauvegardé
 4. Vérifier la console pour des erreurs JavaScript
 
+### Centrage des panels dans OverviewView
+
+**Problème :** Les numéros dans les 6 panels de même taille ne sont pas parfaitement alignés verticalement.
+
+**Localisation :** `src/modules/concordance-analyzer/components/views/OverviewView.jsx:295-350`
+
+**Tentatives de correction :**
+- Ajout de `minHeight: '3rem'` aux conteneurs de numéros
+- Ajout de `display: 'flex'`, `alignItems: 'center'`, `justifyContent: 'center'`
+- Ajout de `minHeight: '1.5rem'` aux labels
+
+**Status :** Non résolu - nécessite une investigation plus approfondie du système de layout.
+
+**Impact :** Visuel uniquement, n'affecte pas la fonctionnalité. Les différences de hauteur des textes traduits peuvent contribuer au problème d'alignement.
+
 ---
 
 ## Ressources
