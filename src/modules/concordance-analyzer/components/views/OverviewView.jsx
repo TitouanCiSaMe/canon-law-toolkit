@@ -204,7 +204,7 @@ const OverviewView = ({
     xs: 'auto',      // Mobile: hauteur automatique
     sm: 'auto',      // Phone landscape: hauteur automatique
     md: 'auto',      // Tablet: hauteur automatique
-    lg: '320px 320px 280px'  // Desktop: hauteurs fixes généreuses pour tout voir
+    lg: '320px 320px 200px'  // Desktop: ligne 3 réduite pour Comparaison
   });
 
   // Tailles de police responsives pour les statistiques
@@ -233,7 +233,7 @@ const OverviewView = ({
 
   // Helper: Rendu semi-compact pour tablet (icône + titre + stat principale)
   const renderSemiCompactPanel = (icon, title, stat, subtitle) => (
-    <div style={{ textAlign: 'center', padding: '0.75rem 1.5rem 1.5rem 1.5rem' }}>
+    <div style={{ textAlign: 'center', padding: '0rem 1.5rem 1.5rem 1.5rem' }}>
       <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
       <div style={{ fontSize: statFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>{stat}</div>
       <div style={{ fontSize: '1.15rem', opacity: 0.8 }}>{subtitle}</div>
@@ -266,7 +266,7 @@ const OverviewView = ({
           )
         ) : isTablet ? (
           // Tablet: Version semi-compacte
-          <div style={{ textAlign: 'center', padding: '0.75rem 1.5rem 1.5rem 1.5rem' }}>
+          <div style={{ textAlign: 'center', padding: '0rem 1.5rem 1.5rem 1.5rem' }}>
             <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{panelConfig.overview.icon}</div>
             <div style={{ fontSize: mainStatFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>
               {analytics.total.toLocaleString()}
@@ -576,10 +576,6 @@ const OverviewView = ({
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
-		<div style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
-		  {t('concordance.overview.corpusComparison')}
-		</div>
-
 		{/* Stats des 2 jeux de données */}
 		<div style={{
 		  display: 'grid',
@@ -628,14 +624,11 @@ const OverviewView = ({
 	    ) : (
 	      // Mode EN ATTENTE : Invitation à uploader
 	      <>
-		<div style={{ fontSize: '1.25rem', opacity: 0.9, marginBottom: '0.5rem', fontWeight: '500' }}>
-		  {t('concordance.overview.corpusComparison')}
-		</div>
 		<div style={{
 		  fontSize: '1.0rem',
 		  opacity: 0.7,
 		  lineHeight: '1.5',
-		  marginBottom: '1rem'
+		  marginBottom: '0.5rem'
 		}}>
 		  {t('concordance.views.corpusComparison.noData')}
 		</div>

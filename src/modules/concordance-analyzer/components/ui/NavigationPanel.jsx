@@ -120,7 +120,7 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           opacity: 0.95,
-          marginBottom: '0.5rem',
+          marginBottom: '0.25rem',
           fontFamily: visualTheme.typography.fontFamily.secondary,
           color: textColor
         }}>
@@ -130,7 +130,7 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
         <h3 style={{
           fontSize: config.size === 'large' ? '2.5rem' : config.size === 'wide' ? '1.9rem' : '1.6rem',
           fontWeight: '500',
-          marginBottom: '1rem',
+          marginBottom: '0.5rem',
           fontFamily: visualTheme.typography.fontFamily.heading,
           color: textColor
         }}>
