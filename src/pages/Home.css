@@ -176,7 +176,6 @@
   line-height: 1.7;
   margin: 0;
   font-size: 1.15rem;
-  text-align: justify;
 }
 
 .tool-howto ol {
@@ -190,7 +189,6 @@
   margin-bottom: 0.75rem;
   line-height: 1.6;
   font-size: 1.15rem;
-  text-align: justify;
 }
 
 .tool-howto ol li:last-child {
@@ -208,7 +206,6 @@
   margin-bottom: 0.75rem;
   line-height: 1.6;
   font-size: 1.15rem;
-  text-align: justify;
 }
 
 .tool-features ul li:last-child {
