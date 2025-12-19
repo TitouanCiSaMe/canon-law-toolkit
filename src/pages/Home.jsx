@@ -27,21 +27,21 @@ const Home = () => {
       <section className="project-description">
         <p>
           {t('home.projectDescription.title')}{' '}
-          <a href="https://cisame.hypotheses.org" target="_blank" rel="noopener noreferrer">
+          <a href={t('home.projectDescription.linkUrl')} target="_blank" rel="noopener noreferrer">
             {t('home.projectDescription.link')}
           </a>{' '}
           {t('home.projectDescription.text1')}
         </p>
         <p>
           {t('home.projectDescription.text2')}{' '}
-          <a href="https://cisame.hypotheses.org" target="_blank" rel="noopener noreferrer">
+          <a href={t('home.projectDescription.linkHereUrl')} target="_blank" rel="noopener noreferrer">
             {t('home.projectDescription.linkHere')}
           </a>
           {t('home.projectDescription.text3')}
         </p>
         <p>
           {t('home.projectDescription.text4')}{' '}
-          <a href="https://cisame.hypotheses.org" target="_blank" rel="noopener noreferrer">
+          <a href={t('home.projectDescription.blogLinkUrl')} target="_blank" rel="noopener noreferrer">
             {t('home.projectDescription.blogLink')}
           </a>.
         </p>

@@ -21,12 +21,15 @@
     "projectDescription": {
       "title": "Le projet",
       "link": "« Circulation des savoirs médiévaux au XIIe siècle » (CiSaMe)",
+      "linkUrl": "https://cisame.hypotheses.org",
       "text1": "a pour ambition de renouveler l'histoire de la circulation des savoirs – juridiques, théologiques, philosophiques – au cours d'un long XIIe siècle (1050-1220), en amont de l'institutionnalisation des disciplines.",
       "text2": "Ce site a pour objet de permettre l'interrogation de la base de données constituée dans le cadre du projet (dont le contenu est décrit",
       "linkHere": "ici",
+      "linkHereUrl": "https://cisame.hypotheses.org",
       "text3": ") comme l'analyse et la visualisation des résultats obtenus. Les rubriques\u00A0« Générateur de requêtes\u00A0» et\u00A0« Analyse des résultats\u00A0» correspondent à ces deux objets.",
       "text4": "Des tutoriels expliquant le fonctionnement du site sont disponibles sur le",
-      "blogLink": "blog du projet"
+      "blogLink": "blog du projet",
+      "blogLinkUrl": "https://cisame.hypotheses.org"
     },
     "tools": {
       "query": {
