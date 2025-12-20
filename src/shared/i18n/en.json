@@ -21,12 +21,15 @@
     "projectDescription": {
       "title": "The project",
       "link": "\"Circulation of Medieval Knowledge in the 12th Century\" (CiSaMe)",
+      "linkUrl": "https://cisame.hypotheses.org/cisame-circulation-of-medieval-knowledge-in-the-12th-century",
       "text1": "aims to reassess the history of the circulation of knowledge — legal, theological, philosophical — during a long 12th century (1050-1220), prior to the institutionalization of disciplines.",
       "text2": "The purpose of this site is to enable users to query the project database created (the content of which is described",
       "linkHere": "here",
+      "linkHereUrl": "https://cisame.hypotheses.org/cisame-circulation-of-medieval-knowledge-in-the-12th-century",
       "text3": ") and to analyze and visualize the results obtained. These two purposes correspond to the \"Query Generator\" and \"Results Analysis\" sections.",
       "text4": "Tutorials explaining how the site works are available on the",
-      "blogLink": "project blog"
+      "blogLink": "project blog",
+      "blogLinkUrl": "https://cisame.hypotheses.org/cisame-circulation-of-medieval-knowledge-in-the-12th-century"
     },
     "tools": {
       "query": {
