@@ -2,135 +2,95 @@
    THÈME UNISTRA - CiSaMe Toolkit
    ============================================================================
 
-   Variables CSS pour l'intégration de la charte graphique Unistra
-   tout en conservant la palette de couleurs médiévale académique du projet.
+   Variables CSS SPÉCIFIQUES à la charte Unistra.
 
-   NOTE: Ces variables sont synchronisées avec globalTheme.js
-   Les variables dynamiques sont injectées via injectCSSVariables() dans main.jsx
-   Ce fichier contient les valeurs de fallback et les variables spécifiques Unistra.
+   IMPORTANT: Les variables génériques (spacing, shadows, colors, typography)
+   sont maintenant gérées par globalTheme.js et injectées via injectCSSVariables().
+
+   Ce fichier contient UNIQUEMENT :
+   - Les variables spécifiques aux encadrés Unistra
+   - Les couleurs médiévales (alias pour compatibilité)
+   - Les classes utilitaires de typography
+   - Les styles par défaut (body, headings, buttons)
+
+   Pour modifier les valeurs du thème, éditez globalTheme.js
    ============================================================================ */
 
 :root {
-  /* ===== TYPOGRAPHIE UNISTRA ===== */
+  /* ===== VARIABLES SPÉCIFIQUES UNISTRA (Encadrés) ===== */
 
-  /* Police principale - Texte courant, paragraphes */
-  --font-primary: 'Unistra A', serif;
+  /* Bordures rectangulaires style Unistra */
+  --border-unistra: 2px solid var(--color-primary-main, #5C3317);
+  --border-unistra-thin: 1px solid var(--color-primary-main, #5C3317);
+  --border-unistra-thick: 3px solid var(--color-primary-main, #5C3317);
+  --border-unistra-light: 1px solid var(--color-secondary-dark, #B8860B);
 
-  /* Police de titres - Headers, sections */
-  --font-heading: 'Unistra B', serif;
+  /* Rayons de bordure Unistra (rectangulaire) */
+  --border-radius-unistra: 0;
+  --border-radius-slight: 2px;
 
-  /* Police UI - Boutons, labels, navigation */
-  --font-ui: 'Unistra C', sans-serif;
-
-  /* Police de données - Tableaux, statistiques, graphiques */
-  --font-data: 'Unistra D', monospace;
-
-  /* Police d'affichage - Titres principaux, logo, encadrés */
-  --font-display: 'Unistra Encadre', serif;
-
-  /* Police monospace - Code CQL uniquement */
-  --font-mono: 'Courier New', Courier, monospace;
-
-  /* ===== COULEURS MÉDIÉVALES (Conservation des couleurs existantes) ===== */
-
-  /* Couleurs principales */
-  --color-medieval-brown: #5C3317;      /* Marron médiéval principal */
-  --color-medieval-gold: #B8860B;       /* Or médiéval */
-  --color-medieval-light: #E8DCC6;      /* Parchemin clair */
-  --color-golden-accent: #D4AF37;       /* Or brillant pour hover */
-
-  /* Couleurs de texte */
-  --color-text-primary: #5C3317;        /* Texte principal */
-  --color-text-secondary: #704214;      /* Texte secondaire */
-  --color-text-light: #8B7355;          /* Texte atténué */
-
-  /* Couleurs d'interaction */
-  --color-link: #B8860B;                /* Liens */
-  --color-link-hover: #D4AF37;          /* Liens hover */
-  --color-hover-bg: rgba(184, 134, 11, 0.1);  /* Background hover */
-
-  /* Couleurs de fond */
-  --color-bg-primary: #ffffff;          /* Fond principal */
-  --color-bg-secondary: #f5f5f5;        /* Fond secondaire */
-  --color-bg-panel: #faf8f5;            /* Fond panels */
-
-  /* ===== ENCADRÉS UNISTRA ===== */
-
-  /* Bordures - Style épuré rectangulaire Unistra */
-  --border-unistra: 2px solid var(--color-medieval-brown);
-  --border-unistra-thin: 1px solid var(--color-medieval-brown);
-  --border-unistra-thick: 3px solid var(--color-medieval-brown);
-  --border-unistra-light: 1px solid var(--color-medieval-gold);
-
-  /* Rayons de bordure - Rectangulaire selon charte Unistra */
-  --border-radius-unistra: 0;           /* Pas de coins arrondis */
-  --border-radius-slight: 2px;          /* Très léger arrondi si nécessaire */
-
-  /* ===== ESPACEMENTS UNISTRA ===== */
-
-  /* Padding des encadrés */
+  /* Padding spécifique encadrés Unistra */
   --spacing-encadre-sm: 0.75rem;
   --spacing-encadre-md: 1.5rem;
   --spacing-encadre-lg: 2rem;
   --spacing-encadre-xl: 3rem;
 
-  /* Marges entre éléments */
-  --spacing-section: 3rem;
-  --spacing-element: 1.5rem;
-  --spacing-tight: 0.5rem;
-
-  /* ===== OMBRES (subtiles pour style Unistra) ===== */
-
+  /* Ombres style Unistra (teinte marron) */
   --shadow-unistra-subtle: 0 1px 3px rgba(92, 51, 23, 0.1);
   --shadow-unistra-medium: 0 2px 8px rgba(92, 51, 23, 0.15);
   --shadow-unistra-strong: 0 4px 16px rgba(92, 51, 23, 0.2);
 
-  /* ===== TRANSITIONS ===== */
+  /* ===== ALIAS COULEURS MÉDIÉVALES (Compatibilité) ===== */
+  /* Ces alias référencent les variables injectées par JS */
 
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --color-medieval-brown: var(--color-primary-main, #5C3317);
+  --color-medieval-gold: var(--color-secondary-dark, #B8860B);
+  --color-medieval-light: var(--color-bg-active, #E8DCC6);
+  --color-golden-accent: var(--color-secondary-main, #D4AF37);
+  --color-hover-bg: rgba(184, 134, 11, 0.1);
 }
 
 /* ===== CLASSES UTILITAIRES TYPOGRAPHIE ===== */
 
 .font-primary {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary, 'Unistra A', serif);
 }
 
 .font-heading {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Unistra B', serif);
 }
 
 .font-ui {
-  font-family: var(--font-ui);
+  font-family: var(--font-secondary, 'Unistra C', sans-serif);
 }
 
 .font-data {
-  font-family: var(--font-data);
+  font-family: var(--font-mono, 'Unistra D', monospace);
 }
 
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-display, 'Unistra Encadre', serif);
 }
 
 .font-mono {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono, 'Courier New', Courier, monospace);
 }
 
-/* ===== BODY DEFAULT ===== */
+/* ===== STYLES PAR DÉFAUT ===== */
 
 body {
-  font-family: var(--font-primary);
-  color: var(--color-text-primary);
+  font-family: var(--font-primary, 'Unistra A', serif);
+  color: var(--color-text-primary, #2C2C2C);
 }
 
-/* Titres par défaut */
 h1, h2, h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Unistra B', serif);
 }
 
-/* Boutons et éléments UI par défaut */
+h4, h5, h6 {
+  font-family: var(--font-secondary, 'Unistra C', sans-serif);
+}
+
 button, .button, .nav-item {
-  font-family: var(--font-ui);
+  font-family: var(--font-secondary, 'Unistra C', sans-serif);
 }

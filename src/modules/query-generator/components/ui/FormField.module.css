@@ -1,40 +1,42 @@
 /**
- * Styles pour le composant FormField
+ * Styles pour le composant FormField - CiSaMe Toolkit
+ *
+ * Utilise les variables CSS du thème global avec fallbacks.
  */
 
 .field {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg, 1.5rem);
 }
 
 .label {
   display: block;
-  margin-bottom: 0.75rem;
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #704214;
+  margin-bottom: var(--spacing-sm, 0.75rem);
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  font-size: var(--font-size-md, 1.1rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-primary-light, #704214);
   letter-spacing: 0.01em;
 }
 
 .required {
-  color: #b91c1c;
+  color: var(--semantic-error-borderAccent, #b91c1c);
 }
 
 .input {
   width: 100%;
-  padding: 1rem 1.5rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  background: #fffef7;
-  color: #1e293b;
-  transition: all 250ms ease;
+  padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
+  border: 2px solid var(--color-border-light, #e2e8f0);
+  border-radius: var(--radius-md, 6px);
+  font-size: var(--font-size-md, 1.1rem);
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  background: var(--color-bg-paper, #fffef7);
+  color: var(--color-text-dark, #1e293b);
+  transition: all var(--transition-normal, 250ms ease);
   outline: none;
 }
 
 .input:focus {
-  border-color: #1e40af;
+  border-color: var(--color-text-link, #1e40af);
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
 }
@@ -46,8 +48,8 @@
 }
 
 .helpText {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  color: #5a5a5a;
+  margin-top: var(--spacing-xs, 0.5rem);
+  font-size: var(--font-size-sm, 1rem);
+  color: var(--color-text-secondary, #5a5a5a);
   font-style: italic;
 }
