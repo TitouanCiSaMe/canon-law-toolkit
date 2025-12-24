@@ -22,7 +22,7 @@
 @media (min-width: 1024px) {
   .panelGrid {
     grid-template-columns: minmax(400px, 1.3fr) repeat(3, minmax(200px, 0.6fr));
-    grid-template-rows: 320px 320px 280px;
+    grid-template-rows: 320px 320px 140px;
   }
 }
 
