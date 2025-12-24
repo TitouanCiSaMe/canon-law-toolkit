@@ -1,4 +1,4 @@
-# Guide des Tests - Canon Law Toolkit
+# Guide des Tests - CiSaMe Toolkit
 
 ## 📚 Vue d'ensemble
 

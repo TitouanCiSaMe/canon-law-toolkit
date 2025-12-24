@@ -1,38 +1,41 @@
 /**
- * Styles pour InfoBox
+ * Styles pour InfoBox - CiSaMe Toolkit
+ *
+ * Utilise les couleurs sémantiques du thème global (globalTheme.semantic)
+ * injectées via injectCSSVariables() avec fallbacks hardcodés.
  */
 
 .box {
-  padding: 1.5rem;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
+  padding: var(--spacing-lg, 1.5rem);
+  border-radius: var(--radius-md, 6px);
+  margin-bottom: var(--spacing-lg, 1.5rem);
   border: 2px solid;
   border-left-width: 5px;
 }
 
-/* Type variants */
+/* Type variants - Utilise les variables sémantiques */
 .boxInfo {
-  background: linear-gradient(135deg, #DDD6B8 0%, #E6D7B8 100%);
-  border-color: #e2e8f0;
-  border-left-color: #1e40af;
+  background: var(--semantic-info-background, linear-gradient(135deg, #DDD6B8 0%, #E6D7B8 100%));
+  border-color: var(--semantic-info-border, #e2e8f0);
+  border-left-color: var(--semantic-info-borderAccent, #1e40af);
 }
 
 .boxSuccess {
-  background: linear-gradient(135deg, #DFF0D8 0%, #D4EDDA 100%);
-  border-color: #C3E6CB;
-  border-left-color: #28A745;
+  background: var(--semantic-success-background, linear-gradient(135deg, #DFF0D8 0%, #D4EDDA 100%));
+  border-color: var(--semantic-success-border, #C3E6CB);
+  border-left-color: var(--semantic-success-borderAccent, #28A745);
 }
 
 .boxWarning {
-  background: linear-gradient(135deg, #FFF3CD 0%, #FCF8E3 100%);
-  border-color: #FFEEBA;
-  border-left-color: #FFC107;
+  background: var(--semantic-warning-background, linear-gradient(135deg, #FFF3CD 0%, #FCF8E3 100%));
+  border-color: var(--semantic-warning-border, #FFEEBA);
+  border-left-color: var(--semantic-warning-borderAccent, #FFC107);
 }
 
 .boxError {
-  background: linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%);
-  border-color: #F5C6CB;
-  border-left-color: #DC3545;
+  background: var(--semantic-error-background, linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%));
+  border-color: var(--semantic-error-border, #F5C6CB);
+  border-left-color: var(--semantic-error-borderAccent, #DC3545);
 }
 
 .header {
@@ -50,19 +53,19 @@
 }
 
 .iconInfo {
-  color: #1e40af;
+  color: var(--semantic-info-icon, #1e40af);
 }
 
 .iconSuccess {
-  color: #28A745;
+  color: var(--semantic-success-icon, #28A745);
 }
 
 .iconWarning {
-  color: #FFC107;
+  color: var(--semantic-warning-icon, #FFC107);
 }
 
 .iconError {
-  color: #DC3545;
+  color: var(--semantic-error-icon, #DC3545);
 }
 
 .title {
@@ -72,40 +75,40 @@
 }
 
 .titleInfo {
-  color: #1e293b;
+  color: var(--semantic-info-text, #1e293b);
 }
 
 .titleSuccess {
-  color: #155724;
+  color: var(--semantic-success-text, #155724);
 }
 
 .titleWarning {
-  color: #856404;
+  color: var(--semantic-warning-text, #856404);
 }
 
 .titleError {
-  color: #721C24;
+  color: var(--semantic-error-text, #721C24);
 }
 
 .content {
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  font-size: var(--font-size-md, 1.1rem);
   line-height: 1.6;
   padding-left: calc(20px + 0.75rem);
 }
 
 .contentInfo {
-  color: #1e293b;
+  color: var(--semantic-info-text, #1e293b);
 }
 
 .contentSuccess {
-  color: #155724;
+  color: var(--semantic-success-text, #155724);
 }
 
 .contentWarning {
-  color: #856404;
+  color: var(--semantic-warning-text, #856404);
 }
 
 .contentError {
-  color: #721C24;
+  color: var(--semantic-error-text, #721C24);
 }

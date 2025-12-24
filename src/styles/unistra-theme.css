@@ -1,9 +1,13 @@
 /* ============================================================================
-   THÈME UNISTRA - CANON LAW TOOLKIT
+   THÈME UNISTRA - CiSaMe Toolkit
    ============================================================================
 
    Variables CSS pour l'intégration de la charte graphique Unistra
    tout en conservant la palette de couleurs médiévale académique du projet.
+
+   NOTE: Ces variables sont synchronisées avec globalTheme.js
+   Les variables dynamiques sont injectées via injectCSSVariables() dans main.jsx
+   Ce fichier contient les valeurs de fallback et les variables spécifiques Unistra.
    ============================================================================ */
 
 :root {
