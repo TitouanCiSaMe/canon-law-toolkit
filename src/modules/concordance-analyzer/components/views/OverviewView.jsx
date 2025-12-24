@@ -441,8 +441,7 @@ const OverviewView = ({
 	  onClick={() => corpusComparison?.B?.concordanceData && navigateToView('corpusComparison')}
 	  style={{
 	    cursor: corpusComparison?.B?.concordanceData ? 'pointer' : 'default',
-	    opacity: corpusComparison?.B?.concordanceData ? 1 : 0.7,
-	    paddingTop: '3rem'
+	    opacity: corpusComparison?.B?.concordanceData ? 1 : 0.7
 	  }}
 	>
 	  {isMobile ? (
@@ -459,7 +458,7 @@ const OverviewView = ({
 	      t('concordance.overview.corpusComparison')
 	    )
 	  ) : (
-	  <div style={{ textAlign: 'center' }}>
+	  <div style={{ textAlign: 'center', alignSelf: 'flex-start', width: '100%', marginTop: '2rem' }}>
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
