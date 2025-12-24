@@ -1,6 +1,6 @@
 # Notes de migration Charte Graphique Unistra
 
-## 🎨 Migration Progressive - Canon Law Toolkit
+## 🎨 Migration Progressive - CiSaMe Toolkit
 
 Ce document trace les notes techniques et problèmes rencontrés lors de la migration vers la charte graphique Unistra.
 

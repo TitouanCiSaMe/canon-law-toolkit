@@ -1,17 +1,20 @@
 /**
- * globalTheme.js - Système de design unifié Canon Law Toolkit
- * 
+ * globalTheme.js - Système de design unifié CiSaMe Toolkit
+ *
  * Thème global fusionnant :
  * - Le thème médiéval de l'interface principale (marron/or)
  * - Le thème moderne du ConcordanceAnalyzer (violet/bleu)
- * 
+ *
  * Fournit :
  * - Palettes de couleurs multiples
  * - Espacements standardisés
  * - Ombres et animations
  * - Typographie complète
+ * - Échelle de z-index
+ * - Couleurs sémantiques (info, success, warning, error)
  * - Helpers réutilisables
- * 
+ * - Injection de CSS variables
+ *
  * @module globalTheme
  */
 
@@ -190,6 +193,65 @@ export const globalTheme = {
       }
       const nextKey = keys[index + 1];
       return `@media (min-width: ${globalTheme.breakpoints.values[breakpoint]}px) and (max-width: ${globalTheme.breakpoints.values[nextKey] - 1}px)`;
+    }
+  },
+
+  // ------------------------------------------------------------------------
+  // Z-Index - Échelle standardisée pour la gestion des couches
+  // ------------------------------------------------------------------------
+  zIndex: {
+    base: 0,           // Éléments de base
+    dropdown: 100,     // Menus déroulants
+    sticky: 200,       // Éléments sticky (sidebars)
+    fixed: 300,        // Éléments fixed
+    modalBackdrop: 400, // Fond des modals
+    modal: 500,        // Modals
+    popover: 600,      // Popovers, tooltips contextuels
+    tooltip: 700,      // Tooltips
+    toast: 800,        // Notifications toast
+    header: 1000,      // Header principal (valeur existante)
+    max: 9999          // Urgence uniquement
+  },
+
+  // ------------------------------------------------------------------------
+  // Couleurs sémantiques (feedback utilisateur)
+  // ------------------------------------------------------------------------
+  semantic: {
+    info: {
+      background: 'linear-gradient(135deg, #DDD6B8 0%, #E6D7B8 100%)',
+      backgroundStart: '#DDD6B8',
+      backgroundEnd: '#E6D7B8',
+      border: '#e2e8f0',
+      borderAccent: '#1e40af',
+      text: '#1e293b',
+      icon: '#1e40af'
+    },
+    success: {
+      background: 'linear-gradient(135deg, #DFF0D8 0%, #D4EDDA 100%)',
+      backgroundStart: '#DFF0D8',
+      backgroundEnd: '#D4EDDA',
+      border: '#C3E6CB',
+      borderAccent: '#28A745',
+      text: '#155724',
+      icon: '#28A745'
+    },
+    warning: {
+      background: 'linear-gradient(135deg, #FFF3CD 0%, #FCF8E3 100%)',
+      backgroundStart: '#FFF3CD',
+      backgroundEnd: '#FCF8E3',
+      border: '#FFEEBA',
+      borderAccent: '#FFC107',
+      text: '#856404',
+      icon: '#FFC107'
+    },
+    error: {
+      background: 'linear-gradient(135deg, #F8D7DA 0%, #F5C6CB 100%)',
+      backgroundStart: '#F8D7DA',
+      backgroundEnd: '#F5C6CB',
+      border: '#F5C6CB',
+      borderAccent: '#DC3545',
+      text: '#721C24',
+      icon: '#DC3545'
     }
   },
 
@@ -473,6 +535,94 @@ export const generateGlobalStyles = () => `
   }
 `;
 
+/**
+ * Injecte les variables CSS du thème dans :root
+ * Permet d'utiliser les valeurs du thème JS dans les fichiers CSS
+ *
+ * @example
+ * // Dans main.jsx ou App.jsx
+ * import { injectCSSVariables } from '@shared/theme/globalTheme';
+ * injectCSSVariables();
+ *
+ * // Dans un fichier CSS
+ * .myClass { color: var(--color-primary-main); }
+ */
+export const injectCSSVariables = () => {
+  const root = document.documentElement;
+
+  // Couleurs primaires
+  root.style.setProperty('--color-primary-main', globalTheme.colors.primary.main);
+  root.style.setProperty('--color-primary-light', globalTheme.colors.primary.light);
+  root.style.setProperty('--color-primary-dark', globalTheme.colors.primary.dark);
+
+  // Couleurs secondaires
+  root.style.setProperty('--color-secondary-main', globalTheme.colors.secondary.main);
+  root.style.setProperty('--color-secondary-light', globalTheme.colors.secondary.light);
+  root.style.setProperty('--color-secondary-dark', globalTheme.colors.secondary.dark);
+
+  // Couleurs de fond
+  Object.entries(globalTheme.colors.background).forEach(([key, value]) => {
+    root.style.setProperty(`--color-bg-${key}`, value);
+  });
+
+  // Couleurs de texte
+  Object.entries(globalTheme.colors.text).forEach(([key, value]) => {
+    root.style.setProperty(`--color-text-${key}`, value);
+  });
+
+  // Couleurs de bordure
+  Object.entries(globalTheme.colors.border).forEach(([key, value]) => {
+    root.style.setProperty(`--color-border-${key}`, value);
+  });
+
+  // Spacing
+  Object.entries(globalTheme.spacing).forEach(([key, value]) => {
+    root.style.setProperty(`--spacing-${key}`, value);
+  });
+
+  // Shadows
+  Object.entries(globalTheme.shadows).forEach(([key, value]) => {
+    root.style.setProperty(`--shadow-${key}`, value);
+  });
+
+  // Border radius
+  Object.entries(globalTheme.borderRadius).forEach(([key, value]) => {
+    root.style.setProperty(`--radius-${key}`, value);
+  });
+
+  // Z-index
+  Object.entries(globalTheme.zIndex).forEach(([key, value]) => {
+    root.style.setProperty(`--z-${key}`, value);
+  });
+
+  // Transitions
+  Object.entries(globalTheme.transitions).forEach(([key, value]) => {
+    root.style.setProperty(`--transition-${key}`, value);
+  });
+
+  // Couleurs sémantiques
+  Object.entries(globalTheme.semantic).forEach(([type, colors]) => {
+    Object.entries(colors).forEach(([key, value]) => {
+      root.style.setProperty(`--semantic-${type}-${key}`, value);
+    });
+  });
+
+  // Typography - font families
+  Object.entries(globalTheme.typography.fontFamily).forEach(([key, value]) => {
+    root.style.setProperty(`--font-${key}`, value);
+  });
+
+  // Typography - font sizes
+  Object.entries(globalTheme.typography.size).forEach(([key, value]) => {
+    root.style.setProperty(`--font-size-${key}`, value);
+  });
+
+  // Typography - font weights
+  Object.entries(globalTheme.typography.weight).forEach(([key, value]) => {
+    root.style.setProperty(`--font-weight-${key}`, value);
+  });
+};
+
 // Export par défaut
 export default globalTheme;
 
@@ -491,5 +641,7 @@ export const visualTheme = {
   borderRadius: globalTheme.borderRadius,
   glassmorphism: globalTheme.glassmorphism,
   typography: globalTheme.typography,
-  charts: globalTheme.charts
+  charts: globalTheme.charts,
+  zIndex: globalTheme.zIndex,
+  semantic: globalTheme.semantic
 };

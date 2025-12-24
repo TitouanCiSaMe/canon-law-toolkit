@@ -220,7 +220,7 @@ Ce projet fait partie de `canon-law-toolkit` - Voir le fichier LICENSE du projet
 
 ## 👥 Auteurs
 
-- **Équipe Canon Law Toolkit** - Développement initial
+- **Équipe CiSaMe Toolkit** - Développement initial
 - **Claude** - Migration CSS Modules & Tests
 
 ## 🔗 Liens utiles

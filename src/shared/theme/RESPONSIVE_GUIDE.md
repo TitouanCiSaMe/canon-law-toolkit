@@ -1,4 +1,4 @@
-# Guide du Responsive Design - Canon Law Toolkit
+# Guide du Responsive Design - CiSaMe Toolkit
 
 Ce guide explique comment utiliser le système de breakpoints et les hooks responsive pour adapter votre interface à toutes les tailles d'écran.
 

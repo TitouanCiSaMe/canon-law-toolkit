@@ -1,50 +1,52 @@
 /**
- * Styles pour RadioGroup et Checkbox
+ * Styles pour RadioGroup et Checkbox - CiSaMe Toolkit
+ *
+ * Utilise les variables CSS du thème global avec fallbacks.
  */
 
 .container {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg, 1.5rem);
 }
 
 .label {
   display: block;
-  margin-bottom: 1rem;
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #704214;
+  margin-bottom: var(--spacing-md, 1rem);
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  font-size: var(--font-size-md, 1.1rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-primary-light, #704214);
   letter-spacing: 0.01em;
 }
 
 .optionsContainer {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--spacing-md, 1rem);
 }
 
 .optionsContainerInline {
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: var(--spacing-lg, 1.5rem);
 }
 
 .option {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: var(--spacing-sm, 0.75rem);
   cursor: pointer;
-  padding: 1rem;
-  border-radius: 6px;
-  transition: background 150ms ease;
+  padding: var(--spacing-md, 1rem);
+  border-radius: var(--radius-md, 6px);
+  transition: background var(--transition-fast, 150ms ease);
   background: transparent;
 }
 
 .option:hover {
-  background: #f8f9fa;
+  background: var(--color-bg-hover, #f8f9fa);
 }
 
 .optionInline {
-  padding: 0.75rem 1rem;
+  padding: var(--spacing-sm, 0.75rem) var(--spacing-md, 1rem);
   align-items: center;
 }
 
@@ -52,20 +54,20 @@
   width: 18px;
   height: 18px;
   margin-top: 2px;
-  accent-color: #1e40af;
+  accent-color: var(--color-text-link, #1e40af);
   cursor: pointer;
 }
 
 .optionLabel {
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
-  color: #1e293b;
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  font-size: var(--font-size-md, 1.1rem);
+  color: var(--color-text-dark, #1e293b);
   line-height: 1.5;
 }
 
 .description {
-  color: #5a5a5a;
-  font-size: 1rem;
+  color: var(--color-text-secondary, #5a5a5a);
+  font-size: var(--font-size-sm, 1rem);
   font-style: italic;
 }
 
@@ -73,28 +75,28 @@
 .checkboxContainer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--spacing-sm, 0.75rem);
   cursor: pointer;
-  padding: 1rem;
-  border-radius: 6px;
-  transition: background 150ms ease;
-  margin-bottom: 1rem;
+  padding: var(--spacing-md, 1rem);
+  border-radius: var(--radius-md, 6px);
+  transition: background var(--transition-fast, 150ms ease);
+  margin-bottom: var(--spacing-md, 1rem);
 }
 
 .checkboxContainer:hover {
-  background: #f8f9fa;
+  background: var(--color-bg-hover, #f8f9fa);
 }
 
 .checkbox {
   width: 18px;
   height: 18px;
-  accent-color: #1e40af;
+  accent-color: var(--color-text-link, #1e40af);
   cursor: pointer;
 }
 
 .checkboxLabel {
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
-  color: #1e293b;
-  font-weight: 400;
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  font-size: var(--font-size-md, 1.1rem);
+  color: var(--color-text-dark, #1e293b);
+  font-weight: var(--font-weight-normal, 400);
 }

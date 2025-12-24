@@ -1,4 +1,4 @@
-# Guide I18n - Canon Law Toolkit
+# Guide I18n - CiSaMe Toolkit
 
 ## 📚 Vue d'ensemble
 

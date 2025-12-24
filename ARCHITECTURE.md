@@ -1,4 +1,4 @@
-# Architecture - Canon Law Toolkit
+# Architecture - CiSaMe Toolkit
 
 **Version** : 1.3.0
 **Date** : Novembre 2025

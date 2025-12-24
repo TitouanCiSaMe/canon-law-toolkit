@@ -1,52 +1,54 @@
 /**
- * Styles pour ResultCard
+ * Styles pour ResultCard - CiSaMe Toolkit
+ *
+ * Utilise les variables CSS du thème global avec fallbacks.
  */
 
 .card {
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  padding: var(--spacing-xl, 2rem);
+  border-radius: var(--radius-lg, 8px);
+  border: 1px solid var(--color-border-light, #e2e8f0);
   border-left-width: 4px;
-  border-left-color: #704214;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  margin-bottom: 1.5rem;
-  transition: all 250ms ease;
-  background: #fffef9;
+  border-left-color: var(--color-primary-light, #704214);
+  box-shadow: var(--shadow-card, 0 1px 3px rgba(0, 0, 0, 0.06));
+  margin-bottom: var(--spacing-lg, 1.5rem);
+  transition: all var(--transition-normal, 250ms ease);
+  background: var(--color-bg-card, #fffef9);
 }
 
 .cardMedieval {
   background: linear-gradient(135deg, #FFE4B5 0%, #FAEBD7 100%);
-  border: 2px solid #B8860B;
-  border-left: 5px solid #B8860B;
+  border: 2px solid var(--color-secondary-dark, #B8860B);
+  border-left: 5px solid var(--color-secondary-dark, #B8860B);
 }
 
 .title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #704214;
-  margin-bottom: 1.5rem;
+  font-size: var(--font-size-lg, 1.4rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-primary-light, #704214);
+  margin-bottom: var(--spacing-lg, 1.5rem);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--spacing-sm, 0.75rem);
 }
 
 .titleMedieval {
-  color: #B8860B;
+  color: var(--color-secondary-dark, #B8860B);
 }
 
 .queryDisplay {
   background: #F5F5DC;
-  padding: 1.5rem;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 1.5rem;
+  padding: var(--spacing-lg, 1.5rem);
+  border-radius: var(--radius-md, 6px);
+  border: 1px solid var(--color-border-light, #e2e8f0);
+  margin-bottom: var(--spacing-lg, 1.5rem);
   overflow-x: auto;
-  font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: var(--font-size-sm, 1rem);
+  font-family: var(--font-mono, 'Courier New', Courier, monospace);
 }
 
 .queryCode {
-  color: #1e293b;
+  color: var(--color-text-dark, #1e293b);
   word-break: break-all;
   white-space: pre-wrap;
 }
@@ -54,72 +56,72 @@
 .metadata {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 6px;
-  font-size: 1rem;
+  gap: var(--spacing-md, 1rem);
+  margin-bottom: var(--spacing-lg, 1.5rem);
+  padding: var(--spacing-md, 1rem);
+  background: var(--color-bg-hover, #f8f9fa);
+  border-radius: var(--radius-md, 6px);
+  font-size: var(--font-size-sm, 1rem);
 }
 
 .metadataItem {
-  color: #334155;
+  color: var(--color-text-medium, #334155);
 }
 
 .patternsPreview {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  margin-bottom: var(--spacing-lg, 1.5rem);
+  padding: var(--spacing-md, 1rem);
   background: #F0F8FF;
   border: 1px dashed #4682B4;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: var(--radius-md, 6px);
+  font-size: var(--font-size-sm, 1rem);
 }
 
 .patternsLabel {
-  color: #1e293b;
-  margin-bottom: 0.5rem;
+  color: var(--color-text-dark, #1e293b);
+  margin-bottom: var(--spacing-xs, 0.5rem);
   display: block;
 }
 
 .patternsContent {
-  font-family: 'Courier New', Courier, monospace;
-  color: #334155;
-  font-size: 1rem;
+  font-family: var(--font-mono, 'Courier New', Courier, monospace);
+  color: var(--color-text-medium, #334155);
+  font-size: var(--font-size-sm, 1rem);
 }
 
 .actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md, 1rem);
   flex-wrap: wrap;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.75rem;
-  border-radius: 6px;
+  gap: var(--spacing-sm, 0.75rem);
+  padding: var(--spacing-md, 1rem) var(--spacing-lg, 1.75rem);
+  border-radius: var(--radius-md, 6px);
   border: 2px solid;
-  font-family: "Unistra C", "Helvetica Neue", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: var(--font-secondary, "Unistra C", "Helvetica Neue", sans-serif);
+  font-size: var(--font-size-md, 1.1rem);
+  font-weight: var(--font-weight-semibold, 600);
   cursor: pointer;
-  transition: all 250ms ease;
+  transition: all var(--transition-normal, 250ms ease);
 }
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-elevated, 0 4px 12px rgba(0, 0, 0, 0.1));
 }
 
 .buttonPrimary {
-  border-color: #1e40af;
-  background: #1e40af;
+  border-color: var(--color-text-link, #1e40af);
+  background: var(--color-text-link, #1e40af);
   color: #FFFFFF;
 }
 
 .buttonSecondary {
-  border-color: #cbd5e1;
-  background: #fffef9;
-  color: #704214;
+  border-color: var(--color-border-medium, #cbd5e1);
+  background: var(--color-bg-card, #fffef9);
+  color: var(--color-primary-light, #704214);
 }

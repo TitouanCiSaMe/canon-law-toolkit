@@ -6,7 +6,7 @@
  * - Les couleurs académiques du thème
  * - Les couleurs pour les graphiques
  * 
- * Version adaptée pour Canon Law Toolkit
+ * Version adaptée pour CiSaMe Toolkit
  * Import depuis @shared/theme/globalTheme au lieu de ../theme/visualTheme
  */
 

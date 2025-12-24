@@ -1,80 +1,38 @@
 /**
  * Composant NavigationPanel - Panneau de navigation cliquable
- * 
+ *
  * Affiche un panneau avec gradient, titre, et contenu personnalisé.
  * Gère automatiquement les états hover et actif avec animations CSS.
  * Utilisé principalement dans la vue d'ensemble (OverviewView) pour créer
  * une grille de panels interactifs.
- * 
- * Fonctionnalités :
- * - Affichage avec gradient personnalisé
- * - Animations au survol (hover)
- * - Indication visuelle de l'état actif
- * - Support du contenu personnalisé (children)
- * - Gestion de la taille (large, medium, wide)
- * 
+ *
+ * Utilise les variables CSS du thème global (injectées via injectCSSVariables).
+ *
  * @module components/ui/NavigationPanel
  */
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { visualTheme } from '@shared/theme/globalTheme';
+import { globalTheme } from '@shared/theme/globalTheme';
+
+// Constantes de spacing basées sur le thème
+const PANEL_SPACING = {
+  large: globalTheme.spacing.lg,    // 1.5rem
+  wide: `${globalTheme.spacing.xs} ${globalTheme.spacing.md}`,  // 0.5rem 1rem (compact verticalement)
+  medium: globalTheme.spacing.md    // 1rem
+};
 
 /**
  * Composant panneau de navigation interactif
- * 
- * Crée un panneau cliquable avec des effets visuels au survol et à l'activation.
- * Le panneau peut contenir n'importe quel contenu React (texte, graphiques, stats).
- * 
- * Styling :
- * - Gradient de fond personnalisable via config.gradient
- * - Bordure blanche épaisse quand actif
- * - Effet de zoom (scale 1.02) au survol
- * - Ombre portée au survol
- * - Overlay semi-transparent au survol
- * 
+ *
  * @param {Object} props - Props du composant
- * @param {Object} props.config - Configuration du panel contenant :
- *                                - {string} id - Identifiant unique
- *                                - {string} title - Titre principal du panel
- *                                - {string} subtitle - Sous-titre/description
- *                                - {string} color - Couleur principale (hex)
- *                                - {string} gradient - Gradient CSS complet
- *                                - {string} gridArea - Position dans la grille CSS
- *                                - {string} size - Taille ('large'|'medium'|'wide')
+ * @param {Object} props.config - Configuration du panel
  * @param {boolean} props.isActive - Indique si le panel est actuellement actif
  * @param {Function} props.onClick - Handler appelé au clic sur le panel
  * @param {React.ReactNode} props.children - Contenu personnalisé du panel
- * 
+ * @param {Object} props.style - Styles additionnels à appliquer
+ *
  * @returns {React.Component} Panneau de navigation interactif
- * 
- * @example
- * const config = {
- *   id: 'domains',
- *   title: 'Domaines',
- *   subtitle: 'Répartition disciplinaire',
- *   gradient: 'linear-gradient(135deg, #553C9A 0%, #6B46C1 100%)',
- *   gridArea: '1 / 2 / 2 / 3',
- *   size: 'medium'
- * };
- * 
- * <NavigationPanel
- *   config={config}
- *   isActive={activeView === 'domains'}
- *   onClick={() => setActiveView('domains')}
- * >
- *   <p>Contenu personnalisé du panel</p>
- * </NavigationPanel>
- * 
- * @example
- * // Panel large (Vue d'ensemble)
- * <NavigationPanel
- *   config={{ ...config, size: 'large' }}
- *   isActive={false}
- *   onClick={handleClick}
- * >
- *   <StatisticsSummary />
- * </NavigationPanel>
  */
 const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) => {
   const { t } = useTranslation();
@@ -88,24 +46,26 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-	style={{
-	  gridArea: config.gridArea,
-	  background: config.gradient,
-	  color: textColor,
-	  padding: config.size === 'large' ? '1.5rem' : config.size === 'wide' ? '1rem' : '1rem',
-	  cursor: 'pointer',
-	  transition: 'transform 350ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms ease',
-	  position: 'relative',
-	  overflow: 'hidden',
-	  border: isActive ? '2px solid #D4AF37' : '1px solid rgba(212, 175, 55, 0.2)',
-	  transform: isHovered ? 'scale(1.01)' : 'scale(1)',
-	  boxShadow: isHovered
-	    ? '0 4px 12px rgba(92, 51, 23, 0.2)'
-	    : '0 2px 6px rgba(92, 51, 23, 0.12)',
-	  zIndex: isHovered ? 10 : 1,
-	  borderRadius: '6px',
-	  ...style  // Permet d'override les styles par défaut
-	}}
+      style={{
+        gridArea: config.gridArea,
+        background: config.gradient,
+        color: textColor,
+        padding: PANEL_SPACING[config.size] || PANEL_SPACING.medium,
+        cursor: 'pointer',
+        transition: `transform ${globalTheme.transitions.slow}, box-shadow ${globalTheme.transitions.normal}`,
+        position: 'relative',
+        overflow: 'hidden',
+        border: isActive
+          ? `2px solid ${globalTheme.colors.secondary.dark}`
+          : '1px solid rgba(212, 175, 55, 0.2)',
+        transform: isHovered ? 'scale(1.01)' : 'scale(1)',
+        boxShadow: isHovered
+          ? globalTheme.shadows.elevated
+          : globalTheme.shadows.panel,
+        zIndex: isHovered ? globalTheme.zIndex.dropdown : globalTheme.zIndex.base,
+        borderRadius: globalTheme.borderRadius.md,
+        ...style  // Permet d'override les styles par défaut
+      }}
     >
       <div style={{
         position: 'relative',
@@ -116,22 +76,26 @@ const NavigationPanel = ({ config, isActive, onClick, children, style = {} }) =>
         justifyContent: config.size === 'large' ? 'center' : config.size === 'wide' ? 'center' : 'flex-start'
       }}>
         <div style={{
-          fontSize: '1.05rem',
+          fontSize: globalTheme.typography.size.md,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           opacity: 0.95,
-          marginBottom: '0.25rem',
-          fontFamily: visualTheme.typography.fontFamily.secondary,
+          marginBottom: globalTheme.spacing.xs,
+          fontFamily: globalTheme.typography.fontFamily.secondary,
           color: textColor
         }}>
           {t(`concordance.panels.${config.id}.subtitle`)}
         </div>
 
         <h3 style={{
-          fontSize: config.size === 'large' ? '2.5rem' : config.size === 'wide' ? '1.9rem' : '1.6rem',
-          fontWeight: '500',
-          marginBottom: '0.5rem',
-          fontFamily: visualTheme.typography.fontFamily.heading,
+          fontSize: config.size === 'large'
+            ? globalTheme.typography.heading.h2.fontSize
+            : config.size === 'wide'
+              ? globalTheme.typography.heading.h3.fontSize
+              : globalTheme.typography.heading.h4.fontSize,
+          fontWeight: globalTheme.typography.weight.medium,
+          marginBottom: globalTheme.spacing.xs,
+          fontFamily: globalTheme.typography.fontFamily.heading,
           color: textColor
         }}>
           {t(`concordance.panels.${config.id}.title`)}
