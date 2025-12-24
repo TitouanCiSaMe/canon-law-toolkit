@@ -458,7 +458,7 @@ const OverviewView = ({
 	      t('concordance.overview.corpusComparison')
 	    )
 	  ) : (
-	  <div style={{ textAlign: 'center' }}>
+	  <div style={{ textAlign: 'center', paddingTop: '1.5rem' }}>
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
