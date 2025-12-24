@@ -1,0 +1,35 @@
+/* Variables CSS natives pour les panels Overview */
+:root {
+  /* ============= TAILLES DE POLICE ============= */
+
+  /* Statistique principale (grand nombre) */
+  --panel-stat-main-xs: 3rem;
+  --panel-stat-main-sm: 3.5rem;
+  --panel-stat-main-md: 4rem;
+  --panel-stat-main-lg: 5rem;
+
+  /* Statistique secondaire */
+  --panel-stat-xs: 2rem;
+  --panel-stat-sm: 2.2rem;
+  --panel-stat-md: 2.3rem;
+  --panel-stat-lg: 2.5rem;
+
+  /* Labels et descriptions */
+  --panel-label-size: 0.9rem;
+  --panel-label-compact: 0.85rem;
+
+  /* ============= SPACING ============= */
+
+  --panel-stat-margin: 0.5rem;
+  --panel-content-padding: 1rem;
+
+  /* ============= OPACITÉS ============= */
+
+  --panel-label-opacity: 0.8;
+  --panel-muted-opacity: 0.7;
+
+  /* ============= AUTRES ============= */
+
+  --panel-font-weight-light: 300;
+  --panel-font-weight-semibold: 600;
+}

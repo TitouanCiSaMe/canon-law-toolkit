@@ -149,8 +149,9 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useResponsiveValue, useBreakpoint } from '../../../../shared/hooks';
+import { useBreakpoint } from '../../../../shared/hooks';
 import NavigationPanel from '../ui/NavigationPanel';
+import styles from './OverviewView.module.css';
 
 /**
  * Composant OverviewView - Vue d'ensemble avec grille de panels
@@ -177,79 +178,29 @@ const OverviewView = ({
   const { t } = useTranslation();
   const { isMobile, isTablet } = useBreakpoint();
 
-  // Grille responsive selon la taille d'écran
-  const gridTemplateColumns = useResponsiveValue({
-    xs: '1fr',                    // Mobile: 1 colonne
-    sm: '1fr',                    // Phone landscape: 1 colonne
-    md: 'repeat(2, 1fr)',         // Tablet: 2 colonnes
-    lg: 'minmax(400px, 1.3fr) repeat(3, minmax(200px, 0.6fr))'  // Desktop: 4 colonnes (layout original)
-  });
-
-  // Gap responsive
-  const gridGap = useResponsiveValue({
-    xs: '2px',
-    md: '2px',
-    lg: '2px'
-  });
-
-  // Padding responsive
-  const containerPadding = useResponsiveValue({
-    xs: '2px',
-    md: '2px',
-    lg: '2px'
-  });
-
-  // Hauteur des lignes responsive pour éviter le scroll
-  const gridTemplateRows = useResponsiveValue({
-    xs: 'auto',      // Mobile: hauteur automatique
-    sm: 'auto',      // Phone landscape: hauteur automatique
-    md: 'auto',      // Tablet: hauteur automatique
-    lg: '320px 320px 200px'  // Desktop: ligne 3 réduite pour Comparaison
-  });
-
-  // Tailles de police responsives pour les statistiques
-  const statFontSize = useResponsiveValue({
-    xs: '2rem',      // Mobile
-    sm: '2.2rem',    // Phone landscape
-    md: '2.3rem',    // Tablet
-    lg: '2.5rem'     // Desktop
-  });
-
-  const mainStatFontSize = useResponsiveValue({
-    xs: '3rem',      // Mobile
-    sm: '3.5rem',    // Phone landscape
-    md: '4rem',      // Tablet
-    lg: '5rem'       // Desktop (original: clamp)
-  });
-
   // Helper: Rendu compact pour mobile (icône + titre seulement)
   const renderCompactPanel = (icon, title, stat) => (
-    <div style={{ textAlign: 'center', padding: '1rem' }}>
-      <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{icon}</div>
-      <div style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>{t(title)}</div>
-      <div style={{ fontSize: '1.5rem', fontWeight: '300' }}>{stat}</div>
+    <div className={styles.compactPanel}>
+      <div className={styles.compactIcon}>{icon}</div>
+      <div className={styles.compactTitle}>{t(title)}</div>
+      <div className={styles.compactStat}>{stat}</div>
     </div>
   );
 
   // Helper: Rendu semi-compact pour tablet (icône + titre + stat principale)
   const renderSemiCompactPanel = (icon, title, stat, subtitle) => (
-    <div style={{ textAlign: 'center', padding: '0rem 1.5rem 1.5rem 1.5rem' }}>
-      <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{icon}</div>
-      <div style={{ fontSize: statFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>{stat}</div>
-      <div style={{ fontSize: '1.15rem', opacity: 0.8 }}>{subtitle}</div>
+    <div className={styles.semiCompactPanel}>
+      <div className={styles.semiCompactIcon}>{icon}</div>
+      <div className={styles.stat}>{stat}</div>
+      <div className={styles.label}>{subtitle}</div>
     </div>
   );
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns,
-      gridTemplateRows,  // Hauteurs responsives (ligne 1: 320px, ligne 2: 320px, ligne 3: 280px sur desktop)
-      gap: gridGap,
-      background: academicColors.text,
-      padding: containerPadding,
-      borderRadius: '8px'
-    }}>
+    <div
+      className={styles.panelGrid}
+      style={{ '--grid-background': academicColors.text }}
+    >
       
       {/* Panel Vue d'ensemble (principal, large) */}
       <NavigationPanel
@@ -266,12 +217,12 @@ const OverviewView = ({
           )
         ) : isTablet ? (
           // Tablet: Version semi-compacte
-          <div style={{ textAlign: 'center', padding: '0rem 1.5rem 1.5rem 1.5rem' }}>
-            <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{panelConfig.overview.icon}</div>
-            <div style={{ fontSize: mainStatFontSize, fontWeight: '300', marginBottom: '0.5rem' }}>
+          <div className={styles.semiCompactPanel}>
+            <div className={styles.semiCompactIcon}>{panelConfig.overview.icon}</div>
+            <div className={styles.statMain}>
               {analytics.total.toLocaleString()}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem' }}>
+            <div className={styles.label} style={{ marginBottom: '1rem' }}>
               {t('concordance.overview.concordancesAnalyzed')}
             </div>
             <div style={{ fontSize: '1.1rem', opacity: 0.7 }}>
@@ -280,53 +231,22 @@ const OverviewView = ({
           </div>
         ) : (
           // Desktop: Version complète
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            height: '100%',
-            textAlign: 'center'
-          }}>
-            <div style={{
-              fontSize: mainStatFontSize,
-              fontWeight: '300',
-              lineHeight: '1',
-              marginBottom: '1rem'
-            }}>
+          <div className={styles.overviewPanel}>
+            <div className={styles.statMain}>
               {analytics.total.toLocaleString()}
             </div>
-            <div style={{
-              fontSize: '1.1rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              opacity: 0.9,
-              marginBottom: '2rem'
-            }}>
+            <div className={styles.overviewTitle}>
               {t('concordance.overview.concordancesAnalyzed')}
             </div>
 
-            <div style={{
-              background: 'rgba(255,255,255,0.15)',
-              height: '6px',
-              borderRadius: '3px',
-              overflow: 'hidden',
-              marginBottom: '1rem'
-            }}>
-              <div style={{
-                background: '#F7FAFC',
-                height: '100%',
-                width: `${parseStats.lookupRate || 0}%`,
-                borderRadius: '3px',
-                transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
-              }} />
+            <div className={styles.overviewProgressBar}>
+              <div
+                className={styles.overviewProgressFill}
+                style={{ width: `${parseStats.lookupRate || 0}%` }}
+              />
             </div>
 
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontSize: '1.1rem',
-              opacity: 0.8
-            }}>
+            <div className={styles.overviewStats}>
               <span>{t('concordance.overview.matchRate')}</span>
               <span>{parseStats.lookupRate || 0}%</span>
             </div>
@@ -398,19 +318,11 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.domains.icon, panelConfig.domains.title, analytics.domains.length, analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains'))
         ) : (
-          <div style={{ textAlign: 'center', padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
-            <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem',
-              minHeight: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+          <div className={styles.panelContent}>
+            <div className={styles.stat}>
               {analytics.domains.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, minHeight: '1.5rem' }}>
+            <div className={styles.label}>
               {analytics.domains.length <= 1 ? t('concordance.overview.legalDomain') : t('concordance.overview.legalDomains')}
             </div>
           </div>
@@ -442,20 +354,12 @@ const OverviewView = ({
           )
         ) : (
           <div style={{ textAlign: 'center', padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
-            <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem',
-              minHeight: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+            <div className={styles.stat}>
               {analytics.periods.length > 0 ?
                 Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
                           Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div className={styles.label} style={{ marginBottom: '1rem' }}>
               {t('concordance.overview.centuriesCovered')}
             </div>
 
@@ -497,20 +401,11 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.authors.icon, panelConfig.authors.title, analytics.authors.length, t('concordance.overview.referencedAuthors'))
         ) : (
-          <div style={{ padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
-            <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem',
-              textAlign: 'center',
-              minHeight: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+          <div className={styles.panelContent}>
+            <div className={styles.stat}>
               {analytics.authors.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, textAlign: 'center', minHeight: '1.5rem' }}>
+            <div className={styles.label}>
               {t('concordance.overview.referencedAuthors')}
             </div>
           </div>
@@ -528,26 +423,17 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.linguistic.icon, panelConfig.linguistic.title, analytics.keyTerms.length, t('concordance.overview.keyTermsIdentified'))
         ) : (
-          <div style={{ padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
-            <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem',
-              textAlign: 'center',
-              minHeight: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+          <div className={styles.panelContent}>
+            <div className={styles.stat}>
               {analytics.keyTerms.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, textAlign: 'center', minHeight: '1.5rem' }}>
+            <div className={styles.label}>
               {t('concordance.overview.keyTermsIdentified')}
             </div>
           </div>
         )}
       </NavigationPanel>
-      
+
 	{/* Panel Comparaison Corpus (toujours visible, contenu adaptatif) */}
 	<NavigationPanel
 	  config={panelConfig.corpusComparison}
@@ -572,7 +458,7 @@ const OverviewView = ({
 	      t('concordance.overview.corpusComparison')
 	    )
 	  ) : (
-	  <div style={{ textAlign: 'center' }}>
+	  <div style={{ textAlign: 'center', alignSelf: 'flex-start', width: '100%', marginTop: '2rem' }}>
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
@@ -627,8 +513,8 @@ const OverviewView = ({
 		<div style={{
 		  fontSize: '1.0rem',
 		  opacity: 0.7,
-		  lineHeight: '1.5',
-		  marginBottom: '0.5rem'
+		  lineHeight: '1.3',
+		  marginBottom: '0.25rem'
 		}}>
 		  {t('concordance.views.corpusComparison.noData')}
 		</div>
@@ -678,18 +564,10 @@ const OverviewView = ({
           renderSemiCompactPanel(panelConfig.data.icon, panelConfig.data.title, filteredData.length, t('concordance.overview.loadedConcordances'))
         ) : (
           <div style={{ textAlign: 'center', padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
-            <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem',
-              minHeight: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+            <div className={styles.stat}>
               {filteredData.length}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, marginBottom: '1rem', minHeight: '1.5rem' }}>
+            <div className={styles.label} style={{ marginBottom: '1rem' }}>
               {t('concordance.overview.loadedConcordances')}
             </div>
 
@@ -711,19 +589,11 @@ const OverviewView = ({
         ) : isTablet ? (
           renderSemiCompactPanel(panelConfig.places.icon, panelConfig.places.title, analytics.places?.length || 0, t('concordance.overview.identifiedPlaces'))
         ) : (
-          <div style={{ textAlign: 'center', padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
-            <div style={{
-              fontSize: statFontSize,
-              fontWeight: '300',
-              marginBottom: '0.5rem',
-              minHeight: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+          <div className={styles.panelContent}>
+            <div className={styles.stat}>
               {analytics.places?.length || 0}
             </div>
-            <div style={{ fontSize: '1.15rem', opacity: 0.8, minHeight: '1.5rem' }}>
+            <div className={styles.label}>
               {t('concordance.overview.identifiedPlaces')}
             </div>
           </div>
