@@ -194,3 +194,79 @@ Toujours fournir un fallback pour les variables CSS :
 - z-index arbitraires (utiliser l'échelle)
 - Mélanger rem et px dans le même contexte
 - Classes trop génériques (.box, .title) en CSS global
+
+---
+
+## Grille de panels (OverviewView)
+
+La grille de panels utilise CSS Grid avec des hauteurs fixes pour le desktop :
+
+```css
+/* Desktop (1024px+) */
+grid-template-columns: minmax(400px, 1.3fr) repeat(3, minmax(200px, 0.6fr));
+grid-template-rows: 320px 320px 140px;
+```
+
+| Ligne | Hauteur | Panels |
+|-------|---------|--------|
+| 1 | 320px | Vue d'ensemble (large) + Domaines, Auteurs |
+| 2 | 320px | Périodes, Lieux, Termes clés |
+| 3 | 140px | Comparaison de corpus (wide, full-width) |
+
+---
+
+## Changelog - Améliorations CSS (Décembre 2024)
+
+### Ajouts dans `globalTheme.js`
+
+**Échelle z-index unifiée :**
+```javascript
+zIndex: {
+  base: 0,
+  dropdown: 100,
+  sticky: 200,
+  fixed: 300,
+  modalBackdrop: 400,
+  modal: 500,
+  popover: 600,
+  tooltip: 700,
+  toast: 800,
+  header: 1000,
+  max: 9999
+}
+```
+
+**Couleurs sémantiques :**
+```javascript
+semantic: {
+  info: { background, border, text, icon },
+  success: { background, border, text, icon },
+  warning: { background, border, text, icon },
+  error: { background, border, text, icon }
+}
+```
+
+**Fonction `injectCSSVariables()` :**
+Injecte ~70 variables CSS dans `:root` depuis `globalTheme.js`. Appelée dans `main.jsx` au démarrage.
+
+### Optimisations `fonts.css`
+
+Ajout de `font-display: swap` sur les 14 déclarations `@font-face` pour améliorer le chargement des polices Unistra.
+
+### Migration CSS Modules
+
+Les fichiers suivants utilisent maintenant les variables CSS avec fallbacks :
+- `FormField.module.css`
+- `RadioGroup.module.css`
+- `ResultCard.module.css`
+- `InfoBox.module.css`
+
+### Simplification `unistra-theme.css`
+
+Suppression des duplications. Le fichier ne contient plus que :
+- Variables spécifiques Unistra (bordures, styles médiévaux)
+- Alias vers les variables injectées par `injectCSSVariables()`
+
+### Connexion `panel-variables.css`
+
+Les variables locales du panel sont maintenant connectées au thème global via `var()` avec fallbacks.
