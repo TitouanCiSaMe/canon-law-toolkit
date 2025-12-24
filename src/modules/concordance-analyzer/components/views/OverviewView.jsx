@@ -513,8 +513,8 @@ const OverviewView = ({
 		<div style={{
 		  fontSize: '1.0rem',
 		  opacity: 0.7,
-		  lineHeight: '1.5',
-		  marginBottom: '0.5rem'
+		  lineHeight: '1.3',
+		  marginBottom: '0.25rem'
 		}}>
 		  {t('concordance.views.corpusComparison.noData')}
 		</div>
