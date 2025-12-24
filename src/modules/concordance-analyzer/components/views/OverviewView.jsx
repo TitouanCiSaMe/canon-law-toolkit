@@ -458,7 +458,7 @@ const OverviewView = ({
 	      t('concordance.overview.corpusComparison')
 	    )
 	  ) : (
-	  <div style={{ textAlign: 'center', alignSelf: 'flex-start', width: '100%', marginTop: '2rem' }}>
+	  <div style={{ textAlign: 'center', alignSelf: 'flex-start', width: '100%', marginTop: '0.25rem' }}>
 	    {corpusComparison?.B?.concordanceData ? (
 	      // Mode ACTIF : 2 jeux de données chargés
 	      <>
@@ -469,7 +469,7 @@ const OverviewView = ({
 		  gap: '0.5rem',
 		  alignItems: 'center',
 		  fontSize: '0.95rem',
-		  marginTop: '1rem',
+		  marginTop: '0.25rem',
 		  opacity: 0.9
 		}}>
 		  <div style={{
@@ -500,7 +500,7 @@ const OverviewView = ({
 		</div>
 
 		<div style={{
-		  marginTop: '1rem',
+		  marginTop: '0.5rem',
 		  fontSize: '0.95rem',
 		  opacity: 0.8
 		}}>
