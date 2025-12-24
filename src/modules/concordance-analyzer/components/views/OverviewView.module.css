@@ -1,0 +1,182 @@
+/* ============================================
+   GRID PRINCIPAL
+   ============================================ */
+
+.panelGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 2px;
+  background: var(--grid-background); /* Passé via style inline ou theme */
+  padding: 2px;
+  border-radius: 8px;
+}
+
+/* Responsive grid */
+@media (min-width: 768px) {
+  .panelGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .panelGrid {
+    grid-template-columns: minmax(400px, 1.3fr) repeat(3, minmax(200px, 0.6fr));
+    grid-template-rows: 320px 320px 280px;
+  }
+}
+
+/* ============================================
+   PANEL CONTENT (Desktop)
+   ============================================ */
+
+.panelContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* ============================================
+   STATISTIQUES
+   ============================================ */
+
+/* Statistique principale (grand nombre) */
+.statMain {
+  font-size: var(--panel-stat-main-xs);
+  font-weight: var(--panel-font-weight-light);
+  margin-bottom: var(--panel-stat-margin);
+  line-height: 1;
+}
+
+@media (min-width: 640px) {
+  .statMain {
+    font-size: var(--panel-stat-main-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .statMain {
+    font-size: var(--panel-stat-main-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .statMain {
+    font-size: var(--panel-stat-main-lg);
+  }
+}
+
+/* Statistique secondaire */
+.stat {
+  font-size: var(--panel-stat-xs);
+  font-weight: var(--panel-font-weight-light);
+  margin-bottom: var(--panel-stat-margin);
+}
+
+@media (min-width: 640px) {
+  .stat {
+    font-size: var(--panel-stat-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .stat {
+    font-size: var(--panel-stat-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stat {
+    font-size: var(--panel-stat-lg);
+  }
+}
+
+/* ============================================
+   LABELS
+   ============================================ */
+
+.label {
+  font-size: var(--panel-label-size);
+  opacity: var(--panel-label-opacity);
+}
+
+/* ============================================
+   HELPERS MOBILE/TABLET
+   ============================================ */
+
+.compactPanel {
+  text-align: center;
+  padding: var(--panel-content-padding);
+}
+
+.compactIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.compactTitle {
+  font-size: var(--panel-label-compact);
+  font-weight: var(--panel-font-weight-semibold);
+  margin-bottom: 0.25rem;
+}
+
+.compactStat {
+  font-size: 1.5rem;
+  font-weight: var(--panel-font-weight-light);
+}
+
+/* Semi-compact (tablet) */
+.semiCompactPanel {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.semiCompactIcon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================
+   PANEL VUE D'ENSEMBLE (principal)
+   ============================================ */
+
+.overviewPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.overviewTitle {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.overviewProgressBar {
+  background: rgba(255, 255, 255, 0.15);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.overviewProgressFill {
+  background: #f7fafc;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overviewStats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
