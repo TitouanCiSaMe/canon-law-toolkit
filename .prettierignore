@@ -1,0 +1,26 @@
+# Dépendances
+node_modules/
+
+# Build
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Fichiers générés
+*.min.js
+*.min.css
+
+# Assets
+public/
+*.svg
+*.png
+*.jpg
+*.ico
+
+# Polices
+Police/
+
+# Documentation générée
+docs/api/
