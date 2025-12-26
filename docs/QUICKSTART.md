@@ -256,12 +256,6 @@ Pour analyser deux corpus distincts :
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Détails techniques
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Contribuer au projet
 
-### Exemples de corpus
-
-Des fichiers d'exemple sont disponibles dans le dossier `examples/` :
-- `Export_Métadonnées_exemple.csv` : 117 entrées de métadonnées
-- `Export_NoSketch_exemple.csv` : 50 concordances
-
 ### Support
 
 - **Issues** : [GitLab Issues](https://gitlab.com/cisame/canon-law-toolkit/-/issues)
@@ -304,5 +298,5 @@ Maintenant que vous maîtrisez les bases :
 
 ---
 
-*Guide mis à jour : Novembre 2025*  
-*Version de l'application : 1.0.0*
+*Guide mis à jour : Décembre 2025*
+*Version de l'application : 1.5.0*

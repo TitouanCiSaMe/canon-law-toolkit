@@ -1,8 +1,10 @@
 # Architecture - CiSaMe Toolkit
 
-**Version** : 1.3.0
-**Date** : Novembre 2025
+**Version** : 1.5.0
+**Date** : Décembre 2025
 **Mainteneur** : Titouan (CiSaMe - Circulation des Savoirs médiévaux)
+
+> 🔄 **Note** : Une migration vers GitLab est prévue pour ce projet.
 
 ---
 
@@ -600,6 +602,6 @@ docs(query-generator): Add complete documentation
 
 ---
 
-**Dernière mise à jour** : Novembre 2025
-**Version** : 1.3.0
+**Dernière mise à jour** : Décembre 2025
+**Version** : 1.5.0
 **Contributeurs** : Titouan (CiSaMe)
