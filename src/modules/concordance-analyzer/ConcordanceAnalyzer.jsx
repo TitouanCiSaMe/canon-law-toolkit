@@ -252,51 +252,21 @@ const ConcordanceAnalyzerPanels = () => {
     keyTerms: [] 
   };
 
-  const activeFilterCount = Object.values(activeFilters).flat().length + 
+  const activeFilterCount = Object.values(activeFilters).flat().length +
     (activeFilters.searchTerm ? 1 : 0);
 
   // ============================================================================
-  // HANDLERS : Drag & Drop
-  // ============================================================================
-  
-  // Gestionnaires drag & drop - Optimisation: useCallback pour stabiliser les références
-  const handleDrop = useCallback((event, fileType) => {
-    event.preventDefault();
-    setDragOver(false);
-    const file = event.dataTransfer.files[0];
-
-    if (file) {
-      if (fileType === 'metadata') {
-        handleMetadataFileUpload(file, setMetadataLookup);
-      } else if (fileType === 'concordanceB') { // ✨ NOUVEAU
-        handleConcordanceBUpload(file);
-      } else {
-        handleConcordanceFileUpload(file, metadataLookup, setConcordanceData);
-      }
-    }
-  }, [metadataLookup, handleMetadataFileUpload, handleConcordanceBUpload, handleConcordanceFileUpload]);
-
-  const handleDragOver = useCallback((event) => {
-    event.preventDefault();
-    setDragOver(true);
-  }, []); // Pas de dépendances
-
-  const handleDragLeave = useCallback(() => {
-    setDragOver(false);
-  }, []); // Pas de dépendances
-  
-  // ============================================================================
   // HANDLERS : Upload Concordances B (Mode Comparison)
   // ============================================================================
-  
+
   /**
    * Handler pour l'upload du fichier concordances B (corpus comparison)
-   * 
+   *
    * Stocke les données dans corpusComparison.B pour utilisation future.
    * Le mode reste en 'single' pour permettre l'utilisation normale des panels.
    * Le basculement en mode 'comparison' se fera lors de la navigation
    * vers le panel CorpusComparison.
-   * 
+   *
    * @param {File} file - Fichier concordances B à uploader
    */
   const handleConcordanceBUpload = (file) => {
@@ -330,7 +300,37 @@ const ConcordanceAnalyzerPanels = () => {
       console.log('💡 Mode reste en "single" - Naviguez vers le panel Comparaison pour l\'analyse comparative');
     });
   };
-  
+
+  // ============================================================================
+  // HANDLERS : Drag & Drop
+  // ============================================================================
+
+  // Gestionnaires drag & drop - Optimisation: useCallback pour stabiliser les références
+  const handleDrop = useCallback((event, fileType) => {
+    event.preventDefault();
+    setDragOver(false);
+    const file = event.dataTransfer.files[0];
+
+    if (file) {
+      if (fileType === 'metadata') {
+        handleMetadataFileUpload(file, setMetadataLookup);
+      } else if (fileType === 'concordanceB') {
+        handleConcordanceBUpload(file);
+      } else {
+        handleConcordanceFileUpload(file, metadataLookup, setConcordanceData);
+      }
+    }
+  }, [metadataLookup, handleConcordanceBUpload]); // handleConcordanceBUpload maintenant défini avant
+
+  const handleDragOver = useCallback((event) => {
+    event.preventDefault();
+    setDragOver(true);
+  }, []); // Pas de dépendances
+
+  const handleDragLeave = useCallback(() => {
+    setDragOver(false);
+  }, []); // Pas de dépendances
+
   // ============================================================================
   // RENDER
   // ============================================================================
