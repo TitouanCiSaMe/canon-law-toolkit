@@ -179,27 +179,39 @@ export function generateSemanticContextQuery(
     });
     finalQuery = subQueries.join(' | ');
   } else if (contextMode === 'all') {
-    // MODE TOUS : peut générer des doublons (conservé pour compatibilité)
-    const proximityChains = [];
+    // =========================================================================
+    // OPTIMISATION: MODE TOUS avec limitation pour éviter explosion
+    // =========================================================================
+    // Avant : O(n²) × 6 permutations → avec 10 lemmes = 270 requêtes !
+    // Après : Limitation + Set pendant génération → max 50 combinaisons
+    const proximitySet = new Set(); // Déduplication pendant génération
     const centralPattern = `[lemma="${cleanCentral}"]`;
 
-    // Générer des combinaisons pour tous les contextes
-    for (let i = 0; i < contextPatterns.length; i++) {
-      for (let j = i + 1; j < contextPatterns.length; j++) {
+    // Limite de sécurité pour éviter URLs trop longues
+    const MAX_COMBINATIONS = 50;
+    let combinationCount = 0;
+
+    // Génération limitée et optimisée
+    for (let i = 0; i < contextPatterns.length && combinationCount < MAX_COMBINATIONS; i++) {
+      for (let j = i + 1; j < contextPatterns.length && combinationCount < MAX_COMBINATIONS; j++) {
         const pattern1 = contextPatterns[i];
         const pattern2 = contextPatterns[j];
 
-        // Toutes les permutations possibles
-        proximityChains.push(`${centralPattern} []{0,${validDistance}} ${pattern1} []{0,${validDistance}} ${pattern2}`);
-        proximityChains.push(`${centralPattern} []{0,${validDistance}} ${pattern2} []{0,${validDistance}} ${pattern1}`);
-        proximityChains.push(`${pattern1} []{0,${validDistance}} ${centralPattern} []{0,${validDistance}} ${pattern2}`);
-        proximityChains.push(`${pattern2} []{0,${validDistance}} ${centralPattern} []{0,${validDistance}} ${pattern1}`);
-        proximityChains.push(`${pattern1} []{0,${validDistance}} ${pattern2} []{0,${validDistance}} ${centralPattern}`);
-        proximityChains.push(`${pattern2} []{0,${validDistance}} ${pattern1} []{0,${validDistance}} ${centralPattern}`);
+        // Générer seulement les permutations les plus utiles (central au milieu)
+        // Au lieu de 6 permutations, on n'en fait que 2 les plus pertinentes
+        proximitySet.add(`${pattern1} []{0,${validDistance}} ${centralPattern} []{0,${validDistance}} ${pattern2}`);
+        proximitySet.add(`${pattern2} []{0,${validDistance}} ${centralPattern} []{0,${validDistance}} ${pattern1}`);
+
+        combinationCount += 2;
       }
     }
 
-    finalQuery = [...new Set(proximityChains)].join(' | ');
+    finalQuery = Array.from(proximitySet).join(' | ');
+
+    // Avertissement si requête tronquée
+    if (combinationCount >= MAX_COMBINATIONS) {
+      console.warn(`[QueryGenerator] Requête limitée à ${MAX_COMBINATIONS} combinaisons pour éviter dépassement URL. Lemmes contextes: ${contextArray.length}`);
+    }
   } else {
     // MODE AU MOINS UN : recherche souple (comportement original)
     const contextPattern = '(' + contextPatterns.join('|') + ')';

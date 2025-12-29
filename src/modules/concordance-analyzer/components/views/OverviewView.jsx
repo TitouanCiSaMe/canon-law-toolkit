@@ -147,7 +147,7 @@
  * />
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBreakpoint } from '../../../../shared/hooks';
 import NavigationPanel from '../ui/NavigationPanel';
@@ -177,6 +177,32 @@ const OverviewView = ({
 
   const { t } = useTranslation();
   const { isMobile, isTablet } = useBreakpoint();
+
+  // ============================================================================
+  // OPTIMISATION: Mémoriser les calculs de périodes
+  // ============================================================================
+  // Calculer une seule fois au lieu de 3 fois (mobile/tablet/desktop)
+  const periodStats = useMemo(() => {
+    if (analytics.periods.length === 0) {
+      return { centuriesCovered: 0, maxCount: 0 };
+    }
+
+    let minPeriod = Infinity;
+    let maxPeriod = -Infinity;
+    let maxCount = 0;
+
+    // Single pass pour trouver min, max, et maxCount (top 10)
+    analytics.periods.forEach((period, index) => {
+      if (period.period < minPeriod) minPeriod = period.period;
+      if (period.period > maxPeriod) maxPeriod = period.period;
+      if (index < 10 && period.count > maxCount) maxCount = period.count;
+    });
+
+    return {
+      centuriesCovered: Math.ceil((maxPeriod - minPeriod) / 100),
+      maxCount
+    };
+  }, [analytics.periods]);
 
   // Helper: Rendu compact pour mobile (icône + titre seulement)
   const renderCompactPanel = (icon, title, stat) => (
@@ -339,25 +365,19 @@ const OverviewView = ({
           renderCompactPanel(
             panelConfig.temporal.icon,
             panelConfig.temporal.title,
-            analytics.periods.length > 0 ?
-              Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
-                        Math.min(...analytics.periods.map(p => p.period))) / 100) : 0
+            periodStats.centuriesCovered
           )
         ) : isTablet ? (
           renderSemiCompactPanel(
             panelConfig.temporal.icon,
             panelConfig.temporal.title,
-            analytics.periods.length > 0 ?
-              Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
-                        Math.min(...analytics.periods.map(p => p.period))) / 100) : 0,
+            periodStats.centuriesCovered,
             t('concordance.overview.centuriesCovered')
           )
         ) : (
           <div style={{ textAlign: 'center', padding: '0.5rem 0.5rem 0.5rem 0.5rem' }}>
             <div className={styles.stat}>
-              {analytics.periods.length > 0 ?
-                Math.ceil((Math.max(...analytics.periods.map(p => p.period)) -
-                          Math.min(...analytics.periods.map(p => p.period))) / 100) : 0}
+              {periodStats.centuriesCovered}
             </div>
             <div className={styles.label} style={{ marginBottom: '1rem' }}>
               {t('concordance.overview.centuriesCovered')}
@@ -372,8 +392,7 @@ const OverviewView = ({
               marginTop: '1rem'
             }}>
               {analytics.periods.slice(0, 10).map((period, index) => {
-                const maxCount = Math.max(...analytics.periods.slice(0, 10).map(p => p.count));
-                const height = (period.count / maxCount) * 100;
+                const height = periodStats.maxCount > 0 ? (period.count / periodStats.maxCount) * 100 : 0;
                 return (
                   <div key={period.period} style={{
                     flex: 1,

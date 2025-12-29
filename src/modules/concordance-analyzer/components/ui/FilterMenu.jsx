@@ -1,29 +1,45 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 /**
  * Menu latéral de filtrage des concordances
- * 
+ *
  * @param {Array} concordanceData - Données complètes
  * @param {Array} filteredData - Données filtrées
  * @param {Object} activeFilters - Filtres actifs
  * @param {Function} setActiveFilters - Setter des filtres
  * @param {Function} onClose - Fermer le menu
  */
-const FilterMenu = ({ 
-  concordanceData, 
-  filteredData, 
-  activeFilters, 
+const FilterMenu = ({
+  concordanceData,
+  filteredData,
+  activeFilters,
   setActiveFilters,
-  onClose 
+  onClose
 }) => {
-  
+
   const { t } = useTranslation();
-  
-  // Extraire les valeurs uniques depuis concordanceData
-  const availableAuthors = [...new Set(concordanceData.map(item => item.author).filter(a => a !== 'Anonyme'))].sort();
-  const availableDomains = [...new Set(filteredData.map(item => item.domain).filter(d => d !== 'Domaine inconnu'))].sort();
-  const availablePlaces = [...new Set(filteredData.map(item => item.place).filter(p => p !== 'Lieu inconnu'))].sort();
+
+  // ============================================================================
+  // OPTIMISATION: Mémoriser les extractions pour éviter recalculs
+  // ============================================================================
+  // Extraire les valeurs uniques depuis concordanceData (mémorisées)
+  const availableAuthors = useMemo(() =>
+    [...new Set(concordanceData.map(item => item.author).filter(a => a !== 'Anonyme'))].sort(),
+    [concordanceData]
+  );
+
+  const availableDomains = useMemo(() =>
+    [...new Set(filteredData.map(item => item.domain).filter(d => d !== 'Domaine inconnu'))].sort(),
+    [filteredData]
+  );
+
+  const availablePlaces = useMemo(() =>
+    [...new Set(filteredData.map(item => item.place).filter(p => p !== 'Lieu inconnu'))].sort(),
+    [filteredData]
+  );
+
+  // Périodes disponibles (constantes, pas besoin de useMemo)
   const availablePeriods = [
     '1000-1099', '1100-1149', '1150-1199', '1200-1249', '1250-1299',
     'XIe siècle', 'XIIe siècle', 'XIIIe siècle', 'Période inconnue'
