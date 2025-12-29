@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFilteredData } from './hooks/useFilteredData';
 import { useAnalytics } from './hooks/useAnalytics';
@@ -222,10 +222,11 @@ const ConcordanceAnalyzerPanels = () => {
   // ============================================================================
   // NAVIGATION
   // ============================================================================
-  
-  const navigateToView = (viewId) => {
+
+  // Optimisation: useCallback pour éviter les re-renders des composants enfants
+  const navigateToView = useCallback((viewId) => {
     setActiveView(viewId);
-  };
+  }, []); // Pas de dépendances - setActiveView est stable
 
   // ============================================================================
   // HOOKS : Calculs selon le mode
@@ -258,12 +259,12 @@ const ConcordanceAnalyzerPanels = () => {
   // HANDLERS : Drag & Drop
   // ============================================================================
   
-  // Gestionnaires drag & drop
-  const handleDrop = (event, fileType) => {
+  // Gestionnaires drag & drop - Optimisation: useCallback pour stabiliser les références
+  const handleDrop = useCallback((event, fileType) => {
     event.preventDefault();
     setDragOver(false);
     const file = event.dataTransfer.files[0];
-  
+
     if (file) {
       if (fileType === 'metadata') {
         handleMetadataFileUpload(file, setMetadataLookup);
@@ -273,16 +274,16 @@ const ConcordanceAnalyzerPanels = () => {
         handleConcordanceFileUpload(file, metadataLookup, setConcordanceData);
       }
     }
-  };
+  }, [metadataLookup, handleMetadataFileUpload, handleConcordanceBUpload, handleConcordanceFileUpload]);
 
-  const handleDragOver = (event) => {
+  const handleDragOver = useCallback((event) => {
     event.preventDefault();
     setDragOver(true);
-  };
+  }, []); // Pas de dépendances
 
-  const handleDragLeave = () => {
+  const handleDragLeave = useCallback(() => {
     setDragOver(false);
-  };
+  }, []); // Pas de dépendances
   
   // ============================================================================
   // HANDLERS : Upload Concordances B (Mode Comparison)

@@ -1,20 +1,34 @@
 /**
  * Hook personnalisé pour filtrer les concordances
- * 
+ *
  * Ce hook gère tous les types de filtres applicables aux concordances :
  * - Auteurs (sélection multiple)
  * - Domaines (sélection multiple)
  * - Périodes (avec logique complexe : plages, siècles, correspondance exacte)
  * - Lieux (sélection multiple)
  * - Recherche textuelle (dans left, kwic, right, author, title)
- * 
+ *
  * Le hook utilise useMemo pour optimiser les performances en recalculant
  * les données filtrées uniquement quand les données sources ou les filtres changent.
- * 
+ *
  * @module hooks/useFilteredData
  */
 
 import { useMemo } from 'react';
+
+// ============================================================================
+// CONSTANTES DE PERFORMANCE - Définies une seule fois au niveau module
+// ============================================================================
+// Regex compilées une seule fois au lieu d'être recompilées pour chaque item
+const YEAR_RANGE_REGEX = /^(\d{4})-(\d{4})$/;
+const YEAR_EXTRACT_REGEX = /\d{4}/;
+
+// Map des siècles définie une seule fois
+const CENTURY_MAP = {
+  'XIe siècle': [1000, 1099],
+  'XIIe siècle': [1100, 1199],
+  'XIIIe siècle': [1200, 1299]
+};
 
 /**
  * Filtre les concordances selon les critères actifs
@@ -79,57 +93,67 @@ import { useMemo } from 'react';
  * // Retourne toutes les concordances (aucun filtre appliqué)
  */
 export const useFilteredData = (concordanceData, activeFilters) => {
+  // Convertir les tableaux de filtres en Sets pour lookup O(1) au lieu de O(n)
+  const filterSets = useMemo(() => ({
+    authors: activeFilters.authors.length > 0 ? new Set(activeFilters.authors) : null,
+    domains: activeFilters.domains.length > 0 ? new Set(activeFilters.domains) : null,
+    places: activeFilters.places.length > 0 ? new Set(activeFilters.places) : null,
+    periods: activeFilters.periods // Gardé en tableau pour logique complexe
+  }), [activeFilters.authors, activeFilters.domains, activeFilters.places, activeFilters.periods]);
+
   return useMemo(() => {
     if (!concordanceData.length) return [];
-    
+
     return concordanceData.filter(item => {
       // ============================================================================
-      // FILTRE PAR AUTEURS
+      // FILTRE PAR AUTEURS - O(1) avec Set au lieu de O(n) avec array.includes()
       // ============================================================================
-      if (activeFilters.authors.length > 0 && !activeFilters.authors.includes(item.author)) {
+      if (filterSets.authors && !filterSets.authors.has(item.author)) {
         return false;
       }
-      
+
       // ============================================================================
-      // FILTRE PAR DOMAINES
+      // FILTRE PAR DOMAINES - O(1) avec Set au lieu de O(n) avec array.includes()
       // ============================================================================
-      if (activeFilters.domains.length > 0 && !activeFilters.domains.includes(item.domain)) {
+      if (filterSets.domains && !filterSets.domains.has(item.domain)) {
         return false;
       }
-      
+
       // ============================================================================
-      // FILTRE PAR LIEUX
+      // FILTRE PAR LIEUX - O(1) avec Set au lieu de O(n) avec array.includes()
       // ============================================================================
-      if (activeFilters.places.length > 0 && !activeFilters.places.includes(item.place)) {
+      if (filterSets.places && !filterSets.places.has(item.place)) {
         return false;
       }
       
       // ============================================================================
       // FILTRE PAR PÉRIODE (logique complexe)
       // ============================================================================
-      if (activeFilters.periods.length > 0) {
+      if (filterSets.periods.length > 0) {
         const itemPeriod = item.period;
-        const matchesPeriod = activeFilters.periods.some(filterPeriod => {
+        const matchesPeriod = filterSets.periods.some(filterPeriod => {
           // Gestion des plages numériques (ex: "1100-1149")
-          if (/^\d{4}-\d{4}$/.test(filterPeriod)) {
-            const [start, end] = filterPeriod.split('-').map(Number);
-            const itemYear = parseInt(item.period.match(/\d{4}/)?.[0] || '0');
+          // Utilise la regex précompilée au niveau module
+          const rangeMatch = YEAR_RANGE_REGEX.exec(filterPeriod);
+          if (rangeMatch) {
+            const start = parseInt(rangeMatch[1]);
+            const end = parseInt(rangeMatch[2]);
+            const itemYearMatch = YEAR_EXTRACT_REGEX.exec(item.period);
+            const itemYear = itemYearMatch ? parseInt(itemYearMatch[0]) : 0;
             return itemYear >= start && itemYear <= end;
           }
+
           // Gestion des siècles (ex: "XIIe siècle")
-          else if (filterPeriod.includes('siècle')) {
-            const centuryMap = {
-              'XIe siècle': [1000, 1099],
-              'XIIe siècle': [1100, 1199], 
-              'XIIIe siècle': [1200, 1299]
-            };
-            
-            if (centuryMap[filterPeriod]) {
-              const [start, end] = centuryMap[filterPeriod];
-              const itemYear = parseInt(item.period.match(/\d{4}/)?.[0] || '0');
-              return itemYear >= start && itemYear <= end;
+          // Utilise la map précompilée au niveau module
+          if (filterPeriod.includes('siècle')) {
+            const range = CENTURY_MAP[filterPeriod];
+            if (range) {
+              const itemYearMatch = YEAR_EXTRACT_REGEX.exec(item.period);
+              const itemYear = itemYearMatch ? parseInt(itemYearMatch[0]) : 0;
+              return itemYear >= range[0] && itemYear <= range[1];
             }
           }
+
           // Correspondance exacte
           return itemPeriod === filterPeriod;
         });
@@ -154,5 +178,5 @@ export const useFilteredData = (concordanceData, activeFilters) => {
       
       return true;
     });
-  }, [concordanceData, activeFilters]);
+  }, [concordanceData, filterSets, activeFilters.searchTerm]);
 };

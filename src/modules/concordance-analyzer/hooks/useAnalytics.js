@@ -1,6 +1,6 @@
 /**
  * Hook personnalisé pour calculer les analytics des concordances
- * 
+ *
  * Ce hook calcule automatiquement toutes les statistiques nécessaires
  * pour l'affichage des graphiques et vues analytiques :
  * - Répartition par domaines (comptage et tri)
@@ -8,14 +8,22 @@
  * - Distribution temporelle par périodes (avec déduplication des œuvres)
  * - Répartition géographique PAR PAYS UNIQUEMENT (comptage et tri)
  * - Termes-clés les plus fréquents (extraction et comptage)
- * 
+ *
  * Le hook utilise useMemo pour optimiser les performances en recalculant
  * les analytics uniquement quand les données filtrées changent.
- * 
+ *
  * @module hooks/useAnalytics
  */
 
 import { useMemo } from 'react';
+
+// ============================================================================
+// CONSTANTES DE PERFORMANCE - Définies une seule fois au niveau module
+// ============================================================================
+// Set pour lookup O(1) au lieu de array.includes() O(n)
+const STOPWORDS = new Set([
+  'quod', 'quae', 'esse', 'sunt', 'enim', 'autem', 'vero', 'etiam'
+]);
 
 /**
  * Calcule les analytics complètes des concordances filtrées
@@ -185,13 +193,13 @@ export const useAnalytics = (filteredData) => {
       .join(' ')
       .toLowerCase();
 
-    // Tokenisation basique
+    // Tokenisation basique - Utilise Set.has() O(1) au lieu de array.includes() O(n)
     const words = allText
       .replace(/[.,;:!?()[\]{}«»""'']/g, ' ')
       .split(/\s+/)
-      .filter(word => 
-        word.length > 3 && 
-        !['quod', 'quae', 'esse', 'sunt', 'enim', 'autem', 'vero', 'etiam'].includes(word)
+      .filter(word =>
+        word.length > 3 &&
+        !STOPWORDS.has(word)
       );
     
     const wordCounts = words.reduce((acc, word) => {
